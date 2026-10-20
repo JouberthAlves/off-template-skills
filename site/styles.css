@@ -270,7 +270,7 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
 }
 /* the strike: a pen stroke drawn over the words, its own length and bend (see index.html) */
 .tell-text { position: relative; display: inline-block; }
-.strike { position: absolute; left: -.1em; top: 48%; width: calc(100% + .2em); height: 8px; overflow: visible; }
+.strike { position: absolute; left: -.1em; top: calc(.62em - 4px); width: calc(100% + .2em); height: 8px; overflow: visible; }
 .strike path { fill: none; stroke: var(--pen); stroke-width: 3.2; stroke-linecap: round; }
 
 /* the flow */
