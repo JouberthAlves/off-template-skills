@@ -314,9 +314,13 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
 /* install */
 .install-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 40px; border-top: 2px solid var(--ink); padding-top: 26px; }
 .install-grid h3 { font: 700 22px/1.2 var(--sans); margin: 0 0 12px; }
-.marks { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
-.marks svg { width: 22px; height: 22px; fill: var(--ink); flex: none; }
-.marks .plus { display: inline-grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--ink); border-radius: 50%; font: 500 16px/1 var(--mono); }
+.install-grid h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.marks { display: inline-flex; align-items: center; gap: 6px; }
+.marks svg { width: 20px; height: 20px; fill: var(--ink); flex: none; }
+.marks .plus { position: relative; width: 24px; height: 24px; border: 1px solid var(--ink); border-radius: 50%; }
+.marks .plus::before, .marks .plus::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--ink); transform: translate(-50%, -50%); }
+.marks .plus::before { width: 11px; height: 2px; }
+.marks .plus::after { width: 2px; height: 11px; }
 .install-grid p { margin: 12px 0 0; color: var(--text-2); }
 .install-grid .cmd code { font-size: 14px; }
 
