@@ -77,7 +77,8 @@
     // hero: title lines rise out of their clip, the caret and the underline draw in
     gsap.from('.title .line > span', { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.12 });
     gsap.from('[data-caret]', { drawSVG: 0, duration: 0.8, ease: 'power2.out', delay: 0.2 });
-    gsap.from('[data-underline]', { drawSVG: 0, duration: 1, ease: 'power2.out', delay: 1 });
+    // opacity too: a zero-length path with round caps still paints two dots at its ends
+    gsap.from('[data-underline]', { drawSVG: 0, opacity: 0, duration: 1, ease: 'power2.out', delay: 1 });
     gsap.from('.crop', { scale: 0, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(2)', delay: 0.2 });
     gsap.from('.slug span', { opacity: 0, y: 6, duration: 0.5, stagger: 0.06, delay: 0.3 });
 
