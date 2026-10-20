@@ -88,13 +88,26 @@
       gsap.to(li, { '--strike': 1, duration: 0.5, ease: 'power2.inOut', scrollTrigger: { trigger: li, start: 'top 80%', once: true } });
     });
 
-    // the flow: a red line draws down the steps as you scroll; the stops get stamped
-    gsap.fromTo('[data-flowline]', { drawSVG: '0%' }, {
-      drawSVG: '100%', ease: 'none',
-      scrollTrigger: { trigger: '.flow-body', start: 'top 70%', end: 'bottom 70%', scrub: true },
-    });
-    $$('.steps > li').forEach((li) => {
-      gsap.from(li, { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } });
+    // the flow: each check lights up as you reach it, and the track to the next one
+    // fills in red while you scroll through that step. The last check lights when you
+    // reach it, so the line ends where the steps end.
+    const steps = $$('.steps > li');
+    steps.forEach((li, i) => {
+      if (i < steps.length - 1) {
+        const seg = document.createElement('span');
+        seg.className = 'track-fill';
+        li.append(seg);
+        gsap.fromTo(seg, { scaleY: 0 }, {
+          scaleY: 1, ease: 'none',
+          scrollTrigger: { trigger: li, start: 'top 65%', end: 'bottom 65%', scrub: true },
+        });
+      }
+      ScrollTrigger.create({
+        trigger: li, start: 'top 65%',
+        onEnter: () => li.classList.add('done'),
+        onLeaveBack: () => li.classList.remove('done'),
+      });
+      gsap.from(li, { opacity: 0.35, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: li, start: 'top 90%', once: true } });
     });
     $$('.stamp').forEach((s) => {
       gsap.from(s, { scale: 1.6, opacity: 0, rotation: -12, duration: 0.45, ease: 'back.out(2)', scrollTrigger: { trigger: s, start: 'top 88%', once: true } });

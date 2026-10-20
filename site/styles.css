@@ -87,7 +87,7 @@ nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; 
   padding: clamp(44px, 7vw, 96px) 0 clamp(36px, 5vw, 64px);
 }
 .title { margin: 0; font: 800 clamp(56px, 6.6vw, 112px)/.9 var(--sans); letter-spacing: -.04em; }
-.title .line { display: block; overflow: hidden; padding-bottom: .06em; }
+.title .line { display: block; overflow: hidden; padding-bottom: .28em; margin-bottom: -.28em; }
 .title .line > span { display: inline-block; }
 .title em { position: relative; font-style: normal; white-space: nowrap; }
 .underline { position: absolute; left: 0; bottom: -.12em; width: 100%; height: .24em; overflow: visible; }
@@ -143,6 +143,7 @@ nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; 
 
 /* red pencil markup, drawn in by GSAP */
 .markup { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; overflow: visible; pointer-events: none; }
+.markup[hidden] { display: none; }
 .markup [data-pencil] { fill: none; stroke: var(--pen); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
 .markup .note { font: 700 26px/1 var(--hand); fill: var(--pen); }
 
@@ -184,15 +185,26 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
 
 /* the flow */
 .flow-body { position: relative; }
-.flow-line { position: absolute; left: 0; top: 0; width: 10px; height: 100%; overflow: visible; }
-.flow-line path { fill: none; stroke: var(--pen); stroke-width: 3; }
 .steps { list-style: none; margin: 0; padding: 0 0 0 44px; border-top: 2px solid var(--ink); }
 .steps li { position: relative; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+/* node = a check; the track to the next check fills in red as you pass it */
 .steps li::before {
   content: ""; position: absolute; left: -38px; top: 32px; width: 12px; height: 12px;
   border-radius: 50%; background: #fff; border: 2px solid var(--ink);
+  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+  z-index: 2;
 }
-.steps li.stop::before { background: var(--pen); border-color: var(--pen); }
+.steps li.stop::before { width: 16px; height: 16px; left: -40px; top: 30px; border-width: 3px; }
+.steps li.done::before { background: var(--pen); border-color: var(--pen); box-shadow: 0 0 0 5px rgba(229, 35, 27, .14); }
+.steps li::after {
+  content: ""; position: absolute; left: -33px; top: 44px; bottom: -32px; width: 2px;
+  background: var(--rule);
+}
+.steps li:last-child::after { display: none; }
+.steps li .track-fill {
+  position: absolute; left: -33px; top: 44px; bottom: -32px; width: 2px;
+  background: var(--pen); transform-origin: top center; transform: scaleY(0); z-index: 1;
+}
 .steps h3 { margin: 0 0 6px; font: 700 clamp(20px, 2vw, 26px)/1.2 var(--sans); }
 .steps p { margin: 0; color: var(--text-2); max-width: 62ch; }
 .stamp {

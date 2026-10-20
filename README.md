@@ -1,109 +1,93 @@
-# Super-Webdesigner
+<div align="center">
 
-**Same prompt. Different designer.**
+<br>
 
-Coding agents design the same page for everyone: centered hero, three cards,
-purple gradient, emoji in the copy. Super-Webdesigner is a pair of skills that
-change *how* your agent designs: it researches the niche, shows you three
-directions, waits for your choice, and only then writes code. Then it checks
-the result against the tells of an AI-made page.
+<a href="https://super-webdesigner.vercel.app">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/readme/logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset=".github/readme/logo-light.png">
+    <img src=".github/readme/logo-light.png" alt="Super-Webdesigner" width="420">
+  </picture>
+</a>
 
-Both sites below came from the same one-line prompt:
+<br><br>
 
-> Build a website for a burger restaurant.
+**Same prompt. Different designer.**<br>
+Skills that stop coding agents from shipping the same AI-looking page.
 
-![Left: the normal agent's Ember & Bun, cream with red and a cartoon burger. Right: Order 27 made with Super-Webdesigner, butcher paper, huge condensed title, a real burger photo and a rust stamp](.github/compare-side-by-side.webp)
+<a href="https://super-webdesigner.vercel.app"><img src="https://img.shields.io/badge/site-super--webdesigner-e5231b?style=flat-square" alt="Website"></a> <img src="https://img.shields.io/badge/skills-2-111111?style=flat-square" alt="2 skills"> <img src="https://img.shields.io/badge/Claude_Code-ready-111111?style=flat-square" alt="Claude Code"> <img src="https://img.shields.io/badge/works_with-Codex_·_Cursor-111111?style=flat-square" alt="Works with Codex and Cursor"> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
 
-<p align="center"><img src=".github/compare.webp" alt="A slider sweeping between the two sites" width="720"></p>
+[Website](https://super-webdesigner.vercel.app) · [See the difference](#see-the-difference) · [The flow](#the-flow) · [Install](#install) · [The vault](#recommended-a-vault)
 
-**[Drag the slider yourself → super-webdesigner.vercel.app](https://super-webdesigner.vercel.app)**
+</div>
 
-Nothing was retouched. The normal agent's output is in
-[`examples/burger/normal-agent/`](examples/burger/normal-agent), exactly as
-it came out. Every step of the other side is in
-[`examples/burger/super-webdesigner/`](examples/burger/super-webdesigner).
+---
 
-## What's different
+Your coding agent designs the same page for everyone: a centered hero, three
+cards, a purple gradient, emoji in the copy. Super-Webdesigner is two skills
+that change how it works. Before any code, the agent asks you a brief,
+researches real sites in the niche, and shows you three directions. It waits
+for your pick. Then it builds, and checks the result against the ten tells of
+an AI-made page.
 
-The 10 tells of a page an agent designed alone. Three or more and it reads as
-AI-made.
+## See the difference
 
-| Tell | Normal agent | Super-Webdesigner |
+Same prompt in both: *Build a landing page for an AI meeting-notes app.*
+
+<img src=".github/readme/compare-side-by-side.webp" alt="Left: a caricature of the usual AI page, purple gradient, serif title, emoji and three cards. Right: Steno, made through Super-Webdesigner's flow: a legal pad, a plain title and a notes card" width="100%">
+
+<p align="center"><img src=".github/readme/compare-slider.webp" alt="The comparison slider sweeping from one side to the other" width="720"></p>
+
+**[Drag the line yourself →](https://super-webdesigner.vercel.app)**
+
+The left side is a **caricature**, built on purpose to show all ten tells at
+once. It is not an agent's real output. The repo has a real one:
+[`examples/burger/normal-agent/`](examples/burger/normal-agent) is what a
+normal agent produced for a burger place, untouched. It scores 2 of 10 on the
+tells (watch it). The Steno side is fictional and went through the flow end
+to end; its files are in [`examples/ai-notes/`](examples/ai-notes).
+
+## The flow
+
+Three stops wait for you. Everything between them the agent does on its own.
+
+| # | Step | You |
 |---|---|---|
-| Purple or blue gradient | no | no |
-| Serif title by default | no | no |
-| Grid or dots background | no | no |
-| Three generic cards | no | no |
-| Emoji in the copy | **yes** (every menu item) | no |
-| Glow on everything | no | no |
-| The usual layout | **yes** | no |
-| Generic thin icons | no | no |
-| Everything static | no | no |
-| Fake 01 / 02 / 03 | no | no |
-| Niche clichés (red + yellow, "since 2014", cartoon burger) | **3** | none |
-| Score (10 tells only) | **2/10, watch it** | 0/10, self-assessed |
+| 1 | **Discover the tools.** Lists the skills, MCP servers and browser the agent has, and what's missing, with the install command. | |
+| 2 | **The brief.** Four questions, with options to click: a real object the palette comes from, one feeling, two influences to collide, what the page must never look like. The cost of any paid mockups comes in the same message. | **Stop: answer** |
+| 3 | **Research the niche.** Real sites, split into what visitors expect (kept) and what everyone repeats (avoided). | |
+| 4 | **Three directions.** Gray skeletons for phone and desktop, plus a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each has its logo, favicon and motion. | |
+| 5 | **You choose.** One question: which of the three, or what to mix. | **Stop: choose** |
+| 6 | **Write it down.** The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build. | |
+| 7 | **Build.** Half the effort on the first screen, with the motion the direction asked for. | |
+| 8 | **Review.** Full-page screenshots at 1440 and 390 px, the ten tells, a design critique, forms, contrast. | **Stop: judge** |
 
-Also found on the normal agent's page, not scored: invented reviews and
-stats ("4.8★, 2,300+ reviews"), and horizontal scroll at 1440 and 390 px.
-The Super-Webdesigner side was scored by the agent that built it; its owner
-found the result unattractive and the motion thin, which is why the main
-example is being redone.
+## The ten tells
 
-The normal agent's page is competent: readable, with a working cart. The
-problem isn't quality. It's that it's the page every agent makes for every
-burger place.
+What a page looks like when the agent decides alone. Each one alone looks like
+a choice. Three or more together and it reads as AI-made.
 
-## How it works
-
-The `super-webdesigner` skill runs a fixed flow. Three stops wait for you;
-everything else the agent does on its own.
-
-1. **Discover the tools.** It lists the skills, MCP servers and browser it
-   has, maps them to the jobs of the flow, and recommends installs for what's
-   missing. It asks before installing anything.
-2. **Stop: the brief.** The agent asks *you* 4 questions, with options to
-   click: a real-world object the palette comes from, the one feeling of the
-   first 3 seconds, two unexpected influences to collide, and what the page
-   must never look like. Same message: the tools it found, and the cost of
-   the mockups if they spend credits.
-3. **Research the niche.** 8 to 15 real sites, split into what visitors
-   **expect** (keep) and what everyone **repeats** (avoid).
-4. **Three directions.** Gray skeletons (phone and desktop) plus one colored
-   mockup each: A at the level of the best in the niche, B breaking its
-   convention, C borrowing from outside it. Each one says its logo, favicon
-   and motion.
-5. **Stop: you choose.** No code before this.
-6. **Write the direction down.** Palette, fonts, wildcard element, what to
-   keep, what to avoid. The contract for the build.
-7. **Build.** Half the effort on the first screen, with the motion the
-   direction defined.
-8. **Review, then stop: you judge.** The tells on full-page screenshots, a
-   design critique, horizontal scroll at 390 and 1440 px, forms, contrast,
-   motion. You see it before anything is published. Then it logs the style
-   so the next project doesn't repeat it.
-
-The second skill, `ai-slop-check`, is the review alone: point it at any URL
-or screenshot and it scores the page against the 10 tells and says what to
-change.
-
-## Tools: whatever your agent has
-
-Every step asks for a **job**, not a tool. The skill is written for Claude
-Code and lists the equivalent for other agents and a manual fallback in
-[`tool-slots.md`](skills/super-webdesigner/references/tool-slots.md):
-
-| Job | Claude Code | Others |
+| Tell | What it looks like | |
 |---|---|---|
-| Research real sites | Web search + built-in browser | Playwright MCP, or links you send |
-| Gray skeletons | Artifact | A local HTML file |
-| Colored mockups | An image MCP (e.g. Magnific, GPT image models) | ChatGPT, or a prompt you paste |
-| Components and docs | shadcn, React Bits, Context7 | The same, through MCP |
-| Animation | GSAP skills | GSAP skills, Motion docs |
-| Design critique | Anthropic's design plugin | The review checklist |
+| Purple-to-blue gradient | Background or buttons fading violet into blue | |
+| Serif title by default | An italic serif hero, as the agent's shortcut for "elegant" | |
+| Grid or dot background | Squares or dots filling empty space | |
+| Three generic cards | Icon, title, two lines, three times in a row | |
+| Emoji in the copy | Emoji as bullets, headings or menu pictures | |
+| Glow on everything | Every button and border glowing | |
+| The usual layout | Hero, cards, testimonials, FAQ, CTA, in that order | |
+| Thin generic icons | The default line-icon set on every card | |
+| Nothing moving | A page that is static from top to bottom | |
+| 01 / 02 / 03 | Numbering on things that have no order | |
 
-Paid tools get one rule: the agent says what it will cost before generating.
+The skill checks these on **full-page** screenshots and on the source. A
+first-screen screenshot alone can't show most of them, so the skill asks for
+the rest rather than scoring what it can't see.
 
 ## Install
+
+Two skills: `super-webdesigner` (the flow) and `ai-slop-check` (the audit on
+its own, for any URL or screenshot).
 
 **Claude Code**
 
@@ -111,62 +95,83 @@ Paid tools get one rule: the agent says what it will cost before generating.
 npx skills add JouberthAlves/super-webdesigner -g -a claude-code
 ```
 
-Or copy `skills/super-webdesigner` and `skills/ai-slop-check` into
-`~/.claude/skills/`. Then ask for a site the way you normally would.
+Then ask for a site the way you always do: *"build a website for a bakery"*.
+The skill takes it from there.
 
-**Codex, OpenCode and others supported by `skills`**
+**Codex, OpenCode and others**
 
 ```bash
 npx skills add JouberthAlves/super-webdesigner -a codex
 ```
 
-**Cursor, Copilot, anything without skills:** add a rule
-(`.cursor/rules/`, `.github/copilot-instructions.md`, `AGENTS.md`) that says:
-"For any website, page or UI request, read `skills/super-webdesigner/SKILL.md`
-and follow it, reading the files in `references/` when a step says so."
+**Cursor, Copilot, or any agent without skill support:** add a rule (for
+example `.cursor/rules/` or `AGENTS.md`) that says *"for any site or UI
+request, read `skills/super-webdesigner/SKILL.md` and follow it, reading the
+files in `references/` when a step says so."*
 
-## Recommended: a vault (Obsidian)
+## Tools, by job
+
+The skill asks for a **job**, never a specific tool. Here is what each job
+uses in Claude Code, and the equivalent elsewhere. The full table, with the
+manual fallback for each, is in
+[`tool-slots.md`](skills/super-webdesigner/references/tool-slots.md).
+
+| Job | Claude Code | Other agents |
+|---|---|---|
+| Research real sites | Web search and the built-in browser | Playwright MCP, or links you send |
+| Gray skeletons | An Artifact | A local HTML file |
+| Colored mockups | An image MCP (Magnific, GPT-image models) | ChatGPT, or a prompt you paste |
+| Components and docs | shadcn, React Bits, Context7 | The same, through MCP |
+| Animation | GSAP skills | GSAP skills, or the GSAP docs |
+| Design critique | Anthropic's design plugin | The review checklist |
+
+Paid tools get one rule: the agent says what it will cost, and waits for a yes.
+
+## Recommended: a vault
 
 Agents don't remember anything between sessions. The
-[`vault/`](vault) folder is a small Obsidian vault that works as your agent's
-memory: one file of rules it reads every session, a log of mistakes that
-become one-line rules, a log of what you praised, and every style you've
-already used, so it never ships the same look twice.
+[`vault/`](vault) folder is a small Obsidian vault that works as their memory:
 
-It's plain Markdown, so any agent can read it. Obsidian adds the link graph
-and makes editing the rules easy. Copy the folder, open it as a vault, and
-open your agent inside it. Setup details in [`vault/README.md`](vault/README.md).
-There's an optional Claude Code hook that re-injects the rules after the
-context is compacted.
+- `90 System/Agent rules.md`: every rule in force, one per line. The only file read every session.
+- `90 System/Mistakes.md` and `Wins.md`: what went wrong and what got praised, each turned into a one-line rule.
+- `10 Notes/`: the design brief, research, skeletons, anti-patterns and design rules.
+- `20 Projects/`: one note per project, so the same style is never shipped twice.
 
-## Repository
+Obsidian is recommended, not required: the files are plain Markdown and any
+agent can read them. Open `vault/` as a vault and run your agent inside it.
+An optional Claude Code hook re-injects the rules after the context is
+compacted. Setup details are in [`vault/README.md`](vault/README.md).
 
+## How it works
+
+```text
+skills/super-webdesigner/   the flow: SKILL.md and references/ (brief, research, skeletons, review…)
+skills/ai-slop-check/       the audit on its own
+vault/                      the starter Obsidian vault
+examples/burger/            the normal-agent output, untouched, and a full run of the flow
+examples/ai-notes/          the Steno run and the caricature
+design/                     the showcase page's own brief and direction
+site/                       this page, with the drag comparison and the motion
 ```
-skills/super-webdesigner/      the flow (SKILL.md + references/)
-skills/ai-slop-check/       the standalone audit
-vault/                      starter Obsidian vault
-examples/burger/            the comparison, step by step
-site/                       the page with the drag slider
-```
 
-## What was verified, and what wasn't
+The site is static HTML, CSS and JavaScript, with GSAP, ScrollTrigger and
+DrawSVG from jsDelivr. Everything that moves is off when the visitor asks for
+reduced motion. Vercel publishes it on every push to `main`.
 
-- Both burger sites were screenshotted in headless Chrome at 1440×900 and at
-  390×844 with real mobile emulation. Order 27: no horizontal scroll at
-  either size, order flow tested end to end. Details in
-  [`review.md`](examples/burger/super-webdesigner/review.md).
-- The Super-Webdesigner side was run, step by step, in the Claude Code session
-  that wrote the skill. In that run the agent answered the brief questions
-  itself, which the skill now forbids.
-- A test agent with only the skill on disk
-  ([`clean-room-test.md`](examples/clean-room-test.md)) found it, read it and
-  stopped before code, and exposed a contradiction around the cost question,
-  now fixed. It ran as a subagent, so whether Claude Code *triggers* the skill
-  on its own from a one-line prompt is still untested.
-- Research for the example hit a corporate proxy that blocked most sites, so
-  it relied on web search and published design breakdowns, without asking
-  the owner for links first (which the skill now says to do).
-- Not run: Lighthouse against a deployed URL, real iOS Safari, a screen
+## Verification
+
+- The showcase was screenshotted in headless Chrome at 1440 and 390 px, with
+  no horizontal scroll at either size. Its motion was checked by scrolling to
+  each section and capturing the state.
+- The skill was run end to end in the session that wrote it. A clean-room run
+  with a fresh agent (only the skill on disk) found and stopped at the brief,
+  and exposed a contradiction around the cost question, which is now fixed
+  ([`clean-room-test.md`](examples/clean-room-test.md)). That run was a
+  subagent, so whether Claude Code triggers the skill on its own from a
+  one-line prompt is still untested.
+- The Ember & Bun score (2 of 10) was corrected after a fresh check found the
+  first 3 of 10 counted something that isn't one of the tells.
+- Not run: Lighthouse against the deployed URL, real iOS Safari, a screen
   reader pass.
 
 ## Credits
@@ -174,7 +179,10 @@ site/                       the page with the drag slider
 The brief questions, the anti-convergence rules and the conversion equation
 are adapted from
 [2389-research/landing-page-design](https://github.com/2389-research/landing-page-design)
-(MIT). Fonts from Google Fonts (OFL). Order 27 and Ember & Bun are fictional;
-Order 27's photos were generated for this demo.
+(MIT). The showcase uses [GSAP](https://gsap.com) and fonts from Google Fonts
+(OFL). Steno, MeetMind, Order 27 and Ember & Bun are fictional; the photos in
+the examples were generated for this demo.
 
-MIT license.
+## License
+
+Released under the [MIT license](LICENSE).
