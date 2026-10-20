@@ -167,8 +167,10 @@ reduced motion. Vercel publishes it on every push to `main`.
   with a fresh agent (only the skill on disk) found and stopped at the brief,
   and exposed a contradiction around the cost question, which is now fixed
   ([`clean-room-test.md`](examples/clean-room-test.md)). That run was a
-  subagent, so whether Claude Code triggers the skill on its own from a
-  one-line prompt is still untested.
+  subagent. A later headless run in a new Claude Code session, with only the
+  one-line prompt *"build a website for a small bakery"*, triggered the skill
+  on its own, showed the tools table and stopped at the brief, with no code
+  ([`trigger-test.md`](examples/trigger-test.md), one run).
 - The Ember & Bun score (2 of 10) was corrected after a fresh check found the
   first 3 of 10 counted something that isn't one of the tells.
 - Not run: Lighthouse against the deployed URL, real iOS Safari, a screen
