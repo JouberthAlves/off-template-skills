@@ -184,7 +184,7 @@ nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; 
 
 .stage { background: var(--paper); padding: clamp(12px, 2vw, 28px); }
 .compare {
-  position: relative; width: 100%; aspect-ratio: 1440 / 925;
+  position: relative; width: 100%; aspect-ratio: 1440 / 925; container-type: inline-size;
   overflow: hidden; background: #000; border: 1px solid var(--ink);
   user-select: none; -webkit-user-select: none; touch-action: pan-y;
 }
@@ -214,6 +214,15 @@ nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; 
 .compare.phone .tag-bad { left: 10px; }
 .compare.phone .cari { display: none; }
 .compare.phone .tag-good { right: 10px; }
+
+/* the Steno card: its text is live, typed in by app.js; the image's own text sits under the sheet */
+.typed { position: absolute; inset: 0; pointer-events: none; }
+.typed-phone, .compare.phone .typed-desk { display: none; }
+.compare.phone .typed-phone { display: block; }
+.typed-sheet { position: absolute; background: #FCFAF6; }
+.typed-line { position: absolute; white-space: pre; font-family: var(--mono); line-height: 1; color: #151a33; }
+.typed-line.typing::after { content: ""; display: inline-block; width: .09em; height: .95em; margin-left: .08em; vertical-align: -.12em; background: currentColor; animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
 
 /* red pencil markup, drawn in by GSAP */
 .markup { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; overflow: visible; pointer-events: none; }

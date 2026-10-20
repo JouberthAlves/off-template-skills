@@ -82,6 +82,26 @@
     gsap.from('.crop', { scale: 0, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(2)', delay: 0.2 });
     gsap.from('.slug span', { opacity: 0, y: 6, duration: 0.5, stagger: 0.06, delay: 0.3 });
 
+    // the Steno card: each line is typed in, one after the other, once the comparison is on screen.
+    // Lines start empty; with reduced motion they stay as written in the HTML.
+    const typeCard = (sheet) => {
+      const lines = $$('.typed-line', sheet);
+      const tl = gsap.timeline({ paused: true });
+      lines.forEach((el, i) => {
+        const text = el.textContent;
+        const count = { n: 0 };
+        el.textContent = '';
+        tl.add(() => {
+          el.classList.add('typing');
+          if (i > 0) lines[i - 1].classList.remove('typing');
+        });
+        tl.to(count, { n: text.length, duration: text.length * 0.03, ease: 'none', onUpdate: () => { el.textContent = text.slice(0, Math.round(count.n)); } });
+        tl.to({}, { duration: 0.2 });
+      });
+      return tl;
+    };
+    const cardTyping = $$('.typed').map(typeCard);
+
     // comparison: when it's on screen, the line sweeps once to show it moves, then the pencil draws in
     ScrollTrigger.create({
       trigger: compare, start: 'top 75%', once: true,
@@ -92,6 +112,7 @@
           .to(state, { x: 50, duration: 0.6, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } });
         gsap.from($$('.markup [data-pencil]'), { drawSVG: 0, duration: 0.9, stagger: 0.14, ease: 'power2.out', delay: 0.5 });
         gsap.from($$('.markup .note'), { opacity: 0, duration: 0.6, stagger: 0.1, delay: 1.1 });
+        gsap.delayedCall(0.4, () => cardTyping.forEach((tl) => tl.play()));
       },
     });
     gsap.from('.wall-label', { opacity: 0, y: 12, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: '.wall-label', start: 'top 92%', once: true } });
