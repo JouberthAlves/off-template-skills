@@ -43,6 +43,20 @@ The Claude-only tools named in the flow map like this:
 | Ask a multiple-choice question | `AskUserQuestion` | A numbered list in the chat |
 | Drive a browser | Built-in browser / Claude in Chrome | Playwright MCP |
 
+## Plugins for the most design
+
+The message at STOP 0 lists these when the coverage table marks them missing.
+One line each; install only after a yes.
+
+| What it adds | Command | Notes |
+|---|---|---|
+| **Design critique and accessibility** (the default critique in step 7) | `claude plugin marketplace add anthropics/knowledge-work-plugins`, then `claude plugin install design@knowledge-work-plugins` | Anthropic's design plugin. Check the install with `claude plugin list` |
+| **GSAP skills** (site animation) | `npx skills add https://github.com/greensock/gsap-skills` | |
+| **HyperFrames** (video of the page) | `npx hyperframes init my-video` | Only if the person wants a video; needs Node 22+ and FFmpeg |
+| **Context7** (library docs) | `npx ctx7 setup --claude` | |
+| **shadcn** (components) | `npx shadcn@latest mcp init` | |
+| **An image tool** (not a plugin) | Connect ChatGPT's image generation, Magnific or a GPT-image MCP in the person's own client | Listed first: it decides the mockups' quality |
+
 ## HyperFrames: the rules
 
 Checked against the `hyperframes` npm package (v0.8.181, Apache-2.0).

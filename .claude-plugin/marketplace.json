@@ -1,0 +1,16 @@
+{
+  "name": "super-webdesigner",
+  "owner": {
+    "name": "JouberthAlves"
+  },
+  "metadata": {
+    "description": "Design skills that stop coding agents from shipping the same AI-looking page."
+  },
+  "plugins": [
+    {
+      "name": "super-webdesigner",
+      "source": "./plugin",
+      "description": "The design flow (super-webdesigner) and the AI-tells audit (ai-slop-check)."
+    }
+  ]
+}

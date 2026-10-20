@@ -73,13 +73,22 @@ One message, with everything the person needs to answer once:
    (ChatGPT's image generation, Magnific, or any GPT-image MCP). Without one,
    the three mockups are prompts you paste into an image tool and send back:
    slower, and no second try.
-2. **The 4 questions** from `references/brief.md` (`AskUserQuestion` in Claude
+2. **The plugins for the most design**, only the ones the coverage table
+   marked missing. Show them in this form, one line each with its command
+   (`references/tool-slots.md`, section "Plugins for the most design"):
+
+   > Deseja instalar os seguintes plugins: <lista>.
+   > Instale para obter o maior proveito do super-webdesigner.
+
+   Ask yes or no for the list as a whole, then install only what the person
+   approved. Nothing gets installed without that yes.
+3. **The 4 questions** from `references/brief.md` (`AskUserQuestion` in Claude
    Code, a numbered list elsewhere). Offer 3 or 4 concrete options for each,
    so answering is a click, not homework.
-3. **The cost line** for the mockups, if the image tool spends credits: "3
+4. **The cost line** for the mockups, if the image tool spends credits: "3
    mockups at N credits each: X out of Y (Z left)". A yes covers the three
    mockups of step 4.
-4. **Setup**, only if `design/setup.md` is missing: the questions in
+5. **Setup**, only if `design/setup.md` is missing: the questions in
    `references/setup.md` (stack, commit convention, language, deploy,
    accessibility, vault). Skip this item when the file exists, and say what
    you read from it.

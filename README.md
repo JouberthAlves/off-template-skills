@@ -111,6 +111,13 @@ the answers in `design/setup.md`. For the best mockups, connect an image tool:
 ChatGPT's image generation, Magnific, or any GPT-image MCP. Without one, the
 mockups come as prompts you paste into the tool yourself.
 
+**Claude Code, as a plugin** (both skills in one step, Claude Code 2.1.275 or
+later), inside Claude Code:
+
+```
+/plugin install super-webdesigner --marketplace JouberthAlves/super-webdesigner
+```
+
 Then ask for a site the way you always do: *"build a website for a bakery"*.
 The skill takes it from there.
 
@@ -132,6 +139,25 @@ manual fallback for each, is in
 | Video of the page (on a yes) | HyperFrames CLI (`npx hyperframes`), needs Node 22+ and FFmpeg | The same CLI in any terminal |
 
 Paid tools get one rule: the agent says what it will cost, and waits for a yes.
+
+## For the most design
+
+The skill works without any of these, and says so. With them, the results are
+better. It lists the ones you're missing the first time it runs, and asks
+before installing anything.
+
+- **An image tool** (not a plugin): ChatGPT's image generation, Magnific, or
+  any GPT-image MCP, connected in your own client. It makes the colored
+  mockups, so it matters most.
+- **Design critique and accessibility:** Anthropic's design plugin:
+  `claude plugin marketplace add anthropics/knowledge-work-plugins`, then
+  `claude plugin install design@knowledge-work-plugins`.
+- **GSAP skills** (site animation): `npx skills add https://github.com/greensock/gsap-skills`
+- **HyperFrames** (a video of the page, if you want one): `npx hyperframes init my-video`.
+  Needs Node 22 or newer and FFmpeg.
+- **Context7** (up-to-date library docs): `npx ctx7 setup --claude`
+- **shadcn** (components): `npx shadcn@latest mcp init`
+
 
 ## Recommended: a vault
 
@@ -163,6 +189,9 @@ examples/burger/            the normal-agent output, untouched, and a full run o
 examples/ai-notes/          the Steno run and the caricature
 design/                     the showcase page's own brief and direction
 site/                       this page, with the drag comparison and the motion
+.claude-plugin/             the Claude Code marketplace that lists the plugin
+plugin/                     the Claude Code plugin: both skills (copied by scripts/sync-plugin.sh)
+scripts/sync-plugin.sh      copies skills/ into plugin/ after you change them
 ```
 
 The site is static HTML, CSS and JavaScript, with GSAP, ScrollTrigger and
