@@ -28,7 +28,7 @@ and why. Never skip in silence.
 11. Before delivering: screenshots at desktop and 390 px, run
     [[AI design patterns to avoid]] on them and say what still shows up; run a
     design critique and fix what it points out; run the review battery
-    (`skills/super-designer/references/review.md` in the super-designer repo).
+    (`skills/super-webdesigner/references/review.md` in the super-webdesigner repo).
 12. Create the note in `20 Projects/` from [[_template]] and add a row to the
     table below.
 

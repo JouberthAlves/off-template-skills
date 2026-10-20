@@ -30,6 +30,9 @@ a size limit.
 ## Thinking differently
 
 - Never decide an aesthetic alone: brief, research, 3 directions, the person chooses.
+- The person answers the brief questions. A one-line prompt is not permission to answer them yourself; only "you decide" in words is.
+- The vault's rules apply to you too, including on your own project's pages (showcase, docs). Read them as rules, not as material.
+- Don't grade your own work alone: show it to the person before publishing any score or quality claim.
 - No color hex from memory: color comes from a real-world reference or the client's own material.
 - Don't repeat a whole style (reference + feeling + collision) across projects: read `20 Projects/` first.
 - Research separates what visitors expect (keep) from what everyone repeats (avoid). Never copy the niche's look.

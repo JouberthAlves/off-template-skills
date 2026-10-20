@@ -8,9 +8,10 @@ whether to make it.
 
 ## Before generating
 
-1. **Cost.** If the tool spends credits, estimate first (cost/simulate call
-   plus balance call) and say: "This will cost X credits out of Y (Z left):
-   3 mockups at N each." Wait for a yes.
+1. **Cost.** If the tool spends credits, the yes was asked at STOP 0 with the
+   brief (cost/simulate call plus balance call: "3 mockups at N each: X out
+   of Y, Z left"). Approved: generate now, without stopping again. Not
+   approved: write the three prompts and send them at STOP 1.
 2. **Real material.** Attach the client's real photos, logo or posts when they
    exist. No real photo of a person: say so, and use a neutral placeholder
    rather than inventing a face that looks like the client.

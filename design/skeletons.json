@@ -1,0 +1,97 @@
+{
+  "title": "Super-Webdesigner showcase: three directions",
+  "subtitle": "Gray skeletons: judge the composition. The only color is the swatch strip. Same copy in all three.",
+  "directions": [
+    {
+      "letter": "A", "role": "best of the niche", "vibe": "Red Pencil Proof",
+      "why": "Proof-white page, press-black type, and an art director's red pencil marking up the other agents' page.",
+      "from": "the pages people remember make the product the hero and keep the rest quiet.",
+      "desktop": [
+        ["t", 4, 5, 18, 3.2], ["lbl", 22.6, 4.6, 0, 0, "‸"],
+        ["s", 58, 6, 7, 1.6], ["s", 67, 6, 7, 1.6], ["btn", 80, 3.6, 16, 6.4, "Star on GitHub"],
+        ["txt", 4, 15, 56, 5.4, "Same prompt. Different designer."],
+        ["s", 64, 16, 30, 1.8], ["s", 64, 20, 26, 1.8],
+        ["b", 64, 26, 32, 7, "", {"style": "background:#1d1d1b"}], ["lbl", 65.5, 28.4, 0, 0, "$ npx skills add …", {"style": "color:#fff"}],
+        ["slider", 4, 39, 92, 56, "‹ DRAG ›"],
+        ["lbl", 5.5, 41.5, 0, 0, "OTHER AGENTS", {"style": "color:#333"}], ["lbl", 82, 41.5, 0, 0, "SUPER-WEBDESIGNER", {"style": "color:#333"}],
+        ["wild", 9, 55, 22, 22, "RED PENCIL MARKUP ON THE TELLS"]
+      ],
+      "phone": [
+        ["t", 8, 3, 50, 1.8], ["btn", 70, 2, 22, 3.4, "GitHub"],
+        ["txt", 8, 9, 84, 12, "Same prompt. Different designer."],
+        ["s", 8, 30, 80, 1.2], ["s", 8, 33, 66, 1.2],
+        ["b", 8, 38, 84, 4.6, "", {"style": "background:#1d1d1b"}],
+        ["slider", 0, 47, 100, 50, "‹ ›"],
+        ["wild", 6, 58, 34, 14, "MARKUP"]
+      ],
+      "order": ["Hero + slider", "The 10 tells as red-pencil notes", "The flow, 8 steps", "Two examples", "Install", "Vault", "Footer"],
+      "palette": ["#FFFFFF", "#111111", "#E5231B", "#EDEAE3"],
+      "paletteNames": "proof white · press black · red pencil · proof gray",
+      "fonts": "<b>Schibsted Grotesk</b> 800 (titles) · <b>IBM Plex Mono</b> (commands, labels) · <b>Caveat Brush</b> (only the pencil notes)",
+      "logo": "the wordmark Super-Webdesigner with a red proofreader's caret (‸) inserted between Super and Webdesigner, as if an editor added it.",
+      "favicon": "the red caret on white.",
+      "wildcard": "on the Other agents side, red pencil circles and handwritten notes ('glow', 'emoji?', 'again?') sit on top of the tells. They are clipped with that side, so dragging the line literally erases the bad page and its markup."
+    },
+    {
+      "letter": "B", "role": "break the convention", "vibe": "Swatch Book",
+      "why": "Every AI page is dark. This one is built from big flat color chips, like a printer's swatch book, each with its code.",
+      "from": "dark mode, glass and glow are the niche's default; color fields are the opposite.",
+      "desktop": [
+        ["b", 4, 4, 8, 6, "", {"style": "background:#9a9a95"}], ["t", 13, 5.6, 14, 2.8],
+        ["s", 66, 6, 7, 1.6], ["btn", 80, 3.6, 16, 6.4, "Star on GitHub"],
+        ["b", 4, 14, 34, 66, "", {"style": "background:#bdbdb8"}],
+        ["txt", 6, 18, 30, 4.6, "Same prompt. Different designer.", {"style": "color:#fff"}],
+        ["btn", 6, 58, 26, 6.4, "$ npx skills add …", {"f": true}],
+        ["b", 4, 80, 34, 9, "", {"style": "background:#fff;border:1px solid #c4c4bf"}], ["lbl", 5.5, 83.5, 0, 0, "SW-001 · TOMATO · THE PROMISE"],
+        ["slider", 41, 14, 55, 66, "‹ DRAG ›"],
+        ["b", 41, 80, 55, 9, "", {"style": "background:#fff;border:1px solid #c4c4bf"}], ["lbl", 42.5, 83.5, 0, 0, "SW-002 · INK · SAME PROMPT, TWO AGENTS"],
+        ["wild", 3, 78, 94, 13, "CHIP LABEL WITH A CODE ON EVERY BLOCK"]
+      ],
+      "phone": [
+        ["b", 8, 2.4, 10, 3.2, "", {"style": "background:#9a9a95"}], ["t", 22, 3.2, 30, 1.6],
+        ["b", 0, 8, 100, 36, "", {"style": "background:#bdbdb8"}],
+        ["txt", 8, 12, 84, 11, "Same prompt. Different designer.", {"style": "color:#fff"}],
+        ["btn", 8, 36, 84, 4.6, "$ npx skills add …", {"f": true}],
+        ["slider", 0, 48, 100, 40, "‹ ›"],
+        ["b", 0, 88, 100, 6, "", {"style": "background:#fff;border-top:1px solid #c4c4bf"}], ["lbl", 6, 90, 0, 0, "SW-002 · INK"]
+      ],
+      "order": ["Hero chip + slider chip", "10 tells as 10 small chips", "The flow as a chip strip", "Examples", "Install", "Footer"],
+      "palette": ["#FF5A3C", "#2747FF", "#FFE27A", "#121212", "#F7F5F0"],
+      "paletteNames": "tomato · cobalt · butter · ink · chip white",
+      "fonts": "<b>Familjen Grotesk</b> 700 (titles) · <b>DM Mono</b> (chip codes, commands)",
+      "logo": "a small swatch chip: color top, white strip with 'SW' and the code 'SW-001'.",
+      "favicon": "the chip, tomato on top, white band below.",
+      "wildcard": "every block carries a swatch label with a code (SW-001 TOMATO, SW-002 INK...), so the page reads like a printed color book."
+    },
+    {
+      "letter": "C", "role": "outside reference", "vibe": "Gallery Wall",
+      "why": "A museum room: the two sites hang as framed works on a white wall, with small wall labels. The slider is the big frame in the middle.",
+      "from": "nobody in the niche shows work like art; the calm wall label is the opposite of a feature grid.",
+      "desktop": [
+        ["frame", 4, 4, 4, 6], ["t", 9.5, 5.6, 14, 2.8],
+        ["s", 66, 6, 7, 1.6], ["btn", 80, 3.6, 16, 6.4, "Star on GitHub"],
+        ["txt", 4, 16, 40, 3.4, "Same prompt. Different designer."],
+        ["s", 4, 34, 30, 1.6], ["btn", 4, 40, 22, 6.4, "$ npx skills add …", {"f": true}],
+        ["frame", 48, 13, 48, 62], ["slider", 50.5, 17, 43, 54, "‹ DRAG ›"],
+        ["b", 74, 78, 22, 10, "", {"style": "background:#fff;border:1px solid #c4c4bf"}], ["lbl", 75, 80, 0, 0, "No. 1 · Other agents / SWD, 2026"], ["lbl", 75, 83.5, 0, 0, "HTML on screen. Drag the line."],
+        ["b", 0, 93, 100, 7, "", {"style": "background:#c8b8a2"}],
+        ["wild", 73, 76.5, 24, 13, "WALL LABEL"]
+      ],
+      "phone": [
+        ["frame", 8, 2.4, 7, 3.2], ["t", 19, 3.2, 34, 1.6],
+        ["txt", 8, 9, 84, 9, "Same prompt. Different designer."],
+        ["btn", 8, 26, 84, 4.6, "$ npx skills add …", {"f": true}],
+        ["frame", 4, 34, 92, 50], ["slider", 9, 37, 82, 44, "‹ ›"],
+        ["b", 8, 86, 84, 7, "", {"style": "background:#fff;border:1px solid #c4c4bf"}], ["lbl", 10, 88, 0, 0, "No. 1 · Drag the line"],
+        ["b", 0, 95, 100, 5, "", {"style": "background:#c8b8a2"}]
+      ],
+      "order": ["Room 1: the slider", "Room 2: the 10 tells as captions", "Room 3: the flow", "Examples", "Install at the desk", "Footer"],
+      "palette": ["#F7F6F2", "#1A1A1A", "#C89B6D", "#0F3B2E"],
+      "paletteNames": "gallery wall · frame black · oak floor · museum green",
+      "fonts": "<b>Hanken Grotesk</b> 800 (titles) · <b>IBM Plex Mono</b> (wall labels, commands)",
+      "logo": "the wordmark set inside a thin square frame with a white mat, like a small framed print.",
+      "favicon": "a black square frame with a white mat and a green dot.",
+      "wildcard": "museum wall labels next to each work, with a lot number and a line like 'Please drag' instead of 'Do not touch'."
+    }
+  ]
+}

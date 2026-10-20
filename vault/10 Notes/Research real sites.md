@@ -69,10 +69,17 @@ Vault: `10 Notes/Styles of <niche>.md`, linked from [[Styles]], so the next
 project in the same niche starts from it. No vault: `design/research.md` in
 the project.
 
+## When sites won't open
+
+Some sites will fail (blocked network, certificate errors). List which ones
+and keep going with the rest. If fewer than 8 opened, say so and ask the
+person for links at STOP 1. Don't fill the gap with guesses or with
+second-hand articles presented as if you had seen the sites.
+
 ## Rules
 
 - Extract patterns, never copy images, copy or logos from another site.
-- No search or browser available: ask the person for 5+ links, or for
+- No search or browser available at all: ask the person for 5+ links, or for
   screenshots, and analyze those.
 
 See also: [[Styles]] · [[Skeletons before code]] · [[INDEX Design]]

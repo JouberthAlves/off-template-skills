@@ -11,6 +11,9 @@ client in a row.
 
 ## The 4 questions
 
+Ask the person. Never answer these yourself unless they say so in words
+("you decide"). A one-line prompt is not that.
+
 1. **What place or object in the real world represents this brand?**
    The palette comes from here, not from a nice-looking hex.
 2. **What should a visitor feel in the first 3 seconds?**
@@ -20,8 +23,9 @@ client in a row.
 4. **What must this page never look like?**
    The most useful of the four, and the one nobody asks.
 
-If the person doesn't understand a question, don't rephrase it: answer it with
-3 or 4 concrete options they can pick from. Example for question 1, burger
+Always offer 3 or 4 concrete options with each question, so answering is a
+click. If the person doesn't understand a question, don't rephrase it: give
+new options. Example for question 1, burger
 place: "a griddle at 2 a.m.", "a 70s diner counter", "a butcher's paper
 wrap", "a neon sign in the rain".
 
@@ -33,7 +37,9 @@ to fit them.
 
 These work across projects, not inside one:
 
-- **No hex from memory.** Color comes from question 1, every time.
+- **No hex from memory.** Color comes from question 1, every time. A good
+  way: find a photo of the real object (Wikimedia Commons works), sample its
+  pixels, then check text contrast before committing.
 - **Don't repeat a style.** Read every note in `20 Projects/` first. Colors and fonts can come back; the whole
   combination (reference + emotion + collision) can't. Controlling only color
   and font, over time, leaves you with only odd colors.

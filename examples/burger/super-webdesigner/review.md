@@ -5,7 +5,7 @@ emulation), plus full-page captures, all in headless Chrome.
 
 ## ai-slop-check
 
-**Score: 0/10 present.** Niche list: 0 present.
+**Score: 0/10 present** (self-assessed by the agent that built it). Niche list: 0 present. The owner found the result unattractive and the motion thin; the score is not the verdict.
 
 | Pattern | Result |
 |---|---|
@@ -17,7 +17,7 @@ emulation), plus full-page captures, all in headless Chrome.
 | Glow on everything | Absent. One shadow, on the stamp and the ticket bar |
 | The usual layout | Broken: hero → price list → steps → counter → hours. No testimonials, no FAQ |
 | Generic icons | Absent. No icon set at all; the only marks are "+" and the stamp |
-| Everything static | Absent. Stamp press on load, price lines print in, the ticket gets stamped |
+| Everything static | Absent, but thin: a stamp press on load, price lines printing in, the ticket stamp. The owner judged the motion too little |
 | Fake 01/02/03 | Absent. Numbers only on the 3 real pickup steps |
 | Niche: dark + red/yellow, grunge, smoke, script "since", emoji icons, fake reviews | All absent |
 

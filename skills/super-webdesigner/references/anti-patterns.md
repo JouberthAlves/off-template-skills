@@ -24,7 +24,9 @@ already repeats.
 
 ## How to check
 
-Run the list on the screenshot of the finished page (and on each mockup).
+Run the list on full-page screenshots of the finished page (desktop and
+390 px) and on its source, never on the first screen alone; and on each
+mockup.
 Write down each item: absent, present, or present on purpose (with the reason
 from the brief). **Three or more present means the page still looks AI-made:
 go back to the brief, don't just swap colors.**

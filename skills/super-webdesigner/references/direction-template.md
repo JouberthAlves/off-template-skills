@@ -25,7 +25,11 @@ and buttons sit, at desktop and on the phone>.
 
 **Imagery:** <what the photos show, light, treatment; real or generated>.
 
-**Motion:** <the one or two moving things, and what they're for>.
+**Logo and favicon:** <what they are>.
+
+**Motion (required):** <what moves and why: the live element in the hero,
+how sections enter, hover and press feedback>. All of it off with
+`prefers-reduced-motion`.
 
 **Keep list from the research:** <the items visitors expect, that must be on
 the page>.

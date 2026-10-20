@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>super-designer · Same prompt, different designer</title>
-  <meta name="description" content="Skills that stop your coding agent from designing the same AI-looking page for everyone. Drag to compare a normal agent with one running super-designer.">
-  <meta property="og:title" content="super-designer · Same prompt, different designer">
-  <meta property="og:description" content="Drag to compare: the same one-line prompt, with and without the super-designer skill.">
+  <title>super-webdesigner · Same prompt, different designer</title>
+  <meta name="description" content="Skills that stop your coding agent from designing the same AI-looking page for everyone. Drag to compare a normal agent with one running super-webdesigner.">
+  <meta property="og:title" content="super-webdesigner · Same prompt, different designer">
+  <meta property="og:description" content="Drag to compare: the same one-line prompt, with and without the super-webdesigner skill.">
   <meta property="og:image" content="img/super-desktop.webp">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23161513'/%3E%3Crect x='30' y='10' width='4' height='44' fill='%23E4572E'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -116,7 +116,7 @@
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="#">super-designer</a>
+    <a class="brand" href="#">super-webdesigner</a>
     <nav aria-label="Main">
       <a href="#tells">The 10 tells</a>
       <a href="#flow">The flow</a>
@@ -128,13 +128,13 @@
     <div class="intro">
       <h1>Same prompt. <em>Different designer.</em></h1>
       <div>
-        <p>Coding agents design the same page for everyone: centered hero, three cards, gradient, emoji. super-designer is a pair of skills that make your agent research, show you three directions and wait for your choice before writing code.</p>
+        <p>Coding agents design the same page for everyone: centered hero, three cards, gradient, emoji. super-webdesigner is a pair of skills that make your agent research, show you three directions and wait for your choice before writing code.</p>
         <p class="prompt"><span>&gt;</span> Build a website for a burger restaurant.</p>
       </div>
     </div>
 
     <div class="compare-bar">
-      <div class="labels" aria-hidden="true"><b>Left: normal agent</b><span class="r">Right: with super-designer</span></div>
+      <div class="labels" aria-hidden="true"><b>Left: normal agent</b><span class="r">Right: with super-webdesigner</span></div>
       <div class="seg" role="group" aria-label="Screen size">
         <button type="button" aria-pressed="true" data-view="desktop">Desktop</button>
         <button type="button" aria-pressed="false" data-view="phone">Phone</button>
@@ -143,12 +143,12 @@
 
     <div class="stage">
       <div class="compare" data-compare>
-        <img data-after src="img/super-desktop.webp" width="1440" height="900" alt="Order 27, made with super-designer: cream butcher paper, a huge condensed title 'Smashed to order. Ready in 7.', a close photo of a wrapped double smash burger and a rust 'No. 27' stamp">
+        <img data-after src="img/super-desktop.webp" width="1440" height="900" alt="Order 27, made with super-webdesigner: cream butcher paper, a huge condensed title 'Smashed to order. Ready in 7.', a close photo of a wrapped double smash burger and a rust 'No. 27' stamp">
         <div class="before"><img data-before src="img/normal-desktop.webp" width="1440" height="900" alt="Ember & Bun, made by a normal agent: cream background, red and black title 'Smashed thin. Seared hot. Stacked high.', a cartoon burger drawn in CSS and a red 'since 2014' badge"></div>
         <div class="divider"><span class="handle" aria-hidden="true">&lsaquo;&rsaquo;</span></div>
         <span class="tag l">Normal agent</span>
-        <span class="tag r">super-designer</span>
-        <input type="range" min="0" max="100" value="50" step="1" aria-label="Drag to compare. Left: normal agent. Right: with super-designer." data-range>
+        <span class="tag r">super-webdesigner</span>
+        <input type="range" min="0" max="100" value="50" step="1" aria-label="Drag to compare. Left: normal agent. Right: with super-webdesigner." data-range>
       </div>
     </div>
     <p class="hint">Drag the line, or focus it and use the arrow keys. Both sites are real and in the repo; nothing was retouched.</p>
@@ -160,7 +160,7 @@
         <div class="tell"><b>Purple or blue gradient</b><i class="no">neither</i><span>The number one marker of a generated page.</span></div>
         <div class="tell"><b>Serif title by default</b><i class="no">neither</i><span>The agent's shortcut for "elegant".</span></div>
         <div class="tell"><b>Grid background</b><i class="no">neither</i><span>Squares or dots filling empty space.</span></div>
-        <div class="tell"><b>Three generic cards</b><i class="yes">normal agent</i><span>Three review cards in a row, plus invented stats ("4.8★, 2,300+ reviews").</span></div>
+        <div class="tell"><b>Three generic cards</b><i class="no">neither</i><span>Icon, title, two lines, three times in a row.</span></div>
         <div class="tell"><b>Emoji in the copy</b><i class="yes">normal agent</i><span>Every menu item used an emoji as its picture.</span></div>
         <div class="tell"><b>Glow on everything</b><i class="no">neither</i><span>Everything glowing means nothing stands out.</span></div>
         <div class="tell"><b>The usual layout</b><i class="yes">normal agent</i><span>Hero, menu, banner, story, reviews, visit. The spine of every AI page.</span></div>
@@ -168,7 +168,7 @@
         <div class="tell"><b>Everything static</b><i class="no">neither</i><span>Both pages move.</span></div>
         <div class="tell"><b>Fake 01 / 02 / 03</b><i class="no">neither</i><span>Numbers on things that have no order.</span></div>
       </div>
-      <div class="score"><span>Normal agent: 3 of 10, plus red and yellow, a "since 2014" badge and a cartoon burger</span><span>super-designer: 0 of 10</span></div>
+      <div class="score"><span>Normal agent: 2 of 10 (watch it), plus red and yellow, a "since 2014" badge and a cartoon burger</span><span>Super-Webdesigner: 0 of 10, self-assessed</span></div>
     </section>
 
     <section id="flow" aria-labelledby="flow-title">
@@ -208,7 +208,7 @@
         </li>
         <li>
           <div><h3>Build</h3><p>Half the effort on the first screen. The stamp from the mockup became the order flow: your ticket gets stamped with your number.</p></div>
-          <p class="files">super-designer/site/</p>
+          <p class="files">super-webdesigner/site/</p>
         </li>
         <li>
           <div><h3>Review</h3><p>The 10 tells on the screenshots, a design critique, horizontal scroll at 390 and 1440, the order flow end to end, contrast. Fixes applied, the rest written down.</p></div>
@@ -224,13 +224,13 @@
         <div>
           <h3>Claude Code</h3>
 <pre><span class="c"># both skills, all projects</span>
-npx skills add JouberthAlves/super-designer -g -a claude-code</pre>
-          <p>Or copy <span class="mono">skills/super-designer</span> and <span class="mono">skills/ai-slop-check</span> into <span class="mono">~/.claude/skills/</span>. Then just ask for a site.</p>
+npx skills add JouberthAlves/super-webdesigner -g -a claude-code</pre>
+          <p>Or copy <span class="mono">skills/super-webdesigner</span> and <span class="mono">skills/ai-slop-check</span> into <span class="mono">~/.claude/skills/</span>. Then just ask for a site.</p>
         </div>
         <div>
           <h3>Cursor, Codex, others</h3>
-<pre>npx skills add JouberthAlves/super-designer -a codex</pre>
-          <p>Agents without skills: add a rule that says "for any site or UI, read <span class="mono">skills/super-designer/SKILL.md</span> and follow it".</p>
+<pre>npx skills add JouberthAlves/super-webdesigner -a codex</pre>
+          <p>Agents without skills: add a rule that says "for any site or UI, read <span class="mono">skills/super-webdesigner/SKILL.md</span> and follow it".</p>
         </div>
         <div>
           <h3>Optional: the starter vault</h3>
@@ -241,7 +241,7 @@ npx skills add JouberthAlves/super-designer -g -a claude-code</pre>
   </main>
 
   <footer>
-    <span class="brand">super-designer</span>
+    <span class="brand">super-webdesigner</span>
     <span>MIT. Brief method adapted from 2389-research/landing-page-design (MIT).</span>
     <span>Ember & Bun and Order 27 are fictional. Order 27 photos were generated for this demo.</span>
   </footer>

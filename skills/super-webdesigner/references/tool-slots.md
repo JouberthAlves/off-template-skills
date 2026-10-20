@@ -30,7 +30,7 @@ Cursor, Copilot and others don't load `SKILL.md` on their own. Two ways:
 1. Install with `npx skills add <repo> --agent <name>` when the agent is
    supported (it copies to the right folder).
 2. Otherwise, add a rule/instruction file that says: "For any website, page or
-   UI request, read `skills/super-designer/SKILL.md` and follow it, reading the
+   UI request, read `skills/super-webdesigner/SKILL.md` and follow it, reading the
    files in `references/` when a step says so." Cursor: `.cursor/rules/`.
    Codex: `AGENTS.md`. Copilot: `.github/copilot-instructions.md`.
 

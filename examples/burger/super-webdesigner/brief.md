@@ -1,7 +1,7 @@
 # Brief: Order 27 (fictional)
 
-The prompt was one line, so the agent answered the 4 questions itself and
-showed the answers before going on.
+**Deviation:** the agent answered the 4 questions itself instead of asking
+the person. The skill now forbids that; this file is kept as it happened.
 
 **The business:** a small smash-burger counter, 8 stools and a pickup window,
 in a busy downtown block. Mostly takeaway at lunch and late at night. Ticket

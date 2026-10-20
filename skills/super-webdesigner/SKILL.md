@@ -1,0 +1,158 @@
+---
+name: super-webdesigner
+description: Design direction for any website, landing page, app screen or visual piece, so the result does not look AI-generated. Runs a fixed flow before any code is written - discover the tools this agent has, ask the person a 4-question brief, research real sites in the niche, show 3 different directions (gray skeletons plus one colored mockup each) and wait for the person to choose. Then builds with purposeful motion and reviews the result against a list of AI design tells (purple-blue gradients, emoji in copy, default serif titles, 3 generic benefit cards, static pages). Use whenever someone asks to build, redesign or style a site, page, landing page, homepage or UI, even with a one-line prompt like "build a website for a burger restaurant" or "a landing page for a small bakery", and when they ask why their pages look generic.
+---
+
+# super-webdesigner
+
+Left alone, an agent makes the same page for everyone: centered hero, three
+cards, purple gradient, serif italic title, emoji in the copy, nothing moving.
+This skill exists to stop that. It does it with process, not taste: the
+aesthetic is never decided by the agent alone.
+
+Written for **Claude Code**. Tool names below are Claude's (Artifact,
+`ToolSearch`, `AskUserQuestion`, the built-in browser). In another agent, use
+the equivalents in the last tables of `references/tool-slots.md`: the flow
+stays exactly the same.
+
+## The non-negotiables
+
+- **The person answers the brief, not you.** Ask the 4 questions every time,
+  even after a one-line prompt. A short prompt is not permission to decide.
+  Only answer them yourself if the person says so in words ("you decide",
+  "pick for me"); then show your answers and let them correct.
+- **No code before the person picks a direction.** Even if the request already
+  names colors, fonts and sections.
+- **Never skip a step silently.** If one can't be done, say which and why.
+- **Never pick a color hex from memory.** Color comes from a real-world
+  reference (brief question 1) or from the client's real material.
+- **Every direction includes motion.** What moves, and why. A page with
+  nothing moving is one of the tells; it doesn't ship.
+- **Paid tools: show the cost before generating** and get a yes. Ask it once,
+  in the brief message (step 2), not as an extra stop later.
+- **Ask before installing anything** on the person's machine.
+- **You don't get the last word on your own work.** Your review is input; the
+  person judges the result at STOP 2. Never publish a score or a quality
+  claim about the result before they've seen it.
+
+## The flow
+
+Do the steps in order. There are three **STOP** points where you wait for
+the person; everything else you do on your own.
+
+### 0. Look for a vault
+
+If the working folder (or a parent) has an `AGENTS.md` pointing to
+`INDEX Design.md`, or a `vault/` folder from this project, read its
+`90 System/Agent rules.md` and every note in `20 Projects/` before going on.
+Those hold the person's own rules and the styles already used. Follow them as
+rules for yourself, not as material. No vault: carry on, this skill works
+alone.
+
+### 1. Discover your tools
+
+Read `references/discovery.md` and `references/tool-slots.md`. Find out what
+this agent can actually do right now (skills, MCP servers, plugins, browser,
+image generation, animation libraries). Build a short coverage table: job,
+tool you will use, or "missing". For each missing job, pick one or two options
+with the exact install command. Nothing available for a job: use its manual
+fallback (you write the prompt, the person runs it).
+
+Do this once per session. Discovery is the truth; a list in a note is an old
+snapshot.
+
+### STOP 0: the brief
+
+One message, with everything the person needs to answer once:
+
+1. **The coverage table** from step 1, with the install question for anything
+   missing ("install it, or use the fallback?").
+2. **The 4 questions** from `references/brief.md` (`AskUserQuestion` in Claude
+   Code, a numbered list elsewhere). Offer 3 or 4 concrete options for each,
+   so answering is a click, not homework.
+3. **The cost line** for the mockups, if the image tool spends credits: "3
+   mockups at N credits each: X out of Y (Z left)". A yes covers the three
+   mockups of step 4.
+
+Wait for the answers. If one is vague, offer options instead of asking again.
+No yes on the cost: you'll write the three mockup prompts instead of
+generating them.
+
+### 3. Research real sites in the niche
+
+Read `references/research.md`. Look at 8 to 15 real sites of the same kind of
+business. Come out with two lists: **keep** (what visitors expect to find) and
+**avoid** (the look everyone in the niche repeats). The avoid list joins the
+general anti-patterns for this project.
+
+Some sites won't open (blocked, certificate errors): say which and keep going.
+Fewer than 8 opened: say so, and ask the person for links at STOP 1 instead of
+padding the research with guesses.
+
+### 4. Three directions
+
+Read `references/skeletons.md` and `references/mockups.md`, and
+`references/anti-patterns.md` before drawing anything.
+
+- **A:** at the level of the best sites in the niche.
+- **B:** breaks the niche's visual convention.
+- **C:** brings in a reference from outside the niche (the brief's two
+  unexpected influences).
+
+For each: a named vibe, gray skeleton of the first screen (390 px and desktop),
+section order, palette swatches and font names, the wildcard element marked,
+the logo and favicon idea, and **the motion** (what moves and why). Look at the
+skeleton page at 390 px in a real browser (`resize_window`), not only at
+desktop, and reset the size afterward.
+
+Then **one colored mockup per direction** with the real copy: generated if
+the cost was approved at STOP 0, otherwise the three ready prompts. Don't stop
+to ask here. Run the anti-pattern list on all three before showing them.
+
+### STOP 1: the person chooses
+
+Send the skeletons (an Artifact link in Claude Code, a local file elsewhere)
+and the 3 mockups (or their prompts) together, with one question only:
+"Which of the three, or what should I mix?" Do not write code until they
+answer.
+
+### 5. Write the direction down
+
+Fill `references/direction-template.md` with the choice (and any mix or swap
+they asked for), including the motion. Save it in the project as
+`design/direction.md`. This is the contract for the build.
+
+### 6. Build
+
+Now code. Spend half the effort on the first screen: it is the only part every
+visitor sees. Build the motion from the direction, not as a last coat of
+paint: a live element in the hero, entrances on scroll, hover and press
+feedback, all respecting `prefers-reduced-motion`. Before reaching for a
+component or an effect, check the component and animation slots in
+`references/tool-slots.md`: a ready piece from a library beats a hand-made
+one.
+
+### 7. Review
+
+Read `references/review.md`. Full-page screenshots at desktop and 390 px, the
+anti-pattern check on them and on the source, a design critique, the short
+test battery. Fix what fails. Score strictly against the table: anything off
+the list goes under "also found", not into the score.
+
+### STOP 2: the person judges
+
+Show the screenshots and the review: what passed, what failed, what you
+could not test. The person decides if it's done. Nothing goes public (deploy,
+README claims, scores) before this answer.
+
+### 8. Log the style
+
+Add an entry following `references/style-log.md`: to `20 Projects/` in the
+vault if there is one, otherwise to `design/style-log.md` in the project.
+Do it when the first version is approved, not at the end of the project.
+
+## Answer format during the flow
+
+Keep messages short and in this order: what you understood, what you read or
+found, what you will do, the result, and a single question only if you are
+blocked.

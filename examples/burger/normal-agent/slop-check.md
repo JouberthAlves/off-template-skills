@@ -3,7 +3,12 @@
 Run on `desktop.png`, `mobile.png` (390×844, mobile emulation) and the page
 source.
 
-**Score: 3/10 present: reads as AI-made.** Plus 3 of the niche's own clichés.
+**Score: 2/10 present: watch it.** Plus 3 of the niche's own clichés.
+
+(Corrected on 2026-10-20: an earlier version said 3/10 by counting "generic
+social proof", which is not one of the 10 tells. It now sits under "also
+found". A fresh run on `desktop.png` alone scored 0/10, because the emoji menu
+and the section order are below the fold; see `../../clean-room-test.md`.)
 
 ## Present
 
@@ -13,17 +18,18 @@ source.
 - **The usual layout:** hero → menu → combo banner → story → three reviews →
   visit. Fix: break the order; on a pickup counter, the menu with prices *is*
   the hero.
-- **Generic social proof:** three review cards in a row and a stats row with
-  invented numbers ("4.8★, 2,300+ reviews", "100% local beef"). Fix: real
-  Instagram posts or press, and no numbers the owner can't back.
 
-## Niche clichés (from `../super-designer/research.md`)
+## Niche clichés (from `../super-webdesigner/research.md`)
 
 - Red and mustard yellow, with a black band of yellow uppercase words.
 - A "since 2014" badge.
 - A cartoon burger as the hero instead of the real food.
 
-## Also found in the review
+## Also found in the review (not scored)
+
+- **Invented social proof:** three review cards in a row and a stats row with
+  invented numbers ("4.8★, 2,300+ reviews", "100% local beef"). Fix: real
+  Instagram posts or press, and no numbers the owner can't back.
 
 - **Horizontal scroll:** the page is 1451 px wide in a 1440 px window, and
   401 px on a 390 px phone (the phone zooms out to fit). Likely the rotated

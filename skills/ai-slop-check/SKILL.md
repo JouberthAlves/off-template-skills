@@ -13,27 +13,48 @@ they have, or ask the person for screenshots.
 
 ## Steps
 
-1. **Get the page.** URL: open it in a browser you can drive (Claude Code:
-   built-in browser or Claude in Chrome; others: Playwright MCP) and
-   screenshot the first screen at 1440 px and 390 px, plus one full-page
-   screenshot. Screenshot or image: use it as is. Also read the page text
-   (emoji and numbering are easier to catch in text).
+1. **Get the whole page, not just the first screen.** Most tells live below
+   the fold: the three cards, the testimonials, the FAQ, emoji in a menu, the
+   section order. A first-screen screenshot alone will score a generic page
+   as fine.
+   - **URL:** open it in a browser you can drive (Claude Code: built-in
+     browser or Claude in Chrome; others: Playwright MCP). Scroll to the
+     bottom once so lazy content loads, then take a full-page screenshot at
+     1440 px and at 390 px, plus the first screen at both sizes. Read the
+     page text too (emoji and numbering are easier to catch in text).
+   - **Source files:** read the HTML/CSS/JS (or the components) as well as
+     any screenshots.
+   - **Only a first-screen screenshot or a single image:** don't score yet.
+     Ask for the URL, a full-page screenshot or the source. If the person
+     can't give more, score what you have and say plainly that everything
+     below the fold was not checked.
 2. **Check each item** in the table below. For each: **absent**, **present**,
-   or **present on purpose** (only if the brand clearly calls for it, and say
-   why).
-3. **Score.** Count the items present. 0-1: fine. 2: watch it. **3 or more:
-   it reads as AI-made.** Changing colors won't fix it; the direction needs
-   rethinking (the `super-designer` skill does that).
+   **present on purpose** (only if the brand clearly calls for it, and say
+   why), or **not visible** (the part of the page where it would show wasn't
+   in what you checked). Never mark "absent" what you couldn't see.
+3. **Score.** Count the items present, only from the 10 in the table:
+   anything else you notice (invented reviews, broken layout) goes under
+   "also found", not into the score. 0-1: fine. 2: watch it. **3 or more:
+   it reads as AI-made.** If some items were not visible, report "N present
+   out of M visible" and say the verdict is partial. Changing colors won't fix it; the direction needs
+   rethinking (the `super-webdesigner` skill does that).
 4. **Report** in this shape, short:
 
 ```
-Score: N/10 present -> <fine / watch it / reads as AI-made>
+Checked: <full page at 1440 and 390 / source / first screen only>
+Score: N present out of M visible -> <fine / watch it / reads as AI-made> (partial if M < 10)
 
 Present
 - <pattern>: <where on the page> -> <the concrete fix for this page>
 
 Absent
 - <pattern>, <pattern>, ...
+
+Not visible
+- <pattern>, ... (what to send so they can be checked)
+
+Also found (not scored)
+- <anything off the list>
 
 Biggest win: <the one change that would move the page the most>
 ```

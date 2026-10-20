@@ -6,9 +6,26 @@ then report what passed, what failed and what you couldn't test.
 
 ## 1. Anti-patterns on the screenshot
 
-Screenshot the main screens at desktop (1440 px) and 390 px. Run
-`anti-patterns.md` plus the niche list on them. Three or more present: back to
-the brief.
+Screenshot the **whole page**, not just the first screen, at desktop
+(1440 px) and 390 px: scroll to the bottom once so lazy content loads, then
+take full-page captures. Most tells (three cards, testimonials, emoji in a
+list, the section order) sit below the fold. Run `anti-patterns.md` plus the
+niche list on them and on the source. Three or more present: back to the
+brief.
+
+## 1b. Motion
+
+Scroll the page and use it. Is the live element in the hero there? Do
+sections enter, do buttons and cards respond? Is the direction's motion all
+built? With reduced motion on, does everything still show up? A page where
+nothing moves fails this step.
+
+## 1c. Score honestly
+
+Score only the 10 tells in `anti-patterns.md` (plus the niche list, scored
+separately). Anything else you notice goes under "also found", never into
+the number. Show the screenshots to the person at STOP 2: your score is
+input, not the verdict.
 
 ## 2. Design critique
 

@@ -12,6 +12,8 @@ lives in [[Mistakes]] and [[Wins]].
 
 - No step of the [[INDEX Design]] checklist can be skipped, even with a detailed request. If one can't be done, say which and why.
 - Before code: the 4 questions of the [[Design brief]], the research ([[Research real sites]]), the 3 directions as gray skeletons **and** one colored mockup per direction, both before asking for the choice. The mockup isn't optional and doesn't become a question.
+- Every direction defines its motion (what moves and why); a page with nothing moving doesn't ship.
+- A showcase, docs page or your own project's site is a site: full checklist, with logo and favicon in the direction.
 - Before the direction of a demo, define who pays for the site (size, ticket, neighborhood, clientele) and make the concept fit them.
 - A report the person attaches applies in full, including the visual part, not only the list of sections.
 - Before delivering, run [[AI design patterns to avoid]] on the screenshot of the finished page and say which items still show up.

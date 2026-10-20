@@ -1,0 +1,92 @@
+{
+  "title": "Steno: three directions",
+  "subtitle": "Gray skeletons for the AI meeting-notes app. The only color is the swatch strip. Same copy in all three.",
+  "directions": [
+    {
+      "letter": "A", "role": "best of the niche", "vibe": "Reporter's Notebook",
+      "why": "A yellow legal pad with a red margin line. The hero is the product: a notes page writing itself during a call.",
+      "from": "the outlier (warm, product-as-hero) beats the dark AI default.",
+      "desktop": [
+        ["t", 4, 5, 10, 3], ["s", 58, 6, 7, 1.6], ["s", 67, 6, 7, 1.6], ["btn", 80, 3.6, 16, 6.4, "Try Steno free", {"f": true}],
+        ["b", 7, 0, 0.5, 100, "", {"style": "background:#9a9a95"}],
+        ["txt", 10, 18, 40, 5.6, "Stop typing in meetings."],
+        ["s", 10, 50, 34, 1.8], ["s", 10, 54, 28, 1.8],
+        ["btn", 10, 62, 18, 6.4, "Try Steno free", {"f": true}], ["btn", 30, 62, 18, 6.4, "See sample notes"],
+        ["b", 54, 14, 42, 74, "", {"style": "background:#efefec;border:1px solid #c4c4bf"}],
+        ["s", 58, 22, 28, 2], ["s", 58, 30, 34, 1.4], ["s", 58, 35, 30, 1.4], ["s", 58, 40, 32, 1.4],
+        ["lbl", 56, 48, 0, 0, "ACTION ITEMS"], ["s", 58, 53, 26, 1.4], ["s", 58, 58, 22, 1.4],
+        ["wild", 2, 20, 12, 40, "MARGIN TIMESTAMPS"]
+      ],
+      "phone": [
+        ["t", 8, 3, 22, 1.8], ["btn", 58, 2, 34, 3.4, "Try free", {"f": true}],
+        ["b", 6, 0, 1, 100, "", {"style": "background:#9a9a95"}],
+        ["txt", 12, 9, 80, 12, "Stop typing in meetings."],
+        ["s", 12, 31, 76, 1.2], ["btn", 12, 36, 80, 4.6, "Try Steno free", {"f": true}],
+        ["b", 12, 45, 82, 46, "", {"style": "background:#efefec;border:1px solid #c4c4bf"}],
+        ["s", 18, 50, 60, 1.4], ["s", 18, 55, 66, 1.2], ["s", 18, 59, 56, 1.2]
+      ],
+      "order": ["Hero: notes writing themselves", "Works with Zoom, Meet, Teams", "A real sample of notes", "Privacy", "Pricing", "Footer"],
+      "palette": ["#FFF4B8", "#1E2B4F", "#E2463B", "#8FB3D9"],
+      "paletteNames": "legal pad · ink navy · margin red · rule blue",
+      "fonts": "<b>Instrument Sans</b> 700 (titles) · <b>JetBrains Mono</b> (timestamps)",
+      "logo": "'Steno' in navy with the red margin line as the stem of the t.",
+      "favicon": "a yellow page with a red margin line.",
+      "wildcard": "the red margin line runs down the whole page, with call timestamps (00:14, 03:52...) written in it next to each section."
+    },
+    {
+      "letter": "B", "role": "break the convention", "vibe": "Live Captions",
+      "why": "Bright white page; the hero is a video call with captions burning in word by word. The title itself is a caption.",
+      "from": "every AI notes page is dark with glow; captions are black bars on light, the opposite.",
+      "desktop": [
+        ["t", 4, 5, 10, 3], ["s", 62, 6, 7, 1.6], ["btn", 80, 3.6, 16, 6.4, "Try Steno free", {"f": true}],
+        ["ph", 4, 14, 92, 60],
+        ["b", 18, 54, 64, 8, "", {"style": "background:#1d1d1b"}], ["lbl", 20, 56.5, 0, 0, "[You]  We'll take the notes. You run the meeting.", {"style": "color:#fff;font-size:1.6cqw"}],
+        ["wild", 17, 52.5, 66, 11, "CAPTION TYPES IN WORD BY WORD, SPEAKER LABEL"],
+        ["s", 4, 80, 40, 1.8], ["btn", 4, 86, 18, 6.4, "Try Steno free", {"f": true}], ["btn", 24, 86, 18, 6.4, "See sample notes"]
+      ],
+      "phone": [
+        ["t", 8, 3, 22, 1.8], ["btn", 58, 2, 34, 3.4, "Try free", {"f": true}],
+        ["ph", 0, 8, 100, 40],
+        ["b", 6, 40, 88, 6, "", {"style": "background:#1d1d1b"}], ["lbl", 9, 41.8, 0, 0, "[You] We'll take the notes.", {"style": "color:#fff"}],
+        ["s", 8, 54, 80, 1.2], ["s", 8, 57, 64, 1.2],
+        ["btn", 8, 63, 84, 4.6, "Try Steno free", {"f": true}], ["btn", 8, 69, 84, 4.6, "See sample notes"]
+      ],
+      "order": ["Hero: call with live captions", "From captions to notes", "Who said what, who owes what", "Privacy", "Pricing", "Footer"],
+      "palette": ["#FFFFFF", "#0B0B0B", "#FFE14D", "#E8E8E3"],
+      "paletteNames": "screen white · caption black · highlight yellow · call gray",
+      "fonts": "<b>Atkinson Hyperlegible</b> 700 (titles and captions, chosen for legibility like real subtitles) · <b>IBM Plex Mono</b>",
+      "logo": "'Steno' white on a black caption bar.",
+      "favicon": "a black caption bar with a yellow underline.",
+      "wildcard": "the spoken word highlights in yellow as it's 'heard', the same way the product follows the call."
+    },
+    {
+      "letter": "C", "role": "outside reference", "vibe": "Steno Tape",
+      "why": "A stenotype paper tape runs down the page; the coded strokes on it turn into clean notes beside it as you scroll.",
+      "from": "court stenography is where 'every word, nothing lost' already exists.",
+      "desktop": [
+        ["t", 4, 5, 10, 3], ["s", 62, 6, 7, 1.6], ["btn", 80, 3.6, 16, 6.4, "Try Steno free", {"f": true}],
+        ["b", 24, 0, 9, 100, "", {"style": "background:#efefec;border-left:1px solid #b5b5b0;border-right:1px solid #b5b5b0"}],
+        ["s", 25.5, 14, 6, 1.2], ["s", 25.5, 19, 5, 1.2], ["s", 25.5, 24, 6, 1.2], ["s", 25.5, 29, 4, 1.2], ["s", 25.5, 34, 6, 1.2],
+        ["wild", 23, 12, 11, 30, "TAPE FEEDS WITH SCROLL"],
+        ["txt", 40, 16, 54, 5.2, "Every word. Nothing to type."],
+        ["s", 40, 42, 40, 1.8], ["btn", 40, 50, 18, 6.4, "Try Steno free", {"f": true}], ["btn", 60, 50, 18, 6.4, "See sample notes"],
+        ["b", 40, 64, 52, 26, "", {"style": "background:#efefec;border:1px solid #c4c4bf"}], ["lbl", 42, 67, 0, 0, "CLEAN NOTES"]
+      ],
+      "phone": [
+        ["t", 8, 3, 22, 1.8], ["btn", 58, 2, 34, 3.4, "Try free", {"f": true}],
+        ["b", 4, 0, 14, 100, "", {"style": "background:#efefec;border-right:1px solid #b5b5b0"}],
+        ["s", 6, 12, 10, 1], ["s", 6, 16, 8, 1], ["s", 6, 20, 10, 1],
+        ["txt", 24, 9, 70, 11, "Every word. Nothing to type."],
+        ["s", 24, 34, 66, 1.2], ["btn", 24, 40, 70, 4.6, "Try Steno free", {"f": true}],
+        ["b", 24, 50, 70, 30, "", {"style": "background:#efefec;border:1px solid #c4c4bf"}]
+      ],
+      "order": ["Hero: tape + clean notes", "How it listens (consent first)", "Sample notes", "Integrations", "Pricing", "Footer"],
+      "palette": ["#F3EEDF", "#22324A", "#2FBF71", "#B9B2A0"],
+      "paletteNames": "tape cream · ink · recording lamp · tape edge",
+      "fonts": "<b>IBM Plex Sans Condensed</b> 700 (titles) · <b>IBM Plex Mono</b> (the steno strokes)",
+      "logo": "'STENO' in condensed caps, with a green recording dot.",
+      "favicon": "a strip of tape with a green dot.",
+      "wildcard": "the tape keeps feeding down through every section; scrolling is the tape moving."
+    }
+  ]
+}
