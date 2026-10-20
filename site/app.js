@@ -121,7 +121,7 @@
     // the ten tells: each one gets struck through in red as it comes in
     $$('.tell-list li').forEach((li) => {
       gsap.from(li, { opacity: 0, x: -14, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } });
-      gsap.to(li, { '--strike': 1, duration: 0.5, ease: 'power2.inOut', scrollTrigger: { trigger: li, start: 'top 80%', once: true } });
+      gsap.from(li.querySelectorAll('.strike path'), { drawSVG: 0, opacity: 0, duration: 0.6, ease: 'power2.inOut', scrollTrigger: { trigger: li, start: 'top 80%', once: true } });
     });
 
     // the flow: each check lights up as you reach it, and the track to the next one
