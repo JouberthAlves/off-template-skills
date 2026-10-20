@@ -16,8 +16,7 @@ Both sites below came from the same one-line prompt:
 
 <p align="center"><img src=".github/compare.webp" alt="A slider sweeping between the two sites" width="720"></p>
 
-**[Drag the slider yourself →](site/index.html)** (open `site/index.html`, or
-the published page once it's live).
+**[Drag the slider yourself → super-designer.vercel.app](https://super-designer.vercel.app)**
 
 Nothing was retouched. The normal agent's output is in
 [`examples/burger/normal-agent/`](examples/burger/normal-agent), exactly as
