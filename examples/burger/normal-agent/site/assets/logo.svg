@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ember &amp; Bun logo">
+  <circle cx="32" cy="32" r="30" fill="#1c1410"/>
+  <path d="M14 30c0-10 8-16 18-16s18 6 18 16z" fill="#e8a33d"/>
+  <g fill="#fff3d6"><ellipse cx="24" cy="21" rx="1.6" ry="1"/><ellipse cx="32" cy="18" rx="1.6" ry="1"/><ellipse cx="40" cy="21" rx="1.6" ry="1"/><ellipse cx="28" cy="25" rx="1.6" ry="1"/><ellipse cx="37" cy="25" rx="1.6" ry="1"/></g>
+  <path d="M12 32h40l-4 4-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3z" fill="#7cb342"/>
+  <rect x="13" y="35" width="38" height="6" rx="3" fill="#6b3a1f"/>
+  <path d="M14 42h36v2c0 4-4 6-8 6H22c-4 0-8-2-8-6z" fill="#d48a2c"/>
+</svg>

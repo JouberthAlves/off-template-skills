@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ember &amp; Bun | Flame-Grilled Burgers</title>
+  <meta name="description" content="Ember & Bun: smash burgers, flame-grilled patties and hand-cut fries. Order for pickup or dine in.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="assets/logo.svg" alt="" width="40" height="40">
+        <span>Ember <em>&amp;</em> Bun</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav">
+        <a href="#menu">Menu</a>
+        <a href="#story">Our Story</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit</a>
+        <button class="cart-btn" type="button" aria-label="Open order">
+          Order <span class="cart-count" aria-live="polite">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Open daily from 11am</p>
+          <h1>Smashed thin.<br>Seared hot.<br><span class="accent">Stacked high.</span></h1>
+          <p class="lede">Fresh-ground chuck, smashed on a 500&deg; griddle, tucked into a buttered potato bun baked every morning down the street.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">See the menu</a>
+            <a href="#visit" class="btn btn-ghost">Find us</a>
+          </div>
+          <ul class="hero-stats">
+            <li><strong>100%</strong> local beef</li>
+            <li><strong>4.8&#9733;</strong> 2,300+ reviews</li>
+            <li><strong>12 min</strong> avg. pickup</li>
+          </ul>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 400 380" class="burger-svg">
+            <defs>
+              <linearGradient id="bunTop" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f2b552"/><stop offset="1" stop-color="#c97a22"/>
+              </linearGradient>
+              <linearGradient id="patty" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#7a4022"/><stop offset="1" stop-color="#3f1e0e"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="200" cy="350" rx="170" ry="16" fill="rgba(0,0,0,.25)"/>
+            <!-- bottom bun -->
+            <path d="M50 290h300v12c0 30-30 42-60 42H110c-30 0-60-12-60-42z" fill="url(#bunTop)"/>
+            <!-- patty 2 -->
+            <rect x="40" y="250" width="320" height="42" rx="21" fill="url(#patty)"/>
+            <!-- cheese 2 -->
+            <path d="M44 246h312l-10 10-26 30-22-30-36 22-30-22-40 34-30-34-36 22-26-22-30 22-16-22z" fill="#ffc531"/>
+            <!-- patty 1 -->
+            <rect x="40" y="200" width="320" height="46" rx="23" fill="url(#patty)"/>
+            <!-- cheese 1 -->
+            <path d="M44 196h312l-14 14-24 26-20-26-40 20-28-20-42 30-28-30-40 20-22-20-26 18-14-18z" fill="#ffd34d"/>
+            <!-- tomato -->
+            <rect x="60" y="178" width="130" height="20" rx="10" fill="#e2412f"/>
+            <rect x="210" y="178" width="130" height="20" rx="10" fill="#d5372a"/>
+            <!-- lettuce -->
+            <path d="M30 176c20-14 30 6 50-6s30 8 50-4 30 8 50-4 30 8 50-4 30 8 50-4 30 8 50 2v12H30z" fill="#7cb342"/>
+            <!-- top bun -->
+            <path d="M40 172c0-80 72-128 160-128s160 48 160 128z" fill="url(#bunTop)"/>
+            <path d="M80 120c20-40 70-62 120-62" stroke="#ffd98a" stroke-width="10" stroke-linecap="round" fill="none" opacity=".55"/>
+            <g fill="#fff3d6">
+              <ellipse cx="140" cy="90" rx="7" ry="4" transform="rotate(-20 140 90)"/>
+              <ellipse cx="200" cy="74" rx="7" ry="4"/>
+              <ellipse cx="260" cy="90" rx="7" ry="4" transform="rotate(20 260 90)"/>
+              <ellipse cx="170" cy="120" rx="7" ry="4" transform="rotate(-10 170 120)"/>
+              <ellipse cx="235" cy="118" rx="7" ry="4" transform="rotate(12 235 118)"/>
+              <ellipse cx="110" cy="130" rx="7" ry="4" transform="rotate(-30 110 130)"/>
+              <ellipse cx="295" cy="132" rx="7" ry="4" transform="rotate(30 295 132)"/>
+              <ellipse cx="205" cy="148" rx="7" ry="4"/>
+            </g>
+          </svg>
+          <div class="hero-badge"><span>Since</span><strong>2014</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Smash burgers</span><span>&#10022;</span><span>Hand-cut fries</span><span>&#10022;</span><span>Thick shakes</span><span>&#10022;</span><span>Local beef</span><span>&#10022;</span><span>Fresh buns daily</span><span>&#10022;</span>
+        <span>Smash burgers</span><span>&#10022;</span><span>Hand-cut fries</span><span>&#10022;</span><span>Thick shakes</span><span>&#10022;</span><span>Local beef</span><span>&#10022;</span><span>Fresh buns daily</span><span>&#10022;</span>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The menu</p>
+          <h2>Pick your stack</h2>
+          <p class="muted">Every burger comes with house pickles. Swap any patty for our crispy smashed mushroom patty at no charge.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Menu categories">
+          <button role="tab" class="tab is-active" aria-selected="true" data-filter="all">All</button>
+          <button role="tab" class="tab" aria-selected="false" data-filter="burgers">Burgers</button>
+          <button role="tab" class="tab" aria-selected="false" data-filter="sides">Sides</button>
+          <button role="tab" class="tab" aria-selected="false" data-filter="shakes">Shakes &amp; Drinks</button>
+        </div>
+        <div class="menu-grid" id="menu-grid"><!-- rendered by script.js --></div>
+        <noscript><p class="muted">Enable JavaScript to see the full interactive menu, or call us at (555) 012-3456.</p></noscript>
+      </div>
+    </section>
+
+    <!-- COMBO BANNER -->
+    <section class="combo">
+      <div class="container combo-inner">
+        <div>
+          <p class="eyebrow light">Weekday lunch, 11am&ndash;3pm</p>
+          <h2>The Ember Combo &mdash; $14</h2>
+          <p>Any single burger, regular fries and a fountain drink. Upgrade to a shake for $3.</p>
+        </div>
+        <button class="btn btn-light" type="button" data-add="combo">Add combo to order</button>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section" id="story">
+      <div class="container story">
+        <div class="story-art" aria-hidden="true">
+          <div class="story-card c1"><span>&#128293;</span><strong>500&deg;</strong><small>cast-iron griddle</small></div>
+          <div class="story-card c2"><span>&#129385;</span><strong>Daily</strong><small>fresh-ground chuck &amp; brisket</small></div>
+          <div class="story-card c3"><span>&#127838;</span><strong>6am</strong><small>buns out of the oven</small></div>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow">Our story</p>
+          <h2>A food truck, a flat-top, and one very stubborn recipe.</h2>
+          <p>Ember &amp; Bun started in 2014 as a single truck parked outside the old rail yard. We had one griddle, one burger, and a line that wrapped around the block by noon.</p>
+          <p>Ten years later we still grind our beef in-house every morning, still smash every patty by hand, and still make our sauce from the same handwritten card taped above the line.</p>
+          <ul class="checks">
+            <li>Beef from two family farms within 60 miles</li>
+            <li>Fries cut, soaked and double-fried in-house</li>
+            <li>Compostable packaging since 2019</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section alt" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Word on the street</p>
+          <h2>People keep coming back</h2>
+        </div>
+        <div class="reviews">
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>The Double Ember has those crispy lacy edges you only get from a real smash. Best burger in town, not close.</blockquote>
+            <figcaption>&mdash; Marisol T.</figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>Came for the burger, stayed for the brown-butter shake. Pickup was ready before I parked.</blockquote>
+            <figcaption>&mdash; Dev K.</figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;<span class="dim">&#9733;</span></div>
+            <blockquote>My vegetarian partner finally has a burger place she's excited about. The mushroom patty is legit.</blockquote>
+            <figcaption>&mdash; Aaron P.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="section" id="visit">
+      <div class="container visit">
+        <div class="visit-info">
+          <p class="eyebrow">Come hungry</p>
+          <h2>Visit us</h2>
+          <address>
+            <strong>Ember &amp; Bun</strong><br>
+            218 Foundry Street<br>
+            Riverside District
+          </address>
+          <p><a href="tel:+15550123456">(555) 012-3456</a> &middot; <a href="mailto:hello@emberandbun.example">hello@emberandbun.example</a></p>
+          <p class="open-status" id="open-status"></p>
+          <table class="hours">
+            <caption class="sr-only">Opening hours</caption>
+            <tbody>
+              <tr data-day="1"><th scope="row">Monday</th><td>11:00 &ndash; 22:00</td></tr>
+              <tr data-day="2"><th scope="row">Tuesday</th><td>11:00 &ndash; 22:00</td></tr>
+              <tr data-day="3"><th scope="row">Wednesday</th><td>11:00 &ndash; 22:00</td></tr>
+              <tr data-day="4"><th scope="row">Thursday</th><td>11:00 &ndash; 22:00</td></tr>
+              <tr data-day="5"><th scope="row">Friday</th><td>11:00 &ndash; 00:00</td></tr>
+              <tr data-day="6"><th scope="row">Saturday</th><td>11:00 &ndash; 00:00</td></tr>
+              <tr data-day="0"><th scope="row">Sunday</th><td>12:00 &ndash; 21:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <form class="reserve" id="reserve-form" novalidate>
+          <h3>Book a table</h3>
+          <p class="muted small">Groups of 6+ are best booked ahead. Walk-ins always welcome.</p>
+          <label>Name<input name="name" type="text" autocomplete="name" required></label>
+          <div class="row">
+            <label>Date<input name="date" type="date" required></label>
+            <label>Time<input name="time" type="time" min="11:00" max="22:00" required></label>
+          </div>
+          <label>Party size
+            <select name="size" required>
+              <option value="">Choose&hellip;</option>
+              <option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-primary full">Request table</button>
+          <p class="form-msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#top" class="brand">
+        <img src="assets/logo.svg" alt="" width="32" height="32">
+        <span>Ember <em>&amp;</em> Bun</span>
+      </a>
+      <p class="muted small">&copy; <span id="year"></span> Ember &amp; Bun. Made with too much butter.</p>
+      <a href="#top" class="muted small">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="drawer-backdrop" hidden></div>
+  <aside class="drawer" aria-label="Your order" aria-hidden="true" tabindex="-1">
+    <div class="drawer-head">
+      <h3>Your order</h3>
+      <button class="drawer-close" type="button" aria-label="Close order">&times;</button>
+    </div>
+    <ul class="cart-list"></ul>
+    <p class="cart-empty muted">Nothing here yet. Go grab a burger.</p>
+    <div class="drawer-foot">
+      <div class="cart-total"><span>Total</span><strong id="cart-total">$0.00</strong></div>
+      <button class="btn btn-primary full" type="button" id="checkout">Place pickup order</button>
+      <p class="small muted center">Pay at the counter on pickup.</p>
+    </div>
+  </aside>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

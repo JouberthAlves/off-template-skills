@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order 27 skeletons</title>
+<style>
+  :root { --bg:#f4f4f2; --ink:#1d1d1b; --mute:#8a8a86; --block:#d6d6d2; --block2:#c4c4bf; --line:#b5b5b0; --card:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header.top { padding:28px 32px 8px; max-width:1500px; margin:0 auto; }
+  header.top h1 { font-size:22px; margin:0 0 4px; }
+  header.top p { margin:0; color:var(--mute); }
+  .dirs { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:20px; padding:20px 32px 40px; max-width:1500px; margin:0 auto; }
+  @media (max-width:1100px){ .dirs{ grid-template-columns:1fr; padding:16px; } header.top{ padding:20px 16px 0; } }
+  .dir { background:var(--card); border:1px solid #e2e2de; border-radius:10px; padding:18px; display:flex; flex-direction:column; gap:14px; }
+  .dir h2 { margin:0; font-size:19px; }
+  .dir .tag { font:600 11px/1 ui-monospace, monospace; letter-spacing:.08em; color:var(--mute); text-transform:uppercase; }
+  .why { margin:0; font-size:14px; }
+  .why b { font-weight:600; }
+  .frames { display:grid; grid-template-columns:1fr 92px; gap:10px; align-items:start; }
+  .desk { container-type:inline-size; aspect-ratio:16/10; border:1px solid var(--line); border-radius:6px; background:#fff; position:relative; overflow:hidden; }
+  .phone { container-type:inline-size; aspect-ratio:390/844; border:1px solid var(--line); border-radius:12px; background:#fff; position:relative; overflow:hidden; }
+  .lbl { position:absolute; font:600 8px/1 ui-monospace,monospace; color:var(--mute); }
+  .b { position:absolute; background:var(--block); border-radius:2px; }
+  .t { position:absolute; background:var(--ink); border-radius:1px; }
+  .s { position:absolute; background:var(--block2); border-radius:1px; }
+  .btn { position:absolute; border:1.5px solid var(--ink); border-radius:2px; font:600 7px/1 system-ui; display:flex; align-items:center; justify-content:center; color:var(--ink); background:#fff; }
+  .btn.f { background:var(--ink); color:#fff; }
+  .txt { position:absolute; font-weight:800; color:var(--ink); line-height:.95; letter-spacing:-.01em; }
+  .ph { position:absolute; background:
+        linear-gradient(to top right, transparent calc(50% - .6px), var(--line) 50%, transparent calc(50% + .6px)),
+        linear-gradient(to top left, transparent calc(50% - .6px), var(--line) 50%, transparent calc(50% + .6px)), var(--block); }
+  .wild { position:absolute; border:1.5px dashed #3c3c38; border-radius:4px; }
+  .wild::after { content:attr(data-w); position:absolute; left:0; top:calc(100% + 2px); white-space:nowrap; font:700 7px/1 ui-monospace,monospace; background:#1d1d1b; color:#fff; padding:2px 3px; border-radius:2px; }
+  .order { display:flex; flex-wrap:wrap; gap:5px; }
+  .order span { font-size:11px; border:1px solid #d7d7d2; border-radius:3px; padding:3px 6px; background:#fafaf8; }
+  .sw { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .sw i { width:34px; height:34px; border-radius:4px; border:1px solid rgba(0,0,0,.12); display:block; }
+  .sw small { font:11px/1.3 ui-monospace,monospace; color:#555; }
+  .fonts { font-size:13px; margin:0; }
+  .wildnote { font-size:13px; margin:0; padding:8px 10px; border-left:3px solid var(--ink); background:#f6f6f3; }
+  h3 { margin:0 0 6px; font:600 11px/1 ui-monospace,monospace; letter-spacing:.06em; color:var(--mute); text-transform:uppercase; }
+  .desk .btn{font-size:1.45cqw} .phone .btn{font-size:5.4cqw}
+  .desk .lbl{font-size:1.1cqw} .phone .lbl{font-size:4.5cqw}
+  .desk .wild::after{font-size:1.1cqw} .phone .wild::after{font-size:4.6cqw}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Order 27: three directions</h1>
+  <p>Gray skeletons: judge the composition. The only color is the swatch strip. Same copy in all three.</p>
+</header>
+
+<main class="dirs">
+
+  <!-- A -->
+  <section class="dir" id="dir-a">
+    <div class="tag">Direction A · best of the niche</div>
+    <h2>Butcher Paper Counter</h2>
+    <p class="why">Kraft paper and one stamp ink, like the restrained burger brands. <b>From the research:</b> premium burger sites do less; BURGER Edinburgh uses paper and one ink, no red.</p>
+    <div class="frames">
+      <div class="desk">
+        <div class="t" style="left:4%;top:5%;width:16%;height:3%"></div>
+        <div class="s" style="left:46%;top:6%;width:7%;height:1.6%"></div><div class="s" style="left:56%;top:6%;width:7%;height:1.6%"></div><div class="s" style="left:66%;top:6%;width:7%;height:1.6%"></div>
+        <div class="btn f" style="left:80%;top:3.5%;width:16%;height:6.5%">Order pickup</div>
+        <div class="txt" style="left:4%;top:18%;width:42%;font-size:6cqw">SMASHED TO ORDER. READY IN 7.</div>
+        <div class="s" style="left:4%;top:55%;width:36%;height:2%"></div><div class="s" style="left:4%;top:59%;width:30%;height:2%"></div>
+        <div class="btn f" style="left:4%;top:67%;width:15%;height:7%">Order pickup</div>
+        <div class="btn" style="left:21%;top:67%;width:14%;height:7%">See the menu</div>
+        <div class="ph" style="left:50%;top:13%;width:50%;height:72%"></div>
+        <div class="wild" style="left:52%;top:62%;width:13%;height:18%;transform:rotate(-8deg)" data-w="STAMP No. 27"></div>
+        <div class="b" style="left:0;top:88%;width:100%;height:12%;background:#e4e4e0"></div>
+        <div class="lbl" style="left:4%;top:92%">PRINTED PRICE LIST STARTS HERE</div>
+      </div>
+      <div class="phone">
+        <div class="t" style="left:8%;top:3%;width:34%;height:1.6%"></div>
+        <div class="btn f" style="left:58%;top:2%;width:34%;height:3.6%">Order</div>
+        <div class="ph" style="left:0;top:8%;width:100%;height:36%"></div>
+        <div class="wild" style="left:62%;top:30%;width:28%;height:11%;transform:rotate(-8deg)" data-w="No. 27"></div>
+        <div class="txt" style="left:8%;top:50%;width:84%;font-size:10cqw">SMASHED TO ORDER. READY IN 7.</div>
+        <div class="s" style="left:8%;top:68%;width:80%;height:1.2%"></div><div class="s" style="left:8%;top:71%;width:64%;height:1.2%"></div>
+        <div class="btn f" style="left:8%;top:76%;width:84%;height:5%">Order pickup</div>
+        <div class="btn" style="left:8%;top:83%;width:84%;height:5%">See the menu</div>
+      </div>
+    </div>
+    <div><h3>Page order</h3><div class="order"><span>Hero</span><span>Printed price list</span><span>How pickup works (3 real steps)</span><span>The counter: photo + story</span><span>Hours, open now, map</span><span>Instagram</span><span>Footer + delivery apps</span></div></div>
+    <div><h3>Palette and fonts</h3>
+      <div class="sw"><i style="background:#F3EBDD"></i><i style="background:#CDAA7D"></i><i style="background:#1C1B19"></i><i style="background:#9B3B24"></i><small>paper · kraft · marker · stamp ink</small></div>
+    </div>
+    <p class="fonts"><b>Big Shoulders Display</b> (condensed signage, titles) · <b>Work Sans</b> (text)</p>
+    <p class="wildnote"><b>Wildcard:</b> a rubber stamp "No. 27" in stamp ink, slightly crooked, over the corner of the photo.</p>
+  </section>
+
+  <!-- B -->
+  <section class="dir" id="dir-b">
+    <div class="tag">Direction B · break the convention</div>
+    <h2>Order Up Ticket</h2>
+    <p class="why">Daylight white, marker black, ballpoint blue. The ticket is the hero. <b>From the research:</b> almost every burger site is dark with red and yellow; B is bright and has no red at all.</p>
+    <div class="frames">
+      <div class="desk">
+        <div class="t" style="left:4%;top:5%;width:14%;height:3%"></div>
+        <div class="s" style="left:56%;top:6%;width:7%;height:1.6%"></div><div class="s" style="left:66%;top:6%;width:7%;height:1.6%"></div>
+        <div class="btn f" style="left:80%;top:3.5%;width:16%;height:6.5%">Get your number</div>
+        <div class="b" style="left:8%;top:15%;width:44%;height:76%;background:#efefec;border:1.5px solid #9a9a95;transform:rotate(-2deg)"></div>
+        <div class="wild" style="left:12%;top:20%;width:22%;height:30%" data-w="HANDWRITTEN 27, COUNTS UP LIVE"></div>
+        <div class="txt" style="left:13%;top:24%;font-size:11cqw">27</div>
+        <div class="s" style="left:12%;top:58%;width:30%;height:2%"></div><div class="s" style="left:12%;top:63%;width:26%;height:2%"></div><div class="s" style="left:12%;top:68%;width:22%;height:2%"></div>
+        <div class="lbl" style="left:12%;top:75%">READY 12:41</div>
+        <div class="ph" style="left:40%;top:30%;width:30%;height:52%;border-radius:50% 50% 8% 8%"></div>
+        <div class="lbl" style="left:42%;top:84%">BURGER CUTOUT OVERLAPS TICKET</div>
+        <div class="txt" style="left:72%;top:30%;width:24%;font-size:3.6cqw">Order up.</div>
+        <div class="s" style="left:72%;top:46%;width:22%;height:2%"></div><div class="s" style="left:72%;top:50%;width:18%;height:2%"></div>
+        <div class="btn f" style="left:72%;top:58%;width:20%;height:7%">Get your number</div>
+        <div class="btn" style="left:72%;top:67%;width:20%;height:7%">Menu</div>
+      </div>
+      <div class="phone">
+        <div class="t" style="left:8%;top:3%;width:30%;height:1.6%"></div>
+        <div class="btn f" style="left:58%;top:2%;width:34%;height:3.6%">Order</div>
+        <div class="b" style="left:6%;top:9%;width:88%;height:44%;background:#efefec;border:1.5px solid #9a9a95;transform:rotate(-2deg)"></div>
+        <div class="txt" style="left:14%;top:12%;font-size:32cqw">27</div>
+        <div class="s" style="left:14%;top:30%;width:56%;height:1.2%"></div><div class="s" style="left:14%;top:33%;width:48%;height:1.2%"></div>
+        <div class="ph" style="left:40%;top:36%;width:54%;height:24%;border-radius:50% 50% 8% 8%"></div>
+        <div class="txt" style="left:8%;top:64%;font-size:13cqw">Order up.</div>
+        <div class="s" style="left:8%;top:71%;width:80%;height:1.2%"></div>
+        <div class="btn f" style="left:8%;top:76%;width:84%;height:5%">Get your number</div>
+        <div class="btn" style="left:8%;top:83%;width:84%;height:5%">Menu</div>
+      </div>
+    </div>
+    <div><h3>Page order</h3><div class="order"><span>Hero ticket</span><span>Menu as ticket lines + prices</span><span>Photo strip: one large, two small</span><span>Hours, open now</span><span>Instagram</span><span>Footer + delivery apps</span></div></div>
+    <div><h3>Palette and fonts</h3>
+      <div class="sw"><i style="background:#F7F5EE"></i><i style="background:#151515"></i><i style="background:#2340B8"></i><i style="background:#DCE6CF"></i><small>ticket · marker · ballpoint · ticket rule</small></div>
+    </div>
+    <p class="fonts"><b>Archivo Black</b> (titles) · <b>IBM Plex Mono</b> (ticket text, prices) · a marker hand only for the number</p>
+    <p class="wildnote"><b>Wildcard:</b> the handwritten order number goes up as orders come in (27, 28, 29...), like the real rail.</p>
+  </section>
+
+  <!-- C -->
+  <section class="dir" id="dir-c">
+    <div class="tag">Direction C · outside reference</div>
+    <h2>Departures, Now Grilling</h2>
+    <p class="why">A railway departures board where the trains are burgers and the times are pickup times. <b>From the research:</b> nobody in the niche uses a strict grid; the outliers win with one idea that is the interface.</p>
+    <div class="frames">
+      <div class="desk">
+        <div class="t" style="left:4%;top:5%;width:14%;height:3%"></div>
+        <div class="btn f" style="left:78%;top:3.5%;width:18%;height:6.5%">Book a pickup slot</div>
+        <div class="b" style="left:4%;top:14%;width:92%;height:36%;background:#bdbdb8"></div>
+        <div class="wild" style="left:5%;top:16%;width:90%;height:32%" data-w="SPLIT-FLAP ROWS, FLIP EVERY FEW SECONDS"></div>
+        <div class="lbl" style="left:7%;top:19%;color:#333">ORDER</div><div class="lbl" style="left:22%;top:19%;color:#333">ITEM</div><div class="lbl" style="left:74%;top:19%;color:#333">READY</div>
+        <div class="s" style="left:7%;top:25%;width:8%;height:3%;background:#e9e9e5"></div><div class="s" style="left:22%;top:25%;width:40%;height:3%;background:#e9e9e5"></div><div class="s" style="left:74%;top:25%;width:12%;height:3%;background:#e9e9e5"></div>
+        <div class="s" style="left:7%;top:32%;width:8%;height:3%;background:#e9e9e5"></div><div class="s" style="left:22%;top:32%;width:34%;height:3%;background:#e9e9e5"></div><div class="s" style="left:74%;top:32%;width:12%;height:3%;background:#e9e9e5"></div>
+        <div class="s" style="left:7%;top:39%;width:8%;height:3%;background:#e9e9e5"></div><div class="s" style="left:22%;top:39%;width:44%;height:3%;background:#e9e9e5"></div><div class="s" style="left:74%;top:39%;width:12%;height:3%;background:#e9e9e5"></div>
+        <div class="txt" style="left:4%;top:56%;width:44%;font-size:5.2cqw">Now grilling.</div>
+        <div class="s" style="left:4%;top:70%;width:36%;height:2%"></div><div class="s" style="left:4%;top:74%;width:28%;height:2%"></div>
+        <div class="btn f" style="left:4%;top:81%;width:18%;height:7%">Book a pickup slot</div>
+        <div class="ph" style="left:52%;top:54%;width:44%;height:40%"></div>
+      </div>
+      <div class="phone">
+        <div class="t" style="left:8%;top:3%;width:30%;height:1.6%"></div>
+        <div class="btn f" style="left:56%;top:2%;width:36%;height:3.6%">Pickup slot</div>
+        <div class="b" style="left:0;top:8%;width:100%;height:26%;background:#bdbdb8"></div>
+        <div class="s" style="left:6%;top:12%;width:14%;height:2.4%;background:#e9e9e5"></div><div class="s" style="left:24%;top:12%;width:50%;height:2.4%;background:#e9e9e5"></div>
+        <div class="s" style="left:6%;top:18%;width:14%;height:2.4%;background:#e9e9e5"></div><div class="s" style="left:24%;top:18%;width:44%;height:2.4%;background:#e9e9e5"></div>
+        <div class="s" style="left:6%;top:24%;width:14%;height:2.4%;background:#e9e9e5"></div><div class="s" style="left:24%;top:24%;width:54%;height:2.4%;background:#e9e9e5"></div>
+        <div class="txt" style="left:8%;top:38%;font-size:13cqw">Now grilling.</div>
+        <div class="s" style="left:8%;top:46%;width:80%;height:1.2%"></div>
+        <div class="btn f" style="left:8%;top:51%;width:84%;height:5%">Book a pickup slot</div>
+        <div class="ph" style="left:0;top:60%;width:100%;height:32%"></div>
+      </div>
+    </div>
+    <div><h3>Page order</h3><div class="order"><span>Departures board hero</span><span>Full menu board + prices</span><span>Pick a pickup slot</span><span>Photo + story</span><span>Hours, map</span><span>Footer + delivery apps</span></div></div>
+    <div><h3>Palette and fonts</h3>
+      <div class="sw"><i style="background:#2B2F33"></i><i style="background:#EDEDE6"></i><i style="background:#E8692B"></i><i style="background:#8A96A3"></i><small>board · flap · ready-time amber · grill steel</small></div>
+    </div>
+    <p class="fonts"><b>Barlow Condensed</b> (board and titles) · <b>JetBrains Mono</b> (times, prices)</p>
+    <p class="wildnote"><b>Wildcard:</b> the board flips letter by letter when an order is ready, with the soft clack of a real board (muted by default).</p>
+  </section>
+
+</main>
+</body>
+</html>
