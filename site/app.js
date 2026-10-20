@@ -42,8 +42,9 @@
     compare.classList.toggle('phone', v === 'phone');
     $('[data-good]').src = views[v].good;
     $('[data-bad]').src = views[v].bad;
-    $('[data-markup-desktop]').hidden = v === 'phone';
-    $('[data-markup-phone]').hidden = v !== 'phone';
+    // SVG elements have no .hidden property, so the attribute is toggled directly
+    $('[data-markup-desktop]').toggleAttribute('hidden', v === 'phone');
+    $('[data-markup-phone]').toggleAttribute('hidden', v !== 'phone');
     segButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
   }));
 
