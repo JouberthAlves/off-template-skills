@@ -59,7 +59,9 @@ with the exact install command. Nothing available for a job: use its manual
 fallback (you write the prompt, the person runs it).
 
 Do this once per session. Discovery is the truth; a list in a note is an old
-snapshot.
+snapshot. Two jobs get checked every time, because they are the ones most
+people lack: **image generation** (the colored mockups) and **video**
+(HyperFrames, for a short film of the page).
 
 ### STOP 0: the brief
 
@@ -67,12 +69,20 @@ One message, with everything the person needs to answer once:
 
 1. **The coverage table** from step 1, with the install question for anything
    missing ("install it, or use the fallback?").
+   **Say this in the message:** for the best result, connect an image tool
+   (ChatGPT's image generation, Magnific, or any GPT-image MCP). Without one,
+   the three mockups are prompts you paste into an image tool and send back:
+   slower, and no second try.
 2. **The 4 questions** from `references/brief.md` (`AskUserQuestion` in Claude
    Code, a numbered list elsewhere). Offer 3 or 4 concrete options for each,
    so answering is a click, not homework.
 3. **The cost line** for the mockups, if the image tool spends credits: "3
    mockups at N credits each: X out of Y (Z left)". A yes covers the three
    mockups of step 4.
+4. **Setup**, only if `design/setup.md` is missing: the questions in
+   `references/setup.md` (stack, commit convention, language, deploy,
+   accessibility, vault). Skip this item when the file exists, and say what
+   you read from it.
 
 Wait for the answers. If one is vague, offer options instead of asking again.
 No yes on the cost: you'll write the three mockup prompts instead of
@@ -144,6 +154,10 @@ the list goes under "also found", not into the score.
 Show the screenshots and the review: what passed, what failed, what you
 could not test. The person decides if it's done. Nothing goes public (deploy,
 README claims, scores) before this answer.
+
+If the person wants a short video of the page (the scroll, a title card),
+offer HyperFrames as a job in `references/tool-slots.md`. It renders the HTML
+to an MP4 and needs Node 22 or newer and FFmpeg. Only do it on a yes.
 
 ### 8. Log the style
 

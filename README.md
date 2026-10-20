@@ -105,6 +105,12 @@ its own, for any URL or screenshot). Each agent has its own command:
 The Claude Code command installs for every project (`-g`). The others install
 into the project you run them in.
 
+The first time the skill runs in a project, it asks a few setup questions
+(stack, commit convention, language, deploy, accessibility, vault) and saves
+the answers in `design/setup.md`. For the best mockups, connect an image tool:
+ChatGPT's image generation, Magnific, or any GPT-image MCP. Without one, the
+mockups come as prompts you paste into the tool yourself.
+
 Then ask for a site the way you always do: *"build a website for a bakery"*.
 The skill takes it from there.
 
@@ -123,6 +129,7 @@ manual fallback for each, is in
 | Components and docs | shadcn, React Bits, Context7 | The same, through MCP |
 | Animation | GSAP skills | GSAP skills, or the GSAP docs |
 | Design critique | Anthropic's design plugin | The review checklist |
+| Video of the page (on a yes) | HyperFrames CLI (`npx hyperframes`), needs Node 22+ and FFmpeg | The same CLI in any terminal |
 
 Paid tools get one rule: the agent says what it will cost, and waits for a yes.
 

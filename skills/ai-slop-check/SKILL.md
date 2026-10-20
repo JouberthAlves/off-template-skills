@@ -11,6 +11,11 @@ doesn't redesign anything: it says what's there and what to do instead.
 Written for Claude Code; in other agents, use any browser or screenshot tool
 they have, or ask the person for screenshots.
 
+Motion (tell 9) doesn't show in a screenshot. Read the source for GSAP,
+transitions and keyframes, and say what moves. If the person wants to see it,
+offer a short video of the page: HyperFrames renders it from the HTML (see
+`super-webdesigner/references/tool-slots.md`), and only on a yes.
+
 ## Steps
 
 1. **Get the whole page, not just the first screen.** Most tells live below

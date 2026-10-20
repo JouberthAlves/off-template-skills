@@ -19,7 +19,7 @@ the README again before improvising: tools change.
 | **Library docs** | **Context7** (`npx ctx7 setup --claude`) | Context7 MCP in the agent's config (see context7.com) | Web search on the official docs |
 | **Site animation** | **GSAP skills**: `npx skills add https://github.com/greensock/gsap-skills` | `npx skills add ... --agent <name>`; Cursor: Settings → Rules → Remote Rule → `greensock/gsap-skills` | GSAP or Motion docs, by hand |
 | **Isometric explainer figures** | **anatomy**: `npx skills add wheresryan22/anatomy -g -a claude-code` | `-a codex`, `-a opencode` (no Cursor target) | Hand-drawn SVG |
-| **Video from HTML** (page scrolling, story, title card) | **HyperFrames** plugin: `claude plugin marketplace add heygen-com/hyperframes`, then `claude plugin install hyperframes@hyperframes` | `npx skills add heygen-com/hyperframes` | Screen recording |
+| **Video from HTML** (page scrolling, story, title card) | **HyperFrames** CLI: `npx hyperframes init my-video` (needs Node 22+ and FFmpeg); rules below | The same CLI in any terminal: `npx hyperframes init my-video` | Screen recording |
 | **Screenshots and tests** | Built-in browser (`resize_window` for 390 px, `read_console_messages`) | Playwright MCP or a Playwright script | Ask the person for screenshots |
 | **Design critique** | `design:design-critique` from Anthropic's **design** plugin | Run `review.md` by hand; any critique skill the agent has | Run `review.md` by hand, carefully |
 
@@ -42,6 +42,26 @@ The Claude-only tools named in the flow map like this:
 | Show a page to the person | Artifact | Local HTML file + its path or a local URL |
 | Ask a multiple-choice question | `AskUserQuestion` | A numbered list in the chat |
 | Drive a browser | Built-in browser / Claude in Chrome | Playwright MCP |
+
+## HyperFrames: the rules
+
+Checked against the `hyperframes` npm package (v0.8.181, Apache-2.0).
+
+- **Setup:** `npx hyperframes doctor` checks Node, Chrome and FFmpeg. Node 22 or
+  newer and FFmpeg are required.
+- **Telemetry is on by default.** Turn it off before the first run:
+  `npx hyperframes telemetry disable`.
+- **Check before rendering:** `npx hyperframes lint` (common mistakes) and
+  `npx hyperframes snapshot` (key frames as PNG, to look at the frames before
+  the full render).
+- **It renders what is in the HTML.** It does not generate images or footage.
+- **Fonts:** every font the composition names needs an `@font-face` inside its
+  own file, or the render falls back to another font. `lint` reports this as
+  `font_family_without_font_face`. Embed the `.woff2`.
+- **GSAP timelines:** create them paused and register them as
+  `window.__timelines["<id>"]`, so the renderer can drive them frame by frame.
+- **Cloud render** (`npx hyperframes cloud`) sends the composition to HeyGen's
+  servers. Only on a yes from the person.
 
 ## Rules that go with the tools
 
