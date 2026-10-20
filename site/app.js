@@ -51,6 +51,18 @@
   // narrow screens open on the phone view
   if (matchMedia('(max-width: 600px)').matches) segButtons.find((b) => b.dataset.view === 'phone').click();
 
+  /* ---------- in-page links ---------- */
+  // Smooth scrolling is done here, not with CSS scroll-behavior: ScrollTrigger measures
+  // during a refresh, and a smooth scroll still in flight makes every step read wrong.
+  $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+    const href = a.getAttribute('href');
+    const target = href.length > 1 && document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    history.pushState(null, '', href);
+  }));
+
   /* ---------- copy buttons ---------- */
   $$('[data-copy]').forEach((btn) => btn.addEventListener('click', async () => {
     try { await navigator.clipboard.writeText(btn.dataset.copy); } catch (e) { /* no clipboard: the text is still on screen */ }
@@ -120,8 +132,9 @@
     });
   });
 
+  // Refresh once the page has loaded. Not on image load: the lazy images have width and height,
+  // so nothing moves when they arrive, and a refresh while the page is scrolled would miscount.
   window.addEventListener('load', () => ScrollTrigger.refresh());
-  $$('img[loading="lazy"]').forEach((img) => img.addEventListener('load', () => ScrollTrigger.refresh(), { once: true }));
 
   // Reduced motion: nothing above runs, and the page is already in its final state.
 })();
