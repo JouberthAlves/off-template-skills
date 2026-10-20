@@ -87,27 +87,26 @@ the rest rather than scoring what it can't see.
 ## Install
 
 Two skills: `super-webdesigner` (the flow) and `ai-slop-check` (the audit on
-its own, for any URL or screenshot).
+its own, for any URL or screenshot). Each agent has its own command:
 
-**Claude Code**
+- **Claude Code:** `npx skills add JouberthAlves/super-webdesigner -g -a claude-code`
+- **Codex:** `npx skills add JouberthAlves/super-webdesigner -a codex`
+- **Cursor:** `npx skills add JouberthAlves/super-webdesigner -a cursor`
+- **Windsurf:** `npx skills add JouberthAlves/super-webdesigner -a windsurf`
+- **Kiro:** `npx skills add JouberthAlves/super-webdesigner -a kiro-cli`
+- **Qoder:** `npx skills add JouberthAlves/super-webdesigner -a qoder`
+- **Antigravity:** `npx skills add JouberthAlves/super-webdesigner -a antigravity`
+- **GitHub Copilot:** `npx skills add JouberthAlves/super-webdesigner -a github-copilot`
+- **Any other agent:** add one rule (for example `.cursor/rules/` or
+  `AGENTS.md`) that says *"for any site or UI request, read
+  `skills/super-webdesigner/SKILL.md` and follow it, reading the files in
+  `references/` when a step says so."*
 
-```bash
-npx skills add JouberthAlves/super-webdesigner -g -a claude-code
-```
+The Claude Code command installs for every project (`-g`). The others install
+into the project you run them in.
 
 Then ask for a site the way you always do: *"build a website for a bakery"*.
 The skill takes it from there.
-
-**Codex, OpenCode and others**
-
-```bash
-npx skills add JouberthAlves/super-webdesigner -a codex
-```
-
-**Cursor, Copilot, or any agent without skill support:** add a rule (for
-example `.cursor/rules/` or `AGENTS.md`) that says *"for any site or UI
-request, read `skills/super-webdesigner/SKILL.md` and follow it, reading the
-files in `references/` when a step says so."*
 
 ## Tools, by job
 
@@ -137,10 +136,15 @@ Agents don't remember anything between sessions. The
 - `10 Notes/`: the design brief, research, skeletons, anti-patterns and design rules.
 - `20 Projects/`: one note per project, so the same style is never shipped twice.
 
-Obsidian is recommended, not required: the files are plain Markdown and any
-agent can read them. Open `vault/` as a vault and run your agent inside it.
-An optional Claude Code hook re-injects the rules after the context is
-compacted. Setup details are in [`vault/README.md`](vault/README.md).
+Obsidian is recommended, not required, for three reasons:
+
+- **You can read and edit the rules by hand.** Every rule is one line in a note you can open, change and search.
+- **The links show the history.** A mistake points to the rule it became, and the rule points to the project where it was learned.
+- **It is plain Markdown.** Any agent can read it, and it goes into git like any other folder.
+
+To use it: open `vault/` as a vault and run your agent inside it. An optional
+Claude Code hook re-injects the rules after the context is compacted. Setup
+details are in [`vault/README.md`](vault/README.md).
 
 ## How it works
 
@@ -160,9 +164,15 @@ reduced motion. Vercel publishes it on every push to `main`.
 
 ## Verification
 
-- The showcase was screenshotted in headless Chrome at 1440 and 390 px, with
-  no horizontal scroll at either size. Its motion was checked by scrolling to
-  each section and capturing the state.
+- The showcase was screenshotted in headless Chrome at 390 px with no
+  horizontal scroll. At 1280 px the corner crop marks stick out 22 px past the
+  page, so there is a small horizontal scroll on desktop; it is known and not
+  yet fixed. Its motion was checked by scrolling to each section and capturing
+  the state.
+- Lighthouse mobile on a local copy of the showcase, with GSAP served from the
+  same npm release: performance 88 (77 before the fonts were self-hosted),
+  accessibility 96, best practices 100, SEO 100. The deployed URL was not
+  measured from the build session.
 - The skill was run end to end in the session that wrote it. A clean-room run
   with a fresh agent (only the skill on disk) found and stopped at the brief,
   and exposed a contradiction around the cost question, which is now fixed
@@ -174,7 +184,7 @@ reduced motion. Vercel publishes it on every push to `main`.
 - The Ember & Bun score (2 of 10) was corrected after a fresh check found the
   first 3 of 10 counted something that isn't one of the tells.
 - Not run: Lighthouse against the deployed URL, real iOS Safari, a screen
-  reader pass.
+  reader pass, and an install check of the agent commands in each agent's own app (the commands were checked in empty folders).
 
 ## Credits
 
