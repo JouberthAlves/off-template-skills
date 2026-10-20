@@ -150,7 +150,7 @@
     });
 
     // proof sheet and install
-    gsap.utils.toArray('.proof figure, .install-grid > div, .vault-grid > *').forEach((el) => {
+    gsap.utils.toArray('.proof figure, .agents > div, .vault-grid > *').forEach((el) => {
       gsap.from(el, { opacity: 0, y: 18, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
   });

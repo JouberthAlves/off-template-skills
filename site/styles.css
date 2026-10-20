@@ -312,17 +312,17 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
 .proof-note a { color: var(--pen); }
 
 /* install */
-.install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 40px; border-top: 2px solid var(--ink); padding-top: 26px; }
-.install-grid h3 { font: 700 22px/1.2 var(--sans); margin: 0 0 12px; }
-.install-grid h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+.agents { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 40px; border-top: 2px solid var(--ink); padding-top: 26px; }
+.agents h3 { font: 700 22px/1.2 var(--sans); margin: 0 0 12px; }
+.agents h3 { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
 .marks { display: inline-flex; align-items: center; gap: 6px; }
 .marks svg { width: 20px; height: 20px; fill: var(--ink); flex: none; }
 .marks .plus { position: relative; width: 24px; height: 24px; border: 1px solid var(--ink); border-radius: 50%; }
 .marks .plus::before, .marks .plus::after { content: ""; position: absolute; left: 50%; top: 50%; background: var(--ink); transform: translate(-50%, -50%); }
 .marks .plus::before { width: 11px; height: 2px; }
 .marks .plus::after { width: 2px; height: 11px; }
-.install-grid p { margin: 12px 0 0; color: var(--text-2); }
-.install-grid .cmd code { font-size: 14px; }
+.agents p { margin: 12px 0 0; color: var(--text-2); }
+.agents .cmd code { font-size: 14px; white-space: normal; overflow: visible; }
 
 .vault-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 56px; border-top: 2px solid var(--ink); padding-top: 26px; }
 .vault-text p { margin: 0 0 14px; color: var(--text-2); max-width: 60ch; }
@@ -343,7 +343,7 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
   .crop { display: none; }
   .wall-label { transform: none; margin-right: 4px; }
   .hero { grid-template-columns: minmax(0, 1fr); }
-  .tell-list, .install-grid, .proof-row, .vault-grid { grid-template-columns: minmax(0, 1fr); }
+  .tell-list, .agents, .proof-row, .vault-grid { grid-template-columns: minmax(0, 1fr); }
   nav { gap: 14px; }
 }
 @media (max-width: 480px) {
@@ -353,3 +353,5 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
   .cmd code { font-size: 13px; }
   .compare-head { flex-direction: column; align-items: flex-start; }
 }
+
+.install-note { margin: 26px 0 0; font: 500 13px/1.5 var(--mono); color: var(--caption); }
