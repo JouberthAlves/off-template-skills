@@ -9,22 +9,17 @@ disliked). This is the redo, through the flow.
 tired of every page looking the same. They land from GitHub or a post, look
 for 10 seconds, and either drag the slider or leave.
 
-## The 4 questions
+## The 4 questions (answered by the owner, 2026-10-20)
 
-**Draft:** these are the agent's guesses, written before asking (a mistake).
-They are being sent to the owner to answer; the answers replace this
-section.
-
-1. **Real-world object:** an art director's markup on a print proof: crisp
-   white paper, black type, and the red pencil circling what's wrong.
-   *Palette:* proof white, press black, red pencil.
-2. **Feeling in the first 3 seconds:** "this has taste" (a design tool that
-   is itself well designed).
-3. **Two unexpected influences:** a print shop's press proof (crop marks,
-   color bars, registration marks) × a museum wall label (calm, exact, small
-   type next to a big work).
-4. **Must never look like:** an AI startup page (dark, purple glow, grid
-   background, bento cards) or a generic docs site.
+1. **Real-world object:** the print proof marked up in red pencil by the art
+   director. *Palette:* proof white, press black, red pencil.
+2. **Feeling in the first 3 seconds:** relief: "finally, someone solved
+   this".
+3. **Two unexpected influences:** a print shop's press proof × a museum wall
+   label.
+4. **Must never look like:** a generic docs site, a generic AI site, or
+   anything weakly designed. The bar: a visitor thinks "damn, this site is
+   great".
 
 **Name:** Super-Webdesigner (renamed: "Superdesign" already exists).
 

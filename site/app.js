@@ -1,0 +1,113 @@
+// Super-Webdesigner showcase. GSAP 3 + ScrollTrigger + DrawSVG, all from the CDN.
+// Everything that moves is off when the visitor asks for reduced motion.
+(() => {
+  gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+  /* ---------- the comparison line ---------- */
+  const compare = $('[data-compare]');
+  const range = $('[data-range]');
+  const state = { x: 50 };
+  let dragging = false;
+  let hint = null;
+
+  const paint = () => compare.style.setProperty('--x', `${state.x}%`);
+  const setX = (v) => { state.x = v; range.value = v; paint(); };
+
+  range.addEventListener('pointerdown', () => { dragging = true; if (hint) hint.kill(); });
+  window.addEventListener('pointerup', () => { dragging = false; });
+
+  // Clicks and arrow keys ease to the target instead of jumping.
+  range.addEventListener('input', () => {
+    if (dragging) { setX(+range.value); return; }
+    const target = +range.value;
+    range.value = state.x;
+    gsap.to(state, {
+      x: target, duration: 0.55, ease: 'power3.out', overwrite: true,
+      onUpdate: () => { range.value = state.x; paint(); },
+    });
+  });
+  paint();
+
+  /* ---------- desktop / phone toggle ---------- */
+  const views = {
+    desktop: { good: 'img/steno-desktop.webp', bad: 'img/other-desktop.webp' },
+    phone: { good: 'img/steno-mobile.webp', bad: 'img/other-mobile.webp' },
+  };
+  const segButtons = $$('[data-view]');
+  segButtons.forEach((btn) => btn.addEventListener('click', () => {
+    const v = btn.dataset.view;
+    compare.classList.toggle('phone', v === 'phone');
+    $('[data-good]').src = views[v].good;
+    $('[data-bad]').src = views[v].bad;
+    $('[data-markup-desktop]').hidden = v === 'phone';
+    $('[data-markup-phone]').hidden = v !== 'phone';
+    segButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  }));
+
+  // narrow screens open on the phone view
+  if (matchMedia('(max-width: 600px)').matches) segButtons.find((b) => b.dataset.view === 'phone').click();
+
+  /* ---------- copy buttons ---------- */
+  $$('[data-copy]').forEach((btn) => btn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(btn.dataset.copy); } catch (e) { /* no clipboard: the text is still on screen */ }
+    const old = btn.textContent;
+    btn.textContent = 'Copied';
+    setTimeout(() => { btn.textContent = old; }, 1600);
+  }));
+
+  /* ---------- motion ---------- */
+  const mm = gsap.matchMedia();
+  mm.add('(prefers-reduced-motion: no-preference)', () => {
+    // hero: title lines rise out of their clip, the caret and the underline draw in
+    gsap.from('.title .line > span', { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.12 });
+    gsap.from('[data-caret]', { drawSVG: 0, duration: 0.8, ease: 'power2.out', delay: 0.2 });
+    gsap.from('[data-underline]', { drawSVG: 0, duration: 1, ease: 'power2.out', delay: 1 });
+    gsap.from('.crop', { scale: 0, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(2)', delay: 0.2 });
+    gsap.from('.slug span', { opacity: 0, y: 6, duration: 0.5, stagger: 0.06, delay: 0.3 });
+
+    // comparison: when it's on screen, the line sweeps once to show it moves, then the pencil draws in
+    ScrollTrigger.create({
+      trigger: compare, start: 'top 75%', once: true,
+      onEnter: () => {
+        hint = gsap.timeline()
+          .to(state, { x: 30, duration: 0.7, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } })
+          .to(state, { x: 70, duration: 0.9, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } })
+          .to(state, { x: 50, duration: 0.6, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } });
+        gsap.from($$('.markup [data-pencil]'), { drawSVG: 0, duration: 0.9, stagger: 0.14, ease: 'power2.out', delay: 0.5 });
+        gsap.from($$('.markup .note'), { opacity: 0, duration: 0.6, stagger: 0.1, delay: 1.1 });
+      },
+    });
+    gsap.from('.wall-label', { opacity: 0, y: 12, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: '.wall-label', start: 'top 92%', once: true } });
+
+    // the ten tells: each one gets struck through in red as it comes in
+    $$('.tell-list li').forEach((li) => {
+      gsap.from(li, { opacity: 0, x: -14, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } });
+      gsap.to(li, { '--strike': 1, duration: 0.5, ease: 'power2.inOut', scrollTrigger: { trigger: li, start: 'top 80%', once: true } });
+    });
+
+    // the flow: a red line draws down the steps as you scroll; the stops get stamped
+    gsap.fromTo('[data-flowline]', { drawSVG: '0%' }, {
+      drawSVG: '100%', ease: 'none',
+      scrollTrigger: { trigger: '.flow-body', start: 'top 70%', end: 'bottom 70%', scrub: true },
+    });
+    $$('.steps > li').forEach((li) => {
+      gsap.from(li, { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } });
+    });
+    $$('.stamp').forEach((s) => {
+      gsap.from(s, { scale: 1.6, opacity: 0, rotation: -12, duration: 0.45, ease: 'back.out(2)', scrollTrigger: { trigger: s, start: 'top 88%', once: true } });
+    });
+
+    // proof sheet and install
+    gsap.utils.toArray('.proof figure, .install-grid > div').forEach((el) => {
+      gsap.from(el, { opacity: 0, y: 18, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    });
+  });
+
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+  $$('img[loading="lazy"]').forEach((img) => img.addEventListener('load', () => ScrollTrigger.refresh(), { once: true }));
+
+  // Reduced motion: nothing above runs, and the page is already in its final state.
+})();

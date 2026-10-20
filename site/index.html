@@ -3,268 +3,202 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>super-webdesigner · Same prompt, different designer</title>
-  <meta name="description" content="Skills that stop your coding agent from designing the same AI-looking page for everyone. Drag to compare a normal agent with one running super-webdesigner.">
-  <meta property="og:title" content="super-webdesigner · Same prompt, different designer">
-  <meta property="og:description" content="Drag to compare: the same one-line prompt, with and without the super-webdesigner skill.">
-  <meta property="og:image" content="img/super-desktop.webp">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23161513'/%3E%3Crect x='30' y='10' width='4' height='44' fill='%23E4572E'/%3E%3C/svg%3E">
+  <title>Super-Webdesigner · Same prompt, different designer</title>
+  <meta name="description" content="Skills that stop your coding agent from shipping the same AI-looking page. It asks you a brief, researches the niche, shows three directions and waits for your choice before it writes code.">
+  <meta property="og:title" content="Super-Webdesigner · Same prompt, different designer">
+  <meta property="og:description" content="Drag the line: the usual AI page against a page made through Super-Webdesigner's flow.">
+  <meta property="og:image" content="img/steno-desktop.webp">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FFFFFF'/%3E%3Cpath d='M14 46 L32 16 L50 46' fill='none' stroke='%23E5231B' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,700;62..125,900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #F4F2EC; --ink: #161513; --mute: #5f5b54; --line: #d8d3c8; --card: #fbfaf6;
-      --pen: #E4572E; /* the correction pen: the only accent, used for the divider */
-      --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
-      --sans: "Archivo", system-ui, sans-serif;
-      --gutter: clamp(16px, 4vw, 56px);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 var(--sans); }
-    a { color: inherit; }
-    img { display: block; max-width: 100%; height: auto; }
-    :focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
-    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--gutter); }
-    .mono { font-family: var(--mono); }
-
-    /* top */
-    .top { display: flex; justify-content: space-between; align-items: center; padding: 22px var(--gutter); max-width: 1280px; margin: 0 auto; }
-    .brand { font: 900 22px/1 var(--sans); font-stretch: 125%; letter-spacing: -.01em; text-decoration: none; }
-    .top nav { display: flex; gap: 24px; font-size: 15px; }
-    .top nav a { text-decoration: none; }
-    .top nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
-
-    /* intro */
-    .intro { padding: clamp(40px, 7vw, 96px) 0 clamp(28px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px 64px; align-items: end; }
-    h1 { margin: 0; font: 900 clamp(48px, 8.4vw, 132px)/.86 var(--sans); font-stretch: 62%; text-transform: uppercase; letter-spacing: -.01em; }
-    h1 em { font-style: normal; font-stretch: 125%; font-size: .62em; display: block; letter-spacing: -.02em; }
-    .intro p { margin: 0 0 18px; max-width: 46ch; color: var(--mute); }
-    .prompt { display: inline-flex; gap: 10px; align-items: baseline; background: var(--ink); color: var(--bg); padding: 12px 16px; border-radius: 4px; font: 400 15px/1.4 var(--mono); }
-    .prompt span { color: var(--pen); }
-
-    /* compare */
-    .compare-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
-    .labels { display: flex; gap: 20px; font: 600 13px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; }
-    .labels b { font-weight: 600; }
-    .labels .r { color: var(--mute); }
-    .seg { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 999px; padding: 3px; }
-    .seg button { border: 0; background: none; font: 600 14px/1 var(--sans); padding: 9px 16px; border-radius: 999px; cursor: pointer; color: var(--ink); min-height: 36px; }
-    .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-
-    .stage { display: flex; justify-content: center; }
-    .compare { position: relative; width: 100%; border-radius: 6px; overflow: hidden; background: #ddd; box-shadow: 0 1px 0 var(--line), 0 24px 60px -30px rgba(22, 21, 19, .45); user-select: none; -webkit-user-select: none; touch-action: pan-y; }
-    .compare.phone { width: min(390px, 100%); border-radius: 22px; }
-    .compare img { width: 100%; height: auto; pointer-events: none; }
-    .compare .before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--x, 50%)) 0 0); }
-    .compare .before img { height: 100%; object-fit: cover; }
-    .divider { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 3px; margin-left: -1.5px; background: var(--pen); pointer-events: none; }
-    .handle { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: var(--pen); color: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0, 0, 0, .3); font: 700 16px/1 var(--mono); letter-spacing: -2px; }
-    .tag { position: absolute; bottom: 12px; font: 600 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; background: rgba(22, 21, 19, .82); color: #fff; padding: 7px 9px; border-radius: 3px; pointer-events: none; }
-    .tag.l { left: 12px; } .tag.r { right: 12px; }
-    .compare input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
-    .compare:has(input:focus-visible) .handle { outline: 3px solid var(--ink); outline-offset: 3px; }
-    .hint { text-align: center; color: var(--mute); font-size: 14px; margin: 14px 0 0; }
-
-    /* tells */
-    section { padding: clamp(64px, 9vw, 128px) 0 0; }
-    h2 { margin: 0 0 12px; font: 900 clamp(36px, 5vw, 68px)/.92 var(--sans); font-stretch: 62%; text-transform: uppercase; }
-    .sub { margin: 0 0 32px; max-width: 58ch; color: var(--mute); }
-    .tells { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; border-top: 2px solid var(--ink); }
-    .tell { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-    .tell b { font-weight: 700; }
-    .tell span { grid-column: 1 / -1; color: var(--mute); font-size: 15px; }
-    .tell i { font: 600 12px/1.6 var(--mono); font-style: normal; text-transform: uppercase; letter-spacing: .05em; }
-    .tell i.yes { color: #a23b1c; }
-    .tell i.no { color: var(--mute); }
-    .score { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 20px; font: 600 15px/1.4 var(--mono); }
-
-    /* flow */
-    .flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 2px solid var(--ink); counter-reset: f; }
-    .flow > li { counter-increment: f; display: grid; grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1.2fr); gap: 8px 32px; padding: 26px 0; border-bottom: 1px solid var(--line); align-items: start; }
-    .flow > li::before { content: counter(f); font: 900 44px/.9 var(--sans); font-stretch: 62%; }
-    .flow h3 { margin: 0 0 6px; font: 700 21px/1.2 var(--sans); }
-    .flow p { margin: 0; color: var(--mute); font-size: 16px; }
-    .flow .stop { display: inline-block; margin-top: 10px; font: 600 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; border: 1.5px solid var(--ink); padding: 6px 8px; border-radius: 3px; }
-    .flow figure { margin: 0; }
-    .flow figure img { border-radius: 4px; border: 1px solid var(--line); }
-    .flow .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-    .flow figcaption { font-size: 13px; color: var(--mute); margin-top: 6px; }
-    .flow .files { font: 400 14px/1.7 var(--mono); }
-
-    /* install */
-    pre { margin: 0 0 14px; background: var(--ink); color: #f1eee6; padding: 16px 18px; border-radius: 4px; overflow-x: auto; font: 400 14px/1.6 var(--mono); }
-    pre .c { color: #a8a294; }
-    .install { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 48px; }
-    .install h3 { font: 700 19px/1.2 var(--sans); margin: 0 0 10px; }
-    .install p { margin: 0 0 12px; color: var(--mute); font-size: 16px; }
-
-    footer { margin-top: clamp(64px, 9vw, 128px); border-top: 2px solid var(--ink); padding: 24px var(--gutter) 48px; max-width: 1280px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; color: var(--mute); }
-    footer .brand { color: var(--ink); font-size: 18px; }
-
-    @media (max-width: 860px) {
-      .intro, .tells, .install { grid-template-columns: minmax(0, 1fr); }
-      .flow > li { grid-template-columns: 48px minmax(0, 1fr); }
-      .flow > li > :last-child { grid-column: 2; }
-      .flow > li::before { font-size: 36px; }
-      .top nav { gap: 16px; }
-    }
-    @media (max-width: 420px) { .top nav a:nth-child(2) { display: none; } .prompt { font-size: 13px; } }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="top">
-    <a class="brand" href="#">super-webdesigner</a>
-    <nav aria-label="Main">
-      <a href="#tells">The 10 tells</a>
-      <a href="#flow">The flow</a>
-      <a href="#install">Install</a>
-    </nav>
-  </header>
+  <a class="skip" href="#compare">Skip to the comparison</a>
 
-  <main class="wrap">
-    <div class="intro">
-      <h1>Same prompt. <em>Different designer.</em></h1>
+  <div class="sheet">
+    <span class="crop tl" aria-hidden="true"></span><span class="crop tr" aria-hidden="true"></span><span class="crop bl" aria-hidden="true"></span><span class="crop br" aria-hidden="true"></span>
+
+    <header class="top">
+      <a class="logo" href="#" aria-label="Super-Webdesigner, home">
+        <span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path data-caret d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#flow">How it works</a>
+        <a href="#tells">The tells</a>
+        <a class="btn btn-line" href="https://github.com/JouberthAlves/super-designer">Star on GitHub</a>
+      </nav>
+    </header>
+
+    <div class="slug" aria-hidden="true">
+      <span>Proof 01</span><span>Super-Webdesigner</span><span>2026-10-20</span>
+      <span class="bars"><i></i><i></i><i></i><i></i><i class="r"></i></span>
+    </div>
+
+    <section class="hero">
       <div>
-        <p>Coding agents design the same page for everyone: centered hero, three cards, gradient, emoji. super-webdesigner is a pair of skills that make your agent research, show you three directions and wait for your choice before writing code.</p>
-        <p class="prompt"><span>&gt;</span> Build a website for a burger restaurant.</p>
+        <h1 class="title">
+          <span class="line"><span>Same prompt.</span></span>
+          <span class="line"><span>Different <em>designer.<svg class="underline" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path data-underline vector-effect="non-scaling-stroke" d="M6 26 C 120 12, 260 34, 380 20 S 560 14, 594 22"/></svg></em></span></span>
+        </h1>
       </div>
-    </div>
-
-    <div class="compare-bar">
-      <div class="labels" aria-hidden="true"><b>Left: normal agent</b><span class="r">Right: with super-webdesigner</span></div>
-      <div class="seg" role="group" aria-label="Screen size">
-        <button type="button" aria-pressed="true" data-view="desktop">Desktop</button>
-        <button type="button" aria-pressed="false" data-view="phone">Phone</button>
+      <div class="hero-side">
+        <p class="promise">Your coding agent ships the same page as everyone else's. Super-Webdesigner makes it ask you a brief, research the niche, show three directions and wait for your pick before it writes a line.</p>
+        <div class="cmd">
+          <code>npx skills add JouberthAlves/super-webdesigner</code>
+          <button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -g -a claude-code">Copy</button>
+        </div>
+        <p class="small">For Claude Code. Other agents: see Install.</p>
       </div>
-    </div>
-
-    <div class="stage">
-      <div class="compare" data-compare>
-        <img data-after src="img/super-desktop.webp" width="1440" height="900" alt="Order 27, made with super-webdesigner: cream butcher paper, a huge condensed title 'Smashed to order. Ready in 7.', a close photo of a wrapped double smash burger and a rust 'No. 27' stamp">
-        <div class="before"><img data-before src="img/normal-desktop.webp" width="1440" height="900" alt="Ember & Bun, made by a normal agent: cream background, red and black title 'Smashed thin. Seared hot. Stacked high.', a cartoon burger drawn in CSS and a red 'since 2014' badge"></div>
-        <div class="divider"><span class="handle" aria-hidden="true">&lsaquo;&rsaquo;</span></div>
-        <span class="tag l">Normal agent</span>
-        <span class="tag r">super-webdesigner</span>
-        <input type="range" min="0" max="100" value="50" step="1" aria-label="Drag to compare. Left: normal agent. Right: with super-webdesigner." data-range>
-      </div>
-    </div>
-    <p class="hint">Drag the line, or focus it and use the arrow keys. Both sites are real and in the repo; nothing was retouched.</p>
-
-    <section id="tells" aria-labelledby="tells-title">
-      <h2 id="tells-title">The 10 tells</h2>
-      <p class="sub">What a page looks like when the agent decides alone. Three or more and it reads as AI-made. Both burger sites, checked by the <span class="mono">ai-slop-check</span> skill:</p>
-      <div class="tells">
-        <div class="tell"><b>Purple or blue gradient</b><i class="no">neither</i><span>The number one marker of a generated page.</span></div>
-        <div class="tell"><b>Serif title by default</b><i class="no">neither</i><span>The agent's shortcut for "elegant".</span></div>
-        <div class="tell"><b>Grid background</b><i class="no">neither</i><span>Squares or dots filling empty space.</span></div>
-        <div class="tell"><b>Three generic cards</b><i class="no">neither</i><span>Icon, title, two lines, three times in a row.</span></div>
-        <div class="tell"><b>Emoji in the copy</b><i class="yes">normal agent</i><span>Every menu item used an emoji as its picture.</span></div>
-        <div class="tell"><b>Glow on everything</b><i class="no">neither</i><span>Everything glowing means nothing stands out.</span></div>
-        <div class="tell"><b>The usual layout</b><i class="yes">normal agent</i><span>Hero, menu, banner, story, reviews, visit. The spine of every AI page.</span></div>
-        <div class="tell"><b>Generic icons</b><i class="no">neither</i><span>Thin-line icon sets everywhere.</span></div>
-        <div class="tell"><b>Everything static</b><i class="no">neither</i><span>Both pages move.</span></div>
-        <div class="tell"><b>Fake 01 / 02 / 03</b><i class="no">neither</i><span>Numbers on things that have no order.</span></div>
-      </div>
-      <div class="score"><span>Normal agent: 2 of 10 (watch it), plus red and yellow, a "since 2014" badge and a cartoon burger</span><span>Super-Webdesigner: 0 of 10, self-assessed</span></div>
     </section>
 
-    <section id="flow" aria-labelledby="flow-title">
-      <h2 id="flow-title">What happened in between</h2>
-      <p class="sub">The skill took the same one-line prompt through eight steps. Every file is in <span class="mono">examples/burger/</span>.</p>
-      <ol class="flow">
-        <li>
-          <div><h3>Discover the tools</h3><p>Lists the skills, MCP servers and browser it has, and recommends installs for what's missing. Asks before installing.</p></div>
-          <p class="files">tool-slots.md · discovery.md</p>
-        </li>
-        <li>
-          <div><h3>Brief: 4 questions</h3><p>A real-world object for the palette (the paper order ticket on the kitchen rail), one feeling, two unexpected influences, and what it must never look like.</p></div>
-          <p class="files">brief.md</p>
-        </li>
-        <li>
-          <div><h3>Research the niche</h3><p>Real burger sites, split into what visitors expect (menu with prices, order button, hours) and what everyone repeats (dark with red and yellow, smoke, grunge).</p></div>
-          <p class="files">research.md</p>
-        </li>
-        <li>
-          <div><h3>Three gray skeletons</h3><p>A: best of the niche. B: breaks its convention. C: borrows from outside it. Composition first, color only in the swatches.</p></div>
-          <figure><img src="img/skeletons.webp" width="1600" height="1120" loading="lazy" alt="Three gray wireframes side by side: Butcher Paper Counter, Order Up Ticket, Departures Now Grilling"></figure>
-        </li>
-        <li>
-          <div><h3>One mockup per direction</h3><p>Generated with the real copy and palette, after showing the cost and getting a yes.</p></div>
-          <figure>
-            <div class="trio">
-              <img src="img/mockup-a.webp" width="1200" height="679" loading="lazy" alt="Mockup A: butcher paper and a rust stamp">
-              <img src="img/mockup-b.webp" width="1200" height="679" loading="lazy" alt="Mockup B: a handwritten order ticket with the number 27">
-              <img src="img/mockup-c.webp" width="1200" height="679" loading="lazy" alt="Mockup C: a split-flap departures board of burger orders">
-            </div>
-            <figcaption>A · B · C</figcaption>
+    <section class="compare-wrap" id="compare" aria-labelledby="compare-title">
+      <h2 class="sr" id="compare-title">The comparison</h2>
+      <div class="compare-head">
+        <p class="prompt"><span>Prompt</span>Build a landing page for an AI meeting-notes app.</p>
+        <div class="seg" role="group" aria-label="Screen size">
+          <button type="button" aria-pressed="true" data-view="desktop">Desktop</button>
+          <button type="button" aria-pressed="false" data-view="phone">Phone</button>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="compare" data-compare>
+          <figure class="side side-good">
+            <img data-good src="img/steno-desktop.webp" alt="Steno, made through Super-Webdesigner: a yellow legal pad with a red margin line, the title 'Stop typing in meetings.' and a notes card writing itself">
+            <span class="tag tag-good">Super-Webdesigner</span>
           </figure>
-        </li>
-        <li>
-          <div><h3>A person chooses</h3><p>No code until then. They asked if a burger place shouldn't be warmer, heard why A already was, and picked it.</p><span class="stop">Stop and wait</span></div>
-          <p class="files">choice.md · direction.md</p>
-        </li>
-        <li>
-          <div><h3>Build</h3><p>Half the effort on the first screen. The stamp from the mockup became the order flow: your ticket gets stamped with your number.</p></div>
-          <p class="files">super-webdesigner/site/</p>
-        </li>
-        <li>
-          <div><h3>Review</h3><p>The 10 tells on the screenshots, a design critique, horizontal scroll at 390 and 1440, the order flow end to end, contrast. Fixes applied, the rest written down.</p></div>
-          <p class="files">review.md</p>
-        </li>
+
+          <figure class="side side-bad">
+            <img data-bad src="img/other-desktop.webp" alt="Other agents, a labeled caricature: dark purple page with a grid, a glowing serif italic title, emoji and three numbered cards">
+            <svg class="markup" data-markup-desktop viewBox="0 0 1440 925" aria-hidden="true">
+              <ellipse data-pencil cx="728" cy="318" rx="330" ry="92"/>
+              <text class="note" x="1040" y="236">serif + gradient?</text>
+              <ellipse data-pencil cx="720" cy="607" rx="200" ry="22"/>
+              <text class="note" x="940" y="660">emoji</text>
+              <ellipse data-pencil cx="1210" cy="72" rx="78" ry="32"/>
+              <text class="note" x="1020" y="150">glow</text>
+              <rect data-pencil x="164" y="700" width="1112" height="196" rx="18"/>
+              <text class="note" x="170" y="690">3 cards, 01 02 03… again?</text>
+            </svg>
+            <svg class="markup" data-markup-phone viewBox="0 0 560 1226" aria-hidden="true" hidden>
+              <ellipse data-pencil cx="282" cy="462" rx="236" ry="104"/>
+              <text class="note" x="300" y="590">serif + gradient?</text>
+              <ellipse data-pencil cx="290" cy="314" rx="170" ry="28"/>
+              <text class="note" x="30" y="268">emoji</text>
+              <ellipse data-pencil cx="432" cy="122" rx="104" ry="40"/>
+              <text class="note" x="330" y="200">glow</text>
+            </svg>
+            <span class="tag tag-bad">Other agents<span class="cari"> · caricature</span></span>
+          </figure>
+
+          <div class="divider" aria-hidden="true"><span class="handle"><svg viewBox="0 0 24 24"><path d="M9 6 L3 12 L9 18 M15 6 L21 12 L15 18"/></svg></span></div>
+          <input class="range" type="range" min="0" max="100" step="1" value="50" data-range aria-label="Drag to compare. Left: other agents. Right: Super-Webdesigner.">
+        </div>
+      </div>
+
+      <aside class="wall-label">
+        <p class="wl-no">No. 1</p>
+        <p><b>Other agents / Super-Webdesigner</b>, 2026. HTML on screen.</p>
+        <p>Left: a caricature built on purpose, with all ten tells at once. It is not an agent's real output: an untouched one is in the repo's burger example. Right: Steno, a fictional app, made through the skill's flow.</p>
+        <p class="wl-drag">Please drag.</p>
+      </aside>
+    </section>
+
+  <main>
+    <section class="tells" id="tells" aria-labelledby="tells-title">
+      <div class="sec-head">
+        <p class="kicker">The red pencil</p>
+        <h2 id="tells-title">Ten things it crosses out.</h2>
+        <p class="lede">Each one alone looks like a choice. Three together and the page reads as made by AI. The skill checks all ten on the full page before anything ships.</p>
+      </div>
+      <ol class="tell-list">
+        <li>Purple-to-blue gradients</li>
+        <li>A serif title by default</li>
+        <li>Grid and dot backgrounds</li>
+        <li>Three generic benefit cards</li>
+        <li>Emoji in the copy</li>
+        <li>Glow on everything</li>
+        <li>Hero, cards, testimonials, FAQ</li>
+        <li>Thin generic icons</li>
+        <li>Nothing moving</li>
+        <li>01 / 02 / 03 on things with no order</li>
       </ol>
     </section>
 
-    <section id="install" aria-labelledby="install-title">
-      <h2 id="install-title">Install</h2>
-      <p class="sub">Written for Claude Code, with the equivalent for other agents in every step.</p>
-      <div class="install">
+    <section class="flow" id="flow" aria-labelledby="flow-title">
+      <div class="sec-head">
+        <p class="kicker">How it works</p>
+        <h2 id="flow-title">It asks before it draws.</h2>
+        <p class="lede">A fixed flow with three stops. At each one the agent waits for you.</p>
+      </div>
+      <div class="flow-body">
+        <svg class="flow-line" viewBox="0 0 10 1000" preserveAspectRatio="none" aria-hidden="true"><path data-flowline vector-effect="non-scaling-stroke" d="M5 0 L5 1000"/></svg>
+        <ol class="steps">
+          <li><h3>Discover the tools</h3><p>Lists the skills, MCP servers and browser it has, and what's missing, with the install command. Nothing gets installed without a yes.</p></li>
+          <li class="stop"><h3>The brief</h3><p>Four questions, with options to click: a real object for the palette, one feeling, two influences to collide, what it must never look like. The cost of the mockups comes in the same message.</p><span class="stamp">Stop · you answer</span></li>
+          <li><h3>Research the niche</h3><p>Real sites, split into what visitors expect (kept) and what everyone repeats (avoided).</p></li>
+          <li><h3>Three directions</h3><p>Gray skeletons for phone and desktop, and a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each with its logo, favicon and motion.</p></li>
+          <li class="stop"><h3>You choose</h3><p>One question: which of the three, or what to mix.</p><span class="stamp">Stop · you choose</span></li>
+          <li><h3>Write it down</h3><p>The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build.</p></li>
+          <li><h3>Build</h3><p>Half the effort on the first screen, with the motion the direction asked for.</p></li>
+          <li class="stop"><h3>Review, then you judge</h3><p>Full-page screenshots at 1440 and 390 px, the ten tells, a design critique, forms, contrast. Nothing is published before you say so.</p><span class="stamp">Stop · you judge</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="proof" id="proof" aria-labelledby="proof-title">
+      <div class="sec-head">
+        <p class="kicker">The proof sheet</p>
+        <h2 id="proof-title">From the prompt to Steno.</h2>
+      </div>
+      <figure class="proof-skel">
+        <img src="img/steno-skeletons.webp" width="1600" height="1227" loading="lazy" alt="Three gray skeletons for Steno: Reporter's Notebook, Live Captions and Steno Tape">
+        <figcaption>No. 2 · Three directions in gray. Composition first, color only in the swatches.</figcaption>
+      </figure>
+      <div class="proof-row">
+        <figure><img src="img/steno-mockup-a.webp" width="1200" height="679" loading="lazy" alt="Mockup A, Reporter's Notebook: a yellow legal pad with a notes card"><figcaption>A · Reporter's Notebook · chosen</figcaption></figure>
+        <figure><img src="img/steno-mockup-b.webp" width="1200" height="679" loading="lazy" alt="Mockup B, Live Captions: a video call with a caption bar"><figcaption>B · Live Captions</figcaption></figure>
+        <figure><img src="img/steno-mockup-c.webp" width="1200" height="679" loading="lazy" alt="Mockup C, Steno Tape: a stenotype tape running down the page"><figcaption>C · Steno Tape</figcaption></figure>
+      </div>
+      <p class="proof-note">Every file, from the brief to the mockups, is in <a href="https://github.com/JouberthAlves/super-designer/tree/main/examples">examples/</a>, including the untouched normal-agent output for comparison.</p>
+    </section>
+
+    <section class="install" id="install" aria-labelledby="install-title">
+      <div class="sec-head">
+        <p class="kicker">Install</p>
+        <h2 id="install-title">Two skills. One command.</h2>
+      </div>
+      <div class="install-grid">
         <div>
           <h3>Claude Code</h3>
-<pre><span class="c"># both skills, all projects</span>
-npx skills add JouberthAlves/super-webdesigner -g -a claude-code</pre>
-          <p>Or copy <span class="mono">skills/super-webdesigner</span> and <span class="mono">skills/ai-slop-check</span> into <span class="mono">~/.claude/skills/</span>. Then just ask for a site.</p>
+          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -g -a claude-code</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -g -a claude-code">Copy</button></div>
+          <p>Then ask for a site the way you always do. The skill takes it from there.</p>
         </div>
         <div>
-          <h3>Cursor, Codex, others</h3>
-<pre>npx skills add JouberthAlves/super-webdesigner -a codex</pre>
-          <p>Agents without skills: add a rule that says "for any site or UI, read <span class="mono">skills/super-webdesigner/SKILL.md</span> and follow it".</p>
+          <h3>Codex, Cursor and others</h3>
+          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a codex</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a codex">Copy</button></div>
+          <p>No skill support? Add one rule: "for any site or UI, read skills/super-webdesigner/SKILL.md and follow it."</p>
         </div>
         <div>
-          <h3>Optional: the starter vault</h3>
-          <p>An Obsidian vault that works as your agent's memory: rules, mistakes, wins and every style you've already used, so it never repeats one. Copy <span class="mono">vault/</span> and open your agent inside it.</p>
+          <h3>Recommended: a vault</h3>
+          <p>A small Obsidian vault that works as your agent's memory: the rules it reads every session, the mistakes it turned into rules, and every style you've already used, so it never ships the same look twice.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <span class="brand">super-webdesigner</span>
-    <span>MIT. Brief method adapted from 2389-research/landing-page-design (MIT).</span>
-    <span>Ember & Bun and Order 27 are fictional. Order 27 photos were generated for this demo.</span>
+  <footer class="foot sheet-foot">
+    <a class="logo" href="#"><span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span></a>
+    <p>MIT. The brief questions are adapted from 2389-research/landing-page-design (MIT).</p>
+    <p>Steno, MeetMind, Order 27 and Ember &amp; Bun are fictional.</p>
   </footer>
+  </div>
 
-  <script>
-    const box = document.querySelector('[data-compare]');
-    const range = document.querySelector('[data-range]');
-    const after = document.querySelector('[data-after]');
-    const before = document.querySelector('[data-before]');
-    const set = (v) => box.style.setProperty('--x', v + '%');
-    range.addEventListener('input', () => set(range.value));
-    set(range.value);
-
-    const views = {
-      desktop: { after: ['img/super-desktop.webp', 1440, 900], before: ['img/normal-desktop.webp', 1440, 900] },
-      phone: { after: ['img/super-mobile.webp', 780, 1688], before: ['img/normal-mobile.webp', 780, 1688] },
-    };
-    document.querySelectorAll('[data-view]').forEach((btn) => btn.addEventListener('click', () => {
-      const v = views[btn.dataset.view];
-      [[after, v.after], [before, v.before]].forEach(([img, [src, w, h]]) => { img.src = src; img.width = w; img.height = h; });
-      box.classList.toggle('phone', btn.dataset.view === 'phone');
-      document.querySelectorAll('[data-view]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-    }));
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<!--
+  CARICATURE, built on purpose. Every one of the 10 AI design tells, at once:
+  purple-blue gradient, serif italic title, grid background, three generic
+  cards, emoji in the copy, glow on everything, the usual layout, thin generic
+  icons, nothing moving, fake 01/02/03. Not an agent's real output.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeetMind AI · Caricature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: #e7e6ff; font: 400 16px/1.6 Inter, system-ui, sans-serif;
+    background:
+      linear-gradient(rgba(140,120,255,.07) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, rgba(140,120,255,.07) 1px, transparent 1px) 0 0/40px 40px,
+      radial-gradient(ellipse at 20% 0%, #3b1d8f 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 20%, #1d3fbf 0%, transparent 50%),
+      #0b0a1f;
+    min-height: 100vh;
+  }
+  .label { background: #fff200; color: #111; font: 700 12px/1 ui-monospace, Consolas, monospace; letter-spacing: .04em; text-align: center; padding: 7px 10px; text-transform: uppercase; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
+  .logo { font-weight: 600; font-size: 20px; display: flex; gap: 8px; align-items: center; }
+  .logo span { text-shadow: 0 0 14px #9b7bff; }
+  nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; color: #b9b4ff; }
+  .glow-btn { background: linear-gradient(90deg, #7b3cff, #2f6bff); color: #fff; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 11px 22px; font-weight: 600; box-shadow: 0 0 24px rgba(123,60,255,.8), 0 0 60px rgba(47,107,255,.5); display: inline-block; }
+  .ghost { border: 1px solid #6b5cff; border-radius: 999px; padding: 11px 22px; color: #cfc9ff; box-shadow: 0 0 18px rgba(107,92,255,.6); display: inline-block; }
+  .hero { text-align: center; padding: 70px 0 40px; }
+  .pill { display: inline-block; border: 1px solid rgba(155,123,255,.6); border-radius: 999px; padding: 6px 14px; font-size: 13px; color: #cbbcff; box-shadow: 0 0 18px rgba(155,123,255,.5); margin-bottom: 22px; }
+  h1 { font: italic 700 64px/1.05 "Playfair Display", Georgia, serif; margin: 0 auto 18px; max-width: 820px;
+       background: linear-gradient(90deg, #c4a8ff, #7b3cff 45%, #3d7bff); -webkit-background-clip: text; background-clip: text; color: transparent;
+       filter: drop-shadow(0 0 22px rgba(123,60,255,.65)); }
+  .hero p { color: #a9a4d8; max-width: 600px; margin: 0 auto 30px; font-size: 18px; }
+  .ctas { display: flex; gap: 14px; justify-content: center; }
+  .trusted { margin-top: 34px; color: #8f8ac2; font-size: 14px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding: 40px 0; }
+  .card { background: rgba(255,255,255,.05); border: 1px solid rgba(155,123,255,.35); border-radius: 18px; padding: 26px; box-shadow: 0 0 30px rgba(123,60,255,.35); }
+  .num { font: 600 13px/1 ui-monospace, monospace; color: #9b7bff; }
+  .card svg { width: 30px; height: 30px; stroke: #b9a8ff; fill: none; stroke-width: 1.3; filter: drop-shadow(0 0 8px #9b7bff); margin: 12px 0 8px; }
+  .card h3 { margin: 0 0 6px; color: #fff; font-weight: 600; }
+  .card p { margin: 0; color: #a9a4d8; font-size: 15px; }
+  .testi { text-align: center; padding: 30px 0; }
+  .testi blockquote { margin: 0 auto; max-width: 640px; font-size: 20px; color: #ddd8ff; text-shadow: 0 0 12px rgba(155,123,255,.6); }
+  .faq, .cta2 { text-align: center; padding: 24px 0; color: #a9a4d8; }
+  @media (max-width: 700px) {
+    h1 { font-size: 40px; }
+    .cards { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+    .ctas { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="label">Caricature · every AI design tell on purpose · not a real agent output</div>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b9a8ff" stroke-width="1.3"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg><span>MeetMind AI</span></div>
+      <ul><li>Features</li><li>Pricing</li><li>About</li><li>Blog</li></ul>
+      <span class="glow-btn">Get started</span>
+    </nav>
+
+    <header class="hero">
+      <span class="pill">✨ Introducing MeetMind 2.0 🚀</span>
+      <h1>Unlock the future of meetings with AI</h1>
+      <p>🤖 The next-generation AI-powered platform that transforms your meetings into actionable insights. Supercharge your productivity today! 💡</p>
+      <div class="ctas"><span class="glow-btn">Start for free 🚀</span><span class="ghost">Watch demo ▶</span></div>
+      <div class="trusted">⭐⭐⭐⭐⭐ Trusted by 10,000+ teams worldwide 🌍</div>
+    </header>
+
+    <section class="cards">
+      <div class="card"><span class="num">01</span><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><h3>Lightning Fast ⚡</h3><p>Get your notes in seconds with blazing-fast AI processing.</p></div>
+      <div class="card"><span class="num">02</span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><h3>Smart Insights 🧠</h3><p>Our cutting-edge AI understands context like never before.</p></div>
+      <div class="card"><span class="num">03</span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg><h3>Secure &amp; Private 🔒</h3><p>Enterprise-grade security to keep your data safe.</p></div>
+    </section>
+
+    <section class="testi"><blockquote>"MeetMind changed the way our team works forever!" 🙌</blockquote></section>
+    <section class="faq">Frequently Asked Questions ⌄</section>
+    <section class="cta2"><span class="glow-btn">Get started today ✨</span></section>
+  </div>
+</body>
+</html>
