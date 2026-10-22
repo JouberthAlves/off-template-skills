@@ -29,6 +29,12 @@ new options. Example for question 1, burger
 place: "a griddle at 2 a.m.", "a 70s diner counter", "a butcher's paper
 wrap", "a neon sign in the rain".
 
+The options steer the answer. Question 1 mixes kinds of reference (the place,
+the product, a person or gesture, a moment), with at most one printed-paper
+object (bag, label, receipt, stamp, newspaper), and one option is what the
+niche's own customers would name first. Question 2 offers feelings, not
+styles.
+
 Before the direction of a demo or a spec site, also pin down **who pays for
 it**: size of the business, ticket, neighborhood, clientele. The concept has
 to fit them.

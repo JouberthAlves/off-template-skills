@@ -25,6 +25,25 @@ new options. Example for question 1, burger
 place: "a griddle at 2 a.m.", "a 70s diner counter", "a butcher's paper
 wrap", "a neon sign in the rain".
 
+**The options steer the answer**, so they carry the same rules as the design:
+
+- **Question 1 covers different kinds of reference**: the place (the counter,
+  the oven, the room in the morning light), the product itself (the crust of a
+  loaf, the dish), a person or a gesture (the baker's hands in flour), a moment
+  (the first batch at 6 a.m.). At most **one** printed-paper object (bag,
+  label, receipt, ticket, stamp, newspaper): those lead to the "default AI
+  look" in `anti-patterns.md`.
+- At least one option is what the niche's own customers would name first
+  (for a bakery, the warm counter full of bread), so the familiar answer is
+  always there.
+- **Question 2 offers feelings, not styles** ("hungry", "at home", "cared
+  for"), never "technical", "precise" or "editorial" for a business whose
+  customers come for warmth.
+- If the person picks an option that leads to one of the tells, say so in one
+  line before going on ("a receipt is a strong reference, but it pulls toward
+  mono labels and hard boxes; I'll keep it to one detail unless you want the
+  whole page built on it").
+
 Before the direction of a demo or a spec site, also pin down **who pays for
 it**: size of the business, ticket, neighborhood, clientele. The concept has
 to fit them.
