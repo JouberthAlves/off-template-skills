@@ -253,10 +253,11 @@ nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; 
 h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em; margin: 0 0 14px; }
 .lede { max-width: 56ch; color: var(--text-2); font-size: 19px; margin: 0; }
 
-/* the ten tells */
+/* the 13 tells: filled column by column, so the odd one out leaves the gap at the end */
 .tell-list {
   list-style: none; margin: 0; padding: 0; counter-reset: t;
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px;
+  grid-template-rows: repeat(7, auto); grid-auto-flow: column;
   border-top: 2px solid var(--ink);
 }
 .tell-list li {
@@ -344,6 +345,7 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
   .wall-label { transform: none; margin-right: 4px; }
   .hero { grid-template-columns: minmax(0, 1fr); }
   .tell-list, .agents, .proof-row, .vault-grid { grid-template-columns: minmax(0, 1fr); }
+  .tell-list { grid-template-rows: none; grid-auto-flow: row; }
   nav { gap: 14px; }
 }
 @media (max-width: 480px) {
