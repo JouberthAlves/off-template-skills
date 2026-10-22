@@ -27,8 +27,8 @@ Your coding agent designs the same page for everyone: a centered hero, three
 cards, a purple gradient, emoji in the copy. Super-Webdesigner is two skills
 that change how it works. Before any code, the agent asks you a brief,
 researches real sites in the niche, and shows you three directions. It waits
-for your pick. Then it builds, and checks the result against the ten tells of
-an AI-made page.
+for your pick. Then it builds, and checks the result against the 13 tells of
+an AI-made page, and that the look still fits the business.
 
 ## See the difference
 
@@ -40,11 +40,11 @@ Same prompt in both: *Build a landing page for an AI meeting-notes app.*
 
 **[Drag the line yourself →](https://super-webdesigner.vercel.app)**
 
-The left side is a **caricature**, built on purpose to show all ten tells at
-once. It is not an agent's real output. The repo has a real one:
+The left side is a **caricature**, built on purpose to show the first ten
+tells at once. It is not an agent's real output. The repo has a real one:
 [`examples/burger/normal-agent/`](examples/burger/normal-agent) is what a
-normal agent produced for a burger place, untouched. It scores 2 of 10 on the
-tells (watch it). The Steno side is fictional and went through the flow end
+normal agent produced for a burger place, untouched. It scores 3 of 13 on the
+tells (reads as AI-made). The Steno side is fictional and went through the flow end
 to end; its files are in [`examples/ai-notes/`](examples/ai-notes).
 
 ## The flow
@@ -56,13 +56,13 @@ Three stops wait for you. Everything between them the agent does on its own.
 | 1 | **Discover the tools.** Lists the skills, MCP servers and browser the agent has, and what's missing, with the install command. | |
 | 2 | **The brief.** Four questions, with options to click: a real object the palette comes from, one feeling, two influences to collide, what the page must never look like. The cost of any paid mockups comes in the same message. | **Stop: answer** |
 | 3 | **Research the niche.** Real sites, split into what visitors expect (kept) and what everyone repeats (avoided). | |
-| 4 | **Three directions.** Gray skeletons for phone and desktop, plus a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each has its logo, favicon and motion. | |
+| 4 | **Three directions.** Gray skeletons for phone and desktop, plus a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each has its logo, favicon, motion and visual language (edges, shadows, lines, texture, type), all taken from the business's real world. | |
 | 5 | **You choose.** One question: which of the three, or what to mix. | **Stop: choose** |
 | 6 | **Write it down.** The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build. | |
 | 7 | **Build.** Half the effort on the first screen, with the motion the direction asked for. | |
-| 8 | **Review.** Full-page screenshots at 1440 and 390 px, the ten tells, a design critique, forms, contrast. | **Stop: judge** |
+| 8 | **Review.** Full-page screenshots at 1440 and 390 px, the 13 tells, the fit to the business, a design critique, forms, contrast. | **Stop: judge** |
 
-## The ten tells
+## The 13 tells
 
 What a page looks like when the agent decides alone. Each one alone looks like
 a choice. Three or more together and it reads as AI-made.
@@ -70,7 +70,7 @@ a choice. Three or more together and it reads as AI-made.
 | Tell | What it looks like | |
 |---|---|---|
 | Purple-to-blue gradient | Background or buttons fading violet into blue | |
-| Serif title by default | An italic serif hero, as the agent's shortcut for "elegant" | |
+| Default type | An italic serif hero as the shortcut for "elegant", or Inter and Space Grotesk as the shortcut for "clean" | |
 | Grid or dot background | Squares or dots filling empty space | |
 | Three generic cards | Icon, title, two lines, three times in a row | |
 | Emoji in the copy | Emoji as bullets, headings or menu pictures | |
@@ -79,10 +79,20 @@ a choice. Three or more together and it reads as AI-made.
 | Thin generic icons | The default line-icon set on every card | |
 | Nothing moving | A page that is static from top to bottom | |
 | 01 / 02 / 03 | Numbering on things that have no order | |
+| Hard shadows and boxes | Offset shadows with no blur and black outlines on every block: the agent's escape from the gradient | |
+| Spec-sheet dressing | Monospace labels, lot numbers, temperatures and barcodes nobody uses | |
+| A default AI look | Cream with terracotta, black with one acid-green pop, the newspaper broadsheet, receipts and stamps | |
 
 The skill checks these on **full-page** screenshots and on the source. A
 first-screen screenshot alone can't show most of them, so the skill asks for
 the rest rather than scoring what it can't see.
+
+Avoiding the tells isn't the goal on its own. A page that runs from every
+cliché can stop looking like the business: a bakery dressed as a technical
+spec sheet. So the review also asks two questions: would a customer of the
+niche know what this is and want it, from the first screen? And do the
+edges, shadows, texture, type and motion match the feeling the business
+should give?
 
 ## Install
 
@@ -217,8 +227,10 @@ reduced motion. Vercel publishes it on every push to `main`.
   one-line prompt *"build a website for a small bakery"*, triggered the skill
   on its own, showed the tools table and stopped at the brief, with no code
   ([`trigger-test.md`](examples/trigger-test.md), one run).
-- The Ember & Bun score (2 of 10) was corrected after a fresh check found the
-  first 3 of 10 counted something that isn't one of the tells.
+- The Ember & Bun score was corrected once (a first 3 of 10 counted something
+  that isn't one of the tells, so it became 2 of 10). When the list grew to
+  13, it was re-scored on its source: its body text is set in Inter, which the
+  "default type" tell now covers, so it scores 3 of 13.
 - Not run: Lighthouse against the deployed URL, real iOS Safari, a screen
   reader pass, and an install check of the agent commands in each agent's own app (the commands were checked in empty folders).
 

@@ -18,7 +18,7 @@ even when the request already lists palette, fonts and sections.
 - **3 or 4 color swatches and the font names.** The only color on the
   skeleton.
 - **The wildcard element marked** with a label ("portrait cut out, breaking
-  past the band", "price tags in mono").
+  past the band", "slider: the view at each hour").
 - **The logo and the favicon** idea, in one line each.
 - **The motion:** what moves on this page and why (a live element in the
   hero, how sections enter, what responds to hover). One or two lines.

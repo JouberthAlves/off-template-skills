@@ -46,7 +46,7 @@ These work across projects, not inside one:
 - **The collision has to show.** If the two influences of question 3 aren't
   visible on the page, there was no collision.
 - **One wildcard element.** Something that doesn't fit perfectly, and that's
-  why it sticks in memory (a spec label in mono, a portrait breaking out of its
+  why it sticks in memory (a slider the visitor drags, a portrait breaking out of its
   band, a ribbon of color through the title).
 - **Name the vibe.** 2 to 4 words. An aesthetic without a name turns generic
   the moment you execute it.

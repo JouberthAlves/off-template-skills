@@ -1,14 +1,18 @@
 ---
 name: super-webdesigner
-description: Design direction for any website, landing page, app screen or visual piece, so the result does not look AI-generated. Runs a fixed flow before any code is written - discover the tools this agent has, ask the person a 4-question brief, research real sites in the niche, show 3 different directions (gray skeletons plus one colored mockup each) and wait for the person to choose. Then builds with purposeful motion and reviews the result against a list of AI design tells (purple-blue gradients, emoji in copy, default serif titles, 3 generic benefit cards, static pages). Use whenever someone asks to build, redesign or style a site, page, landing page, homepage or UI, even with a one-line prompt like "build a website for a burger restaurant" or "a landing page for a small bakery", and when they ask why their pages look generic.
+description: Design direction for any website, landing page, app screen or visual piece, so the result does not look AI-generated. Runs a fixed flow before any code is written - discover the tools this agent has, ask the person a 4-question brief, research real sites in the niche, show 3 different directions (gray skeletons plus one colored mockup each) and wait for the person to choose. Then builds with purposeful motion and reviews the result against a list of AI design tells (purple-blue gradients, emoji in copy, default fonts, 3 generic benefit cards, static pages, hard neo-brutalist shadows, mono spec-sheet dressing) and checks that the look still fits the business. Use whenever someone asks to build, redesign or style a site, page, landing page, homepage or UI, even with a one-line prompt like "build a website for a burger restaurant" or "a landing page for a small bakery", and when they ask why their pages look generic.
 ---
 
 # super-webdesigner
 
 Left alone, an agent makes the same page for everyone: centered hero, three
 cards, purple gradient, serif italic title, emoji in the copy, nothing moving.
-This skill exists to stop that. It does it with process, not taste: the
-aesthetic is never decided by the agent alone.
+Told to avoid that, it falls into a second default: hard offset shadows,
+black outlines, monospace labels and fake technical data, whatever the
+business is. This skill exists to stop both. It does it with process, not
+taste: the aesthetic is never decided by the agent alone, and every material
+of the page (color, type, edges, depth, texture, motion) comes from the
+business's real world.
 
 Written for **Claude Code**. Tool names below are Claude's (Artifact,
 `ToolSearch`, `AskUserQuestion`, the built-in browser). In another agent, use
@@ -26,6 +30,12 @@ stays exactly the same.
 - **Never skip a step silently.** If one can't be done, say which and why.
 - **Never pick a color hex from memory.** Color comes from a real-world
   reference (brief question 1) or from the client's real material.
+- **Never pick edges, shadows, borders or type from habit.** They come from
+  the same reference and feeling (`references/visual-language.md`). A warm
+  bakery doesn't get a cold, technical frame.
+- **It has to look like the business.** Avoiding clichés is not the goal: a
+  customer of the niche must recognize the business and want it from the
+  first screen.
 - **Every direction includes motion.** What moves, and why. A page with
   nothing moving is one of the tells; it doesn't ship.
 - **Paid tools: show the cost before generating** and get a yes. Ask it once,
@@ -84,7 +94,11 @@ One message, with everything the person needs to answer once:
    approved. Nothing gets installed without that yes.
 3. **The 4 questions** from `references/brief.md` (`AskUserQuestion` in Claude
    Code, a numbered list elsewhere). Offer 3 or 4 concrete options for each,
-   so answering is a click, not homework.
+   so answering is a click, not homework. If the client has real photos,
+   posts or a logo, ask for them here too (`references/photography.md`).
+   **Plus the motion reference and intensity** (`references/motion.md`): an
+   app, site or video whose movement the person likes, and calm / lively / a
+   show. It's not one of the 4 questions; it goes in the same message.
 4. **The cost line** for the mockups, if the image tool spends credits: "3
    mockups at N credits each: X out of Y (Z left)". A yes covers the three
    mockups of step 4.
@@ -110,30 +124,37 @@ padding the research with guesses.
 
 ### 4. Three directions
 
-Read `references/skeletons.md` and `references/mockups.md`, and
-`references/anti-patterns.md` before drawing anything.
+Read `references/skeletons.md`, `references/visual-language.md`,
+`references/mockups.md` and `references/anti-patterns.md` before drawing
+anything.
 
-- **A:** at the level of the best sites in the niche.
+- **A:** at the level of the best sites in the niche. A customer of the niche
+  recognizes it in 3 seconds; it's the safe, excellent option.
 - **B:** breaks the niche's visual convention.
 - **C:** brings in a reference from outside the niche (the brief's two
   unexpected influences).
 
 For each: a named vibe, gray skeleton of the first screen (390 px and desktop),
-section order, palette swatches and font names, the wildcard element marked,
-the logo and favicon idea, and **the motion** (what moves and why). Look at the
-skeleton page at 390 px in a real browser (`resize_window`), not only at
-desktop, and reset the size afterward.
+section order, palette swatches and font names, **the visual language** (edges,
+depth, lines, surface, type voice, motion feel, each with its reason), the
+wildcard element marked, the logo and favicon idea, and **the motion** (what
+moves and why, from the person's motion reference). The three differ in
+composition and in visual language. Look at the skeleton page at 390 px in a
+real browser (`resize_window`), not only at desktop, and reset the size
+afterward.
 
 Then **one colored mockup per direction** with the real copy: generated if
 the cost was approved at STOP 0, otherwise the three ready prompts. Don't stop
-to ask here. Run the anti-pattern list on all three before showing them.
+to ask here. Run the anti-pattern list, the 3-second test and the fit test on
+all three before showing them, and mark the one you recommend with the
+reason.
 
 ### STOP 1: the person chooses
 
 Send the skeletons (an Artifact link in Claude Code, a local file elsewhere)
-and the 3 mockups (or their prompts) together, with one question only:
-"Which of the three, or what should I mix?" Do not write code until they
-answer.
+and the 3 mockups (or their prompts) together, with your recommendation and
+its reason in one line, and one question only: "Which of the three, or what
+should I mix?" Do not write code until they answer.
 
 ### 5. Write the direction down
 
@@ -144,9 +165,14 @@ they asked for), including the motion. Save it in the project as
 ### 6. Build
 
 Now code. Spend half the effort on the first screen: it is the only part every
-visitor sees. Build the motion from the direction, not as a last coat of
-paint: a live element in the hero, entrances on scroll, hover and press
-feedback, all respecting `prefers-reduced-motion`. Before reaching for a
+visitor sees, and it opens with the most characteristic photo or moment of
+the business. Photos follow `references/photography.md` (one base scene,
+niche objects checked first, palette sampled from them). Build the visual
+language exactly as the direction wrote it: a shadow, border or radius that
+isn't in `design/direction.md` doesn't go in. Build the motion from the
+direction with `references/motion.md`, not as a last coat of paint: a live
+element in the hero, entrances on scroll, hover and press feedback,
+confirmations, all respecting `prefers-reduced-motion`. Before reaching for a
 component or an effect, check the component and animation slots in
 `references/tool-slots.md`: a ready piece from a library beats a hand-made
 one.
@@ -154,8 +180,8 @@ one.
 ### 7. Review
 
 Read `references/review.md`. Full-page screenshots at desktop and 390 px, the
-anti-pattern check on them and on the source, a design critique, the short
-test battery. Fix what fails. Score strictly against the table: anything off
+anti-pattern check on them and on the source, the 3-second test and the fit
+test, a design critique, the short test battery. Fix what fails. Score strictly against the table: anything off
 the list goes under "also found", not into the score.
 
 ### STOP 2: the person judges

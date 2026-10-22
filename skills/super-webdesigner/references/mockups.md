@@ -44,11 +44,20 @@ Exact text, in this order, nothing else:
 
 Colors: <hex + name for each, which is background, text, accent>.
 Fonts: <family and style for title and body>.
-Imagery: <what the photo shows, light, angle>.
+Materials: corners <...>, shadows <...>, borders <...>, surface/texture <...>
+(from the direction's visual language).
+Imagery: <what the photo shows, light, angle; start with the photo base block
+from photography.md>.
 
 Do not add: gradients, glow, emoji, extra text, stock icons, decorative grids
-or dots, a serif title unless named above.
+or dots, a serif title unless named above, hard offset shadows, thick black
+outlines on cards and buttons, monospace labels, barcodes, lot numbers or any
+data not listed above.
 ```
+
+Image models fill empty space with invented details (stats, labels, a
+chalkboard, a fake rating). Name every element that should be there and say
+"nothing else".
 
 ## After generating
 
@@ -56,7 +65,10 @@ or dots, a serif title unless named above.
   wrong copy: the person will judge the words too.
 - Check that the niche objects are right (the right kind of grill, chair,
   tool) before judging light and composition.
-- Run `anti-patterns.md` on each mockup.
+- Remove invented details the prompt didn't ask for (fake numbers, labels,
+  badges) or regenerate.
+- Run `anti-patterns.md` on each mockup, with the 3-second test and the fit
+  test.
 - Save as `design/mockup-a-<vibe>.png`, `-b-`, `-c-`.
 
 ## No image tool

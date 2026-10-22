@@ -14,10 +14,14 @@ even when the request already lists palette, fonts and sections.
 - **3 or 4 color swatches and the font names.** The only color on the
   skeleton.
 - **The wildcard element marked** with a label ("portrait cut out, breaking
-  past the band", "price tags in mono").
+  past the band", "slider: the view at 6h, 12h, 18h, 21h").
+- **The visual language:** the six materials of `visual-language.md` (edges,
+  depth, lines, surface, type voice, motion feel), one short line each, with
+  the reason from the reference.
 - **The logo and the favicon** idea, in one line each.
 - **The motion:** what moves on this page and why (a live element in the
-  hero, how sections enter, what responds to hover). One or two lines.
+  hero, how sections enter, what responds to hover), following the motion
+  reference the person gave at STOP 0. One or two lines.
 
 ## The three must differ in composition
 
@@ -25,12 +29,25 @@ Not just color. Change where the photo sits, the size of the title, the rhythm
 of the sections. If you can swap the palettes between two directions and they
 become the same, they're one direction.
 
+They must also differ in **visual language**. Three directions that are all
+"printed paper" (a receipt, a stamp, a newspaper) or all "technical" are one
+direction in three colors. And at least one (A) is the option a customer of
+the niche recognizes at once.
+
+## Recommend one
+
+Mark the direction you'd pick and say why in one sentence, tied to the brief
+("A: the bakery's warm photos carry it, and it keeps the bake times people
+look for"). The person still chooses; a recommendation with a reason makes
+choosing faster.
+
 ## Skeleton rules
 
 - Gray and white. The only color is the swatch strip, so the person judges
   composition without being distracted.
 - No lorem ipsum. Real title and button text, or close to it.
-- Run `anti-patterns.md` on each before showing.
+- Run `anti-patterns.md` on each before showing, with the 3-second test and
+  the fit test of `visual-language.md`.
 
 ## Where to build them
 

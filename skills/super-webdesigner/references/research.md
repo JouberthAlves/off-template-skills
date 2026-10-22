@@ -43,14 +43,22 @@ background with red and yellow, grunge textures, a script font for "since
 19xx", a dark hero photo with a burger and smoke. This becomes a niche-specific
 list of anti-patterns for this project, on top of the general ones.
 
+The keep list includes the **look visitors trust**, not only the content: if
+11 of 13 sites open with a real photo of the place in warm light, that photo
+is a keep item, not a cliché. Visitors read it as "this is a real business".
+
 Also write down: **what separates premium from generic** (usually photography
 quality, restraint in color, real typography, one strong idea) and **the
-outliers** (who breaks the rules and still works, and how).
+outliers** (who breaks the rules and still works, and how). Note the premium
+sites' **visual language** too (`visual-language.md`): their edges, depth and
+surfaces are the bar for direction A.
 
 ## 4. How each direction uses the research
 
 - **A, best of the niche:** at the level of the premium sites, keeping
-  everything in the keep list and none of the avoid list.
+  everything in the keep list and none of the avoid list. A customer of the
+  niche recognizes it in 3 seconds. It is not allowed to be odd: it's the safe,
+  excellent option the other two are measured against.
 - **B, break the convention:** take the strongest item of the avoid list and
   do the opposite on purpose.
 - **C, outside reference:** bring in a world from outside the niche (the
@@ -74,6 +82,8 @@ second-hand articles presented as if you had seen the sites.
 
 ## Rules
 
+- Open the sites in a browser. A report or an article about "trends in the
+  niche" leads to editorial directions nobody in the niche buys.
 - Extract patterns, never copy images, copy or logos from another site.
 - No search or browser available at all: ask the person for 5+ links, or for
   screenshots, and analyze those.

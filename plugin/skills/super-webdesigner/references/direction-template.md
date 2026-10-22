@@ -21,20 +21,30 @@ and buttons sit, at desktop and on the phone>.
 **Palette:** `#......` background · `#......` surfaces · `#......` accent
 (the only one) · `#......` text. <Where each color came from.>
 
-**Fonts:** <title> · <body> · <labels/code, if any>.
+**Fonts:** <title> · <body> · <labels/code, if any>. <Why each, from the
+reference.>
 
-**Imagery:** <what the photos show, light, treatment; real or generated>.
+**Visual language** (`visual-language.md`, each with its reason):
+- Edges: <radius and shapes>
+- Depth: <flat / soft natural shadow / layered...>, on <which elements only>
+- Lines: <none / hairlines / ...>
+- Surface: <flat color / photo / texture>
+- Type voice: <...>
+- Motion feel: <...>
+
+**Imagery:** <what the photos show, light, treatment; real or generated; the
+photo base block if generated (`photography.md`)>.
 
 **Logo and favicon:** <what they are>.
 
-**Motion (required):** <what moves and why: the live element in the hero,
-how sections enter, hover and press feedback>. All of it off with
-`prefers-reduced-motion`.
+**Motion (required):** <the person's motion reference and intensity; what
+moves and why: the live element in the hero, how sections enter, hover and
+press feedback, confirmations>. All of it off with `prefers-reduced-motion`.
 
 **Keep list from the research:** <the items visitors expect, that must be on
 the page>.
 
-**Avoid list for this project:** the 10 general anti-patterns + <the niche
+**Avoid list for this project:** the 13 general anti-patterns + <the niche
 ones>.
 
 **Language:** <...>.

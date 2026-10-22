@@ -3,15 +3,23 @@
 Run on `desktop.png`, `mobile.png` (390×844, mobile emulation) and the page
 source.
 
-**Score: 2/10 present: watch it.** Plus 3 of the niche's own clichés.
+**Score: 3/13 present: reads as AI-made.** Plus 3 of the niche's own clichés.
 
 (Corrected on 2026-10-20: an earlier version said 3/10 by counting "generic
 social proof", which is not one of the 10 tells. It now sits under "also
 found". A fresh run on `desktop.png` alone scored 0/10, because the emoji menu
 and the section order are below the fold; see `../../clean-room-test.md`.)
 
+(Re-scored on 2026-10-22, when the list grew from 10 to 13 tells and "serif
+title by default" became "default type": the body text is set in Inter, so
+that tell is now present. The three new tells (hard shadows, spec-sheet
+dressing, a default AI look) are absent.)
+
 ## Present
 
+- **Default type:** the body text is Inter, loaded with no reason from the
+  brand (`--font-body` in `styles.css`). Fix: a body face with the same
+  warmth as the Bricolage titles, or Bricolage's text sizes throughout.
 - **Emoji in the copy:** every one of the 12 menu items uses an emoji as its
   picture (burger, fire, chili, bacon, mushroom...). Fix: real photos of each
   item, or a single drawn icon set for the four categories.
@@ -37,9 +45,9 @@ and the section order are below the fold; see `../../clean-room-test.md`.)
 
 ## Absent
 
-Purple-blue gradient, default serif title (it uses Bricolage Grotesque), grid
-background, glow everywhere, thin generic icons, static page (it has motion),
-fake 01/02/03 numbering.
+Purple-blue gradient, grid background, glow everywhere, thin generic icons,
+static page (it has motion), fake 01/02/03 numbering, hard shadows and boxes
+(soft header shadow only), spec-sheet dressing, a default AI look.
 
 ## Fair to say
 

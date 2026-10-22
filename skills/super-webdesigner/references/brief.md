@@ -43,11 +43,40 @@ These work across projects, not inside one:
 - **The collision has to show.** If the two influences of question 3 aren't
   visible on the page, there was no collision.
 - **One wildcard element.** Something that doesn't fit perfectly, and that's
-  why it sticks in memory (a spec label in mono, a portrait breaking out of its
-  band, a ribbon of color through the title).
+  why it sticks in memory (a slider that shows the view from the apartment at
+  each hour, a portrait breaking out of its band, a signature that writes
+  itself, the dish of the day that changes with the weekday). The strongest
+  wildcards are something the visitor does, not something they look at.
 - **Name the vibe.** 2 to 4 words. An aesthetic without a name turns generic
   the moment you execute it.
-- **Run the anti-patterns** (`anti-patterns.md`) before closing a direction.
+- **The materials follow the feeling.** Edges, depth, lines, surface, type and
+  motion come from the same object and feeling as the palette
+  (`visual-language.md`). A warm business doesn't get a cold, technical frame
+  by accident.
+- **Run the anti-patterns** (`anti-patterns.md`) before closing a direction,
+  including the 3-second test and the fit test. Avoiding every cliché is not
+  the goal: a page that no longer looks like the business has failed too.
+
+## Patterns that worked
+
+What people praised in real projects. Repeat the pattern, not the idea.
+
+- **Make the number-one argument touchable.** Find what sells the product most
+  and let the visitor manipulate it in the hero (a time-of-day slider over the
+  view from an apartment), instead of only showing it.
+- **Take the identity from the business's physical objects** (the order pad,
+  the tablecloth, the plates) and lock one base scene for every photo, so the
+  whole page feels like one place (`photography.md`).
+- **Start from the client's own material.** When the client already posts with
+  an identity, take palette, type and tone from the posts and bring the most
+  recognizable element to the first screen.
+- **The layout idea comes from the product's own metaphor** (a shop window
+  for a component library), not from a pattern of the category.
+- **A portrait cut out**, resting on a color band, never in a rounded card.
+- **One accent, on the main action.** Sections alternate their background
+  (light, dark, color) to give the page rhythm.
+- **Real names.** No invented nicknames for products, services or people;
+  creativity goes into the form, not into renaming things.
 
 ## The equation behind every decision
 

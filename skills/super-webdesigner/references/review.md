@@ -13,24 +13,42 @@ list, the section order) sit below the fold. Run `anti-patterns.md` plus the
 niche list on them and on the source. Three or more present: back to the
 brief.
 
-## 1b. Motion
+In the source, count the cheap signs: how many `box-shadow` with no blur, how
+many borders, how many elements in a monospace face, how many numbers on the
+page the visitor doesn't use. A dozen hard shadows is a style the direction
+never chose.
 
-Scroll the page and use it. Is the live element in the hero there? Do
-sections enter, do buttons and cards respond? Is the direction's motion all
-built? With reduced motion on, does everything still show up? A page where
-nothing moves fails this step.
+## 1b. Does it look like the business?
 
-## 1c. Score honestly
+- **3-second test:** first screen only, at 390 px. Would a customer of this
+  niche know what the business is, and want it?
+- **Fit test:** read the direction's visual language next to the page. Are the
+  edges, shadows, lines, surfaces, type and motion the ones the direction
+  wrote, and do they match the feeling? Do the main photo and the frame
+  around it tell the same story?
+- **Keep list:** is everything visitors expect on the page?
 
-Score only the 10 tells in `anti-patterns.md` (plus the niche list, scored
+Any of the three failing goes back to the direction before polishing details.
+
+## 1c. Motion
+
+Scroll the page and use it (`motion.md`, "Check"). Is the live element in the
+hero there? Do sections enter, do buttons and cards respond, do actions
+confirm? Is the direction's motion all built? With reduced motion on, does
+everything still show up? A page where nothing moves fails this step.
+
+## 1d. Score honestly
+
+Score only the 13 tells in `anti-patterns.md` (plus the niche list, scored
 separately). Anything else you notice goes under "also found", never into
 the number. Show the screenshots to the person at STOP 2: your score is
 input, not the verdict.
 
 ## 2. Design critique
 
-Claude Code: run `design:design-critique` on the screenshots and fix what it
-points out. Other agents: any critique skill they have, or go through
+Claude Code: run `design:design-critique` on the screenshots, giving it the
+direction's feeling and visual language as context, and fix what it points
+out. Other agents: any critique skill they have, or go through
 hierarchy, spacing rhythm, contrast and consistency by hand. List in the
 delivery what you chose not to fix and why.
 
@@ -79,8 +97,7 @@ layout.
 
 ## 8. Animated components
 
-Position on a wrapper, animation on the inner element. Text color inherited.
-Hidden items with `display:none` (or `autoAlpha`), not just opacity. Loops
-built with `set` / `fromTo` and explicit values (`from` inside a repeating
-timeline loses state on the second pass). Compare the 1st and 3rd loop. Check
-on a dark background and with reduced motion.
+Run "Building it right" in `motion.md` on every animated part: wrapper and
+inner element, inherited text color, hidden items, loops compared on the 1st
+and 3rd pass, clip-path reveals, observers. Check on a dark background and
+with reduced motion.
