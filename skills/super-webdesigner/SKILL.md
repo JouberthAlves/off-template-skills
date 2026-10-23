@@ -181,7 +181,8 @@ one.
 
 Read `references/review.md`. Full-page screenshots at desktop and 390 px, the
 anti-pattern check on them and on the source, the 3-second test and the fit
-test, a design critique, the short test battery. Fix what fails. Score strictly against the table: anything off
+test, a design critique, the detector on the served page if the person
+said yes to it in step 1, the short test battery. Fix what fails. Score strictly against the table: anything off
 the list goes under "also found", not into the score.
 
 ### STOP 2: the person judges

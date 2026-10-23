@@ -44,6 +44,35 @@ separately). Anything else you notice goes under "also found", never into
 the number. Show the screenshots to the person at STOP 2: your score is
 input, not the verdict.
 
+## 1e. Detector on the rendered page
+
+If the person said yes to it in the tool discovery, run Impeccable's deterministic
+detector (Apache-2.0, no LLM, no API key) on the **served** page, at both
+widths:
+
+```bash
+DO_NOT_TRACK=1 npx impeccable detect --json --viewport 1440x900 http://localhost:PORT/
+DO_NOT_TRACK=1 npx impeccable detect --json --viewport 390x844 http://localhost:PORT/
+```
+
+- **Always the URL, never the file.** On the HTML file it can't place absolute
+  layers or resolve `clamp()`, and more than half of its findings were false
+  (text on a light card read as text on the black frame under it).
+- **Only `detect`.** Not `install`, `init` or its hooks: they bring its own
+  brief and direction flow, which clash with this one.
+- **It needs Chrome or Chromium.** If none is found, point
+  `IMPECCABLE_BROWSER` at one. Running as root in a container, it needs a
+  small wrapper that adds `--no-sandbox`.
+- **A script error from a blocked CDN** is the environment, not the page:
+  serve the library locally and scan again before reporting it.
+- **Fix the mechanical findings** (contrast, undersized text, a single word
+  on a paragraph's last line). **Taste findings** (a kicker above a heading,
+  palette, type) only count when they are one of the 13 tells or the
+  direction didn't choose them. They go under "also found", never into the
+  score.
+- It doesn't replace the screenshots: it misses overlaps and anything the
+  direction got wrong. Report what it found and what you fixed.
+
 ## 2. Design critique
 
 Claude Code: run `design:design-critique` on the screenshots, giving it the
