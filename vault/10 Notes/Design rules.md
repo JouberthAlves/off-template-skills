@@ -20,6 +20,7 @@ lives in [[Mistakes]] and [[Wins]].
 - Before the direction of a demo, define who pays for the site (size, ticket, neighborhood, clientele) and make the concept fit them.
 - A report the person attaches applies in full, including the visual part, not only the list of sections.
 - Before delivering, run [[AI design patterns to avoid]] on the screenshot of the finished page and say which items still show up.
+- Before delivering, after a yes in the tool discovery: Impeccable's detector on the served page (never the file) at desktop and 390 px; fix contrast, text size and orphans; its taste findings only count if they are one of the 13 tells ([[Tool usage]]).
 
 ## Visual and media
 

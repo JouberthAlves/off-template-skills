@@ -60,4 +60,28 @@ Up-to-date library docs inside the agent. Use before claiming how a library
 works and when looking for shadcn or React Bits components. Check the free
 tier's monthly call limit and prefer one good query over several loose ones.
 
+## Impeccable detector
+
+Mechanical design check (contrast, text size, a lone word on a paragraph's
+last line), deterministic: no LLM, no API key. Apache-2.0. Downloads its
+engine on the first run, so ask before using it.
+
+- **Only `detect`:** `DO_NOT_TRACK=1 npx impeccable detect --json --viewport 390x844 <url>`
+  (and `1440x900`). Never `install`, `init` or its hooks: they bring their own
+  brief and direction flow.
+- **Scan the served page, never the HTML file.** On the file it can't place
+  absolute layers or resolve `clamp()`: in the first test, 12 of its 22
+  findings were false.
+- Needs Chrome or Chromium; point `IMPECCABLE_BROWSER` at one. As root in a
+  container, wrap it with `--no-sandbox`.
+- A script error from a blocked CDN is the environment, not the page: serve
+  the library locally and scan again.
+- Taste findings (a kicker above a heading, palette, type) go under "also
+  found", never into the score.
+- It misses overlaps and anything about the direction: it doesn't replace the
+  screenshots.
+
+Full rules: `skills/super-webdesigner/references/review.md`, step 1e, in the
+super-webdesigner repo.
+
 See also: [[Capabilities]] · [[Agent rules]]
