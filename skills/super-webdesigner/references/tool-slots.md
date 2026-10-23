@@ -22,6 +22,7 @@ the README again before improvising: tools change.
 | **Video from HTML** (page scrolling, story, title card) | **HyperFrames** CLI: `npx hyperframes init my-video` (needs Node 22+ and FFmpeg); rules below | The same CLI in any terminal: `npx hyperframes init my-video` | Screen recording |
 | **Screenshots and tests** | Built-in browser (`resize_window` for 390 px, `read_console_messages`) | Playwright MCP or a Playwright script | Ask the person for screenshots |
 | **Design critique** | `design:design-critique` from Anthropic's **design** plugin | Run `review.md` by hand; any critique skill the agent has | Run `review.md` by hand, carefully |
+| **Mechanical design check** | Impeccable's detector on the served page: `npx impeccable detect --viewport 390x844 <url>` (rules in `review.md`, 1e) | The same CLI in any terminal | Contrast and text-size checks from `review.md` by hand |
 
 ## Skills in agents that don't load skills
 
@@ -54,6 +55,7 @@ One line each; install only after a yes.
 | **GSAP skills** (site animation) | `npx skills add https://github.com/greensock/gsap-skills` | |
 | **HyperFrames** (video of the page) | `npx hyperframes init my-video` | Only if the person wants a video; needs Node 22+ and FFmpeg |
 | **Context7** (library docs) | `npx ctx7 setup --claude` | |
+| **Impeccable detector** (contrast, text size, orphans on the rendered page) | Nothing to install: `npx impeccable detect <url>` runs it | Only the `detect` command; not `install`, `init` or its hooks. Needs Chrome or Chromium |
 | **shadcn** (components) | `npx shadcn@latest mcp init` | |
 | **An image tool** (not a plugin) | Connect ChatGPT's image generation, Magnific or a GPT-image MCP in the person's own client | Listed first: it decides the mockups' quality |
 

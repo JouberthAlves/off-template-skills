@@ -67,7 +67,11 @@ Component libraries         Context7                       ok
 Animation                   gsap-skills                    missing -> options below
 Screenshots and tests       built-in browser               ok
 Design critique             design:design-critique         ok
+Mechanical design check     impeccable detect (npx)        ask -> review.md 1e
 ```
+
+The detector downloads Impeccable's engine on its first run, so it is an
+`ask`, not an `ok`: run it in the review only after a yes here.
 
 For each `missing`: 1 or 2 options from `tool-slots.md`, the exact install
 command, and the question "install it, or should I use the manual fallback?".

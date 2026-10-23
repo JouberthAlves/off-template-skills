@@ -146,6 +146,7 @@ manual fallback for each, is in
 | Components and docs | shadcn, React Bits, Context7 | The same, through MCP |
 | Animation | GSAP skills | GSAP skills, or the GSAP docs |
 | Design critique | Anthropic's design plugin | The review checklist |
+| Mechanical check (contrast, text size) | Impeccable's detector on the served page (`npx impeccable detect`) | The same CLI in any terminal |
 | Video of the page (on a yes) | HyperFrames CLI (`npx hyperframes`), needs Node 22+ and FFmpeg | The same CLI in any terminal |
 
 Paid tools get one rule: the agent says what it will cost, and waits for a yes.
@@ -167,6 +168,8 @@ before installing anything.
   Needs Node 22 or newer and FFmpeg.
 - **Context7** (up-to-date library docs): `npx ctx7 setup --claude`
 - **shadcn** (components): `npx shadcn@latest mcp init`
+- **Impeccable's detector** (contrast, text size, orphans on the rendered
+  page): `npx impeccable detect <url>`. Only that command; the review says why.
 
 
 ## Recommended: a vault

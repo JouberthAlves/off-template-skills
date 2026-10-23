@@ -79,7 +79,7 @@
   --ink: #111111;
   --pen: #E5231B;
   --paper: #EDEAE3;
-  --caption: #8A857C;
+  --caption: #7B766E;
   --desk: #D9D4C9;
   --text-2: #4a4740;
   --rule: #cfcac0;
@@ -217,7 +217,7 @@ nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 4px; 
 .tag { position: absolute; top: 14px; z-index: 2; font: 600 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 8px 10px; color: #fff; background: rgba(17, 17, 17, .86); }
 .tag-bad { left: 14px; }
 .tag-good { right: 14px; background: var(--pen); }
-.compare.phone .tag { font-size: 10px; padding: 6px 7px; top: 10px; }
+.compare.phone .tag { font-size: 11px; padding: 6px 7px; top: 10px; }
 .compare.phone .tag-bad { left: 10px; }
 .compare.phone .cari { display: none; }
 .compare.phone .tag-good { right: 10px; }
@@ -357,3 +357,6 @@ h2 { font: 800 clamp(40px, 5.6vw, 80px)/.95 var(--sans); letter-spacing: -.035em
 }
 
 .install-note { margin: 26px 0 0; font: 500 13px/1.5 var(--mono); color: var(--caption); }
+
+/* no single word left alone on the last line of a paragraph */
+p, li, td, figcaption { text-wrap: pretty; }
