@@ -59,7 +59,7 @@ the command and inside the agent window. Both OFL, self-hosted.
 - Type voice: quiet, patient, then the reveal.
 - Motion feel: slow develop, a living beam (lively, Stripe as the reference).
 
-**Imagery:** the developing tray is a photograph generated in Magnific (`design/tray-2.webp`, 360 credits for two takes; take 1 kept beside it), its plain edges masked into the page; the print stays HTML on top. Elsewhere, the real pages and files from `examples/`: skeletons, mockups,
+**Imagery:** no tray (the CSS one read as a grey card, the Magnific photo did not match): the print sits behind the agent window, in depth, dimmed and slightly out of focus, and comes into focus while a direction develops, on hover and on keyboard focus. Elsewhere, the real pages and files from `examples/`: skeletons, mockups,
 final pages and the other agent's page for the same prompt. The pages the
 image model invented in the mockups never ship.
 

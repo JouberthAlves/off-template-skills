@@ -161,6 +161,9 @@
     busy = true;
     root.classList.add('ready');
     var d = DIRS[key];
+    // The proof behind the window comes into focus while it develops, then settles back.
+    var stageEl = document.querySelector('.stage');
+    if (stageEl) { clearTimeout(stageEl._unfocus); stageEl.classList.add('focus'); }
     // The buttons stay enabled (busy ignores clicks), so focus never drops and is never moved:
     // moving focus back scrolled the page up to the hero after a visitor had scrolled away.
     picks.forEach(function (b) { b.setAttribute('aria-disabled', 'true'); });
@@ -181,6 +184,7 @@
       setPressed(key);
       picks.forEach(function (b) { b.removeAttribute('aria-disabled'); });
       busy = false;
+      if (stageEl) stageEl._unfocus = setTimeout(function () { stageEl.classList.remove('focus'); }, 2600);
     });
   }
 

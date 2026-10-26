@@ -278,25 +278,25 @@ h1 br.d { display: none; }
   .stage { display: flex; }
 }
 
+/* The proof sits behind the agent window, in depth: dimmed and a little out of focus at rest,
+   sharp while a direction develops, on hover and on keyboard focus. */
 .tray {
   position: relative;
-  overflow: hidden;
-  aspect-ratio: 3 / 2;
-  /* A photographed developing tray (Magnific); its plain edges fade into the page so the pillar never shows a box behind it */
-  background: url("img/tray.webp") center / cover no-repeat;
-  -webkit-mask-image: linear-gradient(to right, transparent, var(--mask-on) 7%, var(--mask-on) 93%, transparent), linear-gradient(transparent, var(--mask-on) 9%, var(--mask-on) 91%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent, var(--mask-on) 7%, var(--mask-on) 93%, transparent), linear-gradient(transparent, var(--mask-on) 9%, var(--mask-on) 91%, transparent);
-  mask-composite: intersect;
+  z-index: 0;
+  align-self: flex-end;
+  width: 92%;
+  margin-top: -40px;
+  aspect-ratio: 1600 / 1058;
+  transform: scale(.97);
+  transform-origin: 70% 30%;
+  filter: blur(2px) brightness(.58) saturate(.85);
+  transition: filter 600ms var(--ease), transform 600ms var(--ease);
 }
-.liquid {
-  position: absolute;
-  inset: -20%;
-  /* a faint sheen drifting over the photographed liquid */
-  background: radial-gradient(circle at 35% 30%, var(--head), transparent 60%);
-  opacity: .03;
-  animation: sheen 20s ease-in-out infinite alternate;
+.stage.focus .tray, .stage:hover .tray, .stage:focus-within .tray { filter: none; transform: none; }
+@media (min-width: 960px) {
+  .tray { width: 86%; margin-top: -200px; }
 }
+.liquid { display: none; }
 @keyframes sheen {
   from { transform: translate(-6%, -4%) scale(1); }
   to { transform: translate(8%, 6%) scale(1.15); }
@@ -304,12 +304,9 @@ h1 br.d { display: none; }
 
 .print {
   position: absolute;
-  top: 49.5%;
-  left: 50%;
-  width: 50%;
-  aspect-ratio: 1600 / 1090;
+  inset: 0;
   border: 4px solid var(--print);
-  transform: translate(-50%, -50%) rotate(-1.2deg);
+  transform: rotate(-1.2deg);
   background: var(--tray);
   box-shadow: 0 14px 26px -12px var(--shadow);
 }
@@ -342,6 +339,7 @@ h1 br.d { display: none; }
   max-width: none;
   color: var(--text);
   order: 2;
+  align-self: flex-end;
 }
 .caption .on { color: var(--head); }
 .caption span { transition: color .2s; }
@@ -376,8 +374,8 @@ h1 br.d { display: none; }
   .agent {
     position: relative;
     align-self: flex-start;
-    margin-bottom: -64px;
-    width: min(22rem, 62%);
+    margin-bottom: 0;
+    width: min(24rem, 66%);
   }
 }
 .agent > * { position: relative; z-index: 1; }
@@ -464,6 +462,7 @@ h1 br.d { display: none; }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
+  .tray { transition: none; }
   .js .ln, .js .lede, .js .install { animation: none; }
   .liquid { animation: none; }
   .tab::after, .tab, .copy-btn, .pick, .caption span, .nav-links a { transition: none; }
