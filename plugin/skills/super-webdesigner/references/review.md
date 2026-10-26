@@ -4,6 +4,42 @@ Test the worst case, not the happy path. A field that works with "John" and
 breaks with 600 pasted characters was not tested. Run everything that applies,
 then report what passed, what failed and what you couldn't test.
 
+## 0. The lint, then the fresh eyes
+
+**The lint first.** `node <skill-dir>/scripts/sloplint.mjs <page> --render
+--shots design/shots` (`lint.md`). Fix every FAIL and run it again until there
+are none; fix each WARN or write its reason under Waivers in
+`design/direction.md`. The `--shots` folder holds the full-page captures at
+five widths for the steps below.
+
+**Then a reviewer who never saw this conversation.** You wrote the page, so
+you see what you meant, not what is there. Hand the review to a fresh context
+twice: on the hero alone (step 6 of the flow) and on the finished page.
+
+- **Claude Code:** the `Agent` tool, a general-purpose subagent. Give it only
+  the screenshots (390 and 1440 px), `design/direction.md`,
+  `references/anti-patterns.md` and the brief's answers. Never the
+  conversation, never your opinion of the page.
+- **Other agents:** a new session or a sub-agent with the same four inputs.
+  None available: say so, and do the review yourself after the screenshots,
+  reading the direction first.
+
+The prompt, as is:
+
+> You are reviewing a web page someone else built. Inputs: the screenshots,
+> the direction it had to follow, the list of AI design tells and the brief.
+> Answer in this order: 1. the first word is one of `ship`, `fix`,
+> `rebuild`. 2. Would a customer of this business know what it is and want it
+> from the first screen alone? 3. Every place where the page leaves the
+> direction (palette, faces, edges, shadows, motion, sections). 4. Every tell
+> from the list you can see, with where. 5. The three changes that would
+> improve it most, concrete. Do not praise; do not invent problems to fill a
+> field.
+
+`rebuild` sends the part back to the direction; `fix` means fix the list and
+take the screenshots again; `ship` goes on. Say the reviewer's verdict to the
+person at STOP 2, next to yours.
+
 ## 1. Anti-patterns on the screenshot
 
 Screenshot the **whole page**, not just the first screen, at desktop

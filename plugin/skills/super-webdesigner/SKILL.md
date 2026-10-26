@@ -1,6 +1,7 @@
 ---
 name: super-webdesigner
-description: Design direction for any website, landing page, app screen or visual piece, so the result does not look AI-generated. Runs a fixed flow before any code is written - discover the tools this agent has, ask the person a 4-question brief, research real sites in the niche, show 3 different directions (gray skeletons plus one colored mockup each) and wait for the person to choose. Then builds with purposeful motion and reviews the result against a list of AI design tells (purple-blue gradients, emoji in copy, default fonts, 3 generic benefit cards, static pages, hard neo-brutalist shadows, mono spec-sheet dressing) and checks that the look still fits the business. Use whenever someone asks to build, redesign or style a site, page, landing page, homepage or UI, even with a one-line prompt like "build a website for a burger restaurant" or "a landing page for a small bakery", and when they ask why their pages look generic.
+description: Design direction for any website, landing page, app screen or visual piece, so the result does not look AI-generated. Runs a fixed flow before any code is written - discover the tools this agent has, ask the person a 4-question brief, research real sites in the niche, show 3 different directions (gray skeletons plus one colored mockup each) and wait for the person to choose. Then builds with purposeful motion and reviews the result against a list of AI design tells (purple-blue gradients, emoji in copy, default fonts, 3 generic benefit cards, static pages, hard neo-brutalist shadows, mono spec-sheet dressing) and checks that the look still fits the business. Use whenever someone asks to build, redesign or style a site, page, landing page, homepage or UI, even with a one-line prompt like "build a website for a burger restaurant" or "a landing page for a small bakery", and when they ask why their pages look generic. Also runs short commands on a page that already exists (polish, bolder, quieter, distill, harden, clarify, adapt, lint).
+argument-hint: "[polish | bolder | quieter | distill | harden | clarify | adapt | lint] [target]"
 ---
 
 # super-webdesigner
@@ -38,6 +39,13 @@ stays exactly the same.
   first screen.
 - **Every direction includes motion.** What moves, and why. A page with
   nothing moving is one of the tells; it doesn't ship.
+- **The code floor never ships broken.** A FAIL from `scripts/sloplint.mjs`
+  (`references/lint.md`) stops the delivery whatever the score: colours and
+  faces outside tokens, `transition: all`, a sideways scroll, an uncapped
+  container, a card in a card, no focus, no reduced motion.
+- **Invented facts are never allowed.** A number, quote, rating, logo or
+  address the person did not give is absent from the page. A picture they did
+  not give is a stand-in, marked as one.
 - **Paid tools: show the cost before generating** and get a yes. Ask it once,
   in the brief message (step 2), not as an extra stop later.
 - **Ask before installing anything** on the person's machine.
@@ -45,9 +53,33 @@ stays exactly the same.
   person judges the result at STOP 2. Never publish a score or a quality
   claim about the result before they've seen it.
 
+## The mode of the page
+
+Say the mode at STOP 0, from the surface asked for, not from the business (a
+tool's landing page is Persuade; its settings screen is Operate). The flow is
+the same; the ambition changes:
+
+- **Persuade** (landing page, business site, campaign, pricing): the visitor
+  decides and acts. Full point of view; the three directions differ in look
+  and composition.
+- **Operate** (app screen, dashboard, admin, settings, tool): the visitor
+  finishes a task. Precision, consistency and the real content outrank
+  expression; the patterns the visitor already knows earn their place. The
+  three directions differ in layout and states, not in brand flourish; the
+  word budget doesn't apply.
+- **Read** (docs, article, guide, changelog): the visitor understands
+  something. Structure and reading comfort first (measure 65 to 75
+  characters, clear headings); the word budget doesn't apply.
+- **Experience** (portfolio, gallery, showcase): the visitor is inside the
+  work. The work leads from the first screen and the interface steps back.
+
+An existing design asked to change only a part is a refinement, not this
+flow: keep its identity, content and behaviour, and use a short command
+(below). Run the full flow only when the person asks for a redesign.
+
 ## The flow
 
-Do the steps in order. There are three **STOP** points where you wait for
+Do the steps in order. There are four **STOP** points where you wait for
 the person; everything else you do on your own.
 
 ### 0. Look for a vault
@@ -162,9 +194,37 @@ Fill `references/direction-template.md` with the choice (and any mix or swap
 they asked for), including the motion. Save it in the project as
 `design/direction.md`. This is the contract for the build.
 
+### STOP 1b: the decisions block
+
+Before any code, send the decisions in one short block. It is the only place
+they are all said together, and the person's last chance to redirect cheaply:
+
+```markdown
+**Decisions**
+- Job: <what the visitor comes to do>, the action <where it sits>
+- Direction: <A/B/C> "<vibe>" (<palette in words>, <faces>)
+- First screen: <what carries the hero> + "<headline>" + <the action>
+- Sections: <hero> · <...> · <footer>
+- Motion: <the live element in the hero>, <the entrances>, <the intensity>
+- Material: real = <what the person gave> · stand-ins = <slots> · absent = <what will not be on the page>
+- Waivers: <none, or the gate and the reason>
+```
+
+Wait for "ok" or the corrections. Changes go into `design/direction.md`
+before the build starts.
+
 ### 6. Build
 
-Now code. Spend half the effort on the first screen: it is the only part every
+Now code. **The stamp** goes on line 1 of the main CSS (`references/lint.md`),
+and every colour and face is a token in `:root` from the first line written.
+
+**The hero alone, first.** Build the nav and the first screen and nothing
+below them. Run `scripts/sloplint.mjs --render` on it, take the first screen at
+390 and 1440 px, and hand it to a **fresh-eyes reviewer** (`references/review.md`,
+section 0): a reviewer that never saw this conversation judges it against
+the direction. Fix what it says, then build the rest.
+
+Spend half the effort on the first screen: it is the only part every
 visitor sees, and it opens with the most characteristic photo or moment of
 the business. Photos follow `references/photography.md` (one base scene,
 niche objects checked first, palette sampled from them). Build the visual
@@ -175,14 +235,17 @@ element in the hero, entrances on scroll, hover and press feedback,
 confirmations, all respecting `prefers-reduced-motion`. Before reaching for a
 component or an effect, check the component and animation slots in
 `references/tool-slots.md`: a ready piece from a library beats a hand-made
-one.
+one. Keep to the budget in `references/lint.md`: about 80 words on the first
+screen, 450 on the page, six to nine sections.
 
 ### 7. Review
 
-Read `references/review.md`. Full-page screenshots at desktop and 390 px, the
-anti-pattern check on them and on the source, the 3-second test and the fit
-test, a design critique, the detector on the served page if the person
-said yes to it in step 1, the short test battery. Fix what fails. Score strictly against the table: anything off
+Read `references/review.md`. The lint first (`scripts/sloplint.mjs --render`):
+every FAIL is fixed before anything else. Then full-page screenshots at
+desktop and 390 px, the anti-pattern check on them and on the source, the
+3-second test and the fit test, a design critique, the detector on the served
+page if the person said yes to it in step 1, the fresh-eyes review of the whole
+page, the short test battery. Fix what fails. Score strictly against the table: anything off
 the list goes under "also found", not into the score.
 
 ### STOP 2: the person judges
@@ -200,6 +263,29 @@ to an MP4 and needs Node 22 or newer and FFmpeg. Only do it on a yes.
 Add an entry following `references/style-log.md`: to `20 Projects/` in the
 vault if there is one, otherwise to `design/style-log.md` in the project.
 Do it when the first version is approved, not at the end of the project.
+
+## Short commands, after the page exists
+
+Small jobs on a page that already exists, without the brief, the research or
+the three directions. Each one reads `design/direction.md` when there is one
+(the look it must keep), changes only its own part, runs the lint, and shows
+before and after. Called as `/super-webdesigner <command> [target]`, or when
+the request clearly names one ("just fix the texts", "make it calmer"). The
+full method of each is in `references/commands.md`.
+
+| Command | What it does |
+|---|---|
+| `polish` | Final pass on details: spacing, alignment, states, browser defaults. The design stays |
+| `bolder` | More presence: scale, contrast, a stronger hero. Same direction, louder |
+| `quieter` | Calms what shouts: fewer effects, less colour, slower motion |
+| `distill` | Cuts what doesn't earn its place: sections, words, decorations |
+| `harden` | Forms, errors, empty and loading states, long text, slow network |
+| `clarify` | Only the copy of controls and messages: buttons, labels, errors |
+| `adapt` | Only phone and tablet: layout, touch targets, type sizes |
+| `lint` | Runs `scripts/sloplint.mjs --render` and reports, changes nothing |
+
+Without a command and with a page that exists, ask once which one fits, or
+whether the person wants the full redesign.
 
 ## Answer format during the flow
 

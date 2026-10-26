@@ -49,7 +49,7 @@ to end; its files are in [`examples/ai-notes/`](examples/ai-notes).
 
 ## The flow
 
-Three stops wait for you. Everything between them the agent does on its own.
+Four stops wait for you. Everything between them the agent does on its own.
 
 | # | Step | You |
 |---|---|---|
@@ -58,9 +58,32 @@ Three stops wait for you. Everything between them the agent does on its own.
 | 3 | **Research the niche.** Real sites, split into what visitors expect (kept) and what everyone repeats (avoided). | |
 | 4 | **Three directions.** Gray skeletons for phone and desktop, plus a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each has its logo, favicon, motion and visual language (edges, shadows, lines, texture, type), all taken from the business's real world. | |
 | 5 | **You choose.** One question: which of the three, or what to mix. | **Stop: choose** |
-| 6 | **Write it down.** The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build. | |
-| 7 | **Build.** Half the effort on the first screen, with the motion the direction asked for. | |
-| 8 | **Review.** Full-page screenshots at 1440 and 390 px, the 13 tells, the fit to the business, a design critique, forms, contrast. | **Stop: judge** |
+| 6 | **Write it down.** The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build. Then one short block with every decision, your last cheap chance to redirect. | **Stop: ok** |
+| 7 | **Build.** The first screen alone first, checked by the lint and by a reviewer that never saw the conversation; then the rest, with the motion the direction asked for. | |
+| 8 | **Review.** The lint at five widths, full-page screenshots, the 13 tells, the fit to the business, a fresh-eyes review, a design critique, forms, contrast. | **Stop: judge** |
+
+### After the page exists
+
+Short commands for one job each, without the whole flow: `polish`, `bolder`,
+`quieter`, `distill`, `harden`, `clarify`, `adapt` and `lint`, as
+`/super-webdesigner polish`. They keep the direction and show before and
+after.
+
+### The lint
+
+`skills/super-webdesigner/scripts/sloplint.mjs` checks the code floor (colours
+and fonts only through tokens, no `transition: all`, no sideways scroll at
+375 to 1920 px, a capped container, no card in a card, focus, reduced motion),
+the tells a rule can see, and the word budget. It uses the Chrome already on
+the machine, no install:
+
+```
+node skills/super-webdesigner/scripts/sloplint.mjs ./index.html --render
+```
+
+It sits next to Impeccable's detector and the screenshots, not in their place.
+As a Claude Code plugin it also runs on every page file the agent saves, and
+hands the failures back before it moves on.
 
 ## The 13 tells
 
@@ -204,6 +227,8 @@ design/                     the showcase page's own brief and direction
 site/                       this page, with the drag comparison and the motion
 .claude-plugin/             the Claude Code marketplace that lists the plugin
 plugin/                     the Claude Code plugin: both skills (copied by scripts/sync-plugin.sh)
+skills/super-webdesigner/scripts/  sloplint.mjs (the lint) and lint-hook.mjs (the edit-time check)
+plugin/hooks/hooks.json     runs the lint hook after every page edit in Claude Code
 scripts/sync-plugin.sh      copies skills/ into plugin/ after you change them
 ```
 

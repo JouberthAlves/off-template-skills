@@ -52,6 +52,13 @@ ones>.
 **Licenses to respect:** <any component or asset with conditions, and the
 credit it needs>.
 
+**Waivers:** <none, or one line each: the lint WARN or tell kept on purpose,
+and the reason about this page (not "I like it"). Example: `words-page`: the
+menu has 40 dishes and visitors come to read it. Past three, the look is a
+house style and belongs in the direction above, not here.>
+
+**Stamp:** <the line 1 of the CSS, `references/lint.md`>.
+
 Reference mockups: `design/mockup-<x>.png` (layout), `design/mockup-<y>.png`
 (<what is borrowed from it>).
 ```
