@@ -899,3 +899,11 @@ h1 br.d { display: none; }
 .logo { min-height: 44px; align-items: center; }
 .foot a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 .tab { min-width: 44px; }
+
+/* The verdict numbers in look C glow like the pillar: red for the failures, green for the fewer ones. */
+.sec[data-look="c"] .pic .num { color: var(--red); text-shadow: 0 0 .22em var(--red), 0 0 .6em var(--red); }
+.sec[data-look="c"] .pic-2 .num { color: var(--green); text-shadow: 0 0 .22em var(--green), 0 0 .6em var(--green); }
+.sec[data-look="c"] .steps .n { text-shadow: 0 0 .22em var(--red), 0 0 .6em var(--red); }
+
+/* A picked option's focus ring sits inside its row, not on the window's edge. */
+.pick:focus-visible { outline-offset: -3px; }

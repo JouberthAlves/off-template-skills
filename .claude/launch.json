@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vitrine",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/JOUBER~1.MAC/AppData/Local/Temp/claude/C--Users-jouberth-macedo-Documents-jouberth-www-super-designer/2c895b33-f9e1-4fa1-bba6-ba8adaea5ef6/scratchpad/serve.js",
+        "C:/Users/jouberth.macedo/Documents/jouberth/www/super-designer/site",
+        "5174"
+      ],
+      "port": 5174
+    },
+    {
+      "name": "comsuperwebdesigner",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "C:/Users/JOUBER~1.MAC/AppData/Local/Temp/claude/C--Users-jouberth-macedo-Documents-jouberth-www-super-designer/2c895b33-f9e1-4fa1-bba6-ba8adaea5ef6/scratchpad/serve.js",
+        "C:/Users/jouberth.macedo/Documents/jouberth/test/assets/Comsuperwebdesigner",
+        "5173"
+      ],
+      "port": 5173
+    }
+  ]
+}
