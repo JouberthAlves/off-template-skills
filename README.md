@@ -244,7 +244,13 @@ scripts/sync-plugin.sh      copies skills/ into plugin/ after you change them
 The site is static HTML, CSS and JavaScript, no libraries. The pillar of light
 in the hero is one WebGL shader (`site/beam.js`), inspired by React Bits'
 Light Pillar, with no code taken. The agent window in the hero rebuilds the
-sections below in any of the three directions the skill made for this page.
+sections below in any of the three directions the skill made for this page,
+and the hero follows the choice: teal, pastel green and pastel pink light on
+the night for Editor at Night, a cream hero with coral and pastel pink light
+for The Output Leads, and the original safelight red for Darkroom Develop.
+The logo's red caret stays in every look. The developing proof sits behind
+the agent window, in depth, and comes into focus while a direction develops.
+The hero's proof is no longer a photographed tray: it is the print itself.
 Everything that moves stands still when the visitor asks for reduced motion,
 and the page is complete with scripts off. Vercel publishes it on every push
 to `main`.
@@ -257,7 +263,7 @@ to `main`.
   pick and changes. On the old page sloplint found 22 FAIL; on the new one,
   0 FAIL at 375, 768, 1280, 1440 and 1920 px in all three looks, with no
   horizontal scroll. Impeccable's detector reports one finding, the radial
-  light of the pillar on the tray, kept on purpose. Two fresh-eyes reviews
+  light of the pillar behind the proof, kept on purpose. Two fresh-eyes reviews
   (subagents that never saw the conversation) ran on the hero and on the full
   page, and their fixes are in.
 - Not run on the second version: Lighthouse, a real iOS device, a screen
