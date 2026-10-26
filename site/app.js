@@ -132,19 +132,6 @@
     });
   }
 
-  function typeText(el, text) {
-    return new Promise(function (resolve) {
-      if (reduce.matches) { el.textContent = text; resolve(); return; }
-      var i = 0;
-      el.textContent = '';
-      (function step() {
-        i += 1;
-        el.textContent = text.slice(0, i);
-        if (i < text.length) setTimeout(step, 28); else resolve();
-      })();
-    });
-  }
-
   /* Faces of looks A and B. Chrome only fetches a face that is used, so this starts at parse,
      not on the click. The click waits only for faces that are still missing. */
   var FACES = ['800 1em "Mona Sans"', '400 1em "Mona Sans"', '800 1em "Bricolage Grotesque"', '400 1em "Instrument Sans"', '600 1em "Instrument Sans"'];
@@ -169,27 +156,36 @@
     });
   }
 
+  /* Two frames so "Generating" paints before the look swap blocks the thread. */
+  function paint() {
+    return new Promise(function (resolve) {
+      requestAnimationFrame(function () { requestAnimationFrame(resolve); });
+    });
+  }
+
   function pick(key) {
     if (busy || key === current || !DIRS[key]) return;
     busy = true;
     root.classList.add('ready');
+    root.classList.add('generating');
     var d = DIRS[key];
     var hadFocus = picks.indexOf(document.activeElement) > -1;
     picks.forEach(function (b) { b.disabled = true; });
 
     setPressed(key);
-    // The sections start rebuilding as soon as the faces are in (at most 400 ms),
-    // while the print develops in the tray; the click never waits on the hero.
-    var rebuilt = facesReady().then(function () {
+    status.textContent = 'Generating…';
+    // Paint the label first. Then the faces, the print and the sections run together.
+    var painted = paint();
+    var rebuilt = painted.then(facesReady).then(function () {
       current = key;
       root.dataset.look = key;
       window.dispatchEvent(new CustomEvent('look', { detail: key }));
     });
     Promise.all([
-      typeText(status, '> Building the sections below in ' + d.name + '…'),
-      develop(key, { ripple: true }),
+      painted.then(function () { return develop(key, { ripple: true }); }),
       rebuilt
     ]).then(function () {
+      root.classList.remove('generating');
       status.textContent = 'Done. The page below is now ' + d.name + '.';
       setStage('page');
       setPressed(key);
