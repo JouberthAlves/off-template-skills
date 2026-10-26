@@ -539,7 +539,7 @@ h1 br.d { display: none; }
   vertical-align: -0.12em;
   background: var(--s-accent);
 }
-.sec[data-look="a"].in h2::before { animation: caret-once .8s linear 1; }
+.sec.arrive[data-look="a"] h2::before { animation: caret-once .8s linear 1; }
 @keyframes caret-once {
   0%, 49.99% { opacity: 1; }
   50%, 99.99% { opacity: 0; }
@@ -816,27 +816,12 @@ h1 br.d { display: none; }
 .foot-meta a { color: var(--s-head); text-underline-offset: 4px; }
 .foot-line { flex: 1 0 100%; max-width: 62ch; }
 
-/* ---------- entrances and the rebuild (classes toggled by JS) ---------- */
-.sec.pre { opacity: 0; transform: translateY(16px); }
-.sec.in { transition: opacity 600ms var(--ease), transform 600ms var(--ease), var(--morph); }
-
-/* B: soft blend from the dark hero into the first section (invisible in A and C) */
-#compare {
-  isolation: isolate;
-  padding-top: max(clamp(56px, 7vw, 104px), clamp(96px, 10vw, 160px));
-}
-#compare::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: clamp(96px, 10vw, 160px);
-  background: linear-gradient(in oklab, var(--night) 0%, var(--night) 8%, var(--s-bg) 92%);
-  pointer-events: none;
-  z-index: 0;
-}
-#compare > .container { position: relative; z-index: 1; }
+/* ---------- entrances and the rebuild (classes toggled by JS) ----------
+   The section itself stays opaque and still. Fading or shifting it shows the
+   black page behind a white look, and replaying that on every look change
+   reads as a reload. */
+.sec.pre > * { opacity: 0; transform: translateY(16px); }
+.sec.in > * { transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
 
 /* the develop line that sweeps a section while it rebuilds */
 .sec::after, .foot::after {
@@ -855,11 +840,6 @@ h1 br.d { display: none; }
 .steps li:nth-child(3) { --k: 2; }
 .steps li:nth-child(4) { --k: 3; }
 
-@keyframes rb {
-  0% { opacity: 1; }
-  38% { opacity: .72; }
-  100% { opacity: 1; }
-}
 @keyframes dev-line {
   0% { transform: translateY(0); opacity: 0; }
   15%, 85% { opacity: 1; }
@@ -878,38 +858,37 @@ h1 br.d { display: none; }
 .ty.ty-on { opacity: 1; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .sec.rb, .foot.rb { animation: rb 520ms var(--ease); }
   .sec.rb::after, .foot.rb::after { animation: dev-line 520ms var(--ease); }
 
-  /* lines draw themselves */
-  .sec.in[data-look="b"] h2::after { animation: draw-x 700ms var(--ease) 200ms backwards; }
-  .sec.in[data-look="b"] .diff-v { animation: draw-x 700ms var(--ease) 250ms backwards; }
+  /* lines draw themselves, once, when the section first arrives */
+  .sec.arrive[data-look="b"] h2::after { animation: draw-x 700ms var(--ease) 200ms backwards; }
+  .sec.arrive[data-look="b"] .diff-v { animation: draw-x 700ms var(--ease) 250ms backwards; }
   @media (min-width: 760px) {
-    .sec.in[data-look="b"] .diff-v { animation-name: draw-y; }
+    .sec.arrive[data-look="b"] .diff-v { animation-name: draw-y; }
   }
-  .sec.in[data-look="b"] .steps li::before { animation: draw-y 700ms var(--ease) calc(var(--k, 0) * 90ms + 200ms) backwards; }
+  .sec.arrive[data-look="b"] .steps li::before { animation: draw-y 700ms var(--ease) calc(var(--k, 0) * 90ms + 200ms) backwards; }
 
   /* the flow numbers rise one after another */
-  .sec.in:not([data-look="a"]) .steps .n { animation: n-rise 500ms var(--ease) calc(var(--k, 0) * 90ms + 150ms) backwards; }
+  .sec.arrive:not([data-look="a"]) .steps .n { animation: n-rise 500ms var(--ease) calc(var(--k, 0) * 90ms + 150ms) backwards; }
 
   /* pictures arrive in the look's own way */
-  .sec.in[data-look="c"] .frame { animation: drop 600ms var(--ease) 200ms backwards; }
-  .sec.in[data-look="c"] .pic-2 .frame { animation-delay: 320ms; }
-  .sec.in[data-look="a"] .frame { animation: win-open 450ms var(--ease) 200ms backwards; }
-  .sec.in[data-look="a"] .pic-2 .frame { animation-delay: 320ms; }
-  .sec.in[data-look="b"] .frame { animation: wipe 700ms var(--ease) 200ms backwards; }
-  .sec.in[data-look="b"] .pic-2 .frame { animation-delay: 320ms; }
+  .sec.arrive[data-look="c"] .frame { animation: drop 600ms var(--ease) 200ms backwards; }
+  .sec.arrive[data-look="c"] .pic-2 .frame { animation-delay: 320ms; }
+  .sec.arrive[data-look="a"] .frame { animation: win-open 450ms var(--ease) 200ms backwards; }
+  .sec.arrive[data-look="a"] .pic-2 .frame { animation-delay: 320ms; }
+  .sec.arrive[data-look="b"] .frame { animation: wipe 700ms var(--ease) 200ms backwards; }
+  .sec.arrive[data-look="b"] .pic-2 .frame { animation-delay: 320ms; }
 
   /* A: the four lines of flow.md appear one by one */
-  .sec.in[data-look="a"] .steps li { animation: line-in 400ms var(--ease) calc(var(--k, 0) * 120ms + 200ms) backwards; }
+  .sec.arrive[data-look="a"] .steps li { animation: line-in 400ms var(--ease) calc(var(--k, 0) * 120ms + 200ms) backwards; }
 
   /* C: the install prompt blinks twice */
   .sec.in[data-look="c"] .inst .cmd-row .prompt { animation: caret-once .6s linear 300ms 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sec.pre { opacity: 1; transform: none; }
-  .sec, .foot, .sec.in { transition: none; }
+  .sec.pre > * { opacity: 1; transform: none; }
+  .sec, .foot, .sec.in > * { transition: none; }
   .sec::after, .foot::after { display: none; }
   .tells.arm li::after { transform: scaleX(1); }
   .tells.go li::after { transition: none; }

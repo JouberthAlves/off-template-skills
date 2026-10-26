@@ -312,6 +312,10 @@
   function enterSection(sec) {
     sec.classList.remove('pre');
     sec.classList.add('in');
+    /* Entrance motion plays once. A later look change must not restart it. */
+    sec.classList.add('arrive');
+    clearTimeout(sec._arrive);
+    sec._arrive = setTimeout(function () { sec.classList.remove('arrive'); }, 1400);
     showLook(sec);
   }
 
@@ -324,7 +328,11 @@
   function rebuild(key) {
     rbTimers.forEach(clearTimeout);
     rbTimers = [];
-    rebuildList.forEach(function (el) { el.classList.remove('rb'); });
+    rebuildList.forEach(function (el) {
+      el.classList.remove('rb');
+      el.classList.remove('arrive');
+      clearTimeout(el._arrive);
+    });
     root.classList.remove('switching');
     if (reduce.matches) {
       rebuildList.forEach(function (el) { setLook(el, key); });
