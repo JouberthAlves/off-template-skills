@@ -41,11 +41,19 @@ Same prompt in both: *Build a landing page for an AI meeting-notes app.*
 **[Drag the line yourself →](https://super-webdesigner.vercel.app)**
 
 The left side is a **caricature**, built on purpose to show the first ten
-tells at once. It is not an agent's real output. The repo has a real one:
-[`examples/burger/normal-agent/`](examples/burger/normal-agent) is what a
-normal agent produced for a burger place, untouched. It scores 3 of 13 on the
-tells (reads as AI-made). The Steno side is fictional and went through the flow end
-to end; its files are in [`examples/ai-notes/`](examples/ai-notes).
+tells at once. It is not an agent's real output. The Steno side is fictional
+and went through the flow end to end; its files are in
+[`examples/ai-notes/`](examples/ai-notes).
+
+**The real comparison** is [`examples/burger-2026-10/`](examples/burger-2026-10):
+the same prompt, *Build a website for a burger restaurant*, run on the same
+day on both sides with the current skill. The agent alone made "Ember & Bun";
+with the skill, the owner answered the brief and the flow made "Halfway".
+On `sloplint`, the agent alone has **20 FAIL** (19 colours outside tokens,
+one `transition: all`) and the skill page **0**; Impeccable's detector finds
+19 issues against 0 on a phone. Read the caveats in that README before
+quoting it: the skill page is a first screen only, the other a full
+seven-section page, and the agent-alone page was not reviewed.
 
 ## The flow
 
@@ -221,7 +229,8 @@ details are in [`vault/README.md`](vault/README.md).
 skills/super-webdesigner/   the flow: SKILL.md and references/ (brief, research, skeletons, review…)
 skills/ai-slop-check/       the audit on its own
 vault/                      the starter Obsidian vault
-examples/burger/            the normal-agent output, untouched, and a full run of the flow
+examples/burger-2026-10/    the current comparison: agent alone against the skill, same prompt, same day
+examples/burger/            the first run (older skill, brief answered by the agent), kept as it was
 examples/ai-notes/          the Steno run and the caricature
 design/                     the showcase page's own run of the flow: brief, research, three directions, the chosen one
 site/                       this page: the safelight pillar, the agent window and the three looks
@@ -261,7 +270,10 @@ to `main`.
   one-line prompt *"build a website for a small bakery"*, triggered the skill
   on its own, showed the tools table and stopped at the brief, with no code
   ([`trigger-test.md`](examples/trigger-test.md), one run).
-- The Ember & Bun score was corrected once (a first 3 of 10 counted something
+- The burger comparison was rerun on 2026-10-26 with the current skill
+  (`examples/burger-2026-10/`): 20 FAIL alone, 0 with the skill, with the
+  caveats listed there. The first run (`examples/burger/`) stays as it was.
+- The first run's Ember & Bun score was corrected once (a first 3 of 10 counted something
   that isn't one of the tells, so it became 2 of 10). When the list grew to
   13, it was re-scored on its source: its body text is set in Inter, which the
   "default type" tell now covers, so it scores 3 of 13.
@@ -275,7 +287,7 @@ are adapted from
 [2389-research/landing-page-design](https://github.com/2389-research/landing-page-design)
 (MIT). The showcase's pillar of light takes its look from
 [React Bits](https://reactbits.dev)' Light Pillar (no code taken) and its fonts
-from Google Fonts (OFL). Steno, MeetMind, Order 27 and Ember & Bun are fictional; the photos in
+from Google Fonts (OFL). Steno, MeetMind, Order 27, Halfway and Ember & Bun are fictional; the photos in
 the examples were generated for this demo.
 
 ## License
