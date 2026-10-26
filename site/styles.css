@@ -281,15 +281,20 @@ h1 br.d { display: none; }
 .tray {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 11;
-  background: var(--tray);
-  border-radius: 6px;
+  aspect-ratio: 3 / 2;
+  /* A photographed developing tray (Magnific); its plain edges fade into the page so the pillar never shows a box behind it */
+  background: url("img/tray.webp") center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent, var(--mask-on) 7%, var(--mask-on) 93%, transparent), linear-gradient(transparent, var(--mask-on) 9%, var(--mask-on) 91%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, var(--mask-on) 7%, var(--mask-on) 93%, transparent), linear-gradient(transparent, var(--mask-on) 9%, var(--mask-on) 91%, transparent);
+  mask-composite: intersect;
 }
 .liquid {
   position: absolute;
   inset: -20%;
+  /* a faint sheen drifting over the photographed liquid */
   background: radial-gradient(circle at 35% 30%, var(--head), transparent 60%);
-  opacity: .04;
+  opacity: .03;
   animation: sheen 20s ease-in-out infinite alternate;
 }
 @keyframes sheen {
@@ -299,13 +304,14 @@ h1 br.d { display: none; }
 
 .print {
   position: absolute;
-  top: 50%;
-  left: 12%;
-  width: 76%;
+  top: 49.5%;
+  left: 50%;
+  width: 50%;
   aspect-ratio: 1600 / 1090;
-  border: 6px solid var(--print);
-  transform: translateY(-50%) rotate(-1.2deg);
+  border: 4px solid var(--print);
+  transform: translate(-50%, -50%) rotate(-1.2deg);
   background: var(--tray);
+  box-shadow: 0 14px 26px -12px var(--shadow);
 }
 .print img {
   position: absolute;
@@ -464,7 +470,6 @@ h1 br.d { display: none; }
 }
 
 @media (min-width: 960px) {
-  .print { top: 58%; left: 11%; width: 78%; }
 }
 .cmd-row .nb { white-space: nowrap; }
 
