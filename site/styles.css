@@ -619,6 +619,8 @@ h1 br.d { display: none; }
   color: var(--s-head);
 }
 .digits { display: inline-block; min-width: 2ch; }
+.digits[data-count="0"] { min-width: 1ch; }
+@media (max-width: 520px) { .lab { flex-basis: 100%; } }
 .lab { position: relative; font-size: 15px; line-height: 1.4; color: var(--s-text); }
 
 /* C: the two prints lie on one tray panel */
