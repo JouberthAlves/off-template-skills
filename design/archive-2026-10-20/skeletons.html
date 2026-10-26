@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Super-Webdesigner showcase: three directions</title>
+<style>
+:root{--bg:#f4f4f2;--ink:#1d1d1b;--mute:#8a8a86;--block:#d6d6d2;--block2:#c4c4bf;--line:#b5b5b0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,"Segoe UI",sans-serif}
+header.top{padding:28px 32px 8px;max-width:1500px;margin:0 auto}header.top h1{font-size:22px;margin:0 0 4px}header.top p{margin:0;color:var(--mute)}
+.dirs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:20px 32px 40px;max-width:1500px;margin:0 auto}
+@media(max-width:1100px){.dirs{grid-template-columns:1fr;padding:16px}}
+.dir{background:#fff;border:1px solid #e2e2de;border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.dir h2{margin:0;font-size:19px}.tag{font:600 11px/1 ui-monospace,monospace;letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.why,.note{margin:0;font-size:14px}.why b,.note b{font-weight:600}
+.frames{display:grid;grid-template-columns:1fr 92px;gap:10px;align-items:start}
+.desk,.phone{container-type:inline-size;position:relative;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.desk{aspect-ratio:16/10;border-radius:6px}.phone{aspect-ratio:390/844;border-radius:12px}
+.b{position:absolute;background:var(--block);border-radius:2px}.t{position:absolute;background:var(--ink);border-radius:1px}.s{position:absolute;background:var(--block2);border-radius:1px}
+.ph{position:absolute;background:linear-gradient(to top right,transparent calc(50% - .6px),var(--line) 50%,transparent calc(50% + .6px)),linear-gradient(to top left,transparent calc(50% - .6px),var(--line) 50%,transparent calc(50% + .6px)),var(--block)}
+.frame{position:absolute;border:2.5px solid var(--ink);background:#fff;box-shadow:inset 0 0 0 5px #eee}
+.btn{position:absolute;border:1.5px solid var(--ink);border-radius:2px;font-weight:600;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);white-space:nowrap;overflow:hidden}
+.btn.f{background:var(--ink);color:#fff}.desk .btn{font-size:1.4cqw}.phone .btn{font-size:5.2cqw}
+.txt{position:absolute;font-weight:800;color:var(--ink);line-height:.95;letter-spacing:-.01em}
+.lbl{position:absolute;font:600 8px/1.2 ui-monospace,monospace;color:var(--mute);white-space:nowrap}.desk .lbl{font-size:1.1cqw}.phone .lbl{font-size:4.4cqw}
+.wild{position:absolute;border:1.5px dashed #3c3c38;border-radius:4px}
+.wild::after{content:attr(data-w);position:absolute;left:0;top:calc(100% + 2px);white-space:nowrap;font:700 1.1cqw/1 ui-monospace,monospace;background:#1d1d1b;color:#fff;padding:2px 3px;border-radius:2px;z-index:3}
+.phone .wild::after{font-size:4.4cqw}
+.slider{position:absolute;background:linear-gradient(90deg,#cfcfca 0 50%,#e6e6e2 50% 100%);border:1.5px solid #9a9a95}
+.slider i{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink)}
+.slider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ink);color:#fff;font:700 1.2cqw/1 ui-monospace,monospace;padding:3px 5px;border-radius:99px}
+.phone .slider span{font-size:4.6cqw}
+.order{display:flex;flex-wrap:wrap;gap:5px}.order span{font-size:11px;border:1px solid #d7d7d2;border-radius:3px;padding:3px 6px;background:#fafaf8}
+.sw{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.sw i{width:34px;height:34px;border-radius:4px;border:1px solid rgba(0,0,0,.12);display:block}.sw small{font:11px/1.3 ui-monospace,monospace;color:#555}
+.fonts{font-size:13px;margin:0}.wildnote{font-size:13px;margin:0;padding:8px 10px;border-left:3px solid var(--ink);background:#f6f6f3}
+h3{margin:0 0 6px;font:600 11px/1 ui-monospace,monospace;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+</style></head><body>
+<header class="top"><h1>Super-Webdesigner showcase: three directions</h1><p>Gray skeletons: judge the composition. The only color is the swatch strip. Same copy in all three.</p></header>
+<main class="dirs">
+  <section class="dir">
+    <div class="tag">Direction A · best of the niche</div>
+    <h2>Red Pencil Proof</h2>
+    <p class="why">Proof-white page, press-black type, and an art director's red pencil marking up the other agents' page. <b>From the research:</b> the pages people remember make the product the hero and keep the rest quiet.</p>
+    <div class="frames">
+      <div class="desk"><div class="t" style="left:4%;top:5%;width:18%;height:3.2%;"></div><div class="lbl" style="left:22.6%;top:4.6%;">‸</div><div class="s" style="left:58%;top:6%;width:7%;height:1.6%;"></div><div class="s" style="left:67%;top:6%;width:7%;height:1.6%;"></div><div class="btn" style="left:80%;top:3.6%;width:16%;height:6.4%;">Star on GitHub</div><div class="txt" style="left:4%;top:15%;width:56%;font-size:5.4cqw;">Same prompt. Different designer.</div><div class="s" style="left:64%;top:16%;width:30%;height:1.8%;"></div><div class="s" style="left:64%;top:20%;width:26%;height:1.8%;"></div><div class="b" style="left:64%;top:26%;width:32%;height:7%;background:#1d1d1b"></div><div class="lbl" style="left:65.5%;top:28.4%;color:#fff">$ npx skills add …</div><div class="slider" style="left:4%;top:39%;width:92%;height:56%;"><i></i><span>‹ DRAG ›</span></div><div class="lbl" style="left:5.5%;top:41.5%;color:#333">OTHER AGENTS</div><div class="lbl" style="left:82%;top:41.5%;color:#333">SUPER-WEBDESIGNER</div><div class="wild" style="left:9%;top:55%;width:22%;height:22%;" data-w="RED PENCIL MARKUP ON THE TELLS"></div></div>
+      <div class="phone"><div class="t" style="left:8%;top:3%;width:50%;height:1.8%;"></div><div class="btn" style="left:70%;top:2%;width:22%;height:3.4%;">GitHub</div><div class="txt" style="left:8%;top:9%;width:84%;font-size:12cqw;">Same prompt. Different designer.</div><div class="s" style="left:8%;top:30%;width:80%;height:1.2%;"></div><div class="s" style="left:8%;top:33%;width:66%;height:1.2%;"></div><div class="b" style="left:8%;top:38%;width:84%;height:4.6%;background:#1d1d1b"></div><div class="slider" style="left:0%;top:47%;width:100%;height:50%;"><i></i><span>‹ ›</span></div><div class="wild" style="left:6%;top:58%;width:34%;height:14%;" data-w="MARKUP"></div></div>
+    </div>
+    <div><h3>Page order</h3><div class="order"><span>Hero + slider</span><span>The 10 tells as red-pencil notes</span><span>The flow, 8 steps</span><span>Two examples</span><span>Install</span><span>Vault</span><span>Footer</span></div></div>
+    <div><h3>Palette and fonts</h3><div class="sw"><i style="background:#FFFFFF"></i><i style="background:#111111"></i><i style="background:#E5231B"></i><i style="background:#EDEAE3"></i><small>proof white · press black · red pencil · proof gray</small></div></div>
+    <p class="fonts"><b>Schibsted Grotesk</b> 800 (titles) · <b>IBM Plex Mono</b> (commands, labels) · <b>Caveat Brush</b> (only the pencil notes)</p>
+    <p class="note"><b>Logo:</b> the wordmark Super-Webdesigner with a red proofreader's caret (‸) inserted between Super and Webdesigner, as if an editor added it. <b>Favicon:</b> the red caret on white.</p>
+    <p class="wildnote"><b>Wildcard:</b> on the Other agents side, red pencil circles and handwritten notes ('glow', 'emoji?', 'again?') sit on top of the tells. They are clipped with that side, so dragging the line literally erases the bad page and its markup.</p>
+  </section>
+  <section class="dir">
+    <div class="tag">Direction B · break the convention</div>
+    <h2>Swatch Book</h2>
+    <p class="why">Every AI page is dark. This one is built from big flat color chips, like a printer's swatch book, each with its code. <b>From the research:</b> dark mode, glass and glow are the niche's default; color fields are the opposite.</p>
+    <div class="frames">
+      <div class="desk"><div class="b" style="left:4%;top:4%;width:8%;height:6%;background:#9a9a95"></div><div class="t" style="left:13%;top:5.6%;width:14%;height:2.8%;"></div><div class="s" style="left:66%;top:6%;width:7%;height:1.6%;"></div><div class="btn" style="left:80%;top:3.6%;width:16%;height:6.4%;">Star on GitHub</div><div class="b" style="left:4%;top:14%;width:34%;height:66%;background:#bdbdb8"></div><div class="txt" style="left:6%;top:18%;width:30%;font-size:4.6cqw;color:#fff">Same prompt. Different designer.</div><div class="btn f" style="left:6%;top:58%;width:26%;height:6.4%;">$ npx skills add …</div><div class="b" style="left:4%;top:80%;width:34%;height:9%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:5.5%;top:83.5%;">SW-001 · TOMATO · THE PROMISE</div><div class="slider" style="left:41%;top:14%;width:55%;height:66%;"><i></i><span>‹ DRAG ›</span></div><div class="b" style="left:41%;top:80%;width:55%;height:9%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:42.5%;top:83.5%;">SW-002 · INK · SAME PROMPT, TWO AGENTS</div><div class="wild" style="left:3%;top:78%;width:94%;height:13%;" data-w="CHIP LABEL WITH A CODE ON EVERY BLOCK"></div></div>
+      <div class="phone"><div class="b" style="left:8%;top:2.4%;width:10%;height:3.2%;background:#9a9a95"></div><div class="t" style="left:22%;top:3.2%;width:30%;height:1.6%;"></div><div class="b" style="left:0%;top:8%;width:100%;height:36%;background:#bdbdb8"></div><div class="txt" style="left:8%;top:12%;width:84%;font-size:11cqw;color:#fff">Same prompt. Different designer.</div><div class="btn f" style="left:8%;top:36%;width:84%;height:4.6%;">$ npx skills add …</div><div class="slider" style="left:0%;top:48%;width:100%;height:40%;"><i></i><span>‹ ›</span></div><div class="b" style="left:0%;top:88%;width:100%;height:6%;background:#fff;border-top:1px solid #c4c4bf"></div><div class="lbl" style="left:6%;top:90%;">SW-002 · INK</div></div>
+    </div>
+    <div><h3>Page order</h3><div class="order"><span>Hero chip + slider chip</span><span>10 tells as 10 small chips</span><span>The flow as a chip strip</span><span>Examples</span><span>Install</span><span>Footer</span></div></div>
+    <div><h3>Palette and fonts</h3><div class="sw"><i style="background:#FF5A3C"></i><i style="background:#2747FF"></i><i style="background:#FFE27A"></i><i style="background:#121212"></i><i style="background:#F7F5F0"></i><small>tomato · cobalt · butter · ink · chip white</small></div></div>
+    <p class="fonts"><b>Familjen Grotesk</b> 700 (titles) · <b>DM Mono</b> (chip codes, commands)</p>
+    <p class="note"><b>Logo:</b> a small swatch chip: color top, white strip with 'SW' and the code 'SW-001'. <b>Favicon:</b> the chip, tomato on top, white band below.</p>
+    <p class="wildnote"><b>Wildcard:</b> every block carries a swatch label with a code (SW-001 TOMATO, SW-002 INK...), so the page reads like a printed color book.</p>
+  </section>
+  <section class="dir">
+    <div class="tag">Direction C · outside reference</div>
+    <h2>Gallery Wall</h2>
+    <p class="why">A museum room: the two sites hang as framed works on a white wall, with small wall labels. The slider is the big frame in the middle. <b>From the research:</b> nobody in the niche shows work like art; the calm wall label is the opposite of a feature grid.</p>
+    <div class="frames">
+      <div class="desk"><div class="frame" style="left:4%;top:4%;width:4%;height:6%;"></div><div class="t" style="left:9.5%;top:5.6%;width:14%;height:2.8%;"></div><div class="s" style="left:66%;top:6%;width:7%;height:1.6%;"></div><div class="btn" style="left:80%;top:3.6%;width:16%;height:6.4%;">Star on GitHub</div><div class="txt" style="left:4%;top:16%;width:40%;font-size:3.4cqw;">Same prompt. Different designer.</div><div class="s" style="left:4%;top:34%;width:30%;height:1.6%;"></div><div class="btn f" style="left:4%;top:40%;width:22%;height:6.4%;">$ npx skills add …</div><div class="frame" style="left:48%;top:13%;width:48%;height:62%;"></div><div class="slider" style="left:50.5%;top:17%;width:43%;height:54%;"><i></i><span>‹ DRAG ›</span></div><div class="b" style="left:74%;top:78%;width:22%;height:10%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:75%;top:80%;">No. 1 · Other agents / SWD, 2026</div><div class="lbl" style="left:75%;top:83.5%;">HTML on screen. Drag the line.</div><div class="b" style="left:0%;top:93%;width:100%;height:7%;background:#c8b8a2"></div><div class="wild" style="left:73%;top:76.5%;width:24%;height:13%;" data-w="WALL LABEL"></div></div>
+      <div class="phone"><div class="frame" style="left:8%;top:2.4%;width:7%;height:3.2%;"></div><div class="t" style="left:19%;top:3.2%;width:34%;height:1.6%;"></div><div class="txt" style="left:8%;top:9%;width:84%;font-size:9cqw;">Same prompt. Different designer.</div><div class="btn f" style="left:8%;top:26%;width:84%;height:4.6%;">$ npx skills add …</div><div class="frame" style="left:4%;top:34%;width:92%;height:50%;"></div><div class="slider" style="left:9%;top:37%;width:82%;height:44%;"><i></i><span>‹ ›</span></div><div class="b" style="left:8%;top:86%;width:84%;height:7%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:10%;top:88%;">No. 1 · Drag the line</div><div class="b" style="left:0%;top:95%;width:100%;height:5%;background:#c8b8a2"></div></div>
+    </div>
+    <div><h3>Page order</h3><div class="order"><span>Room 1: the slider</span><span>Room 2: the 10 tells as captions</span><span>Room 3: the flow</span><span>Examples</span><span>Install at the desk</span><span>Footer</span></div></div>
+    <div><h3>Palette and fonts</h3><div class="sw"><i style="background:#F7F6F2"></i><i style="background:#1A1A1A"></i><i style="background:#C89B6D"></i><i style="background:#0F3B2E"></i><small>gallery wall · frame black · oak floor · museum green</small></div></div>
+    <p class="fonts"><b>Hanken Grotesk</b> 800 (titles) · <b>IBM Plex Mono</b> (wall labels, commands)</p>
+    <p class="note"><b>Logo:</b> the wordmark set inside a thin square frame with a white mat, like a small framed print. <b>Favicon:</b> a black square frame with a white mat and a green dot.</p>
+    <p class="wildnote"><b>Wildcard:</b> museum wall labels next to each work, with a lot number and a line like 'Please drag' instead of 'Do not touch'.</p>
+  </section></main></body></html>

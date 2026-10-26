@@ -1,300 +1,224 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js" data-look="c">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Super-Webdesigner · Same prompt, different designer</title>
-  <meta name="description" content="Skills that stop your coding agent from shipping the same AI-looking page. It asks you a brief, researches the niche, shows three directions and waits for your choice before it writes code.">
-  <meta property="og:title" content="Super-Webdesigner · Same prompt, different designer">
-  <meta property="og:description" content="Drag the line: the usual AI page against a page made through Super-Webdesigner's flow.">
-  <meta property="og:image" content="img/steno-desktop.webp">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FFFFFF'/%3E%3Cpath d='M14 46 L32 16 L50 46' fill='none' stroke='%23E5231B' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.className=document.documentElement.className.replace('no-js','js');setTimeout(function(){document.documentElement.classList.add('ready')},2500);</script>
+<title>Super-Webdesigner: same prompt, different designer</title>
+<meta name="description" content="Skills that make your coding agent ask a brief, research the niche and show three directions before it writes a line of code.">
+<link rel="canonical" href="https://super-webdesigner.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Super-Webdesigner: same prompt, different designer">
+<meta property="og:description" content="Skills that make your coding agent ask a brief, research the niche and show three directions before it writes a line of code.">
+<meta property="og:image" content="https://super-webdesigner.vercel.app/img/dir-c.webp">
+<meta property="og:url" content="https://super-webdesigner.vercel.app/">
+<meta name="theme-color" content="#141818">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FFFFFF'/%3E%3Cpath d='M14 46 L32 16 L50 46' fill='none' stroke='%23E5231B' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;700&family=Mona+Sans:wght@400;800&family=Bricolage+Grotesque:wght@800&family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip" href="#compare">Skip to the comparison</a>
 
-  <div class="sheet">
-    <span class="crop tl" aria-hidden="true"></span><span class="crop tr" aria-hidden="true"></span><span class="crop bl" aria-hidden="true"></span><span class="crop br" aria-hidden="true"></span>
 
-    <header class="top">
+
+<main>
+  <section id="hero" aria-label="Super-Webdesigner">
+    <canvas class="beam" aria-hidden="true"></canvas>
+    <header class="nav">
+    <div class="container nav-in">
       <a class="logo" href="#" aria-label="Super-Webdesigner, home">
-        <span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path data-caret d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span>
+        <span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span>
       </a>
-      <nav aria-label="Main">
-        <a href="#flow">How it works</a>
-        <a href="#tells">The tells</a>
-        <a class="btn btn-line" href="https://github.com/JouberthAlves/super-designer">Star on GitHub</a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="hide-s" href="#flow">How it works</a>
+        <a class="hide-s" href="#tells">The tells</a>
+        <a class="gh" href="https://github.com/JouberthAlves/super-webdesigner">GitHub</a>
       </nav>
-    </header>
-
-    <div class="slug" aria-hidden="true">
-      <span>Proof 01</span><span>Super-Webdesigner</span><span>2026-10-20</span>
-      <span class="bars"><i></i><i></i><i></i><i></i><i class="r"></i></span>
     </div>
+  </header>
+    <div class="container hero-grid">
+      <div class="copy">
+        <h1 data-lit><span class="ln ln0">Same prompt.</span><br class="d"> <span class="ln ln1">Different</span><br class="d"> <span class="ln ln2">designer.</span><span class="h1-lit" aria-hidden="true"><span class="ln ln0">Same prompt.</span><br class="d"> <span class="ln ln1">Different</span><br class="d"> <span class="ln ln2">designer.</span></span></h1>
+        <p class="lede">Your coding agent asks, researches and shows three directions before it codes.</p>
 
-    <section class="hero">
-      <div>
-        <h1 class="title">
-          <span class="line"><span>Same prompt.</span></span>
-          <span class="line"><span>Different <em>designer.<svg class="underline" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path data-underline vector-effect="non-scaling-stroke" d="M6 26 C 120 12, 260 34, 380 20 S 560 14, 594 22"/></svg></em></span></span>
-        </h1>
-      </div>
-      <div class="hero-side">
-        <p class="promise">Your coding agent ships the same page as everyone else's. Super-Webdesigner makes it ask you a brief, research the niche, show three directions and wait for your pick before it writes a line.</p>
-        <div class="cmd">
-          <code>npx skills add JouberthAlves/super-webdesigner</code>
-          <button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -g -a claude-code">Copy</button>
-        </div>
-        <div class="made">
-          <p class="made-label">Made for</p>
-          <ul class="pills">
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" d="M20.998 10.949H24v3.102h-3v3.028h-1.487V20H18v-2.921h-1.487V20H15v-2.921H9V20H7.488v-2.921H6V20H4.487v-2.921H3V14.05H0V10.95h3V5h17.998v5.949zM6 10.949h1.488V8.102H6v2.847zm10.51 0H18V8.102h-1.49v2.847z"></path></svg>Claude Code</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path></svg>Codex</li>
-          </ul>
-          <p class="made-label">Works with</p>
-          <ul class="pills">
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.106 5.68L12.5.135a.998.998 0 00-.998 0L1.893 5.68a.84.84 0 00-.419.726v11.186c0 .3.16.577.42.727l9.607 5.547a.999.999 0 00.998 0l9.608-5.547a.84.84 0 00.42-.727V6.407a.84.84 0 00-.42-.726zm-.603 1.176L12.228 22.92c-.063.108-.228.064-.228-.061V12.34a.59.59 0 00-.295-.51l-9.11-5.26c-.107-.062-.063-.228.062-.228h18.55c.264 0 .428.286.296.514z"></path></svg>Cursor</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" d="M23.78 5.004h-.228a2.187 2.187 0 00-2.18 2.196v4.912c0 .98-.804 1.775-1.76 1.775a1.818 1.818 0 01-1.472-.773L13.168 5.95a2.197 2.197 0 00-1.81-.95c-1.134 0-2.154.972-2.154 2.173v4.94c0 .98-.797 1.775-1.76 1.775-.57 0-1.136-.289-1.472-.773L.408 5.098C.282 4.918 0 5.007 0 5.228v4.284c0 .216.066.426.188.604l5.475 7.889c.324.466.8.812 1.351.938 1.377.316 2.645-.754 2.645-2.117V11.89c0-.98.787-1.775 1.76-1.775h.002c.586 0 1.135.288 1.472.773l4.972 7.163a2.15 2.15 0 001.81.95c1.158 0 2.151-.973 2.151-2.173v-4.939c0-.98.787-1.775 1.76-1.775h.194c.122 0 .22-.1.22-.222V5.225a.221.221 0 00-.22-.222z"></path></svg>Windsurf</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.751 22.607c1.34 1.005 3.35.335 1.508-1.508C17.73 15.74 18.904 1 12.037 1 5.17 1 6.342 15.74.815 21.1c-2.01 2.009.167 2.511 1.507 1.506 5.192-3.517 4.857-9.714 9.715-9.714 4.857 0 4.522 6.197 9.714 9.715z"></path></svg>Antigravity</li>
-          </ul>
-          <a class="made-more" href="#install">Other agents: see Install</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="compare-wrap" id="compare" aria-labelledby="compare-title">
-      <h2 class="sr" id="compare-title">The comparison</h2>
-      <div class="compare-head">
-        <p class="prompt"><span>Prompt</span>Build a landing page for an AI meeting-notes app.</p>
-        <div class="seg" role="group" aria-label="Screen size">
-          <button type="button" aria-pressed="true" data-view="desktop">Desktop</button>
-          <button type="button" aria-pressed="false" data-view="phone">Phone</button>
+        <div class="install">
+          <div class="tabs" role="tablist" aria-label="Your coding agent">
+            <button type="button" class="tab" role="tab" id="tab-claude" aria-controls="cmd-claude" aria-selected="true">Claude Code</button>
+            <button type="button" class="tab" role="tab" id="tab-codex" aria-controls="cmd-codex" aria-selected="false" tabindex="-1">Codex</button>
+            <button type="button" class="tab" role="tab" id="tab-cursor" aria-controls="cmd-cursor" aria-selected="false" tabindex="-1">Cursor</button>
+          </div>
+          <div class="cmd-item" id="cmd-claude">
+            <p class="cmd-name">Claude Code</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-g -a claude-code</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="cmd-codex">
+            <p class="cmd-name">Codex</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-a codex</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="cmd-cursor">
+            <p class="cmd-name">Cursor</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-a cursor</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
         </div>
       </div>
 
       <div class="stage">
-        <div class="compare" data-compare>
-          <figure class="side side-good">
-            <img data-good src="img/steno-desktop.webp" alt="Steno, made through Super-Webdesigner: a yellow legal pad with a red margin line, the title 'Stop typing in meetings.' and a notes card writing itself">
-            <div class="typed typed-desk" aria-hidden="true">
-              <span class="typed-sheet" style="left:53.89%;top:17.30%;width:39.17%;height:68.86%"></span>
-              <span class="typed-line" style="left:56.39%;top:22.52%;font-size:2.083cqw;font-weight:600">Weekly product sync</span>
-              <span class="typed-line" style="left:56.39%;top:30.97%;font-size:1.556cqw;font-weight:400">Launch moves to May 12.</span>
-              <span class="typed-line" style="left:56.39%;top:37.42%;font-size:1.556cqw;font-weight:400">Pricing page needs a second review.</span>
-              <span class="typed-line" style="left:56.39%;top:44.40%;font-size:1.556cqw;font-weight:400">Ana owns the beta invite list.</span>
-              <span class="typed-line" style="left:56.39%;top:54.77%;font-size:1.806cqw;font-weight:600">Action items</span>
-              <span class="typed-line" style="left:56.39%;top:62.06%;font-size:1.556cqw;font-weight:400">Ana: send beta invites, Fri</span>
-              <span class="typed-line" style="left:56.39%;top:68.85%;font-size:1.556cqw;font-weight:400">Leo: update the pricing page, Mon</span>
-            </div>
-            <div class="typed typed-phone" aria-hidden="true">
-              <span class="typed-sheet" style="left:6.07%;top:54.82%;width:90.18%;height:44.05%"></span>
-              <span class="typed-line" style="left:10.36%;top:58.31%;font-size:4.821cqw;font-weight:600">Weekly product sync</span>
-              <span class="typed-line" style="left:10.36%;top:63.78%;font-size:3.571cqw;font-weight:400">Launch moves to May 12.</span>
-              <span class="typed-line" style="left:10.36%;top:68.62%;font-size:3.571cqw;font-weight:400">Pricing page needs a second review.</span>
-              <span class="typed-line" style="left:10.36%;top:73.25%;font-size:3.571cqw;font-weight:400">Ana owns the beta invite list.</span>
-              <span class="typed-line" style="left:10.36%;top:80.26%;font-size:4.286cqw;font-weight:600">Action items</span>
-              <span class="typed-line" style="left:10.36%;top:85.20%;font-size:3.571cqw;font-weight:400">Ana: send beta invites, Fri</span>
-              <span class="typed-line" style="left:10.36%;top:89.93%;font-size:3.571cqw;font-weight:400">Leo: update the pricing page, Mon</span>
-            </div>
-            <span class="tag tag-good">Super-Webdesigner</span>
-          </figure>
+        <div class="tray" data-lit>
+          <div class="liquid" aria-hidden="true"></div>
+          <div class="print" data-lit>
+            <img class="print-skel" src="img/skel-c.webp" width="1864" height="1166" alt="">
+            <img class="print-mock" src="img/dir-c.webp" width="1600" height="1058" alt="Mockup of direction C, Darkroom Develop, as the skill generated it">
+          </div>
+          <div class="ripple" aria-hidden="true"></div>
+        </div>
+        <p class="caption small" data-stage="page"><span data-s="skeleton">skeleton</span><span data-s="mockup">mockup</span><span data-s="page" class="on">this page</span></p>
 
-          <figure class="side side-bad">
-            <img data-bad src="img/other-desktop.webp" alt="Other agents, a labeled caricature: dark purple page with a grid, a glowing serif italic title, emoji and three numbered cards">
-            <svg class="markup" data-markup-desktop viewBox="0 0 1440 925" aria-hidden="true">
-              <defs><filter id="rough" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs>
-              <g filter="url(#rough)">
-              <path data-pencil d="M1276.6 63.9 L1278.5 65.7 L1280.3 67.6 L1282.0 69.5 L1283.5 71.4 L1285.0 73.4 L1286.2 75.5 L1287.1 77.6 L1287.7 79.8 L1287.9 82.0 L1287.6 84.2 L1286.8 86.5 L1285.6 88.7 L1283.8 90.8 L1281.7 92.9 L1279.1 94.9 L1276.2 96.8 L1273.1 98.6 L1269.8 100.3 L1266.3 101.9 L1262.6 103.4 L1258.9 104.9 L1255.1 106.2 L1251.2 107.5 L1247.1 108.8 L1243.0 109.9 L1238.6 110.9 L1234.2 111.8 L1229.7 112.5 L1225.0 113.0 L1220.3 113.3 L1215.7 113.5 L1211.0 113.4 L1206.5 113.1 L1202.0 112.7 L1197.7 112.1 L1193.6 111.4 L1189.5 110.6 L1185.6 109.8 L1181.8 108.9 L1178.0 108.0 L1174.3 107.0 L1170.6 106.0 L1166.9 105.0 L1163.3 103.8 L1159.7 102.6 L1156.4 101.2 L1153.2 99.7 L1150.4 98.0 L1147.9 96.2 L1145.8 94.3 L1144.1 92.3 L1142.9 90.1 L1142.1 87.9 L1141.7 85.7 L1141.7 83.5 L1142.0 81.2 L1142.5 79.0 L1143.3 76.8 L1144.3 74.5 L1145.4 72.3 L1146.8 70.1 L1148.4 67.9 L1150.3 65.8 L1152.4 63.7 L1154.8 61.6 L1157.6 59.6 L1160.8 57.7 L1164.3 55.9 L1168.1 54.3 L1172.2 52.8 L1176.5 51.6 L1181.0 50.5 L1185.6 49.5 L1190.2 48.7 L1194.9 48.0 L1199.5 47.5 L1204.1 47.0 L1208.7 46.5 L1213.3 46.2 L1217.9 45.8 L1222.5 45.5 L1227.1 45.2 L1231.8 45.1 L1236.5 45.0 L1241.3 45.1 L1246.0 45.4 L1250.6 45.8 L1255.1 46.4 L1259.4 47.2 L1263.5 48.2 L1267.4 49.4 L1271.0 50.7 L1274.3 52.1 L1277.5 53.7 L1280.4 55.3 L1283.1 57.0 L1285.6 58.7 L1288.0 60.5 L1290.3 62.3 L1292.3 64.2 L1294.2 66.2 L1295.8 68.3 L1297.1 70.4 L1298.0 72.5 L1298.5 74.8 L1298.5 77.0 L1298.0 79.3 L1297.0 81.5 L1295.5 83.7 L1293.6 85.8"/>
-              <path data-pencil d="M841.3 198.3 L844.7 199.7 L847.3 201.2 L849.2 202.8 L850.2 204.5 L850.6 206.2 L850.4 207.9 L849.6 209.6 L848.4 211.3 L846.8 213.0 L844.9 214.7 L842.7 216.4 L840.2 218.1 L837.5 219.8 L834.3 221.4 L830.8 223.1 L826.8 224.7 L822.3 226.2 L817.2 227.7 L811.7 229.2 L805.7 230.5 L799.3 231.7 L792.6 232.9 L785.6 233.9 L778.5 234.8 L771.3 235.6 L764.0 236.3 L756.8 237.0 L749.5 237.6 L742.3 238.2 L735.0 238.7 L727.6 239.3 L720.2 239.8 L712.7 240.2 L705.0 240.6 L697.3 240.8 L689.5 241.0 L681.9 241.0 L674.3 240.8 L667.0 240.5 L660.1 240.0 L653.5 239.3 L647.4 238.5 L641.8 237.6 L636.7 236.5 L632.0 235.4 L627.7 234.2 L623.8 232.9 L620.2 231.5 L617.0 230.2 L614.0 228.8 L611.3 227.3 L609.1 225.8 L607.2 224.2 L605.9 222.6 L605.1 220.9 L605.1 219.2 L605.8 217.4 L607.2 215.6 L609.4 213.9 L612.3 212.1 L615.8 210.4 L619.9 208.7 L624.4 207.1 L629.3 205.6 L634.3 204.1 L639.5 202.6 L644.8 201.2 L650.2 199.8 L655.7 198.4 L661.3 197.0 L667.1 195.7 L673.1 194.4 L679.4 193.1 L686.0 191.8 L693.0 190.7 L700.3 189.6 L707.8 188.7 L715.6 187.9 L723.5 187.3 L731.5 186.8 L739.5 186.5 L747.4 186.2 L755.2 186.2 L762.9 186.2 L770.5 186.3 L777.9 186.5 L785.3 186.7 L792.5 187.0 L799.6 187.4 L806.6 187.9 L813.4 188.5 L819.9 189.2 L826.1 190.0 L831.8 190.9 L837.0 192.0 L841.5 193.2 L845.3 194.5 L848.4 196.0 L850.7 197.5 L852.2 199.1 L853.1 200.7 L853.5 202.3 L853.4 204.0 L852.9 205.6 L852.1 207.3 L851.1 208.9 L850.0 210.5 L848.7 212.1 L847.2 213.8 L845.5 215.4"/>
-              <path data-pencil d="M1040.7 273.6 L1051.7 277.7 L1060.9 282.1 L1068.1 286.9 L1073.1 291.9 L1075.9 297.1 L1076.5 302.5 L1075.1 307.9 L1071.8 313.4 L1066.9 318.8 L1060.7 324.2 L1053.4 329.5 L1045.1 334.7 L1036.1 339.9 L1026.4 344.9 L1016.0 349.9 L1004.8 354.9 L992.7 359.7 L979.5 364.4 L965.2 369.0 L949.7 373.3 L933.1 377.3 L915.3 381.0 L896.6 384.4 L877.1 387.3 L857.0 389.9 L836.7 392.0 L816.1 393.8 L795.6 395.3 L775.2 396.6 L755.0 397.6 L734.9 398.5 L714.9 399.3 L694.8 400.0 L674.7 400.6 L654.4 401.0 L634.0 401.3 L613.4 401.3 L593.0 401.0 L572.8 400.3 L553.0 399.1 L534.1 397.5 L516.2 395.4 L499.5 392.8 L484.3 389.7 L470.6 386.2 L458.4 382.4 L447.6 378.3 L438.2 374.0 L430.1 369.5 L422.9 364.9 L416.7 360.2 L411.4 355.3 L407.0 350.4 L403.4 345.4 L401.0 340.2 L399.8 335.0 L400.1 329.7 L402.1 324.2 L405.9 318.8 L411.7 313.3 L419.5 308.0 L429.2 302.7 L440.7 297.6 L453.7 292.8 L467.9 288.1 L483.1 283.7 L499.0 279.6 L515.3 275.6 L531.8 271.8 L548.5 268.1 L565.3 264.5 L582.4 261.0 L599.7 257.6 L617.5 254.2 L635.8 251.0 L654.8 247.9 L674.4 245.0 L694.7 242.5 L715.5 240.4 L736.8 238.6 L758.2 237.4 L779.7 236.6 L800.9 236.3 L821.8 236.5 L842.3 237.1 L862.2 238.0 L881.5 239.3 L900.3 240.8 L918.7 242.5 L936.6 244.5 L954.1 246.6 L971.1 249.0 L987.6 251.6 L1003.4 254.5 L1018.2 257.7 L1031.8 261.2 L1043.9 265.1 L1054.3 269.4 L1062.7 273.9 L1068.9 278.8 L1073.0 283.9 L1075.0 289.1 L1074.9 294.4 L1073.1 299.8 L1069.9 305.1 L1065.4 310.4 L1060.0 315.6 L1054.0 320.7 L1047.5 325.8 L1040.5 330.8"/>
-              <path data-pencil d="M887.6 330.8 L892.1 333.4 L895.8 336.1 L898.5 338.9 L900.2 341.9 L901.0 344.9 L900.7 347.9 L899.6 351.0 L897.7 354.0 L895.2 357.0 L892.3 360.0 L889.0 363.0 L885.4 365.9 L881.6 368.8 L877.5 371.7 L873.2 374.6 L868.5 377.5 L863.3 380.5 L857.6 383.4 L851.1 386.2 L843.9 389.0 L835.9 391.7 L827.1 394.2 L817.5 396.4 L807.3 398.5 L796.6 400.3 L785.5 401.8 L774.1 403.0 L762.6 404.0 L751.1 404.8 L739.6 405.4 L728.1 405.9 L716.7 406.2 L705.4 406.4 L694.2 406.4 L683.1 406.3 L672.0 406.1 L661.1 405.6 L650.5 405.0 L640.2 404.1 L630.3 403.0 L621.0 401.6 L612.4 399.9 L604.6 398.0 L597.6 395.9 L591.4 393.5 L586.1 391.1 L581.4 388.5 L577.4 385.9 L573.9 383.3 L570.7 380.6 L567.8 377.9 L565.1 375.2 L562.7 372.4 L560.4 369.6 L558.5 366.8 L556.9 363.9 L556.0 360.9 L555.7 357.8 L556.4 354.6 L558.0 351.5 L560.6 348.3 L564.3 345.1 L569.1 342.0 L574.8 338.9 L581.4 336.0 L588.8 333.2 L596.7 330.5 L605.1 327.9 L613.9 325.4 L623.0 323.0 L632.4 320.7 L642.1 318.5 L652.1 316.4 L662.4 314.4 L673.0 312.6 L684.0 310.9 L695.4 309.4 L707.0 308.2 L718.8 307.2 L730.6 306.6 L742.4 306.2 L754.0 306.2 L765.4 306.5 L776.3 307.1 L786.8 307.9 L796.8 308.9 L806.5 310.1 L815.7 311.3 L824.6 312.6 L833.3 314.0 L841.7 315.4 L850.1 316.9 L858.3 318.5 L866.3 320.1 L874.0 321.9 L881.3 323.8 L888.1 325.9 L894.2 328.2 L899.6 330.6 L904.0 333.2 L907.5 336.0 L910.0 338.9 L911.5 341.8 L912.2 344.9 L912.0 347.9 L911.2 351.0 L909.8 354.1 L907.9 357.2 L905.5 360.3 L902.8 363.4"/>
-              <path data-pencil d="M909.3 598.3 L913.3 599.2 L916.7 600.1 L919.7 601.0 L922.2 602.0 L924.1 603.0 L925.2 604.1 L925.6 605.2 L925.0 606.4 L923.3 607.6 L920.6 608.9 L916.7 610.1 L911.8 611.4 L905.9 612.7 L899.2 614.0 L891.7 615.3 L883.8 616.6 L875.4 617.8 L866.8 619.0 L858.0 620.2 L849.0 621.4 L839.8 622.6 L830.3 623.7 L820.6 624.9 L810.4 626.1 L799.8 627.2 L788.7 628.4 L777.0 629.5 L764.8 630.5 L752.2 631.4 L739.3 632.3 L726.2 633.0 L713.1 633.6 L700.0 634.2 L687.2 634.5 L674.8 634.8 L662.6 635.0 L650.8 635.1 L639.4 635.1 L628.4 635.1 L617.6 635.0 L607.1 634.9 L597.0 634.7 L587.2 634.4 L577.9 634.1 L569.2 633.6 L561.2 633.1 L554.1 632.5 L548.0 631.7 L543.0 630.9 L539.2 630.0 L536.6 628.9 L535.1 627.8 L534.7 626.7 L535.2 625.5 L536.3 624.3 L538.1 623.1 L540.3 621.8 L542.8 620.6 L545.5 619.4 L548.4 618.1 L551.6 616.9 L555.2 615.6 L559.2 614.3 L563.8 613.0 L569.3 611.7 L575.5 610.3 L582.8 609.0 L591.0 607.6 L600.1 606.3 L610.0 605.0 L620.8 603.7 L632.1 602.5 L643.9 601.4 L656.1 600.3 L668.5 599.3 L681.0 598.3 L693.7 597.4 L706.5 596.5 L719.4 595.7 L732.4 594.9 L745.4 594.1 L758.6 593.5 L771.8 592.9 L784.9 592.3 L797.9 591.9 L810.5 591.6 L822.7 591.5 L834.2 591.5 L845.0 591.6 L854.9 591.9 L864.0 592.2 L872.2 592.7 L879.6 593.3 L886.2 593.9 L892.3 594.5 L897.9 595.2 L903.2 596.0 L908.2 596.7 L912.9 597.5 L917.3 598.2 L921.4 599.1 L925.1 599.9 L928.1 600.8 L930.4 601.8 L931.8 602.9 L932.2 604.0 L931.5 605.1 L929.6 606.4 L926.6 607.6 L922.5 608.9"/>
-              <path data-pencil d="M1260.5 769.7 L1272.7 775.7 L1281.7 781.7 L1287.7 787.8 L1291.0 794.0 L1291.8 800.1 L1290.5 806.2 L1287.4 812.1 L1282.9 818.0 L1277.0 823.8 L1270.0 829.5 L1261.7 835.2 L1252.2 840.7 L1241.2 846.2 L1228.6 851.6 L1214.0 856.8 L1197.4 861.8 L1178.6 866.5 L1157.5 871.0 L1134.3 875.0 L1109.1 878.7 L1082.1 882.0 L1053.8 884.8 L1024.3 887.2 L994.2 889.3 L963.5 891.0 L932.7 892.5 L901.7 893.8 L870.7 894.9 L839.6 895.9 L808.4 896.7 L776.8 897.5 L744.8 898.2 L712.3 898.6 L679.2 898.8 L645.6 898.8 L611.7 898.3 L577.6 897.4 L543.8 895.9 L510.5 894.0 L478.1 891.5 L446.9 888.5 L417.2 885.1 L389.2 881.2 L363.1 876.9 L338.7 872.3 L316.1 867.5 L295.1 862.5 L275.6 857.3 L257.3 852.1 L240.3 846.7 L224.4 841.2 L209.8 835.6 L196.5 830.0 L184.8 824.2 L175.1 818.2 L167.6 812.2 L162.6 806.1 L160.6 800.0 L161.5 793.9 L165.6 787.9 L172.8 782.1 L182.9 776.4 L195.7 770.9 L210.7 765.7 L227.6 760.7 L245.9 756.0 L265.2 751.4 L285.2 747.1 L305.8 742.9 L326.7 738.8 L348.0 734.8 L369.8 730.8 L392.3 726.9 L415.7 723.1 L440.3 719.5 L466.2 716.0 L493.6 712.9 L522.4 710.1 L552.8 707.7 L584.4 705.7 L617.1 704.3 L650.6 703.4 L684.6 703.0 L718.8 703.1 L753.0 703.6 L786.9 704.6 L820.5 705.9 L853.7 707.5 L886.6 709.3 L919.0 711.4 L951.1 713.6 L982.8 716.1 L1014.2 718.9 L1045.0 721.9 L1075.1 725.2 L1104.1 728.9 L1131.7 732.9 L1157.5 737.4 L1181.1 742.2 L1202.3 747.3 L1220.6 752.7 L1235.9 758.4 L1248.3 764.2 L1257.7 770.2 L1264.4 776.2 L1268.8 782.2 L1271.1 788.2 L1271.8 794.0 L1271.3 799.8 L1269.8 805.5"/>
-              <path data-pencil d="M690.0 452.0 Q697.0 462.4 704.0 453.1 Q711.0 441.6 718.0 450.9 Q725.0 461.9 732.0 453.0 Q739.0 441.8 746.0 451.0 Q753.0 462.1 760.0 453.0 Q767.0 441.5 774.0 450.9 Q781.0 461.1 788.0 452.8 Q795.0 442.6 802.0 451.1 Q809.0 462.3 816.0 453.1 Q823.0 441.8 830.0 451.0 Q837.0 460.6 844.0 452.7 Q851.0 441.8 858.0 451.0 Q865.0 461.7 872.0 452.9 Q879.0 441.2 886.0 450.8 Q893.0 462.5 900.0 453.1 Q907.0 443.2 914.0 451.2 Q921.0 461.8 928.0 453.0 Q935.0 441.2 942.0 450.8 Q949.0 462.2 956.0 453.0 Q963.0 441.9 970.0 451.0 Q977.0 461.9 984.0 453.0 Q991.0 441.2 998.0 450.8 Q1005.0 462.8 1010.0 453.2"/>
-              </g>
-              <text class="note" x="1038" y="150" transform="rotate(-0.8 1038 150)">glow</text>
-              <text class="note" x="778" y="165" transform="rotate(-1.0 778 165)">glow</text>
-              <text class="note" x="540" y="210" transform="rotate(2.0 540 210)">emoji</text>
-              <text class="note" x="1110" y="240" transform="rotate(-1.0 1110 240)">serif + gradient?</text>
-              <text class="note" x="560" y="486" transform="rotate(-2.1 560 486)">glow?</text>
-              <text class="note" x="966" y="662" transform="rotate(-1.2 966 662)">emoji</text>
-              <text class="note" x="40" y="258" transform="rotate(-1.5 40 258)">Blue &amp; purple gradient again?!</text>
-              <text class="note" x="170" y="690" transform="rotate(-0.4 170 690)">3 cards, 01 02 03… again?</text>
-            </svg>
-            <svg class="markup" data-markup-phone viewBox="0 0 560 1226" aria-hidden="true" hidden>
-              <g filter="url(#rough)">
-              <path data-pencil d="M512.3 105.0 L514.6 106.8 L516.8 108.7 L518.9 110.5 L520.9 112.4 L522.6 114.4 L524.1 116.5 L525.2 118.6 L525.9 120.7 L526.1 123.0 L525.7 125.2 L524.6 127.5 L523.0 129.7 L520.8 131.9 L518.0 134.0 L514.7 136.0 L511.1 138.0 L507.1 139.8 L502.9 141.5 L498.4 143.2 L493.8 144.8 L489.1 146.3 L484.3 147.7 L479.3 149.1 L474.2 150.3 L468.9 151.5 L463.4 152.6 L457.8 153.5 L452.1 154.3 L446.2 154.9 L440.3 155.3 L434.4 155.5 L428.6 155.5 L422.8 155.3 L417.2 154.9 L411.8 154.4 L406.6 153.7 L401.5 153.0 L396.6 152.2 L391.8 151.4 L387.0 150.5 L382.3 149.6 L377.6 148.7 L373.0 147.6 L368.4 146.5 L364.0 145.3 L359.8 144.0 L355.8 142.5 L352.3 140.9 L349.1 139.1 L346.5 137.2 L344.4 135.2 L342.9 133.1 L341.9 131.0 L341.4 128.7 L341.3 126.5 L341.7 124.2 L342.4 122.0 L343.4 119.8 L344.6 117.5 L346.1 115.3 L347.8 113.1 L349.9 110.9 L352.2 108.7 L354.9 106.5 L357.9 104.4 L361.5 102.4 L365.4 100.4 L369.8 98.6 L374.6 97.0 L379.7 95.4 L385.1 94.1 L390.7 92.9 L396.5 91.9 L402.3 91.1 L408.2 90.3 L414.0 89.7 L419.8 89.2 L425.5 88.7 L431.2 88.2 L437.0 87.8 L442.7 87.4 L448.6 87.1 L454.4 86.9 L460.3 86.8 L466.2 86.8 L472.1 87.0 L477.9 87.4 L483.5 87.9 L488.9 88.7 L494.0 89.6 L498.8 90.7 L503.3 92.0 L507.5 93.4 L511.4 94.9 L515.0 96.5 L518.4 98.1 L521.5 99.8 L524.5 101.6 L527.2 103.4 L529.8 105.3 L532.1 107.2 L534.0 109.3 L535.6 111.3 L536.7 113.5 L537.2 115.7 L537.2 118.0 L536.5 120.3 L535.2 122.5 L533.3 124.7 L530.9 126.9"/>
-              <path data-pencil d="M433.6 298.1 L439.2 298.9 L444.1 299.8 L448.0 300.9 L451.0 302.0 L452.8 303.2 L453.4 304.5 L453.0 305.8 L451.6 307.2 L449.2 308.6 L446.1 310.0 L442.3 311.4 L438.0 312.8 L433.2 314.2 L428.1 315.5 L422.6 316.9 L416.8 318.3 L410.6 319.6 L404.0 320.9 L396.8 322.2 L389.2 323.5 L381.0 324.7 L372.2 325.9 L363.0 326.9 L353.3 327.9 L343.3 328.9 L333.0 329.7 L322.7 330.4 L312.4 331.0 L302.1 331.6 L291.9 332.0 L281.8 332.5 L271.8 332.9 L261.9 333.2 L251.9 333.6 L242.0 333.9 L231.9 334.2 L221.9 334.4 L211.8 334.6 L201.8 334.7 L192.0 334.6 L182.5 334.5 L173.4 334.3 L164.9 333.9 L157.1 333.3 L150.1 332.7 L143.9 331.9 L138.4 331.0 L133.8 330.1 L129.8 329.0 L126.4 328.0 L123.6 326.8 L121.3 325.7 L119.4 324.5 L117.9 323.3 L116.9 322.0 L116.5 320.7 L116.7 319.4 L117.7 318.0 L119.5 316.6 L122.2 315.2 L125.9 313.7 L130.5 312.3 L136.1 310.8 L142.6 309.4 L149.7 308.0 L157.5 306.7 L165.6 305.4 L174.1 304.2 L182.7 303.1 L191.5 301.9 L200.3 300.8 L209.2 299.7 L218.1 298.7 L227.2 297.6 L236.5 296.6 L246.1 295.6 L255.9 294.6 L266.0 293.7 L276.4 292.9 L287.1 292.1 L297.8 291.5 L308.6 291.0 L319.3 290.6 L329.9 290.3 L340.2 290.1 L350.2 290.1 L360.0 290.1 L369.4 290.2 L378.5 290.4 L387.3 290.7 L395.9 291.0 L404.3 291.4 L412.4 291.8 L420.2 292.3 L427.6 292.8 L434.5 293.5 L440.8 294.3 L446.2 295.1 L450.8 296.1 L454.3 297.2 L456.7 298.3 L458.1 299.6 L458.3 300.9 L457.6 302.2 L456.0 303.6 L453.6 304.9 L450.7 306.3 L447.3 307.6 L443.7 309.0 L439.8 310.3"/>
-              <path data-pencil d="M485.1 418.8 L490.1 423.7 L493.9 428.8 L496.5 434.1 L498.0 439.4 L498.4 444.8 L498.0 450.2 L496.9 455.5 L495.2 460.8 L493.1 466.1 L490.7 471.4 L488.0 476.7 L485.0 481.9 L481.5 487.3 L477.5 492.6 L472.8 498.0 L467.2 503.4 L460.6 508.7 L452.9 513.8 L444.1 518.7 L434.1 523.3 L423.0 527.6 L411.0 531.4 L398.2 534.8 L384.9 537.8 L371.1 540.4 L357.0 542.5 L342.8 544.3 L328.5 545.8 L314.1 547.1 L299.8 548.1 L285.5 548.9 L271.2 549.4 L256.9 549.7 L242.6 549.7 L228.4 549.3 L214.4 548.6 L200.7 547.3 L187.5 545.6 L174.9 543.4 L163.1 540.8 L152.1 537.7 L142.0 534.2 L132.8 530.4 L124.5 526.3 L116.9 522.1 L110.0 517.8 L103.7 513.3 L97.6 508.9 L91.9 504.4 L86.4 499.8 L81.1 495.2 L76.2 490.5 L71.6 485.6 L67.7 480.5 L64.5 475.3 L62.3 469.9 L61.3 464.4 L61.6 458.7 L63.3 453.1 L66.3 447.4 L70.7 441.8 L76.4 436.3 L83.1 431.0 L90.8 425.8 L99.2 420.9 L108.3 416.1 L117.9 411.4 L128.0 406.9 L138.4 402.6 L149.3 398.3 L160.7 394.3 L172.7 390.4 L185.2 386.8 L198.2 383.6 L211.9 380.7 L226.0 378.2 L240.5 376.3 L255.3 374.9 L270.1 374.0 L284.9 373.7 L299.4 374.0 L313.6 374.7 L327.4 375.7 L340.8 377.1 L353.7 378.7 L366.3 380.5 L378.6 382.3 L390.6 384.3 L402.5 386.4 L414.3 388.6 L426.0 390.9 L437.4 393.5 L448.5 396.3 L459.1 399.4 L469.1 402.9 L478.3 406.7 L486.5 410.8 L493.6 415.3 L499.5 420.1 L504.3 425.1 L508.0 430.3 L510.6 435.6 L512.3 440.9 L513.3 446.4 L513.5 451.8 L513.2 457.3 L512.3 462.8 L510.9 468.4 L508.9 474.0 L506.1 479.6"/>
-              <path data-pencil d="M462.0 996.4 L468.7 996.9 L474.7 997.5 L480.0 998.2 L484.2 998.9 L487.3 999.8 L489.2 1000.7 L489.7 1001.7 L488.8 1002.8 L486.6 1004.0 L483.2 1005.2 L478.7 1006.4 L473.4 1007.6 L467.2 1008.8 L460.5 1010.1 L453.3 1011.3 L445.7 1012.5 L437.8 1013.7 L429.4 1014.9 L420.7 1016.0 L411.4 1017.2 L401.7 1018.4 L391.3 1019.5 L380.5 1020.6 L369.0 1021.6 L357.1 1022.6 L344.9 1023.5 L332.4 1024.4 L319.7 1025.1 L307.1 1025.8 L294.6 1026.4 L282.2 1026.9 L270.0 1027.3 L258.1 1027.8 L246.3 1028.1 L234.5 1028.5 L222.9 1028.8 L211.2 1029.1 L199.5 1029.4 L187.9 1029.7 L176.2 1029.9 L164.8 1030.0 L153.7 1030.0 L143.2 1030.0 L133.2 1029.8 L124.1 1029.5 L115.9 1029.1 L108.8 1028.6 L102.7 1027.9 L97.6 1027.2 L93.6 1026.4 L90.3 1025.6 L87.9 1024.6 L86.1 1023.7 L84.9 1022.7 L84.3 1021.7 L84.1 1020.6 L84.6 1019.6 L85.7 1018.4 L87.6 1017.3 L90.4 1016.1 L94.2 1014.9 L99.1 1013.6 L105.0 1012.3 L112.1 1011.1 L120.2 1009.8 L129.3 1008.5 L139.1 1007.3 L149.5 1006.1 L160.3 1005.0 L171.4 1003.9 L182.7 1002.8 L194.0 1001.8 L205.4 1000.8 L216.8 999.9 L228.2 998.9 L239.8 998.0 L251.6 997.0 L263.6 996.1 L275.9 995.2 L288.5 994.4 L301.2 993.6 L314.1 992.9 L327.0 992.3 L339.8 991.8 L352.4 991.4 L364.6 991.1 L376.4 990.9 L387.8 990.8 L398.6 990.7 L409.0 990.8 L419.0 990.9 L428.6 991.1 L437.8 991.3 L446.8 991.6 L455.3 991.9 L463.5 992.3 L471.1 992.7 L478.0 993.3 L484.0 993.9 L489.1 994.6 L493.0 995.4 L495.6 996.3 L496.8 997.3 L496.7 998.3 L495.3 999.4 L492.8 1000.6 L489.1 1001.7 L484.7 1002.9 L479.6 1004.1 L474.0 1005.3"/>
-              </g>
-              <text class="note" x="300" y="192" transform="rotate(2.8 300 192)">glow</text>
-              <text class="note" x="14" y="302" transform="rotate(-0.5 14 302)">emoji</text>
-              <text class="note" x="338" y="528" transform="rotate(-2.3 338 528)">serif + gradient?</text>
-              <text class="note" x="440" y="1046" transform="rotate(-2.3 440 1046)">emoji</text>
-            </svg>
-            <span class="tag tag-bad">Other agents<span class="cari"> · caricature</span></span>
-          </figure>
-
-          <div class="divider" aria-hidden="true"><span class="handle"><svg viewBox="0 0 24 24"><path d="M9 6 L3 12 L9 18 M15 6 L21 12 L15 18"/></svg></span></div>
-          <input class="range" type="range" min="0" max="100" step="1" value="50" data-range aria-label="Drag to compare. Left: other agents. Right: Super-Webdesigner.">
+        <div class="agent" role="group" aria-labelledby="agent-title" data-lit>
+          <div class="agent-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="agent-title" id="agent-title">claude: super-webdesigner</span>
+          </div>
+          <div class="agent-body">
+            <p class="a-line"><span class="prompt" aria-hidden="true">&gt;</span> <span class="hd">Build the rest of this page.</span></p>
+            <p class="a-line" id="agent-q"><span class="js-only">Three directions are ready. Pick one:</span><span class="nojs-only">Three directions were ready. This page is C, Darkroom Develop.</span></p>
+            <div class="picks">
+              <button type="button" class="pick" data-dir="a" aria-pressed="false"><span class="pk">A</span><span>Editor at Night</span></button>
+              <button type="button" class="pick" data-dir="b" aria-pressed="false"><span class="pk">B</span><span>The Output Leads</span></button>
+              <button type="button" class="pick" data-dir="c" aria-pressed="true"><span class="pk">C</span><span>Darkroom Develop</span></button>
+            </div>
+            <p class="status" id="agent-status" aria-live="polite">This page is C, Darkroom Develop.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+  <div id="built">
 
-      <aside class="wall-label">
-        <p class="wl-no">No. 1</p>
-        <p><b>Other agents / Super-Webdesigner</b>, 2026. HTML on screen.</p>
-        <p>Left: a caricature built on purpose, with the first ten tells at once. It is not an agent's real output: an untouched one is in the repo's burger example. Right: Steno, a fictional app, made through the skill's flow.</p>
-        <p class="wl-drag">Please drag.</p>
-      </aside>
-    </section>
-
-  <main>
-    <section class="tells" id="tells" aria-labelledby="tells-title">
-      <div class="sec-head">
-        <p class="kicker">The red pencil</p>
-        <h2 id="tells-title">Thirteen things it crosses out.</h2>
-        <p class="lede">Each one alone looks like a choice. Three together and the page reads as made by AI. The skill checks all thirteen on the full page, then checks that it still looks like the business, before anything ships.</p>
+  <section class="sec" id="compare" data-look="c" aria-labelledby="compare-h">
+    <div class="container sec-head">
+      <h2 id="compare-h">One prompt. Two pages.</h2>
+      <p>Build a website for a burger restaurant. Left, an agent on its own. Right, the same agent with Super-Webdesigner.</p>
+    </div>
+    <div class="container pair-wrap">
+      <div class="pair">
+        <figure class="pic">
+          <div class="frame">
+            <div class="fbar" aria-hidden="true"><span class="fdots"><i></i><i></i><i></i></span><span class="fname">ember-and-bun.html</span></div>
+            <img src="img/normal-desktop.webp" width="1440" height="900" loading="lazy" alt="Ember &amp; Bun, made by an agent alone: cream page, a drawn burger, a red-orange headline, invented ratings and a scrolling banner">
+          </div>
+          <figcaption class="stat"><span class="num"><span class="digits" data-count="39" aria-hidden="true">39</span><span class="sr">39</span></span><span class="lab"><span class="l1">floor failures</span><span class="l2">. Agent alone: Ember &amp; Bun</span></span></figcaption>
+        </figure>
+        <span class="diff-v" aria-hidden="true"></span>
+        <figure class="pic pic-2">
+          <div class="frame">
+            <div class="fbar" aria-hidden="true"><span class="fdots"><i></i><i></i><i></i></span><span class="fname">order-27.html</span></div>
+            <img src="img/super-desktop.webp" width="1440" height="900" loading="lazy" alt="Order 27, made with Super-Webdesigner: butcher-paper page, a photo of a wrapped burger, the order number as the brand">
+          </div>
+          <figcaption class="stat"><span class="num"><span class="digits" data-count="12" aria-hidden="true">12</span><span class="sr">12</span></span><span class="lab"><span class="l1">floor failures</span><span class="l2">. With the skill: Order 27</span></span></figcaption>
+        </figure>
       </div>
-      <ol class="tell-list">
-        <li><span class="tell-text">Purple-to-blue gradients<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M4.1 4.2 C324.7 1.7 697.7 3.8 986.9 3.4"/></svg></span></li>
-        <li><span class="tell-text">Default fonts, serif or Inter<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M11.2 2.4 C271.9 4.9 748.7 0.9 1000.2 2.9"/></svg></span></li>
-        <li><span class="tell-text">Grid and dot backgrounds<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M25.3 3.6 C294.7 3.9 618.8 1.0 1010.0 3.8"/></svg></span></li>
-        <li><span class="tell-text">Three generic benefit cards<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M-6.4 2.3 C301.8 3.8 726.6 4.6 968.8 3.4"/></svg></span></li>
-        <li><span class="tell-text">Emoji in the copy<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M6.0 3.2 C400.4 5.8 774.9 5.0 992.8 2.8"/></svg></span></li>
-        <li><span class="tell-text">Glow on everything<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M-1.4 2.8 C352.4 5.8 650.2 3.0 968.1 2.2"/></svg></span></li>
-        <li><span class="tell-text">Hero, cards, testimonials, FAQ<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M24.3 2.2 C402.7 6.7 694.5 3.1 1003.3 2.6"/></svg></span></li>
-        <li><span class="tell-text">Thin generic icons<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M-11.1 3.9 C252.5 6.6 650.1 5.3 990.9 2.8"/></svg></span></li>
-        <li><span class="tell-text">Nothing moving<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M-9.3 2.4 C352.3 4.1 609.0 3.4 969.0 2.2"/></svg></span></li>
-        <li><span class="tell-text">01 / 02 / 03 on things with no order<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M-6.4 2.5 C261.9 1.9 671.5 2.3 996.7 3.9"/></svg></span></li>
-        <li><span class="tell-text">Hard shadows on every box<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M8.7 3.1 C318.2 5.4 702.6 1.6 1006.4 3.0"/></svg></span></li>
-        <li><span class="tell-text">Mono labels and fake data<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M-4.2 3.8 C287.5 2.1 655.9 5.2 979.3 2.5"/></svg></span></li>
-        <li><span class="tell-text">Cream, terracotta, broadsheet<svg class="strike" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><path d="M15.6 2.7 C376.1 4.4 640.3 2.9 994.1 3.6"/></svg></span></li>
-      </ol>
-    </section>
+    </div>
+    <div class="container">
+      <p class="lint-note">sloplint ships with the skill and ran on both burger pages. 11 of the 12 are colours written outside tokens, a rule added after Order 27 was built.</p>
+    </div>
+  </section>
 
-    <section class="flow" id="flow" aria-labelledby="flow-title">
-      <div class="sec-head">
-        <p class="kicker">How it works</p>
-        <h2 id="flow-title">It asks before it draws.</h2>
-        <p class="lede">A fixed flow with three stops. At each one the agent waits for you.</p>
-      </div>
-      <div class="flow-body">
-        <ol class="steps">
-          <li><h3>Discover the tools</h3><p>Lists the skills, MCP servers and browser it has, and what's missing, with the install command. Nothing gets installed without a yes.</p></li>
-          <li class="stop"><h3>The brief</h3><p>Four questions, with options to click: a real object for the palette, one feeling, two influences to collide, what it must never look like. The cost of the mockups comes in the same message.</p><span class="stamp">Stop · you answer</span></li>
-          <li><h3>Research the niche</h3><p>Real sites, split into what visitors expect (kept) and what everyone repeats (avoided).</p></li>
-          <li><h3>Three directions</h3><p>Gray skeletons for phone and desktop, and a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each with its logo, favicon and motion.</p></li>
-          <li class="stop"><h3>You choose</h3><p>One question: which of the three, or what to mix.</p><span class="stamp">Stop · you choose</span></li>
-          <li><h3>Write it down</h3><p>The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build.</p></li>
-          <li><h3>Build</h3><p>Half the effort on the first screen, with the motion the direction asked for.</p></li>
-          <li class="stop"><h3>Review, then you judge</h3><p>Full-page screenshots at 1440 and 390 px, the 13 tells, the fit to the business, a design critique, forms, contrast. Nothing is published before you say so.</p><span class="stamp">Stop · you judge</span></li>
+  <section class="sec" id="flow" data-look="c" aria-labelledby="flow-h">
+    <div class="container">
+      <h2 id="flow-h">Four stops. You decide each one.</h2>
+      <div class="win flow-win">
+        <div class="fbar" aria-hidden="true"><span class="fdots"><i></i><i></i><i></i></span><span class="fname">flow.md</span></div>
+        <ol class="steps" role="list">
+          <li><span class="n" aria-hidden="true">1</span><h3>The brief.</h3><p>Four questions with options to click. The palette comes from a real object you name.</p></li>
+          <li><span class="n" aria-hidden="true">2</span><h3>Three directions.</h3><p>Grey skeletons and a coloured mockup each, after research on real sites in your niche.</p></li>
+          <li><span class="n" aria-hidden="true">3</span><h3>The decisions.</h3><p>Every choice in one block, before a line of code.</p></li>
+          <li><span class="n" aria-hidden="true">4</span><h3>The review.</h3><p>A lint at five widths, the 13 tells, and a reviewer that never saw the chat. You judge last.</p></li>
         </ol>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="proof" id="proof" aria-labelledby="proof-title">
-      <div class="sec-head">
-        <p class="kicker">The proof sheet</p>
-        <h2 id="proof-title">From the prompt to Steno.</h2>
-      </div>
-      <figure class="proof-skel">
-        <img src="img/steno-skeletons.webp" width="1600" height="1227" loading="lazy" alt="Three gray skeletons for Steno: Reporter's Notebook, Live Captions and Steno Tape">
-        <figcaption>No. 2 · Three directions in gray. Composition first, color only in the swatches.</figcaption>
-      </figure>
-      <div class="proof-row">
-        <figure><img src="img/steno-mockup-a.webp" width="1200" height="679" loading="lazy" alt="Mockup A, Reporter's Notebook: a yellow legal pad with a notes card"><figcaption>A · Reporter's Notebook · chosen</figcaption></figure>
-        <figure><img src="img/steno-mockup-b.webp" width="1200" height="679" loading="lazy" alt="Mockup B, Live Captions: a video call with a caption bar"><figcaption>B · Live Captions</figcaption></figure>
-        <figure><img src="img/steno-mockup-c.webp" width="1200" height="679" loading="lazy" alt="Mockup C, Steno Tape: a stenotype tape running down the page"><figcaption>C · Steno Tape</figcaption></figure>
-      </div>
-      <p class="proof-note">Every file, from the brief to the mockups, is in <a href="https://github.com/JouberthAlves/super-designer/tree/main/examples">examples/</a>, including the untouched normal-agent output for comparison.</p>
-    </section>
+  <section class="sec" id="tells" data-look="c" aria-labelledby="tells-h">
+    <div class="container split">
+      <h2 id="tells-h">The 13 tells it checks for.</h2>
+      <ul class="tells" role="list">
+        <li>Purple or blue gradient</li>
+        <li>Default type</li>
+        <li>Grid background</li>
+        <li>Three generic benefit cards</li>
+        <li>Emoji in the copy</li>
+        <li>Glow on everything</li>
+        <li>The usual layout</li>
+        <li>Generic icons</li>
+        <li>Everything static</li>
+        <li>01 / 02 / 03 on a loose list</li>
+        <li>Hard shadows and boxes everywhere</li>
+        <li>Spec-sheet dressing</li>
+        <li>A default AI look</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="vault" id="vault" aria-labelledby="vault-title">
-      <div class="sec-head">
-        <p class="kicker">The vault</p>
-        <h2 id="vault-title">Why an Obsidian vault.</h2>
-        <p class="lede">An agent forgets everything when a session ends. The vault is where it keeps what it learned, so the next session starts from there.</p>
-      </div>
-      <div class="vault-grid">
-        <div class="vault-text">
-          <p>Without a memory, the agent makes the same mistakes again, ships the same look again and asks the same questions. The vault is a folder of plain Markdown: the agent reads it at the start of each session, and writes to it when something goes wrong or right.</p>
-          <p>Obsidian is recommended, not required, for three reasons:</p>
-          <ul class="why">
-            <li><b>You can read and edit the rules by hand.</b> Every rule is one line in a note you can open, change and search.</li>
-            <li><b>The links show the history.</b> A mistake points to the rule it became, and the rule points to the project where it was learned.</li>
-            <li><b>It is plain Markdown.</b> Any agent can read it, and it goes into git like any other folder.</li>
-          </ul>
-          <p>Claude Code can also re-inject the rules after the context is compacted, so a long session doesn't lose them (optional hook).</p>
+  <section class="sec" id="install" data-look="c" aria-labelledby="install-h">
+    <div class="container">
+      <h2 id="install-h">Install it in your agent.</h2>
+      <div class="inst">
+        <div class="tabs" role="tablist" aria-label="Your coding agent">
+          <button type="button" class="tab" role="tab" id="itab-claude" aria-controls="icmd-claude" aria-selected="true">Claude Code</button>
+          <button type="button" class="tab" role="tab" id="itab-codex" aria-controls="icmd-codex" aria-selected="false" tabindex="-1">Codex</button>
+          <button type="button" class="tab" role="tab" id="itab-cursor" aria-controls="icmd-cursor" aria-selected="false" tabindex="-1">Cursor</button>
+          <button type="button" class="tab" role="tab" id="itab-windsurf" aria-controls="icmd-windsurf" aria-selected="false" tabindex="-1">Windsurf</button>
+          <button type="button" class="tab" role="tab" id="itab-copilot" aria-controls="icmd-copilot" aria-selected="false" tabindex="-1">GitHub Copilot</button>
+          <button type="button" class="tab" role="tab" id="itab-plugin" aria-controls="icmd-plugin" aria-selected="false" tabindex="-1">Plugin</button>
         </div>
-        <ul class="vault-list">
-          <li><code>90 System/Agent rules.md</code><span>Every rule in force, one per line. The only file read every session.</span></li>
-          <li><code>90 System/Mistakes.md</code><span>What went wrong, with the one-line rule it became.</span></li>
-          <li><code>90 System/Wins.md</code><span>What you praised, turned into a pattern for the next project.</span></li>
-          <li><code>10 Notes/</code><span>The brief, research, skeletons, anti-patterns and design rules.</span></li>
-          <li><code>20 Projects/</code><span>One note per project, so the same style is never shipped twice.</span></li>
-        </ul>
-      </div>
-      <p class="vault-more">Setup: copy <code>vault/</code>, open it in Obsidian with "Open folder as vault", and run your agent inside that folder. Details in <a href="https://github.com/JouberthAlves/super-webdesigner/tree/main/vault">vault/README.md</a>.</p>
-    </section>
-    <section class="install" id="install" aria-labelledby="install-title">
-      <div class="sec-head">
-        <p class="kicker">Install</p>
-        <h2 id="install-title">Two skills. Pick your agent.</h2>
-      </div>
-      <div class="agents">
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" d="M20.998 10.949H24v3.102h-3v3.028h-1.487V20H18v-2.921h-1.487V20H15v-2.921H9V20H7.488v-2.921H6V20H4.487v-2.921H3V14.05H0V10.95h3V5h17.998v5.949zM6 10.949h1.488V8.102H6v2.847zm10.51 0H18V8.102h-1.49v2.847z"></path></svg></span>Claude Code</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -g -a claude-code</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -g -a claude-code">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path></svg></span>Codex</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a codex</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a codex">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.106 5.68L12.5.135a.998.998 0 00-.998 0L1.893 5.68a.84.84 0 00-.419.726v11.186c0 .3.16.577.42.727l9.607 5.547a.999.999 0 00.998 0l9.608-5.547a.84.84 0 00.42-.727V6.407a.84.84 0 00-.42-.726zm-.603 1.176L12.228 22.92c-.063.108-.228.064-.228-.061V12.34a.59.59 0 00-.295-.51l-9.11-5.26c-.107-.062-.063-.228.062-.228h18.55c.264 0 .428.286.296.514z"></path></svg></span>Cursor</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a cursor</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a cursor">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" d="M23.78 5.004h-.228a2.187 2.187 0 00-2.18 2.196v4.912c0 .98-.804 1.775-1.76 1.775a1.818 1.818 0 01-1.472-.773L13.168 5.95a2.197 2.197 0 00-1.81-.95c-1.134 0-2.154.972-2.154 2.173v4.94c0 .98-.797 1.775-1.76 1.775-.57 0-1.136-.289-1.472-.773L.408 5.098C.282 4.918 0 5.007 0 5.228v4.284c0 .216.066.426.188.604l5.475 7.889c.324.466.8.812 1.351.938 1.377.316 2.645-.754 2.645-2.117V11.89c0-.98.787-1.775 1.76-1.775h.002c.586 0 1.135.288 1.472.773l4.972 7.163a2.15 2.15 0 001.81.95c1.158 0 2.151-.973 2.151-2.173v-4.939c0-.98.787-1.775 1.76-1.775h.194c.122 0 .22-.1.22-.222V5.225a.221.221 0 00-.22-.222z"></path></svg></span>Windsurf</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a windsurf</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a windsurf">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.594 6.677C6.67-2.226 18.746-2.211 21.16 6.632c.353 1.297 1.725 7.582-1.673 13.747-1.545 2.797-5.841 5.49-6.99 1.883C8.6 25.477 3.315 24.1 5.789 18.609l-.318.143c-3.57 1.305-3.863-1.208-3.173-2.513.45-.84.727-1.335.937-1.897.353-.975.458-1.568.593-2.498.27-1.837.277-3.607.765-5.167zm8.37.01a.92.92 0 00-.81.428c-.217.323-.33.825-.33 1.462 0 .705.15 1.89 1.14 1.89h.008c.757 0 1.214-.705 1.214-1.89 0-.622-.127-1.125-.367-1.455a1.014 1.014 0 00-.855-.435zm4.08 0a.92.92 0 00-.81.428c-.217.323-.33.825-.33 1.462 0 .705.15 1.89 1.14 1.89h.008c.757 0 1.215-.705 1.215-1.89 0-.622-.128-1.125-.368-1.455a1.014 1.014 0 00-.855-.435z"></path></svg></span>Kiro</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a kiro-cli</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a kiro-cli">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.376 14.458v-4.056c0-2.304-1.003-4.154-2.748-5.075L11.612.574l-.046.086-.045.086c1.68.886 2.644 2.673 2.644 4.902v4.056a7.928 7.928 0 01-.014.454l-.005.061c-.005.081-.01.164-.018.245a4.897 4.897 0 01-.011.1l-.01.076c-.008.068-.015.135-.025.203l-.018.113-.01.058a9.99 9.99 0 01-.098.513l-.007.03a7.209 7.209 0 01-.074.294l-.024.086c-.027.099-.056.197-.087.296l-.027.085a9.592 9.592 0 01-.111.323l-.033.085-.018.046c-.032.082-.064.166-.098.248-.019.048-.04.096-.061.145l-.007.017a6 6 0 01-.084.187c-.024.056-.05.11-.077.165-.03.061-.058.122-.089.182a9.423 9.423 0 01-.176.332c-.03.056-.062.111-.094.167-.031.053-.062.108-.095.16-.033.055-.066.11-.101.164-.033.053-.065.104-.1.155-.034.055-.07.107-.111.169l-.099.144a15.193 15.193 0 01-.34.457c-.04.05-.08.102-.121.151l-.107.128-.007.008a6.987 6.987 0 01-.262.298l-.149.16-.116.12a9.562 9.562 0 01-.204.198l-.03.03-.072.069a9.05 9.05 0 01-.263.235l-.025.022-.029.026-.042.035a11.7 11.7 0 01-.22.18l-.07.055-.018.013a8.904 8.904 0 01-.194.146c-.029.02-.057.042-.086.063a7.7 7.7 0 01-.22.152l-.057.04a8.865 8.865 0 01-.293.185l-.062.037a10.424 10.424 0 01-.307.173l-.037.02-.196.103-.108.052-.012.006a6.196 6.196 0 01-.315.143c-.065.028-.13.054-.196.08l-.035.014-.086.034c-.07.026-.143.05-.215.075l-.039.014-.064.023a8.056 8.056 0 01-.323.097l-.63.173a7.285 7.285 0 01-.33.08l-.07.015c-.053.012-.104.023-.157.032l-.065.011-.085.015a2.332 2.332 0 01-.194.027l-.085.01a4.715 4.715 0 01-.16.018l-.034.003a4.861 4.861 0 01-.246.016h-.033a2.714 2.714 0 01-.155.005h-.106a3.384 3.384 0 01-.225-.007H4.86l-.15-.012-.066-.006a5.586 5.586 0 01-.187-.02l-.04-.005a5.14 5.14 0 01-.219-.035l-.054-.01a6.943 6.943 0 01-.347-.082l-.03-.008-.038-.01a5.034 5.034 0 01-.269-.086l-.063-.023a4.216 4.216 0 01-.188-.073l-.071-.031-.016-.007a4.959 4.959 0 01-.16-.074l-.026-.013a.164.164 0 00-.014-.007l-.671-.351.486.486h.016l8.995 4.742.093.048.03.014.02.01c.056.026.111.052.169.076l.016.008.073.032.195.076.022.008a.718.718 0 01.03.012l.014.004a4.693 4.693 0 00.323.1l.027.007c.073.02.147.038.22.055l.018.004.027.006.066.013.088.016c.075.014.15.026.226.038l.042.004c.064.009.128.016.193.022l.126.012.06.003.05.002.098.005c.046.002.094.002.14.003h.12c.05 0 .1-.002.161-.005h.033l.07-.004a6.17 6.17 0 00.184-.014l.033-.003a.753.753 0 00.058-.005l.108-.012.081-.01.08-.01.129-.021.082-.014.071-.012c.054-.01.107-.021.16-.033l.066-.013.059-.013c.096-.022.192-.046.287-.073l.63-.172a7.354 7.354 0 00.397-.122l.04-.015c.075-.025.149-.051.222-.078.032-.011.062-.024.093-.037l.03-.012c.067-.027.135-.054.2-.082l.128-.056.195-.09.021-.01.102-.05c.068-.034.135-.069.202-.105l.037-.02.073-.038c.08-.044.16-.092.24-.139l.026-.015a8.086 8.086 0 00.322-.2l.065-.045 1.98.902a1.748 1.748 0 002.472-1.59v-7.33l.004.004z" opacity=".5"></path><path d="M11.617.576a3.904 3.904 0 00-.093-.047c-.016-.009-.033-.016-.05-.024a5.854 5.854 0 00-.166-.077l-.09-.04a4.094 4.094 0 00-.194-.074c-.017-.006-.035-.015-.053-.02l-.013-.005a5.18 5.18 0 00-.277-.088l-.07-.019a4.034 4.034 0 00-.219-.053c-.015-.003-.03-.008-.044-.012L10.253.1l-.057-.011a5.177 5.177 0 00-.225-.036L9.928.047a5.972 5.972 0 00-.191-.022L9.669.02a1.33 1.33 0 00-.058-.005L9.515.009a4.058 4.058 0 00-.111-.005C9.354 0 9.304 0 9.254 0h-.109c-.052 0-.106.004-.16.004L8.884.01A5.32 5.32 0 008.7.022l-.083.006h-.008c-.05.005-.1.013-.15.019l-.12.014c-.056.008-.112.018-.169.028-.037.006-.074.011-.11.018a7.054 7.054 0 00-.572.133l-.63.172c-.111.031-.22.064-.33.1-.037.011-.072.025-.108.037a12.91 12.91 0 00-.345.126c-.067.027-.133.054-.2.083l-.128.055a11.916 11.916 0 00-.318.15 7.376 7.376 0 00-.311.163c-.082.045-.16.092-.24.14a9.424 9.424 0 00-.35.218l-.016.01-.06.04a9.242 9.242 0 00-.51.37 12.54 12.54 0 00-.315.254l-.043.034-.01.007-.045.041c-.09.078-.18.158-.268.24l-.106.101c-.07.067-.139.135-.207.204l-.056.054-.063.067-.153.164-.12.133-.148.17c-.024.03-.049.057-.073.086l-.043.053a5.96 5.96 0 00-.123.155l-.118.151c-.04.053-.08.106-.118.16l-.075.101-.038.056-.107.155-.11.164a9.91 9.91 0 00-.168.265c-.012.02-.023.043-.037.063a12.43 12.43 0 00-.192.335l-.09.168c-.019.034-.04.07-.057.105-.011.022-.02.043-.032.065l-.092.188-.08.167a19.15 19.15 0 00-.083.192c-.017.038-.035.076-.05.115-.008.016-.014.034-.021.051-.035.083-.067.167-.1.253l-.051.134c-.04.11-.077.22-.113.33l-.02.057c0 .002 0 .005-.002.007l-.008.026c-.032.1-.06.2-.09.301l-.023.089c-.027.1-.052.2-.075.301l-.007.03a7.63 7.63 0 00-.057.267l-.008.048c-.015.074-.026.148-.038.223L.082 8.4c-.011.078-.02.156-.029.234-.006.051-.013.103-.017.154a6.57 6.57 0 00-.02.26c-.003.044-.007.086-.009.13-.004.128-.007.257-.007.386v4.056c0 1.478.42 2.741 1.138 3.692A4.75 4.75 0 002.73 18.67l9.015 4.753c-1.656-.874-2.728-2.685-2.73-5.051v-4.056c0-.13.004-.26.01-.39.002-.043.006-.085.01-.128.005-.088.01-.174.019-.261l.017-.155c.01-.077.018-.155.029-.234l.026-.164c.013-.074.025-.15.039-.223.02-.105.04-.21.064-.313l.008-.031c.023-.1.048-.201.075-.301l.023-.088c.028-.1.058-.202.09-.302l.008-.025.021-.063c.036-.11.073-.22.113-.33l.052-.134c.031-.085.065-.169.1-.253.022-.056.047-.111.07-.166a13.856 13.856 0 01.164-.358c.03-.063.06-.126.092-.188l.088-.172a9.22 9.22 0 01.187-.338l.096-.164c.034-.057.069-.112.104-.168l.1-.159a10.49 10.49 0 01.567-.786l.123-.155.116-.139c.05-.057.098-.115.148-.171a14.092 14.092 0 01.272-.297 9.706 9.706 0 01.432-.425c.088-.083.177-.163.268-.241l.054-.048a10.08 10.08 0 01.553-.435l.092-.068c.075-.053.15-.105.226-.156.019-.013.038-.028.06-.04a9.18 9.18 0 01.362-.227c.08-.047.16-.094.241-.139l.11-.058a7.643 7.643 0 01.521-.256l.126-.056a7.509 7.509 0 01.546-.208l.107-.037c.11-.036.22-.069.33-.1l.63-.172c.095-.026.191-.05.287-.072l.097-.02c.062-.014.125-.029.187-.04l.114-.018c.055-.01.11-.02.166-.028.04-.006.08-.01.12-.014.053-.007.105-.014.157-.019l.083-.006c.061-.005.123-.01.184-.013.034-.003.067-.003.101-.004l.16-.006h.11a3.187 3.187 0 01.261.008l.153.01.067.007c.064.006.128.013.192.022l.043.005a5.232 5.232 0 01.281.047l.141.03c.073.016.146.035.218.053l.07.019c.094.026.187.055.278.087l.067.025a4.326 4.326 0 01.449.19l.143.072L11.617.576z"></path></svg></span>Qoder</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a qoder</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a qoder">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.751 22.607c1.34 1.005 3.35.335 1.508-1.508C17.73 15.74 18.904 1 12.037 1 5.17 1 6.342 15.74.815 21.1c-2.01 2.009.167 2.511 1.507 1.506 5.192-3.517 4.857-9.714 9.715-9.714 4.857 0 4.522 6.197 9.714 9.715z"></path></svg></span>Antigravity</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a antigravity</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a antigravity">Copy</button></div>
-        </div>
-        <div>
-          <h3><span class="marks" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.245 5.364c1.322 1.36 1.877 3.216 2.11 5.817.622 0 1.2.135 1.592.654l.73.964c.21.278.323.61.323.955v2.62c0 .339-.173.669-.453.868C20.239 19.602 16.157 21.5 12 21.5c-4.6 0-9.205-2.583-11.547-4.258-.28-.2-.452-.53-.453-.868v-2.62c0-.345.113-.679.321-.956l.73-.963c.392-.517.974-.654 1.593-.654l.029-.297c.25-2.446.81-4.213 2.082-5.52 2.461-2.54 5.71-2.851 7.146-2.864h.198c1.436.013 4.685.323 7.146 2.864zm-7.244 4.328c-.284 0-.613.016-.962.05-.123.447-.305.85-.57 1.108-1.05 1.023-2.316 1.18-2.994 1.18-.638 0-1.306-.13-1.851-.464-.516.165-1.012.403-1.044.996a65.882 65.882 0 00-.063 2.884l-.002.48c-.002.563-.005 1.126-.013 1.69.002.326.204.63.51.765 2.482 1.102 4.83 1.657 6.99 1.657 2.156 0 4.504-.555 6.985-1.657a.854.854 0 00.51-.766c.03-1.682.006-3.372-.076-5.053-.031-.596-.528-.83-1.046-.996-.546.333-1.212.464-1.85.464-.677 0-1.942-.157-2.993-1.18-.266-.258-.447-.661-.57-1.108-.32-.032-.64-.049-.96-.05zm-2.525 4.013c.539 0 .976.426.976.95v1.753c0 .525-.437.95-.976.95a.964.964 0 01-.976-.95v-1.752c0-.525.437-.951.976-.951zm5 0c.539 0 .976.426.976.95v1.753c0 .525-.437.95-.976.95a.964.964 0 01-.976-.95v-1.752c0-.525.437-.951.976-.951zM7.635 5.087c-1.05.102-1.935.438-2.385.906-.975 1.037-.765 3.668-.21 4.224.405.394 1.17.657 1.995.657h.09c.649-.013 1.785-.176 2.73-1.11.435-.41.705-1.433.675-2.47-.03-.834-.27-1.52-.63-1.813-.39-.336-1.275-.482-2.265-.394zm6.465.394c-.36.292-.6.98-.63 1.813-.03 1.037.24 2.06.675 2.47.968.957 2.136 1.104 2.776 1.11h.044c.825 0 1.59-.263 1.995-.657.555-.556.765-3.187-.21-4.224-.45-.468-1.335-.804-2.385-.906-.99-.088-1.875.058-2.265.394zM12 7.615c-.24 0-.525.015-.84.044.03.16.045.336.06.526l-.001.159a2.94 2.94 0 01-.014.25c.225-.022.425-.027.612-.028h.366c.187 0 .387.006.612.028-.015-.146-.015-.277-.015-.409.015-.19.03-.365.06-.526a9.29 9.29 0 00-.84-.044z"></path></svg></span>GitHub Copilot</h3>
-          <div class="cmd"><code>npx skills add JouberthAlves/super-webdesigner -a github-copilot</code><button type="button" class="copy" data-copy="npx skills add JouberthAlves/super-webdesigner -a github-copilot">Copy</button></div>
-        </div>
-        <div>
-          <h3>Any other agent</h3>
-          <p>No skill support? Add one rule: "for any site or UI, read skills/super-webdesigner/SKILL.md and follow it."</p>
+        <div class="win term-win">
+          <div class="fbar" aria-hidden="true"><span class="fdots"><i></i><i></i><i></i></span><span class="fname">terminal</span></div>
+          <div class="cmd-item" id="icmd-claude">
+            <p class="cmd-name">Claude Code</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-g -a claude-code</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="icmd-codex">
+            <p class="cmd-name">Codex</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-a codex</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="icmd-cursor">
+            <p class="cmd-name">Cursor</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-a cursor</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="icmd-windsurf">
+            <p class="cmd-name">Windsurf</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-a windsurf</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="icmd-copilot">
+            <p class="cmd-name">GitHub Copilot</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>npx skills add JouberthAlves/super-webdesigner <span class="nb">-a github-copilot</span></code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
+          <div class="cmd-item" id="icmd-plugin">
+            <p class="cmd-name">Claude Code plugin</p>
+            <div class="cmd-row"><span class="prompt" aria-hidden="true">&gt;</span><code>/plugin install super-webdesigner --marketplace JouberthAlves/super-webdesigner</code><button type="button" class="copy-btn" aria-label="Copy the command">Copy</button></div>
+          </div>
         </div>
       </div>
-      <p class="install-note">With Claude Code, ask for a site the way you always do. The skill takes it from there.</p>
-    </section>
-  </main>
+      <p class="install-after">Then ask for a site the way you always do. The skill stops at the brief and waits for you.</p>
+    </div>
+  </section>
 
-  <footer class="foot sheet-foot">
-    <a class="logo" href="#"><span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span></a>
-    <p>MIT. The brief questions are adapted from 2389-research/landing-page-design (MIT).</p>
-    <p>Steno, MeetMind, Order 27 and Ember &amp; Bun are fictional.</p>
-  </footer>
   </div>
+</main>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
-  <script src="app.js"></script>
+<footer class="foot" data-look="c">
+  <div class="container foot-in">
+    <a class="logo" href="#" aria-label="Super-Webdesigner, home">
+      <span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span>
+    </a>
+    <p class="foot-meta"><span>MIT licence</span><a href="https://github.com/JouberthAlves/super-webdesigner">GitHub</a></p>
+    <p class="foot-line">This page was made with its own flow: a brief, research, three directions, and the one you picked above.</p>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+<script src="beam.js" defer></script>
 </body>
 </html>

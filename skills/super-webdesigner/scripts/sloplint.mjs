@@ -335,7 +335,10 @@ const MEASURE = `(() => {
     const r = p.getBoundingClientRect(); if (r.top + scrollY < vh && r.bottom > 0) out.firstScreenWords += n;
   }
   const main = document.querySelector('main') || document.body;
-  out.sections = [...main.children].filter((e) => /^(SECTION|HEADER|FOOTER|ARTICLE|DIV)$/.test(e.tagName) && e.getBoundingClientRect().height > 120).length + (document.querySelector('main') ? document.querySelectorAll('body > header, body > footer').length : 0);
+  // A wrapper that holds several sections counts as its sections, not as one.
+  const tall = (e) => /^(SECTION|HEADER|FOOTER|ARTICLE|DIV)$/.test(e.tagName) && e.getBoundingClientRect().height > 120;
+  const blocks = [...main.children].flatMap((e) => { const inner = [...e.children].filter((c) => c.tagName === 'SECTION' && tall(c)); return inner.length >= 2 ? inner : (tall(e) ? [e] : []); });
+  out.sections = blocks.length + (document.querySelector('main') ? document.querySelectorAll('body > header, body > footer').length : 0);
   const h1 = document.querySelector('h1'); if (h1) out.h1Bottom = Math.round(h1.getBoundingClientRect().bottom + scrollY);
   return out;
 })()`;

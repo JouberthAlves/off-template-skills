@@ -1,163 +1,291 @@
-// Super-Webdesigner showcase. GSAP 3 + ScrollTrigger + DrawSVG, all from the CDN.
-// Everything that moves is off when the visitor asks for reduced motion.
-(() => {
-  gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin);
+/* Super-Webdesigner, Part 1: install block and the agent window. */
+(function () {
+  'use strict';
 
-  const $ = (s, c = document) => c.querySelector(s);
-  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var EASE = 'cubic-bezier(.2, .7, .2, 1)';
+  var DEVELOP_FROM = { opacity: 0, filter: 'grayscale(1) brightness(1.7) contrast(.45)' };
+  var DEVELOP_TO = { opacity: 1, filter: 'none' };
 
-  /* ---------- the comparison line ---------- */
-  const compare = $('[data-compare]');
-  const range = $('[data-range]');
-  const state = { x: 50 };
-  let dragging = false;
-  let hint = null;
+  /* ---------- Install tabs and copy (each tab list works on its own) ---------- */
+  function initTabs(wrap) {
+    var tabs = Array.prototype.slice.call(wrap.querySelectorAll('.tab'));
+    var items = Array.prototype.slice.call(wrap.querySelectorAll('.cmd-item'));
+    if (!tabs.length || tabs.length !== items.length) return;
 
-  const paint = () => compare.style.setProperty('--x', `${state.x}%`);
-  const setX = (v) => { state.x = v; range.value = v; paint(); };
-
-  range.addEventListener('pointerdown', () => { dragging = true; if (hint) hint.kill(); });
-  window.addEventListener('pointerup', () => { dragging = false; });
-
-  // Clicks and arrow keys ease to the target instead of jumping.
-  range.addEventListener('input', () => {
-    if (dragging) { setX(+range.value); return; }
-    const target = +range.value;
-    range.value = state.x;
-    gsap.to(state, {
-      x: target, duration: 0.55, ease: 'power3.out', overwrite: true,
-      onUpdate: () => { range.value = state.x; paint(); },
-    });
-  });
-  paint();
-
-  /* ---------- desktop / phone toggle ---------- */
-  const views = {
-    desktop: { good: 'img/steno-desktop.webp', bad: 'img/other-desktop.webp' },
-    phone: { good: 'img/steno-mobile.webp', bad: 'img/other-mobile.webp' },
-  };
-  const segButtons = $$('[data-view]');
-  segButtons.forEach((btn) => btn.addEventListener('click', () => {
-    const v = btn.dataset.view;
-    compare.classList.toggle('phone', v === 'phone');
-    $('[data-good]').src = views[v].good;
-    $('[data-bad]').src = views[v].bad;
-    // SVG elements have no .hidden property, so the attribute is toggled directly
-    $('[data-markup-desktop]').toggleAttribute('hidden', v === 'phone');
-    $('[data-markup-phone]').toggleAttribute('hidden', v !== 'phone');
-    segButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-  }));
-
-  // narrow screens open on the phone view
-  if (matchMedia('(max-width: 600px)').matches) segButtons.find((b) => b.dataset.view === 'phone').click();
-
-  /* ---------- in-page links ---------- */
-  // Smooth scrolling is done here, not with CSS scroll-behavior: ScrollTrigger measures
-  // during a refresh, and a smooth scroll still in flight makes every step read wrong.
-  $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
-    const href = a.getAttribute('href');
-    const target = href.length > 1 && document.querySelector(href);
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-    history.pushState(null, '', href);
-  }));
-
-  /* ---------- copy buttons ---------- */
-  $$('[data-copy]').forEach((btn) => btn.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(btn.dataset.copy); } catch (e) { /* no clipboard: the text is still on screen */ }
-    const old = btn.textContent;
-    btn.textContent = 'Copied';
-    setTimeout(() => { btn.textContent = old; }, 1600);
-  }));
-
-  /* ---------- motion ---------- */
-  const mm = gsap.matchMedia();
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    // hero: title lines rise out of their clip, the caret and the underline draw in
-    gsap.from('.title .line > span', { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.12 });
-    gsap.from('[data-caret]', { drawSVG: 0, duration: 0.8, ease: 'power2.out', delay: 0.2 });
-    // the underline is revealed left to right with a clip: DrawSVG and dashes both measure a
-    // non-scaling-stroke path in the wrong space, so its far end showed before the middle drew
-    gsap.fromTo('.underline', { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power2.out', delay: 1 });
-    gsap.from('.crop', { scale: 0, opacity: 0, duration: 0.5, stagger: 0.08, ease: 'back.out(2)', delay: 0.2 });
-    gsap.from('.slug span', { opacity: 0, y: 6, duration: 0.5, stagger: 0.06, delay: 0.3 });
-
-    // the Steno card: each line is typed in, one after the other, once the comparison is on screen.
-    // Lines start empty; with reduced motion they stay as written in the HTML.
-    const typeCard = (sheet) => {
-      const lines = $$('.typed-line', sheet);
-      const tl = gsap.timeline({ paused: true });
-      lines.forEach((el, i) => {
-        const text = el.textContent;
-        const count = { n: 0 };
-        el.textContent = '';
-        tl.add(() => {
-          el.classList.add('typing');
-          if (i > 0) lines[i - 1].classList.remove('typing');
-        });
-        tl.to(count, { n: text.length, duration: text.length * 0.03, ease: 'none', onUpdate: () => { el.textContent = text.slice(0, Math.round(count.n)); } });
-        tl.to({}, { duration: 0.2 });
+    function selectTab(i, focus) {
+      tabs.forEach(function (t, n) {
+        var on = n === i;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        items[n].hidden = !on;
       });
-      return tl;
-    };
-    const cardTyping = $$('.typed').map(typeCard);
+      if (focus) tabs[i].focus();
+    }
 
-    // comparison: when it's on screen, the line sweeps once to show it moves, then the pencil draws in
-    ScrollTrigger.create({
-      trigger: compare, start: 'top 75%', once: true,
-      onEnter: () => {
-        hint = gsap.timeline()
-          .to(state, { x: 30, duration: 0.7, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } })
-          .to(state, { x: 70, duration: 0.9, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } })
-          .to(state, { x: 50, duration: 0.6, ease: 'power2.inOut', onUpdate: () => { range.value = state.x; paint(); } });
-        gsap.from($$('.markup [data-pencil]'), { drawSVG: 0, duration: 0.9, stagger: 0.14, ease: 'power2.out', delay: 0.5 });
-        gsap.from($$('.markup .note'), { opacity: 0, duration: 0.6, stagger: 0.1, delay: 1.1 });
-        gsap.delayedCall(0.4, () => cardTyping.forEach((tl) => tl.play()));
-      },
+    items.forEach(function (it, n) {
+      it.setAttribute('role', 'tabpanel');
+      it.setAttribute('aria-labelledby', tabs[n].id);
     });
-    gsap.from('.wall-label', { opacity: 0, y: 12, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: '.wall-label', start: 'top 92%', once: true } });
-
-    // the 13 tells: each one gets struck through in red as it comes in
-    $$('.tell-list li').forEach((li) => {
-      gsap.from(li, { opacity: 0, x: -14, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: li, start: 'top 88%', once: true } });
-      gsap.from(li.querySelectorAll('.strike path'), { drawSVG: 0, opacity: 0, duration: 0.6, ease: 'power2.inOut', scrollTrigger: { trigger: li, start: 'top 80%', once: true } });
+    tabs.forEach(function (t, n) {
+      t.addEventListener('click', function () { selectTab(n, false); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key, to = -1;
+        if (k === 'ArrowRight' || k === 'ArrowDown') to = (n + 1) % tabs.length;
+        else if (k === 'ArrowLeft' || k === 'ArrowUp') to = (n - 1 + tabs.length) % tabs.length;
+        else if (k === 'Home') to = 0;
+        else if (k === 'End') to = tabs.length - 1;
+        if (to > -1) { e.preventDefault(); selectTab(to, true); }
+      });
     });
+    selectTab(0, false);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.install, .inst'), initTabs);
 
-    // the flow: each check lights up as you reach it, and the track to the next one
-    // fills in red while you scroll through that step. The last check lights when you
-    // reach it, so the line ends where the steps end.
-    const steps = $$('.steps > li');
-    steps.forEach((li, i) => {
-      if (i < steps.length - 1) {
-        const seg = document.createElement('span');
-        seg.className = 'track-fill';
-        li.append(seg);
-        gsap.fromTo(seg, { scaleY: 0 }, {
-          scaleY: 1, ease: 'none',
-          scrollTrigger: { trigger: li, start: 'top 65%', end: 'bottom 65%', scrub: true },
-        });
+  Array.prototype.forEach.call(document.querySelectorAll('.copy-btn'), function (btn) {
+    var code = btn.parentNode.querySelector('code');
+    var timer = 0;
+    btn.addEventListener('click', function () {
+      var text = code.textContent;
+      var done = function () {
+        btn.textContent = 'Copied';
+        clearTimeout(timer);
+        timer = setTimeout(function () { btn.textContent = 'Copy'; }, 1600);
+      };
+      var fail = function () {
+        var sel = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(code);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fail);
+      } else {
+        fail();
       }
-      ScrollTrigger.create({
-        trigger: li, start: 'top 65%',
-        onEnter: () => li.classList.add('done'),
-        onLeaveBack: () => li.classList.remove('done'),
-      });
-      gsap.from(li, { opacity: 0.35, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: li, start: 'top 90%', once: true } });
-    });
-    $$('.stamp').forEach((s) => {
-      gsap.from(s, { scale: 1.6, opacity: 0, rotation: -12, duration: 0.45, ease: 'back.out(2)', scrollTrigger: { trigger: s, start: 'top 88%', once: true } });
-    });
-
-    // proof sheet and install
-    gsap.utils.toArray('.proof figure, .agents > div, .vault-grid > *').forEach((el) => {
-      gsap.from(el, { opacity: 0, y: 18, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
     });
   });
 
-  // Refresh once the page has loaded. Not on image load: the lazy images have width and height,
-  // so nothing moves when they arrive, and a refresh while the page is scrolled would miscount.
-  window.addEventListener('load', () => ScrollTrigger.refresh());
+  /* ---------- The agent window and the print ---------- */
+  var DIRS = {
+    a: { letter: 'A', name: 'Editor at Night', skel: 'img/skel-a.webp', mock: 'img/dir-a.webp', h: 1090 },
+    b: { letter: 'B', name: 'The Output Leads', skel: 'img/skel-b.webp', mock: 'img/dir-b.webp', h: 1170 },
+    c: { letter: 'C', name: 'Darkroom Develop', skel: 'img/skel-c.webp', mock: 'img/dir-c.webp', h: 1058 }
+  };
 
-  // Reduced motion: nothing above runs, and the page is already in its final state.
+  var skel = document.querySelector('.print-skel');
+  var mock = document.querySelector('.print-mock');
+  var ripple = document.querySelector('.ripple');
+  var caption = document.querySelector('.caption');
+  var status = document.getElementById('agent-status');
+  var picks = Array.prototype.slice.call(document.querySelectorAll('.pick'));
+  var current = 'c';
+  var busy = false;
+
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function setStage(name) {
+    if (!caption) return;
+    caption.setAttribute('data-stage', name);
+    Array.prototype.forEach.call(caption.querySelectorAll('[data-s]'), function (s) {
+      s.classList.toggle('on', s.getAttribute('data-s') === name);
+    });
+  }
+
+  function setImages(key) {
+    var d = DIRS[key];
+    skel.src = d.skel;
+    mock.src = d.mock;
+    mock.setAttribute('height', d.h);
+    mock.alt = 'Mockup of direction ' + d.letter + ', ' + d.name + ', as the skill generated it';
+  }
+
+  /* Runs the develop. Resolves when the mockup is fully shown. */
+  function develop(key, opts) {
+    opts = opts || {};
+    var delay = opts.delay || 0;
+    return new Promise(function (resolve) {
+      if (!mock.animate) { setImages(key); setStage('page'); resolve(); return; }
+      var rm = reduce.matches;
+      var dur = rm ? 200 : 1400;
+      var from = rm ? { opacity: 0 } : DEVELOP_FROM;
+      var to = rm ? { opacity: 1 } : DEVELOP_TO;
+      mock.getAnimations().forEach(function (a) { a.cancel(); });
+      var anim = mock.animate([from, to], { duration: dur, delay: delay, easing: rm ? 'linear' : EASE, fill: 'both' });
+      setImages(key);
+      if (!rm) {
+        setStage('skeleton');
+        setTimeout(function () { setStage('mockup'); }, delay + 450);
+        if (opts.ripple && ripple && ripple.animate) {
+          ripple.animate(
+            [{ transform: 'scale(0)', opacity: 0.5 }, { transform: 'scale(2.4)', opacity: 0 }],
+            { duration: 900, delay: delay, easing: 'ease-out', fill: 'backwards' }
+          );
+        }
+      }
+      anim.finished.then(function () {
+        anim.cancel();
+        resolve();
+      }, function () { resolve(); });
+    });
+  }
+
+  function typeText(el, text) {
+    return new Promise(function (resolve) {
+      if (reduce.matches) { el.textContent = text; resolve(); return; }
+      var i = 0;
+      el.textContent = '';
+      (function step() {
+        i += 1;
+        el.textContent = text.slice(0, i);
+        if (i < text.length) setTimeout(step, 28); else resolve();
+      })();
+    });
+  }
+
+  function setPressed(key) {
+    picks.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-dir') === key ? 'true' : 'false');
+    });
+  }
+
+  function pick(key) {
+    if (busy || key === current || !DIRS[key]) return;
+    busy = true;
+    root.classList.add('ready');
+    var d = DIRS[key];
+    var hadFocus = picks.indexOf(document.activeElement) > -1;
+    picks.forEach(function (b) { b.disabled = true; });
+
+    Promise.all([
+      typeText(status, '> Building the sections below in ' + d.name + '…'),
+      develop(key, { ripple: true })
+    ]).then(function () {
+      current = key;
+      root.dataset.look = key;
+      window.dispatchEvent(new CustomEvent('look', { detail: key }));
+      status.textContent = 'Done. The page below is now ' + d.name + '.';
+      setStage('page');
+      setPressed(key);
+      picks.forEach(function (b) { b.disabled = false; });
+      busy = false;
+      if (hadFocus) {
+        var next = picks.filter(function (b) { return b.getAttribute('data-dir') === key; })[0];
+        if (next) next.focus();
+      }
+    });
+  }
+
+  picks.forEach(function (b) {
+    b.addEventListener('click', function () { pick(b.getAttribute('data-dir')); });
+  });
+
+  /* ---------- Load: the print develops once ---------- */
+  if (reduce.matches) {
+    root.classList.add('ready');
+  } else if (!root.classList.contains('ready')) {
+    setStage('skeleton');
+    develop('c', { delay: 600 }).then(function () {
+      root.classList.add('ready');
+      setStage('page');
+    });
+  }
+
+  /* ---------- Preload the other directions on idle ---------- */
+  function preload() {
+    ['skel-a', 'dir-a', 'skel-b', 'dir-b'].forEach(function (n) {
+      var im = new Image();
+      im.src = 'img/' + n + '.webp';
+    });
+  }
+  window.addEventListener('load', function () {
+    if ('requestIdleCallback' in window) requestIdleCallback(preload);
+    else setTimeout(preload, 200);
+  });
+
+  /* ---------- Part 2: sections ---------- */
+  var secs = Array.prototype.slice.call(document.querySelectorAll('#built .sec'));
+  var foot = document.querySelector('.foot');
+  var rebuildList = foot ? secs.concat([foot]) : secs;
+  var hasIO = 'IntersectionObserver' in window;
+
+  /* Calls cb(el) once per element, the first time it enters (or is above) the viewport. */
+  function watch(els, cb) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting || e.boundingClientRect.top < 0) {
+          io.unobserve(e.target);
+          cb(e.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  function countUp(el) {
+    var end = parseInt(el.getAttribute('data-count'), 10);
+    if (reduce.matches || !end) return;
+    var t0 = null;
+    el.textContent = '0';
+    function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / 900);
+      el.textContent = String(Math.round(end * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function enterSection(sec) {
+    sec.classList.remove('pre');
+    sec.classList.add('in');
+    Array.prototype.forEach.call(sec.querySelectorAll('[data-count]'), countUp);
+  }
+
+  /* Each section and the footer carry their own data-look so the rebuild can swap them one by one. */
+  function setLook(el, key) { el.setAttribute('data-look', key); }
+  rebuildList.forEach(function (el) { setLook(el, root.dataset.look || 'c'); });
+
+  var rbTimers = [];
+  function rebuild(key) {
+    rbTimers.forEach(clearTimeout);
+    rbTimers = [];
+    rebuildList.forEach(function (el) { el.classList.remove('rb-out', 'rb-up'); });
+    if (reduce.matches) {
+      rebuildList.forEach(function (el) { setLook(el, key); });
+      return;
+    }
+    rebuildList.forEach(function (el, i) {
+      if (el.classList.contains('pre')) { setLook(el, key); return; }
+      rbTimers.push(setTimeout(function () {
+        el.classList.add('rb-out');
+        rbTimers.push(setTimeout(function () {
+          setLook(el, key);
+          el.classList.remove('rb-out');
+          el.classList.add('rb-up');
+          rbTimers.push(setTimeout(function () { el.classList.remove('rb-up'); }, 440));
+        }, 230));
+      }, i * 140));
+    });
+  }
+  window.addEventListener('look', function (e) { rebuild(e.detail); });
+
+  if (hasIO && !reduce.matches) {
+    secs.forEach(function (s) { s.classList.add('pre'); });
+    watch(secs, enterSection);
+
+    var tells = document.querySelector('.tells');
+    if (tells) {
+      Array.prototype.forEach.call(tells.querySelectorAll('li'), function (li, i) {
+        li.style.setProperty('--i', i);
+      });
+      tells.classList.add('arm');
+      watch([tells], function (el) {
+        el.classList.add('go');
+        el.classList.remove('arm');
+      });
+    }
+  }
 })();

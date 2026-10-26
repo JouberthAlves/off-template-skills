@@ -3,3 +3,7 @@ node_modules/
 Thumbs.db
 .claude/settings.local.json
 vault/.obsidian/workspace*.json
+
+# third-party screenshots from research stay local
+design/research-shots/
+_spec/fases.json

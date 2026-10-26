@@ -1,78 +1,256 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Super-Webdesigner showcase: three directions</title>
+<title>Super-Webdesigner Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <style>
-:root{--bg:#f4f4f2;--ink:#1d1d1b;--mute:#8a8a86;--block:#d6d6d2;--block2:#c4c4bf;--line:#b5b5b0}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,"Segoe UI",sans-serif}
-header.top{padding:28px 32px 8px;max-width:1500px;margin:0 auto}header.top h1{font-size:22px;margin:0 0 4px}header.top p{margin:0;color:var(--mute)}
-.dirs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding:20px 32px 40px;max-width:1500px;margin:0 auto}
-@media(max-width:1100px){.dirs{grid-template-columns:1fr;padding:16px}}
-.dir{background:#fff;border:1px solid #e2e2de;border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
-.dir h2{margin:0;font-size:19px}.tag{font:600 11px/1 ui-monospace,monospace;letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
-.why,.note{margin:0;font-size:14px}.why b,.note b{font-weight:600}
-.frames{display:grid;grid-template-columns:1fr 92px;gap:10px;align-items:start}
-.desk,.phone{container-type:inline-size;position:relative;overflow:hidden;background:#fff;border:1px solid var(--line)}
-.desk{aspect-ratio:16/10;border-radius:6px}.phone{aspect-ratio:390/844;border-radius:12px}
-.b{position:absolute;background:var(--block);border-radius:2px}.t{position:absolute;background:var(--ink);border-radius:1px}.s{position:absolute;background:var(--block2);border-radius:1px}
-.ph{position:absolute;background:linear-gradient(to top right,transparent calc(50% - .6px),var(--line) 50%,transparent calc(50% + .6px)),linear-gradient(to top left,transparent calc(50% - .6px),var(--line) 50%,transparent calc(50% + .6px)),var(--block)}
-.frame{position:absolute;border:2.5px solid var(--ink);background:#fff;box-shadow:inset 0 0 0 5px #eee}
-.btn{position:absolute;border:1.5px solid var(--ink);border-radius:2px;font-weight:600;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--ink);white-space:nowrap;overflow:hidden}
-.btn.f{background:var(--ink);color:#fff}.desk .btn{font-size:1.4cqw}.phone .btn{font-size:5.2cqw}
-.txt{position:absolute;font-weight:800;color:var(--ink);line-height:.95;letter-spacing:-.01em}
-.lbl{position:absolute;font:600 8px/1.2 ui-monospace,monospace;color:var(--mute);white-space:nowrap}.desk .lbl{font-size:1.1cqw}.phone .lbl{font-size:4.4cqw}
-.wild{position:absolute;border:1.5px dashed #3c3c38;border-radius:4px}
-.wild::after{content:attr(data-w);position:absolute;left:0;top:calc(100% + 2px);white-space:nowrap;font:700 1.1cqw/1 ui-monospace,monospace;background:#1d1d1b;color:#fff;padding:2px 3px;border-radius:2px;z-index:3}
-.phone .wild::after{font-size:4.4cqw}
-.slider{position:absolute;background:linear-gradient(90deg,#cfcfca 0 50%,#e6e6e2 50% 100%);border:1.5px solid #9a9a95}
-.slider i{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--ink)}
-.slider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--ink);color:#fff;font:700 1.2cqw/1 ui-monospace,monospace;padding:3px 5px;border-radius:99px}
-.phone .slider span{font-size:4.6cqw}
-.order{display:flex;flex-wrap:wrap;gap:5px}.order span{font-size:11px;border:1px solid #d7d7d2;border-radius:3px;padding:3px 6px;background:#fafaf8}
-.sw{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.sw i{width:34px;height:34px;border-radius:4px;border:1px solid rgba(0,0,0,.12);display:block}.sw small{font:11px/1.3 ui-monospace,monospace;color:#555}
-.fonts{font-size:13px;margin:0}.wildnote{font-size:13px;margin:0;padding:8px 10px;border-left:3px solid var(--ink);background:#f6f6f3}
-h3{margin:0 0 6px;font:600 11px/1 ui-monospace,monospace;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
-</style></head><body>
-<header class="top"><h1>Super-Webdesigner showcase: three directions</h1><p>Gray skeletons: judge the composition. The only color is the swatch strip. Same copy in all three.</p></header>
-<main class="dirs">
-  <section class="dir">
-    <div class="tag">Direction A · best of the niche</div>
-    <h2>Red Pencil Proof</h2>
-    <p class="why">Proof-white page, press-black type, and an art director's red pencil marking up the other agents' page. <b>From the research:</b> the pages people remember make the product the hero and keep the rest quiet.</p>
-    <div class="frames">
-      <div class="desk"><div class="t" style="left:4%;top:5%;width:18%;height:3.2%;"></div><div class="lbl" style="left:22.6%;top:4.6%;">‸</div><div class="s" style="left:58%;top:6%;width:7%;height:1.6%;"></div><div class="s" style="left:67%;top:6%;width:7%;height:1.6%;"></div><div class="btn" style="left:80%;top:3.6%;width:16%;height:6.4%;">Star on GitHub</div><div class="txt" style="left:4%;top:15%;width:56%;font-size:5.4cqw;">Same prompt. Different designer.</div><div class="s" style="left:64%;top:16%;width:30%;height:1.8%;"></div><div class="s" style="left:64%;top:20%;width:26%;height:1.8%;"></div><div class="b" style="left:64%;top:26%;width:32%;height:7%;background:#1d1d1b"></div><div class="lbl" style="left:65.5%;top:28.4%;color:#fff">$ npx skills add …</div><div class="slider" style="left:4%;top:39%;width:92%;height:56%;"><i></i><span>‹ DRAG ›</span></div><div class="lbl" style="left:5.5%;top:41.5%;color:#333">OTHER AGENTS</div><div class="lbl" style="left:82%;top:41.5%;color:#333">SUPER-WEBDESIGNER</div><div class="wild" style="left:9%;top:55%;width:22%;height:22%;" data-w="RED PENCIL MARKUP ON THE TELLS"></div></div>
-      <div class="phone"><div class="t" style="left:8%;top:3%;width:50%;height:1.8%;"></div><div class="btn" style="left:70%;top:2%;width:22%;height:3.4%;">GitHub</div><div class="txt" style="left:8%;top:9%;width:84%;font-size:12cqw;">Same prompt. Different designer.</div><div class="s" style="left:8%;top:30%;width:80%;height:1.2%;"></div><div class="s" style="left:8%;top:33%;width:66%;height:1.2%;"></div><div class="b" style="left:8%;top:38%;width:84%;height:4.6%;background:#1d1d1b"></div><div class="slider" style="left:0%;top:47%;width:100%;height:50%;"><i></i><span>‹ ›</span></div><div class="wild" style="left:6%;top:58%;width:34%;height:14%;" data-w="MARKUP"></div></div>
+/* Wireframe sheet: three directions stacked, phone and desktop side by side, grey only, colour only in the swatches. */
+:root {
+  --paper: #f3f3f1; --sheet: #ffffff; --ink: #1d1f20; --muted: #66696c;
+  --g1: #e4e5e6; --g2: #cfd1d3; --g3: #b3b6b9; --g4: #8d9195; --mark: #1d1f20;
+  --display: "Familjen Grotesk", system-ui, sans-serif; --body: "Instrument Sans", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.5 var(--body); margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 32px 64px; overflow-x: clip; }
+.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 40px; }
+header.top h1 { font: 700 clamp(28px, 4vw, 44px)/1.05 var(--display); margin: 0 0 8px; text-wrap: balance; }
+header.top p { margin: 0; color: var(--muted); max-width: 70ch; }
+nav.jump { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+nav.jump a { color: var(--ink); text-decoration: none; border: 1px solid var(--g2); background: var(--sheet); padding: 6px 12px; border-radius: 999px; font-size: 14px; }
+nav.jump a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.dir { background: var(--sheet); border-radius: 14px; padding: clamp(16px, 3vw, 32px); display: grid; gap: 24px; }
+.dir h2 { font: 700 clamp(24px, 3vw, 34px)/1.1 var(--display); margin: 0; text-wrap: balance; }
+.dir .why { margin: 6px 0 0; color: var(--muted); max-width: 75ch; }
+.rec { display: inline-block; font-size: 13px; background: var(--ink); color: var(--sheet); padding: 3px 10px; border-radius: 999px; margin-left: 8px; vertical-align: middle; font-family: var(--body); font-weight: 500; }
+.frames { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 760px) { .frames { grid-template-columns: minmax(0, 1fr); } .phone { max-width: 240px; } }
+.cap { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.phone, .desk { position: relative; background: var(--g1); border: 1px solid var(--g2); overflow: hidden; container-type: inline-size; }
+.phone { aspect-ratio: 390 / 844; border-radius: 22px; }
+.desk { aspect-ratio: 1440 / 900; border-radius: 10px; }
+.b { position: absolute; background: var(--g2); border-radius: 2px; }
+.dark { background: var(--g4); }
+.mid { background: var(--g3); }
+.line { position: absolute; height: 1.6cqi; background: var(--g3); border-radius: 1px; }
+.line.k { background: var(--g4); }
+.t { position: absolute; color: var(--ink); font-family: var(--display); font-weight: 700; line-height: 1; letter-spacing: -0.01em; }
+.s { position: absolute; color: var(--muted); font-size: 2cqi; line-height: 1.3; }
+.img { position: absolute; background: var(--g2); border: 1px solid var(--g3); }
+.img::before, .img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - .5px), var(--g3) 50%, transparent calc(50% + .5px)); }
+.img::after { background: linear-gradient(to top left, transparent calc(50% - .5px), var(--g3) 50%, transparent calc(50% + .5px)); }
+.btn { position: absolute; background: var(--g4); border-radius: 3px; }
+.tag { position: absolute; font-size: 11px; line-height: 1.2; background: var(--ink); color: var(--sheet); padding: 3px 7px; border-radius: 4px; max-width: 46%; z-index: 3; font-family: var(--body); }
+.phone .tag { font-size: 10px; max-width: 80%; }
+.ribbon { position: absolute; border-radius: 50%; background: var(--g3); opacity: .55; transform: rotate(-24deg); }
+.flow { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.flow li { background: var(--g1); border: 1px solid var(--g2); padding: 4px 10px; border-radius: 6px; font-size: 13px; }
+.flow li.wild { border: 2px solid var(--mark); }
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px 28px; }
+.meta h3 { font: 600 14px/1.3 var(--body); margin: 0 0 8px; }
+.meta p, .meta li { margin: 0; font-size: 14px; color: var(--ink); }
+.meta ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.sw { display: flex; gap: 8px; flex-wrap: wrap; }
+.sw span { display: grid; gap: 4px; font-size: 12px; color: var(--muted); width: 92px; }
+.sw i { display: block; height: 44px; border-radius: 6px; border: 1px solid var(--g2); }
+.mat { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 4px 12px; font-size: 14px; }
+.mat b { font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=Instrument+Sans:wght@400;500;600&display=swap">
+
+<div class="wrap">
+  <header class="top">
+    <h1>Super-Webdesigner, second version: three directions</h1>
+    <p>Grey skeletons, first screen at phone (390 px) and desktop (1440 px), then the whole page. Colour only in the swatches. Brief: the code editor at night, pride ("my pages are going to look like this"), web-tech sites as the influence, Stripe's motion, lively. Same copy in all three, so you compare the design, not the words.</p>
+    <nav class="jump" aria-label="Directions"><a href="#a">A. Editor at Night</a><a href="#b">B. The Output Leads</a><a href="#c">C. Darkroom Develop</a></nav>
+  </header>
+
+  <section class="dir" aria-label="Coloured mockups">
+    <div>
+      <h2>The three in colour</h2>
+      <p class="why">One mockup per direction, first screen on a laptop and a phone, with the real copy. The pages shown inside them (the burger and notes pages) were made up by the image model; the build uses the real pages from the examples instead.</p>
     </div>
-    <div><h3>Page order</h3><div class="order"><span>Hero + slider</span><span>The 10 tells as red-pencil notes</span><span>The flow, 8 steps</span><span>Two examples</span><span>Install</span><span>Vault</span><span>Footer</span></div></div>
-    <div><h3>Palette and fonts</h3><div class="sw"><i style="background:#FFFFFF"></i><i style="background:#111111"></i><i style="background:#E5231B"></i><i style="background:#EDEAE3"></i><small>proof white · press black · red pencil · proof gray</small></div></div>
-    <p class="fonts"><b>Schibsted Grotesk</b> 800 (titles) · <b>IBM Plex Mono</b> (commands, labels) · <b>Caveat Brush</b> (only the pencil notes)</p>
-    <p class="note"><b>Logo:</b> the wordmark Super-Webdesigner with a red proofreader's caret (‸) inserted between Super and Webdesigner, as if an editor added it. <b>Favicon:</b> the red caret on white.</p>
-    <p class="wildnote"><b>Wildcard:</b> on the Other agents side, red pencil circles and handwritten notes ('glow', 'emoji?', 'again?') sit on top of the tells. They are clipped with that side, so dragging the line literally erases the bad page and its markup.</p>
+    <figure style="margin:0;display:grid;gap:8px"><img src="mockup-a-editor-at-night.webp" alt="Direction A mockup: dark editor-coloured page, big headline left, a Claude Code window right asking the first brief question with four answers, a teal, green and coral ribbon behind it" width="2688" height="1520" style="width:100%;height:auto;border-radius:8px"><figcaption class="cap">A. Editor at Night</figcaption></figure>
+    <figure style="margin:0;display:grid;gap:8px"><img src="mockup-b-output-leads.webp" alt="Direction B mockup: light page, big headline and install command on top, three prompt chips, then a full-width burger restaurant page with a coral and green line wiping it to a grey generic version, a small editor window showing the prompt" width="2688" height="1520" style="width:100%;height:auto;border-radius:8px"><figcaption class="cap">B. The Output Leads (recommended)</figcaption></figure>
+    <figure style="margin:0;display:grid;gap:8px"><img src="mockup-c-darkroom-develop.webp" alt="Direction C mockup: dark page, big headline left, a developing tray right with a print that is half grey skeleton and half the finished Steno page" width="2688" height="1520" style="width:100%;height:auto;border-radius:8px"><figcaption class="cap">C. Darkroom Develop</figcaption></figure>
   </section>
-  <section class="dir">
-    <div class="tag">Direction B · break the convention</div>
-    <h2>Swatch Book</h2>
-    <p class="why">Every AI page is dark. This one is built from big flat color chips, like a printer's swatch book, each with its code. <b>From the research:</b> dark mode, glass and glow are the niche's default; color fields are the opposite.</p>
-    <div class="frames">
-      <div class="desk"><div class="b" style="left:4%;top:4%;width:8%;height:6%;background:#9a9a95"></div><div class="t" style="left:13%;top:5.6%;width:14%;height:2.8%;"></div><div class="s" style="left:66%;top:6%;width:7%;height:1.6%;"></div><div class="btn" style="left:80%;top:3.6%;width:16%;height:6.4%;">Star on GitHub</div><div class="b" style="left:4%;top:14%;width:34%;height:66%;background:#bdbdb8"></div><div class="txt" style="left:6%;top:18%;width:30%;font-size:4.6cqw;color:#fff">Same prompt. Different designer.</div><div class="btn f" style="left:6%;top:58%;width:26%;height:6.4%;">$ npx skills add …</div><div class="b" style="left:4%;top:80%;width:34%;height:9%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:5.5%;top:83.5%;">SW-001 · TOMATO · THE PROMISE</div><div class="slider" style="left:41%;top:14%;width:55%;height:66%;"><i></i><span>‹ DRAG ›</span></div><div class="b" style="left:41%;top:80%;width:55%;height:9%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:42.5%;top:83.5%;">SW-002 · INK · SAME PROMPT, TWO AGENTS</div><div class="wild" style="left:3%;top:78%;width:94%;height:13%;" data-w="CHIP LABEL WITH A CODE ON EVERY BLOCK"></div></div>
-      <div class="phone"><div class="b" style="left:8%;top:2.4%;width:10%;height:3.2%;background:#9a9a95"></div><div class="t" style="left:22%;top:3.2%;width:30%;height:1.6%;"></div><div class="b" style="left:0%;top:8%;width:100%;height:36%;background:#bdbdb8"></div><div class="txt" style="left:8%;top:12%;width:84%;font-size:11cqw;color:#fff">Same prompt. Different designer.</div><div class="btn f" style="left:8%;top:36%;width:84%;height:4.6%;">$ npx skills add …</div><div class="slider" style="left:0%;top:48%;width:100%;height:40%;"><i></i><span>‹ ›</span></div><div class="b" style="left:0%;top:88%;width:100%;height:6%;background:#fff;border-top:1px solid #c4c4bf"></div><div class="lbl" style="left:6%;top:90%;">SW-002 · INK</div></div>
+
+  <!-- A -->
+  <section class="dir" id="a">
+    <div>
+      <h2>A. Editor at Night</h2>
+      <p class="why">Best of the niche. 10 of 14 sites are dark with the real product early; A is that, at their level, in the editor's own night colours instead of black plus a glow. The agent runs in the hero and the visitor answers its first question.</p>
     </div>
-    <div><h3>Page order</h3><div class="order"><span>Hero chip + slider chip</span><span>10 tells as 10 small chips</span><span>The flow as a chip strip</span><span>Examples</span><span>Install</span><span>Footer</span></div></div>
-    <div><h3>Palette and fonts</h3><div class="sw"><i style="background:#FF5A3C"></i><i style="background:#2747FF"></i><i style="background:#FFE27A"></i><i style="background:#121212"></i><i style="background:#F7F5F0"></i><small>tomato · cobalt · butter · ink · chip white</small></div></div>
-    <p class="fonts"><b>Familjen Grotesk</b> 700 (titles) · <b>DM Mono</b> (chip codes, commands)</p>
-    <p class="note"><b>Logo:</b> a small swatch chip: color top, white strip with 'SW' and the code 'SW-001'. <b>Favicon:</b> the chip, tomato on top, white band below.</p>
-    <p class="wildnote"><b>Wildcard:</b> every block carries a swatch label with a code (SW-001 TOMATO, SW-002 INK...), so the page reads like a printed color book.</p>
+    <div class="frames">
+      <div>
+        <p class="cap">Phone, 390 px</p>
+        <div class="phone" aria-label="Direction A phone skeleton">
+          <div class="b dark" style="left:6%;top:3%;width:46%;height:2.4%"></div><div class="b dark" style="right:6%;top:3%;width:9%;height:2.4%"></div>
+          <div class="t" style="left:6%;top:9%;font-size:11.5cqi">Same prompt.<br>Different<br>designer.</div>
+          <div class="line" style="left:6%;top:30%;width:84%"></div><div class="line" style="left:6%;top:32.5%;width:62%"></div>
+          <div class="b mid" style="left:6%;top:37%;width:88%;height:5.5%"></div>
+          <div class="b" style="left:6%;top:43.5%;width:60%;height:2.4%"></div>
+          <div class="b dark" style="left:6%;top:49%;width:88%;height:40%;border-radius:6px"></div>
+          <div class="tag" style="left:9%;top:60%">Wildcard: tap an answer, the page below changes</div>
+          <div class="ribbon" style="left:30%;top:80%;width:110%;height:16%"></div>
+        </div>
+      </div>
+      <div>
+        <p class="cap">Desktop, 1440 px</p>
+        <div class="desk" aria-label="Direction A desktop skeleton">
+          <div class="b dark" style="left:4%;top:4%;width:16%;height:3%"></div>
+          <div class="b" style="left:62%;top:4.5%;width:22%;height:2%"></div><div class="b dark" style="left:87%;top:3.5%;width:9%;height:4%"></div>
+          <div class="t" style="left:4%;top:17%;font-size:6.4cqi">Same prompt.<br>Different<br>designer.</div>
+          <div class="line" style="left:4%;top:51%;width:34%"></div><div class="line" style="left:4%;top:54.5%;width:26%"></div>
+          <div class="b mid" style="left:4%;top:61%;width:36%;height:6%"></div>
+          <div class="b" style="left:4%;top:69%;width:8%;height:3%"></div><div class="b" style="left:13%;top:69%;width:6%;height:3%"></div><div class="b" style="left:20%;top:69%;width:6%;height:3%"></div>
+          <div class="s" style="left:4%;top:75%;width:34%">Install command, tabs per agent: Claude Code · Codex · Cursor</div>
+          <div class="ribbon" style="left:52%;top:30%;width:70%;height:55%"></div>
+          <div class="b dark" style="left:45%;top:14%;width:51%;height:76%;border-radius:8px"></div>
+          <div class="line k" style="left:47%;top:20%;width:30%;background:var(--g3)"></div>
+          <div class="b mid" style="left:47%;top:26%;width:22%;height:4%"></div><div class="b mid" style="left:70%;top:26%;width:22%;height:4%"></div>
+          <div class="b mid" style="left:47%;top:31%;width:22%;height:4%"></div><div class="b mid" style="left:70%;top:31%;width:22%;height:4%"></div>
+          <div class="img" style="left:47%;top:39%;width:47%;height:48%"></div>
+          <div class="tag" style="left:47%;top:9%">Editor window: Claude Code asks brief question 1; the visitor clicks an answer</div>
+          <div class="tag" style="left:66%;top:80%">The page being built renders here, from the answer</div>
+          <div class="tag" style="left:79%;top:46%;max-width:18%">Ribbon in syntax colours, flowing, off the edge</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="cap">The whole page, 8 sections</p>
+      <ol class="flow"><li class="wild">Hero: the agent asks, you answer</li><li>Same prompt, two pages (burger, meeting notes)</li><li>The flow: four stops</li><li>The lint: 39 FAIL against 12</li><li>The 13 tells</li><li>Install, per agent</li><li>The vault</li><li>Footer</li></ol>
+    </div>
+    <div class="meta">
+      <div><h3>Palette, from the editor</h3>
+        <div class="sw"><span><i style="background:#141818"></i>#141818 night</span><span><i style="background:#f4f4f4"></i>#f4f4f4 text</span><span><i style="background:#6cb4bc"></i>#6cb4bc teal, the action</span><span><i style="background:#a0c080"></i>#a0c080 green</span><span><i style="background:#d07074"></i>#d07074 coral</span></div>
+      </div>
+      <div><h3>Fonts</h3><p>Mona Sans (titles 800, text 400), the face devs know from GitHub. JetBrains Mono only inside the editor and the command.</p></div>
+      <div><h3>Visual language</h3><div class="mat">
+        <b>Edges</b><span>Small radius, 8 px, like editor windows</span>
+        <b>Depth</b><span>One soft shadow, under the editor window only</span>
+        <b>Lines</b><span>Hairlines where an editor has panel dividers</span>
+        <b>Surface</b><span>Flat night ground, no glow</span>
+        <b>Type voice</b><span>Direct, a developer to a developer</span>
+        <b>Motion feel</b><span>Crisp typing, a ribbon that flows</span></div></div>
+      <div><h3>Logo and favicon</h3><ul><li>Wordmark in Mona Sans; the hyphen is a teal text cursor that blinks once on load.</li><li>Favicon: the teal cursor block on night.</li></ul></div>
+      <div><h3>Motion (Stripe, lively)</h3><ul><li>A ribbon of the syntax colours flows behind the editor and off the right edge (Stripe's ribbon, our colours, never purple to blue).</li><li>The agent types its question; the answer you click assembles the page in the preview.</li><li>Sections slide in once; the lint numbers count up.</li></ul></div>
+      <div><h3>From the research</h3><ul><li>Keeps: dark editor ground, the real product in the hero, the command with agent tabs.</li><li>Avoids: black plus glow, Inter, bento grids, tracked mono labels.</li></ul></div>
+    </div>
   </section>
-  <section class="dir">
-    <div class="tag">Direction C · outside reference</div>
-    <h2>Gallery Wall</h2>
-    <p class="why">A museum room: the two sites hang as framed works on a white wall, with small wall labels. The slider is the big frame in the middle. <b>From the research:</b> nobody in the niche shows work like art; the calm wall label is the opposite of a feature grid.</p>
-    <div class="frames">
-      <div class="desk"><div class="frame" style="left:4%;top:4%;width:4%;height:6%;"></div><div class="t" style="left:9.5%;top:5.6%;width:14%;height:2.8%;"></div><div class="s" style="left:66%;top:6%;width:7%;height:1.6%;"></div><div class="btn" style="left:80%;top:3.6%;width:16%;height:6.4%;">Star on GitHub</div><div class="txt" style="left:4%;top:16%;width:40%;font-size:3.4cqw;">Same prompt. Different designer.</div><div class="s" style="left:4%;top:34%;width:30%;height:1.6%;"></div><div class="btn f" style="left:4%;top:40%;width:22%;height:6.4%;">$ npx skills add …</div><div class="frame" style="left:48%;top:13%;width:48%;height:62%;"></div><div class="slider" style="left:50.5%;top:17%;width:43%;height:54%;"><i></i><span>‹ DRAG ›</span></div><div class="b" style="left:74%;top:78%;width:22%;height:10%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:75%;top:80%;">No. 1 · Other agents / SWD, 2026</div><div class="lbl" style="left:75%;top:83.5%;">HTML on screen. Drag the line.</div><div class="b" style="left:0%;top:93%;width:100%;height:7%;background:#c8b8a2"></div><div class="wild" style="left:73%;top:76.5%;width:24%;height:13%;" data-w="WALL LABEL"></div></div>
-      <div class="phone"><div class="frame" style="left:8%;top:2.4%;width:7%;height:3.2%;"></div><div class="t" style="left:19%;top:3.2%;width:34%;height:1.6%;"></div><div class="txt" style="left:8%;top:9%;width:84%;font-size:9cqw;">Same prompt. Different designer.</div><div class="btn f" style="left:8%;top:26%;width:84%;height:4.6%;">$ npx skills add …</div><div class="frame" style="left:4%;top:34%;width:92%;height:50%;"></div><div class="slider" style="left:9%;top:37%;width:82%;height:44%;"><i></i><span>‹ ›</span></div><div class="b" style="left:8%;top:86%;width:84%;height:7%;background:#fff;border:1px solid #c4c4bf"></div><div class="lbl" style="left:10%;top:88%;">No. 1 · Drag the line</div><div class="b" style="left:0%;top:95%;width:100%;height:5%;background:#c8b8a2"></div></div>
+
+  <!-- B -->
+  <section class="dir" id="b">
+    <div>
+      <h2>B. The Output Leads <span class="rec">Recommended</span></h2>
+      <p class="why">Breaks the niche: every site leads with the dark tool; B leads with the page you get, big and light, with the editor shrunk to a small window that shows the one line that made it. Pride is about the result, so the result is the hero.</p>
     </div>
-    <div><h3>Page order</h3><div class="order"><span>Room 1: the slider</span><span>Room 2: the 10 tells as captions</span><span>Room 3: the flow</span><span>Examples</span><span>Install at the desk</span><span>Footer</span></div></div>
-    <div><h3>Palette and fonts</h3><div class="sw"><i style="background:#F7F6F2"></i><i style="background:#1A1A1A"></i><i style="background:#C89B6D"></i><i style="background:#0F3B2E"></i><small>gallery wall · frame black · oak floor · museum green</small></div></div>
-    <p class="fonts"><b>Hanken Grotesk</b> 800 (titles) · <b>IBM Plex Mono</b> (wall labels, commands)</p>
-    <p class="note"><b>Logo:</b> the wordmark set inside a thin square frame with a white mat, like a small framed print. <b>Favicon:</b> a black square frame with a white mat and a green dot.</p>
-    <p class="wildnote"><b>Wildcard:</b> museum wall labels next to each work, with a lot number and a line like 'Please drag' instead of 'Do not touch'.</p>
-  </section></main></body></html>
+    <div class="frames">
+      <div>
+        <p class="cap">Phone, 390 px</p>
+        <div class="phone" aria-label="Direction B phone skeleton">
+          <div class="b dark" style="left:6%;top:3%;width:46%;height:2.4%"></div><div class="b dark" style="right:6%;top:3%;width:9%;height:2.4%"></div>
+          <div class="t" style="left:6%;top:8%;font-size:11cqi">Same prompt.<br>Different designer.</div>
+          <div class="b mid" style="left:6%;top:24%;width:88%;height:5.5%"></div>
+          <div class="b" style="left:6%;top:32%;width:28%;height:3%;border-radius:99px"></div><div class="b" style="left:36%;top:32%;width:30%;height:3%;border-radius:99px"></div>
+          <div class="img" style="left:0;top:38%;width:100%;height:50%"></div>
+          <div class="b dark" style="left:6%;top:78%;width:70%;height:12%;border-radius:6px"></div>
+          <div class="tag" style="left:9%;top:40%">The page the skill made, full width</div>
+        </div>
+      </div>
+      <div>
+        <p class="cap">Desktop, 1440 px</p>
+        <div class="desk" aria-label="Direction B desktop skeleton">
+          <div class="b dark" style="left:4%;top:4%;width:16%;height:3%"></div>
+          <div class="b" style="left:62%;top:4.5%;width:22%;height:2%"></div><div class="b dark" style="left:87%;top:3.5%;width:9%;height:4%"></div>
+          <div class="t" style="left:4%;top:13%;font-size:5.6cqi">Same prompt.<br>Different designer.</div>
+          <div class="line" style="left:60%;top:15%;width:32%"></div><div class="line" style="left:60%;top:18.5%;width:24%"></div>
+          <div class="b mid" style="left:60%;top:23%;width:36%;height:6%"></div>
+          <div class="b" style="left:4%;top:36%;width:14%;height:4%;border-radius:99px"></div><div class="b" style="left:19%;top:36%;width:15%;height:4%;border-radius:99px"></div><div class="b" style="left:35%;top:36%;width:13%;height:4%;border-radius:99px"></div>
+          <div class="img" style="left:0;top:43%;width:100%;height:57%"></div>
+          <div class="b dark" style="left:4%;top:68%;width:30%;height:24%;border-radius:8px"></div>
+          <div class="tag" style="left:4%;top:31%">Wildcard: pick a prompt, the page below wipes to that result</div>
+          <div class="tag" style="left:36%;top:84%">Small editor window: the one-line prompt that made this page</div>
+          <div class="tag" style="left:60%;top:50%">A coral and green diff line sweeps across on each swap</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="cap">The whole page, 6 sections</p>
+      <ol class="flow"><li class="wild">Hero: the page you get, three prompts</li><li>Other agents against this: the diff sweep</li><li>How it got there: brief, research, three directions, you pick (real files from the burger run)</li><li>The lint: 39 FAIL against 12</li><li>Install, per agent</li><li>Footer</li></ol>
+    </div>
+    <div class="meta">
+      <div><h3>Palette</h3>
+        <div class="sw"><span><i style="background:#fcf8f4"></i>#fcf8f4 page white</span><span><i style="background:#141818"></i>#141818 night ink</span><span><i style="background:#a0c080"></i>#a0c080 added</span><span><i style="background:#d07074"></i>#d07074 removed</span></div>
+        <p style="font-size:13px;color:var(--muted);margin-top:6px">Page white sampled from the Steno page the skill made; ink and diff colours from the editor.</p>
+      </div>
+      <div><h3>Fonts</h3><p>Bricolage Grotesque 800 for titles, a grotesk with a hand in it, like a designer's choice. Instrument Sans for text. JetBrains Mono only in the small editor window and the command.</p></div>
+      <div><h3>Visual language</h3><div class="mat">
+        <b>Edges</b><span>None on the result pages (full-bleed); 8 px on the editor window</span>
+        <b>Depth</b><span>Only the editor window floats, one soft shadow</span>
+        <b>Lines</b><span>None; the diff line is the only line</span>
+        <b>Surface</b><span>The result pages themselves</span>
+        <b>Type voice</b><span>Proud and plain: show, then say</span>
+        <b>Motion feel</b><span>Lively wipes, a sweeping diff line</span></div></div>
+      <div><h3>Logo and favicon</h3><ul><li>Wordmark in Bricolage Grotesque with a green "+" before "Webdesigner", the added line of a diff.</li><li>Favicon: the green plus on night.</li></ul></div>
+      <div><h3>Motion (Stripe, lively)</h3><ul><li>Picking a prompt wipes the hero to that page with a clip-path sweep led by a coral-to-green diff line (Stripe's flowing colour, as a line).</li><li>The small editor types the prompt before each swap.</li><li>Further down, the burger page's steps build one after another as you scroll.</li></ul></div>
+      <div><h3>From the research</h3><ul><li>Breaks: the dark tool-first hero all 14 share.</li><li>Keeps: the command on the first screen, agents named, before and after.</li></ul></div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir" id="c">
+    <div>
+      <h2>C. Darkroom Develop</h2>
+      <p class="why">Outside reference: a photographer's darkroom. The editor at night meets the safelight; the page develops from the grey skeleton to the coloured mockup to the finished page, which is the skill's own flow, as you scroll.</p>
+    </div>
+    <div class="frames">
+      <div>
+        <p class="cap">Phone, 390 px</p>
+        <div class="phone" aria-label="Direction C phone skeleton">
+          <div class="b dark" style="left:6%;top:3%;width:46%;height:2.4%"></div><div class="b dark" style="right:6%;top:3%;width:9%;height:2.4%"></div>
+          <div class="t" style="left:6%;top:9%;font-size:11.5cqi">Same prompt.<br>Different<br>designer.</div>
+          <div class="b dark" style="left:4%;top:33%;width:92%;height:38%;border-radius:4px"></div>
+          <div class="img" style="left:12%;top:37%;width:76%;height:30%"></div>
+          <div class="b mid" style="left:6%;top:76%;width:88%;height:5.5%"></div>
+          <div class="tag" style="left:9%;top:58%">The print develops as you scroll</div>
+        </div>
+      </div>
+      <div>
+        <p class="cap">Desktop, 1440 px</p>
+        <div class="desk" aria-label="Direction C desktop skeleton">
+          <div class="b dark" style="left:4%;top:4%;width:16%;height:3%"></div>
+          <div class="b" style="left:62%;top:4.5%;width:22%;height:2%"></div><div class="b dark" style="left:87%;top:3.5%;width:9%;height:4%"></div>
+          <div class="t" style="left:4%;top:20%;font-size:5.2cqi">Same prompt.<br>Different<br>designer.</div>
+          <div class="line" style="left:4%;top:50%;width:26%"></div><div class="line" style="left:4%;top:53.5%;width:20%"></div>
+          <div class="b mid" style="left:4%;top:60%;width:28%;height:6%"></div>
+          <div class="b dark" style="left:36%;top:14%;width:60%;height:78%;border-radius:6px"></div>
+          <div class="img" style="left:41%;top:20%;width:50%;height:62%"></div>
+          <div class="b" style="left:41%;top:85%;width:8%;height:2%"></div><div class="b" style="left:50%;top:85%;width:8%;height:2%"></div><div class="b" style="left:59%;top:85%;width:8%;height:2%"></div>
+          <div class="tag" style="left:41%;top:9%">Wildcard: scroll develops the print: skeleton, mockup, page</div>
+          <div class="tag" style="left:69%;top:84%">Stage marks: skeleton · mockup · page</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="cap">The whole page, 6 sections</p>
+      <ol class="flow"><li class="wild">Hero: the print in the tray</li><li>Develop: skeleton, mockup, page (pinned, scrubbed by scroll)</li><li>The tells that never develop</li><li>The lint: 39 FAIL against 12</li><li>Install, per agent</li><li>Footer</li></ol>
+    </div>
+    <div class="meta">
+      <div><h3>Palette</h3>
+        <div class="sw"><span><i style="background:#141818"></i>#141818 night</span><span><i style="background:#1c2120"></i>#1c2120 tray</span><span><i style="background:#d07074"></i>#d07074 safelight</span><span><i style="background:#fcf8f4"></i>#fcf8f4 print white</span><span><i style="background:#acb0bc"></i>#acb0bc text</span></div>
+      </div>
+      <div><h3>Fonts</h3><p>Familjen Grotesk 700 for titles, Familjen 400 for text. Commit Mono only for the command.</p></div>
+      <div><h3>Visual language</h3><div class="mat">
+        <b>Edges</b><span>Square prints with a thin white border, the tray rounded 6 px</span>
+        <b>Depth</b><span>The print under a film of liquid: soft refraction, no shadows</span>
+        <b>Lines</b><span>None</span>
+        <b>Surface</b><span>Dark tray, wet print</span>
+        <b>Type voice</b><span>Quiet, patient, then the reveal</span>
+        <b>Motion feel</b><span>Slow develop, a liquid that moves</span></div></div>
+      <div><h3>Logo and favicon</h3><ul><li>Wordmark in Familjen Grotesk; the "o" of "Webdesigner" is a safelight circle.</li><li>Favicon: the coral safelight circle on night.</li></ul></div>
+      <div><h3>Motion (Stripe, lively)</h3><ul><li>The developer liquid ripples over the print (Stripe's flowing surface, in safelight coral).</li><li>Scrolling develops the print through the three stages of the flow.</li><li>The crossed-out tells fade like an underexposed print.</li></ul></div>
+      <div><h3>From the research</h3><ul><li>Brings in: the darkroom, from outside the niche.</li><li>Keeps: dark ground, the command, the real product.</li><li>Risk: slower to read in 3 seconds than A or B.</li></ul></div>
+    </div>
+  </section>
+</div>

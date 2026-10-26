@@ -223,8 +223,8 @@ skills/ai-slop-check/       the audit on its own
 vault/                      the starter Obsidian vault
 examples/burger/            the normal-agent output, untouched, and a full run of the flow
 examples/ai-notes/          the Steno run and the caricature
-design/                     the showcase page's own brief and direction
-site/                       this page, with the drag comparison and the motion
+design/                     the showcase page's own run of the flow: brief, research, three directions, the chosen one
+site/                       this page: the safelight pillar, the agent window and the three looks
 .claude-plugin/             the Claude Code marketplace that lists the plugin
 plugin/                     the Claude Code plugin: both skills (copied by scripts/sync-plugin.sh)
 skills/super-webdesigner/scripts/  sloplint.mjs (the lint) and lint-hook.mjs (the edit-time check)
@@ -232,21 +232,27 @@ plugin/hooks/hooks.json     runs the lint hook after every page edit in Claude C
 scripts/sync-plugin.sh      copies skills/ into plugin/ after you change them
 ```
 
-The site is static HTML, CSS and JavaScript, with GSAP, ScrollTrigger and
-DrawSVG from jsDelivr. Everything that moves is off when the visitor asks for
-reduced motion. Vercel publishes it on every push to `main`.
+The site is static HTML, CSS and JavaScript, no libraries. The pillar of light
+in the hero is one WebGL shader (`site/beam.js`), inspired by React Bits'
+Light Pillar, with no code taken. The agent window in the hero rebuilds the
+sections below in any of the three directions the skill made for this page.
+Everything that moves stands still when the visitor asks for reduced motion,
+and the page is complete with scripts off. Vercel publishes it on every push
+to `main`.
 
 ## Verification
 
-- The showcase was screenshotted in headless Chrome at 390 px with no
-  horizontal scroll. At 1280 px the corner crop marks stick out 22 px past the
-  page, so there is a small horizontal scroll on desktop; it is known and not
-  yet fixed. Its motion was checked by scrolling to each section and capturing
-  the state.
-- Lighthouse mobile on a local copy of the showcase, with GSAP served from the
-  same npm release: performance 88 (77 before the fonts were self-hosted),
-  accessibility 96, best practices 100, SEO 100. The deployed URL was not
-  measured from the build session.
+- The showcase (second version, 2026-10-26) was redone through the flow as
+  the skill's own test: brief answered by the owner, research on 14 dev-tool
+  sites, three directions with skeletons and mockups (`design/`), the owner's
+  pick and changes. On the old page sloplint found 22 FAIL; on the new one,
+  0 FAIL at 375, 768, 1280, 1440 and 1920 px in all three looks, with no
+  horizontal scroll. Impeccable's detector reports one finding, the radial
+  light of the pillar on the tray, kept on purpose. Two fresh-eyes reviews
+  (subagents that never saw the conversation) ran on the hero and on the full
+  page, and their fixes are in.
+- Not run on the second version: Lighthouse, a real iOS device, a screen
+  reader pass.
 - The skill was run end to end in the session that wrote it. A clean-room run
   with a fresh agent (only the skill on disk) found and stopped at the brief,
   and exposed a contradiction around the cost question, which is now fixed
@@ -267,8 +273,9 @@ reduced motion. Vercel publishes it on every push to `main`.
 The brief questions, the anti-convergence rules and the conversion equation
 are adapted from
 [2389-research/landing-page-design](https://github.com/2389-research/landing-page-design)
-(MIT). The showcase uses [GSAP](https://gsap.com) and fonts from Google Fonts
-(OFL). Steno, MeetMind, Order 27 and Ember & Bun are fictional; the photos in
+(MIT). The showcase's pillar of light takes its look from
+[React Bits](https://reactbits.dev)' Light Pillar (no code taken) and its fonts
+from Google Fonts (OFL). Steno, MeetMind, Order 27 and Ember & Bun are fictional; the photos in
 the examples were generated for this demo.
 
 ## License
