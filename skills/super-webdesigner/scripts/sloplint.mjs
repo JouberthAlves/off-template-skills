@@ -234,7 +234,9 @@ for (const d of allDecls) {
   if (hues.some((h) => h >= 195 && h < 255) && hues.some((h) => h >= 255 && h < 320)) {
     add("WARN", "purple-blue", at(d), `${d.prop}: ${d.value.slice(0, 80)}`, "Colour from the brief's real reference; never purple to blue.", "Purple or blue gradient");
   }
-  if (/repeating-(linear|radial)-gradient/i.test(d.value) || /radial-gradient\([^)]*\b1px\b/i.test(d.value)) {
+  // A pattern clipped to the letters (background-clip: text) is a texture on type, not a page background.
+  const clippedToText = allDecls.some((x) => x.file === d.file && x.chain.join("|") === d.chain.join("|") && /background-clip$/.test(x.prop) && /\btext\b/.test(x.value));
+  if (!clippedToText && (/repeating-(linear|radial)-gradient/i.test(d.value) || /radial-gradient\([^)]*\b1px\b/i.test(d.value))) {
     add("WARN", "grid-background", at(d), `${d.prop}: ${d.value.slice(0, 80)}`, "Texture, photo, flat colour or empty space instead of a pattern.", "Grid background");
   }
 }

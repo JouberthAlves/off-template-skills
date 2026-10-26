@@ -13,6 +13,12 @@
   --mask-on: #000;
   --lit-ink: color-mix(in srgb, var(--red) 28%, var(--head));
   --ink-soft: color-mix(in srgb, var(--ink) 65%, var(--print));
+  /* brushed red metal for the flow numbers (look C) */
+  --metal-sheen: rgba(255, 255, 255, .78);
+  --brush-hi: rgba(255, 255, 255, .2);
+  --brush-lo: rgba(0, 0, 0, .16);
+  --metal-1: #fff6f4; --metal-2: #f4c2bb; --metal-3: #d24b41; --metal-4: #7a1c18;
+  --metal-5: #f6d4ce; --metal-6: #b8362e; --metal-7: #4a110f;
   --pillar-low: color-mix(in srgb, var(--red) 55%, var(--head));
   --teal: #6cb4bc;
   --green: #a0c080;
@@ -62,11 +68,11 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
-.fw-a8 { font: 800 16px "Mona Sans", sans-serif; }
-.fw-a4 { font: 400 16px "Mona Sans", sans-serif; }
-.fw-b8 { font: 800 16px "Bricolage Grotesque", sans-serif; }
-.fw-i4 { font: 400 16px "Instrument Sans", sans-serif; }
-.fw-i6 { font: 600 16px "Instrument Sans", sans-serif; }
+.fw-a8 { font: 800 16px var(--font-a); }
+.fw-a4 { font: 400 16px var(--font-a); }
+.fw-b8 { font: 800 16px var(--font-b-head); }
+.fw-i4 { font: 400 16px var(--font-b-body); }
+.fw-i6 { font: 600 16px var(--font-b-body); }
 @media (max-width: 599.98px) { body { font-size: 16px; } }
 
 ::selection { background: var(--red); color: var(--head); }
@@ -413,56 +419,14 @@ h1 br.d { display: none; }
   cursor: pointer;
   transition: background-color .15s;
 }
-.pick:hover:not(:disabled) { background: var(--tray); }
-.pick:disabled { cursor: default; }
+.pick:hover:not([aria-disabled="true"]) { background: var(--tray); }
+.pick[aria-disabled="true"] { cursor: progress; }
 .pick[aria-pressed="true"] { background: var(--tray); box-shadow: inset 3px 0 0 var(--red); }
 .pk { color: var(--text); }
 .pick[aria-pressed="true"] .pk { color: var(--head); }
 .pk { flex: none; }
 .status { min-height: 1.55em; font-size: 13px; color: var(--text); }
 .no-js .status { display: none; }
-
-/* Shown for the whole look switch, so the wait reads as work instead of a freeze. */
-.gen {
-  position: fixed;
-  z-index: 30;
-  left: 50%;
-  bottom: 28px;
-  margin: 0;
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  background: var(--tray);
-  color: var(--head);
-  border: 1px solid var(--line);
-  font: 500 14px/1 var(--font-mono);
-  letter-spacing: 0.02em;
-  opacity: 0;
-  transform: translateX(-50%) translateY(12px);
-  pointer-events: none;
-}
-html.generating .gen {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  transition: opacity 160ms var(--ease), transform 160ms var(--ease);
-}
-.gen-dots { display: inline-flex; gap: 4px; margin-left: 8px; }
-.gen-dots i {
-  display: block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--red);
-  opacity: 0.3;
-}
-html.generating .gen-dots i { animation: gen-dot 800ms var(--ease) infinite; }
-html.generating .gen-dots i:nth-child(2) { animation-delay: 120ms; }
-html.generating .gen-dots i:nth-child(3) { animation-delay: 240ms; }
-@keyframes gen-dot {
-  0%, 100% { opacity: 0.3; transform: translateY(0); }
-  40% { opacity: 1; transform: translateY(-3px); }
-}
 
 /* ---------- Beam fallback ---------- */
 #hero.beam-static .beam { display: none; }
@@ -949,8 +913,6 @@ html.generating .gen-dots i:nth-child(3) { animation-delay: 240ms; }
 @media (prefers-reduced-motion: reduce) {
   .sec.pre > * { opacity: 1; transform: none; }
   .sec, .foot, .sec.in > * { transition: none; }
-  .gen, html.generating .gen { transition: none; transform: translateX(-50%); }
-  html.generating .gen-dots i { animation: none; opacity: 1; }
   .sec::after, .foot::after { display: none; }
   .tells.arm li::after { transform: scaleX(1); }
   .tells.go li::after { transition: none; }
@@ -972,9 +934,9 @@ html.generating .gen-dots i:nth-child(3) { animation-delay: 240ms; }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .sec[data-look="c"] .steps .n {
     background-image:
-      linear-gradient(118deg, transparent 30%, rgba(255, 255, 255, .78) 46%, transparent 58%),
-      repeating-linear-gradient(90deg, rgba(255, 255, 255, .2) 0 1px, rgba(0, 0, 0, .16) 1px 2px, transparent 2px 3px),
-      linear-gradient(175deg, #fff6f4 0%, #f4c2bb 16%, #d24b41 34%, #7a1c18 48%, #f6d4ce 57%, #b8362e 74%, #4a110f 100%);
+      linear-gradient(118deg, transparent 30%, var(--metal-sheen) 46%, transparent 58%),
+      repeating-linear-gradient(90deg, var(--brush-hi) 0 1px, var(--brush-lo) 1px 2px, transparent 2px 3px),
+      linear-gradient(175deg, var(--metal-1) 0%, var(--metal-2) 16%, var(--metal-3) 34%, var(--metal-4) 48%, var(--metal-5) 57%, var(--metal-6) 74%, var(--metal-7) 100%);
     background-size: 100% 100%, 3px 100%, 100% 100%;
     -webkit-background-clip: text;
     background-clip: text;

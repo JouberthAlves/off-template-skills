@@ -156,45 +156,31 @@
     });
   }
 
-  /* Two frames so "Generating" paints before the look swap blocks the thread. */
-  function paint() {
-    return new Promise(function (resolve) {
-      requestAnimationFrame(function () { requestAnimationFrame(resolve); });
-    });
-  }
-
   function pick(key) {
     if (busy || key === current || !DIRS[key]) return;
     busy = true;
     root.classList.add('ready');
-    root.classList.add('generating');
     var d = DIRS[key];
-    var hadFocus = picks.indexOf(document.activeElement) > -1;
-    picks.forEach(function (b) { b.disabled = true; });
+    // The buttons stay enabled (busy ignores clicks), so focus never drops and is never moved:
+    // moving focus back scrolled the page up to the hero after a visitor had scrolled away.
+    picks.forEach(function (b) { b.setAttribute('aria-disabled', 'true'); });
 
     setPressed(key);
-    status.textContent = 'Generating…';
-    // Paint the label first. Then the faces, the print and the sections run together.
-    var painted = paint();
-    var rebuilt = painted.then(facesReady).then(function () {
+    status.textContent = '> Building the sections below in ' + d.name + '…';
+    var rebuilt = facesReady().then(function () {
       current = key;
       root.dataset.look = key;
       window.dispatchEvent(new CustomEvent('look', { detail: key }));
     });
     Promise.all([
-      painted.then(function () { return develop(key, { ripple: true }); }),
+      develop(key, { ripple: true }),
       rebuilt
     ]).then(function () {
-      root.classList.remove('generating');
       status.textContent = 'Done. The page below is now ' + d.name + '.';
       setStage('page');
       setPressed(key);
-      picks.forEach(function (b) { b.disabled = false; });
+      picks.forEach(function (b) { b.removeAttribute('aria-disabled'); });
       busy = false;
-      if (hadFocus) {
-        var next = picks.filter(function (b) { return b.getAttribute('data-dir') === key; })[0];
-        if (next) next.focus();
-      }
     });
   }
 

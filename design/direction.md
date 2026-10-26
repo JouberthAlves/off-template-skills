@@ -98,6 +98,7 @@ wall.
 Fonts OFL.
 
 **Waivers:**
+- Brushed red metal on the four flow numbers in look C (background-clip: text with a fine brushed texture), asked for by the owner as the pillar's light on the numbers.
 - `mono-labels`: the A, B and C options live inside the agent's terminal window, where mono is the material, not a costume.
 
 **Stamp:** `/* super-webdesigner · direction C "darkroom develop" + safelight beam + agent window that picks the look below · job: copy the install command · faces: Familjen Grotesk / Commit Mono · palette: night, tray, logo red, print white · motion: lively, the beam lights the hero, prints develop · waivers: mono-labels */`
