@@ -243,7 +243,8 @@
 
     var k = easeOut(clamp((now - tStart) / INTRO_MS, 0, 1));
     draw(t, geo.int * k);
-    updateLit(k);
+    /* Style rebuilds already thrash layout. Skip the per-frame measurements until they finish. */
+    if (!document.documentElement.classList.contains('switching')) updateLit(k);
     raf = requestAnimationFrame(frame);
   }
 

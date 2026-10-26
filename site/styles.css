@@ -54,6 +54,19 @@ body {
   font-variant-numeric: tabular-nums;
   caret-color: var(--red);
 }
+/* Off-screen, not display:none: that is what makes the browser fetch looks A and B before the first click. */
+.font-warm {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.fw-a8 { font: 800 16px "Mona Sans", sans-serif; }
+.fw-a4 { font: 400 16px "Mona Sans", sans-serif; }
+.fw-b8 { font: 800 16px "Bricolage Grotesque", sans-serif; }
+.fw-i4 { font: 400 16px "Instrument Sans", sans-serif; }
+.fw-i6 { font: 600 16px "Instrument Sans", sans-serif; }
 @media (max-width: 599.98px) { body { font-size: 16px; } }
 
 ::selection { background: var(--red); color: var(--head); }
@@ -744,16 +757,27 @@ h1 br.d { display: none; }
 .tells li::after {
   content: "";
   position: absolute;
-  left: -4px;
-  right: -4px;
-  top: 55%;
-  height: 3px;
-  margin-top: -1.5px;
-  background: var(--s-accent);
+  left: -2px;
+  right: -6px;
+  top: 0.52em;
+  height: 8px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 2.8Q200 6.2 400 3.2' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>") center / 100% 100% no-repeat;
   transform: scaleX(1);
   transform-origin: left center;
 }
-.sec[data-look="c"] .tells li::after { background: var(--s-text); }
+.tells li:nth-child(4n+2)::after {
+  top: 0.5em;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 5Q200 1.8 400 4.6' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>");
+}
+.tells li:nth-child(4n+3)::after {
+  top: 0.48em;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 3C180 3.4 300 4.4 400 5' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>");
+}
+.tells li:nth-child(4n)::after {
+  top: 0.54em;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 4.8C180 4.4 300 3.4 400 2.8' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>");
+}
 .tells.arm li::after { transform: scaleX(0); }
 .tells.go li::after { transition: transform 500ms var(--ease) calc(var(--i, 0) * 60ms); }
 
@@ -832,9 +856,9 @@ h1 br.d { display: none; }
 .steps li:nth-child(4) { --k: 3; }
 
 @keyframes rb {
-  0% { filter: none; opacity: 1; }
-  38% { filter: blur(6px); opacity: .55; }
-  100% { filter: none; opacity: 1; }
+  0% { opacity: 1; }
+  38% { opacity: .72; }
+  100% { opacity: 1; }
 }
 @keyframes dev-line {
   0% { transform: translateY(0); opacity: 0; }
@@ -900,10 +924,30 @@ h1 br.d { display: none; }
 .foot a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
 .tab { min-width: 44px; }
 
-/* The verdict numbers in look C glow like the pillar: red for the failures, green for the fewer ones. */
-.sec[data-look="c"] .pic .num { color: var(--red); text-shadow: 0 0 .22em var(--red), 0 0 .6em var(--red); }
-.sec[data-look="c"] .pic-2 .num { color: var(--green); text-shadow: 0 0 .22em var(--green), 0 0 .6em var(--green); }
-.sec[data-look="c"] .steps .n { text-shadow: 0 0 .22em var(--red), 0 0 .6em var(--red); }
+/* Look C: the two verdict counts stay red and green, with no glow. */
+.sec[data-look="c"] .pic .num { color: var(--red); }
+.sec[data-look="c"] .pic-2 .num { color: var(--green); }
+/* The four flow numbers are brushed red metal. No text-shadow: that was the glow. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .sec[data-look="c"] .steps .n {
+    background-image:
+      linear-gradient(118deg, transparent 30%, rgba(255, 255, 255, .78) 46%, transparent 58%),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, .2) 0 1px, rgba(0, 0, 0, .16) 1px 2px, transparent 2px 3px),
+      linear-gradient(175deg, #fff6f4 0%, #f4c2bb 16%, #d24b41 34%, #7a1c18 48%, #f6d4ce 57%, #b8362e 74%, #4a110f 100%);
+    background-size: 100% 100%, 3px 100%, 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+@media (forced-colors: active) {
+  .sec[data-look="c"] .steps .n {
+    background: none;
+    color: var(--s-num);
+    -webkit-text-fill-color: unset;
+  }
+}
 
 /* A picked option's focus ring sits inside its row, not on the window's edge. */
 .pick:focus-visible { outline-offset: -3px; }

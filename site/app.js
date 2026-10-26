@@ -145,17 +145,23 @@
     });
   }
 
-  /* Faces of looks A and B: loaded on idle, and awaited (max 400 ms) before a rebuild starts. */
+  /* Faces of looks A and B. Chrome only fetches a face that is used, so this starts at parse,
+     not on the click. The click waits only for faces that are still missing. */
   var FACES = ['800 1em "Mona Sans"', '400 1em "Mona Sans"', '800 1em "Bricolage Grotesque"', '400 1em "Instrument Sans"', '600 1em "Instrument Sans"'];
   function loadFaces() {
     if (!document.fonts || !document.fonts.load) return;
     FACES.forEach(function (f) { document.fonts.load(f).catch(function () {}); });
   }
-  function fontsReady() {
-    if (!document.fonts || !document.fonts.ready) return Promise.resolve();
-    loadFaces();
-    return Promise.race([document.fonts.ready, wait(400)]);
+  function facesReady() {
+    if (!document.fonts || !document.fonts.load || !document.fonts.check) return Promise.resolve();
+    var pending = FACES.filter(function (f) { return !document.fonts.check(f); });
+    if (!pending.length) return Promise.resolve();
+    return Promise.race([
+      Promise.all(pending.map(function (f) { return document.fonts.load(f).catch(function () {}); })),
+      wait(900)
+    ]);
   }
+  loadFaces();
 
   function setPressed(key) {
     picks.forEach(function (b) {
@@ -174,7 +180,7 @@
     setPressed(key);
     // The sections start rebuilding as soon as the faces are in (at most 400 ms),
     // while the print develops in the tray; the click never waits on the hero.
-    var rebuilt = fontsReady().then(function () {
+    var rebuilt = facesReady().then(function () {
       current = key;
       root.dataset.look = key;
       window.dispatchEvent(new CustomEvent('look', { detail: key }));
@@ -319,21 +325,33 @@
     rbTimers.forEach(clearTimeout);
     rbTimers = [];
     rebuildList.forEach(function (el) { el.classList.remove('rb'); });
+    root.classList.remove('switching');
     if (reduce.matches) {
       rebuildList.forEach(function (el) { setLook(el, key); });
       return;
     }
+    /* Read every height before any write, so the switch is one layout, not one per section. */
+    var jobs = [];
     rebuildList.forEach(function (el, i) {
-      if (el.classList.contains('pre')) { setLook(el, key); return; }
-      rbTimers.push(setTimeout(function () {
-        setLook(el, key);
-        el.style.setProperty('--h', Math.max(0, el.offsetHeight - 2) + 'px');
-        void el.offsetWidth;
-        el.classList.add('rb');
-        showLook(el);
-        rbTimers.push(setTimeout(function () { el.classList.remove('rb'); }, 520));
-      }, i * 110));
+      if (el.classList.contains('pre')) return;
+      jobs.push({ el: el, at: i * 110, h: el.offsetHeight });
     });
+    root.classList.add('switching');
+    rebuildList.forEach(function (el) {
+      if (el.classList.contains('pre')) setLook(el, key);
+    });
+    var last = 0;
+    jobs.forEach(function (job) {
+      job.el.style.setProperty('--h', Math.max(0, job.h - 2) + 'px');
+      last = Math.max(last, job.at + 520);
+      rbTimers.push(setTimeout(function () {
+        setLook(job.el, key);
+        job.el.classList.add('rb');
+        showLook(job.el);
+        rbTimers.push(setTimeout(function () { job.el.classList.remove('rb'); }, 520));
+      }, job.at));
+    });
+    rbTimers.push(setTimeout(function () { root.classList.remove('switching'); }, last));
   }
   window.addEventListener('look', function (e) { rebuild(e.detail); });
 
