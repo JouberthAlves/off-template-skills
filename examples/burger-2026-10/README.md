@@ -11,7 +11,7 @@ The same one-line prompt as [`../burger/`](../burger), run again on both sides o
 | Folder | [`normal-agent/`](normal-agent) | [`super-webdesigner/`](super-webdesigner) |
 | Model | Claude Opus 5.5 (subagent) | Claude Opus 5.5 (direction, spec, review) + Sonnet 5.5 at medium effort (code) |
 | What it got | The prompt, an empty folder, and "you can't ask me questions" (exact message below) | The full flow: tools, brief answered by the owner, research of 12 real truck sites, 3 skeletons and 3 mockups, the owner's choice, decisions block, closed spec, review |
-| Fixes after the review | none | the owner's two notes (the concrete texture didn't show; the nav cut the photo flat) and the reviewer's (see review.md) |
+| Fixes after the review | none | the owner's notes (the texture didn't show, then read as concrete, so it became a griptape photo; the nav cut the photo flat) and the reviewer's (see review.md) |
 | What it built | A full one-page site: "Ember & Bun", 7 sections, an order tray, a drawn burger | Only the first screen: "Halfway", nav + hero. The owner asked for a hero only ("it will only be a hero, as an example") |
 | Brief | Decided by the agent | Answered by the owner: a burger cut in half · hungry, right now · skate video × butcher shop · never an AI template · food truck, $8–11 · calm motion · picked direction C (my pick was B) |
 | Edited after | No, untouched | Yes, reviewed and fixed by Opus (see [`super-webdesigner/review.md`](super-webdesigner/review.md)) |
@@ -69,7 +69,7 @@ Full-page captures at five widths: `normal-agent/shots/` and `super-webdesigner/
 
 ## Cost
 
-- Magnific: 720 credits (3 mockups at 180 each, plus the hero photo at 180).
+- Magnific: 820 credits (3 mockups at 180 each, the hero photo at 180, the griptape texture at 100).
 - The palette was sampled from two real photos on Wikimedia Commons ("Philbuster burger - 1", CC BY-SA 4.0; "Smash burger - Cambridge, MA", CC0). Neither photo appears on the page.
 
 Everything about both restaurants (names, addresses, menus, prices, reviews) is fictional.

@@ -23,19 +23,17 @@ body {
   margin: 0;
 }
 
-/* griptape grain */
+/* griptape: a photo of the grit, tiled, lightening the char through screen */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  /* concrete: a fine grain over wide mottling, both grey noise */
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
-  background-size: 300px 300px, 900px 900px;
-  opacity: 0.13;
+  background-image: url("img/griptape.webp");
+  background-size: 320px 320px;
+  mix-blend-mode: screen;
+  opacity: 0.45;
 }
 
 main { position: relative; z-index: 1; }

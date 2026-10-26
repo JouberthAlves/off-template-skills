@@ -34,7 +34,7 @@ With JS and motion on, every element ends at opacity 1 at its final transform, w
 
 ## 6. The owner's notes at STOP 2
 
-- **The background read as a flat colour.** The griptape grain was at 5% with `overlay`, which vanishes on a dark base. It was redone as concrete: a fine grey grain over wide grey mottling, at 13% opacity.
+- **The background read as a flat colour.** The griptape grain was at 5% with `overlay`, which vanishes on a dark base. It was redone as concrete (SVG noise at 13%); the owner said it read as concrete, not griptape, and asked for a photo of griptape. A macro photo was generated (100 credits) and tiled with `screen` at 45%. Impeccable: 0 findings at both widths after it.
 - **The nav cut the photo flat.** The nav now floats over the hero (`position: absolute`), so the round photo runs up to the top edge of the screen. The links sit on a round char veil (72%, with a blur) so they stay readable over the photo.
 - Impeccable then flagged the hero sentence at 4.3:1 on the lighter, textured ground. Raised to 90% of the crumb colour; the rerun found 0.
 

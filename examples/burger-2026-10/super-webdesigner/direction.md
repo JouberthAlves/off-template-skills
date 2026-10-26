@@ -16,7 +16,7 @@
 - Edges: round, from the fisheye lens: the photo is a circle, the button a full pill.
 - Depth: only the lens bulge inside the photo; flat everywhere else, no shadows.
 - Lines: none (the logo badge's ring is the only outline). The nav floats over the hero; its links sit on a round char veil so they read over the photo.
-- Surface: char with a concrete / griptape texture: a fine grey grain over wide grey mottling (SVG noise, 13%). The owner asked for it to show.
+- Surface: char with real griptape: a generated macro photo of skateboard grip (`img/griptape.webp`, Magnific, 100 credits), tiled at 320 px and blended with `screen` at 45%. The owner asked for it to read as griptape.
 - Type voice: loud, a little crooked, a friend saying "you have to try this".
 - Motion feel: a single roll in, then still.
 
