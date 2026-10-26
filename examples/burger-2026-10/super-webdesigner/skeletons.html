@@ -1,0 +1,225 @@
+<title>Halfway Skeletons</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: three directions stacked, each with a phone frame and a desktop frame in gray, swatches the only colour */
+:root{
+  --bg:#f2f2f0; --panel:#ffffff; --block:#d6d6d3; --block-2:#bdbdb9; --ink:#2b2b2a; --muted:#6d6d6a; --line:#c9c9c5;
+  --f-ui: "Archivo", system-ui, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-ui);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:28px;margin:0 0 4px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px;max-width:70ch}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+nav.tabs a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:999px}
+nav.tabs a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+section.dir{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;margin-bottom:28px}
+.dir h2{margin:0;font-size:22px}
+.dir .why{color:var(--muted);margin:4px 0 18px;max-width:75ch}
+.rec{display:inline-block;background:var(--ink);color:var(--panel);font-size:12px;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;letter-spacing:.04em}
+.frames{display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:760px){.frames{grid-template-columns:minmax(0,1fr)}.phone{max-width:240px}}
+.cap{font-size:12px;color:var(--muted);margin:0 0 6px;letter-spacing:.04em;text-transform:uppercase}
+.phone,.desk{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fafaf9;position:relative}
+.phone{aspect-ratio:390/780}
+.desk{aspect-ratio:16/9}
+.b{position:absolute;background:var(--block)}
+.photo{background:var(--block-2)}
+.photo::before,.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - .5px),#9c9c98 50%,transparent calc(50% + .5px))}
+.photo::after{background:linear-gradient(to top left,transparent calc(50% - .5px),#9c9c98 50%,transparent calc(50% + .5px))}
+.t{position:absolute;color:var(--ink);font-weight:800;line-height:1.02;letter-spacing:-.01em}
+.s{position:absolute;color:var(--muted);font-size:9px;line-height:1.3}
+.btn{position:absolute;border:1.5px solid var(--ink);font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:700;background:#fafaf9}
+.btn.solid{background:var(--ink);color:#fafaf9}
+.tag{position:absolute;background:#fff;border:1px dashed var(--ink);font-size:9px;padding:2px 5px;color:var(--ink);white-space:nowrap;z-index:2}
+.navb{position:absolute;font-size:8px;color:var(--muted);display:flex;gap:10px}
+.dark{background:#8a8a86}
+.dark .t,.t.on-dark{color:#fafaf9}
+.circle{border-radius:50%}
+.lbl{position:absolute;font-size:8px;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:1px;white-space:nowrap}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px}
+.meta h3{font-size:13px;margin:0 0 6px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.meta ul{margin:0;padding-left:18px}
+.meta li{margin-bottom:3px}
+.sw{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.sw span{display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:3px}
+.sw i{display:block;width:54px;height:36px;border-radius:4px;border:1px solid var(--line)}
+.order{display:flex;gap:6px;flex-wrap:wrap}
+.order span{border:1px solid var(--line);border-radius:4px;padding:3px 8px;font-size:12px;background:#fafaf9}
+.order span.x{border-style:dashed;color:var(--muted)}
+footer{color:var(--muted);font-size:13px}
+</style>
+
+<div class="wrap">
+  <h1>Halfway: three directions</h1>
+  <p class="lede">Smash-burger food truck, $8 to $11. Brief: a burger cut in half · hungry, right now · skate video × butcher shop · never an AI template · calm motion. Palette sampled from two real photos of cut and smashed burgers (Wikimedia Commons, CC0 and CC BY-SA). Only the hero gets built. The name, stop and prices are stand-ins for a fictional truck.</p>
+  <nav class="tabs" aria-label="Directions"><a href="#a">A · Cross-Section</a><a href="#b">B · Cut Chart</a><a href="#c">C · Fisheye Session</a></nav>
+
+  <!-- A -->
+  <section class="dir" id="a">
+    <h2>A · Cross-Section <span class="rec">RECOMMENDED</span></h2>
+    <p class="why">The cut face of the burger fills the screen, as close as the brief asked. The research points the same way: truck sites that sell show the burger large and say where the truck is today. Butcher-shop window lettering, cropped tight like a handheld skate clip.</p>
+    <div class="frames">
+      <div><p class="cap">390 px</p>
+        <div class="phone">
+          <div class="navb" style="top:3%;left:6%;right:6%;justify-content:space-between"><b style="color:var(--ink)">HALFWAY</b><span>Menu · Order</span></div>
+          <div class="b photo" style="top:8%;left:0;right:0;height:48%"></div>
+          <div class="tag" style="top:14%;left:6%">photo: cut face, cheese pulling</div>
+          <div class="b dark" style="top:56%;left:0;right:0;bottom:0"></div>
+          <div class="t on-dark" style="top:59%;left:6%;right:6%;font-size:25px">SMASHED THIN. CUT IN HALF. STILL DRIPPING.</div>
+          <div class="s" style="top:79%;left:6%;right:10%;color:#e8e8e5">Two patties pressed on the steel, cheese, pickles, house sauce. $10.</div>
+          <div class="btn solid" style="top:85%;left:6%;width:48%;height:5.5%;background:#fafaf9;color:var(--ink)">Order for pickup</div>
+          <div class="s" style="top:93%;left:6%;color:#fafaf9">● Today: Pier 4 lot, 11:30–3</div>
+          <div class="tag" style="top:91%;right:4%">live: today's stop</div>
+        </div></div>
+      <div><p class="cap">Desktop</p>
+        <div class="desk">
+          <div class="b dark" style="inset:0 58% 0 0"></div>
+          <div class="navb" style="top:5%;left:4%;right:4%;justify-content:space-between;z-index:2"><b style="color:#fafaf9">HALFWAY</b><span style="color:#fafaf9">Menu · Schedule · Order</span></div>
+          <div class="b photo" style="top:0;bottom:0;left:42%;right:0"></div>
+          <div class="tag" style="top:46%;left:60%">photo bleeds off the right edge, cut face to camera</div>
+          <div class="t on-dark" style="top:20%;left:4%;width:36%;font-size:46px">SMASHED THIN. CUT IN HALF. STILL DRIPPING.</div>
+          <div class="s" style="top:66%;left:4%;width:30%;color:#e8e8e5;font-size:11px">Two patties pressed on the steel, American cheese, pickles, house sauce. From a truck, $10.</div>
+          <div class="btn solid" style="top:77%;left:4%;width:15%;height:7%;background:#fafaf9;color:var(--ink)">Order for pickup</div>
+          <div class="btn" style="top:77%;left:20.5%;width:14%;height:7%;background:transparent;color:#fafaf9;border-color:#fafaf9">Where's the truck</div>
+          <div class="s" style="top:89%;left:4%;color:#fafaf9;font-size:11px">● Today: Pier 4 lot, 11:30–3</div>
+        </div></div>
+    </div>
+    <div class="meta">
+      <div><h3>Palette and type</h3>
+        <div class="sw"><span><i style="background:#3c2828"></i>char #3c2828</span><span><i style="background:#6f2f20"></i>sear #6f2f20</span><span><i style="background:#e4944b"></i>crust #e4944b · accent</span><span><i style="background:#dcbc9d"></i>crumb #dcbc9d</span></div>
+        <p>Title: <b>Big Shoulders Display</b> 900, condensed like butcher window lettering. Body: <b>Archivo</b>.</p>
+        <h3>Section order (only the hero is built)</h3>
+        <div class="order"><span>Hero</span><span class="x">Menu</span><span class="x">This week's stops</span><span class="x">Catering</span><span class="x">Footer</span></div>
+      </div>
+      <div><h3>Visual language</h3><ul>
+        <li><b>Edges:</b> square, 0 to 2 px. Cut steel and a knife cut are straight.</li>
+        <li><b>Depth:</b> only the photo's own. No shadows; the light lives in the food.</li>
+        <li><b>Lines:</b> none. Nothing on a griddle has an outline.</li>
+        <li><b>Surface:</b> the photo plus flat char. The truck's steel at night.</li>
+        <li><b>Type voice:</b> loud and short, the way a cook calls an order.</li>
+        <li><b>Motion feel:</b> slow and heavy, like cheese sliding down.</li></ul></div>
+      <div><h3>Wildcard, logo, motion</h3><ul>
+        <li><b>Wildcard:</b> the "today" line reports the real stop and whether the window is open now.</li>
+        <li><b>Logo:</b> HALFWAY in the title face, with the second A sliced through by a thin gap. <b>Favicon:</b> a circle cut in two.</li>
+        <li><b>Motion (calm):</b> the photo settles from 104% to 100% over 1.4 s; the title rises in three lines; the status dot breathes once when open. Buttons darken and press 1 px.</li></ul></div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="dir" id="b">
+    <h2>B · Cut Chart</h2>
+    <p class="why">Breaks the niche's dark-photo-banner habit. The butcher's beef-cuts chart on the shop wall becomes a chart of the burger: a cut-out half with hand-drawn lines naming each layer. The price goes on a sticker, slapped on like a skate sticker.</p>
+    <div class="frames">
+      <div><p class="cap">390 px</p>
+        <div class="phone">
+          <div class="navb" style="top:3%;left:6%;right:6%;justify-content:space-between"><b style="color:var(--ink)">HALFWAY</b><span>Menu · Order</span></div>
+          <div class="t" style="top:8%;left:6%;right:6%;font-size:22px">SMASHED THIN. CUT IN HALF. STILL DRIPPING.</div>
+          <div class="b photo" style="top:30%;left:14%;width:62%;height:28%;border-radius:40% 40% 8% 8%"></div>
+          <div class="lbl" style="top:31%;left:74%">potato bun</div>
+          <div class="lbl" style="top:41%;left:74%">american cheese</div>
+          <div class="lbl" style="top:47%;left:2%">two patties</div>
+          <div class="lbl" style="top:54%;left:74%">house sauce</div>
+          <div class="b circle" style="top:58%;left:66%;width:22%;aspect-ratio:1;background:var(--block-2)"></div>
+          <div class="s" style="top:62%;left:70%;color:var(--ink);font-weight:700">$10</div>
+          <div class="tag" style="top:24%;left:30%">cut-out half, no background</div>
+          <div class="s" style="top:72%;left:6%;right:8%">Two patties pressed on the steel, cheese, pickles, house sauce.</div>
+          <div class="btn solid" style="top:79%;left:6%;width:52%;height:5.5%">Order for pickup</div>
+          <div class="s" style="top:88%;left:6%;color:var(--ink)">● Today: Pier 4 lot, 11:30–3</div>
+        </div></div>
+      <div><p class="cap">Desktop</p>
+        <div class="desk">
+          <div class="navb" style="top:5%;left:4%;right:4%;justify-content:space-between"><b style="color:var(--ink)">HALFWAY</b><span>Menu · Schedule · Order</span></div>
+          <div class="t" style="top:18%;left:4%;width:34%;font-size:34px">SMASHED THIN. CUT IN HALF. STILL DRIPPING.</div>
+          <div class="s" style="top:58%;left:4%;width:28%;font-size:11px">Two patties pressed on the steel, American cheese, pickles, house sauce. From a truck.</div>
+          <div class="btn solid" style="top:70%;left:4%;width:15%;height:7%">Order for pickup</div>
+          <div class="s" style="top:82%;left:4%;color:var(--ink);font-size:11px">● Today: Pier 4 lot, 11:30–3</div>
+          <div class="b photo" style="top:22%;left:46%;width:34%;height:52%;border-radius:40% 40% 8% 8%"></div>
+          <div class="lbl" style="top:22%;left:82%">potato bun, toasted</div>
+          <div class="lbl" style="top:40%;left:82%">american cheese</div>
+          <div class="lbl" style="top:50%;left:38%">two 3 oz patties</div>
+          <div class="lbl" style="top:60%;left:82%">pickles</div>
+          <div class="lbl" style="top:68%;left:82%">house sauce</div>
+          <div class="b circle" style="top:70%;left:72%;width:9%;aspect-ratio:1;background:var(--block-2)"></div>
+          <div class="s" style="top:76%;left:75%;color:var(--ink);font-weight:700;font-size:12px">$10</div>
+          <div class="tag" style="top:12%;left:52%">wildcard: tap a label, its layer lifts</div>
+        </div></div>
+    </div>
+    <div class="meta">
+      <div><h3>Palette and type</h3>
+        <div class="sw"><span><i style="background:#dcbc9d"></i>crumb #dcbc9d · ground</span><span><i style="background:#3c2828"></i>char #3c2828 · text</span><span><i style="background:#822010"></i>sauce #822010 · accent</span><span><i style="background:#e9ab68"></i>cheese #e9ab68</span></div>
+        <p>Title: <b>Alfa Slab One</b>, the slab of a painted butcher sign. Labels drawn in <b>Caveat Brush</b> (the chart's hand). Body: <b>Archivo</b>.</p>
+        <h3>Section order (only the hero is built)</h3>
+        <div class="order"><span>Hero chart</span><span class="x">Menu as cut list</span><span class="x">Stops</span><span class="x">Footer</span></div>
+      </div>
+      <div><h3>Visual language</h3><ul>
+        <li><b>Edges:</b> organic, from the burger's own cut-out silhouette. Everything else is square.</li>
+        <li><b>Depth:</b> one soft contact shadow under the cut-out, where the light falls.</li>
+        <li><b>Lines:</b> hand-drawn leader lines, as on a butcher's chart. Nothing else is outlined.</li>
+        <li><b>Surface:</b> the bun's crumb colour, flat. No paper texture.</li>
+        <li><b>Type voice:</b> plain and proud: the butcher naming the cuts.</li>
+        <li><b>Motion feel:</b> calm. The lines draw themselves in once.</li></ul></div>
+      <div><h3>Wildcard, logo, motion</h3><ul>
+        <li><b>Wildcard:</b> tap or hover a label and its layer lifts 6 px from the half.</li>
+        <li><b>Logo:</b> HALFWAY in slab, with a dashed cut line through the middle. <b>Favicon:</b> a half circle.</li>
+        <li><b>Motion (calm):</b> the leader lines draw in one after another (600 ms each); the sticker settles at a 6° tilt. Hover on labels.</li></ul></div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir" id="c">
+    <h2>C · Fisheye Session</h2>
+    <p class="why">The outside reference: the fisheye lens of a skate video. The burger is held right up to the camera, bulging out of a round frame onto dark griptape. Butcher paper shows only as the wrap in the hand.</p>
+    <div class="frames">
+      <div><p class="cap">390 px</p>
+        <div class="phone" style="background:#8a8a86">
+          <div class="navb" style="top:3%;left:6%;right:6%;justify-content:space-between;color:#fafaf9"><b>HALFWAY</b><span>Menu · Order</span></div>
+          <div class="b photo circle" style="top:9%;left:-8%;width:116%;aspect-ratio:1"></div>
+          <div class="tag" style="top:24%;left:10%">fisheye: burger held to the lens</div>
+          <div class="t on-dark" style="top:64%;left:6%;right:6%;font-size:26px;transform:rotate(-3deg)">CUT IN HALF. STILL DRIPPING.</div>
+          <div class="s" style="top:80%;left:6%;right:10%;color:#e8e8e5">Two patties pressed on the steel, cheese, pickles, house sauce. $10.</div>
+          <div class="btn solid" style="top:86%;left:6%;width:50%;height:5.5%;background:#fafaf9;color:var(--ink)">Order for pickup</div>
+          <div class="s" style="top:94%;left:6%;color:#fafaf9">● Today: Pier 4 lot, 11:30–3</div>
+        </div></div>
+      <div><p class="cap">Desktop</p>
+        <div class="desk" style="background:#8a8a86">
+          <div class="navb" style="top:5%;left:4%;right:4%;justify-content:space-between;color:#fafaf9;z-index:2"><b>HALFWAY</b><span>Menu · Schedule · Order</span></div>
+          <div class="b photo circle" style="top:-12%;left:38%;width:58%;aspect-ratio:1"></div>
+          <div class="tag" style="top:40%;left:58%">round fisheye frame, cropped by the top edge</div>
+          <div class="t on-dark" style="top:30%;left:4%;width:42%;font-size:48px;transform:rotate(-3deg)">CUT IN HALF. STILL DRIPPING.</div>
+          <div class="s" style="top:68%;left:4%;width:30%;color:#e8e8e5;font-size:11px">Two patties pressed on the steel, American cheese, pickles, house sauce. From a truck, $10.</div>
+          <div class="btn solid" style="top:79%;left:4%;width:15%;height:7%;background:#fafaf9;color:var(--ink)">Order for pickup</div>
+          <div class="s" style="top:90%;left:4%;color:#fafaf9;font-size:11px">● Today: Pier 4 lot, 11:30–3</div>
+        </div></div>
+    </div>
+    <div class="meta">
+      <div><h3>Palette and type</h3>
+        <div class="sw"><span><i style="background:#3c2828"></i>char #3c2828 · ground</span><span><i style="background:#7e321b"></i>edge char #7e321b</span><span><i style="background:#e9ab68"></i>cheese #e9ab68 · accent</span><span><i style="background:#dcbc9d"></i>crumb #dcbc9d · text</span></div>
+        <p>Title: <b>Bowlby One</b>, heavy like a deck graphic, tilted 3°. Body: <b>Karla</b>.</p>
+        <h3>Section order (only the hero is built)</h3>
+        <div class="order"><span>Hero</span><span class="x">Menu</span><span class="x">Stops as a clip list</span><span class="x">Footer</span></div>
+      </div>
+      <div><h3>Visual language</h3><ul>
+        <li><b>Edges:</b> round, from the fisheye lens. Buttons get a full pill, like a deck's nose.</li>
+        <li><b>Depth:</b> the lens bulge in the photo; flat everywhere else.</li>
+        <li><b>Lines:</b> none.</li>
+        <li><b>Surface:</b> char with a fine griptape grain (noise at 4%).</li>
+        <li><b>Type voice:</b> loud, a little crooked, a friend yelling "you have to try this".</li>
+        <li><b>Motion feel:</b> a single roll in, then still.</li></ul></div>
+      <div><h3>Wildcard, logo, motion</h3><ul>
+        <li><b>Wildcard:</b> the photo follows the pointer by a few px, as if the camera were handheld (off on touch and with reduced motion).</li>
+        <li><b>Logo:</b> HALFWAY in a round badge like a deck sticker. <b>Favicon:</b> the badge.</li>
+        <li><b>Motion (calm):</b> the round photo rolls in from the right once (900 ms) and stops; the title settles to its tilt.</li></ul></div>
+    </div>
+  </section>
+  <section class="dir" id="mockups">
+    <h2>Colour mockups</h2>
+    <p class="why">Magnific, GPT 2 model. Same copy on all three. C's photo shows a whole burger, not one cut in half; it would be regenerated if chosen.</p>
+    <p class="cap">A · Cross-Section</p><img src="mockup-a-cross-section.webp" alt="Mockup A: dark panel with huge condensed title on the left, a close photo of a smash burger cut in half on the right" loading="lazy" style="width:100%;border-radius:6px;margin-bottom:18px">
+    <p class="cap">B · Cut Chart</p><img src="mockup-b-cut-chart.webp" alt="Mockup B: tan page, slab title on the left, a cut-out half burger with hand-written labels for each layer and a red $10 sticker" loading="lazy" style="width:100%;border-radius:6px;margin-bottom:18px">
+    <p class="cap">C · Fisheye Session</p><img src="mockup-c-fisheye-session.webp" alt="Mockup C: dark page, tilted heavy title, a round fisheye photo of a burger held toward the lens in front of a food truck" loading="lazy" style="width:100%;border-radius:6px">
+  </section>
+  <footer>Pick one, or say what to mix.</footer>
+</div>

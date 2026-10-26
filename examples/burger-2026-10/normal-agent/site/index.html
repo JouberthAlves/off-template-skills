@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ember &amp; Bun | Smash Burgers, Fries &amp; Shakes</title>
+  <meta name="description" content="Ember & Bun serves smash burgers griddled to order, hand-cut fries and thick shakes. See the menu, build your order and find our hours.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Ember and Bun home">
+        <img src="assets/favicon.svg" alt="" width="36" height="36">
+        <span>Ember <em>&amp;</em> Bun</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a href="#menu">Menu</a>
+        <a href="#story">Our Story</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Visit</a>
+        <button class="btn btn-small cart-open" type="button" aria-label="Open order">
+          Order <span class="cart-count" aria-live="polite">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" id="status-dot"></span><span id="open-status">Checking hours…</span></p>
+          <h1>Smashed hot.<br><span>Stacked high.</span></h1>
+          <p class="lead">Two 100% dry-aged chuck patties pressed onto a screaming-hot griddle, crowned with melty American cheese and a toasted potato bun. No shortcuts, no freezers, no regrets.</p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn">See the menu</a>
+            <a href="#visit" class="btn btn-ghost">Find us</a>
+          </div>
+          <ul class="hero-stats" aria-label="Quick facts">
+            <li><strong>4 min</strong><span>avg. ticket time</span></li>
+            <li><strong>Local</strong><span>beef, buns &amp; dairy</span></li>
+            <li><strong>4.9★</strong><span>from 2,300+ reviews</span></li>
+          </ul>
+        </div>
+        <div class="hero-art">
+          <img src="assets/hero-burger.svg" alt="Illustration of a double smash burger with cheese, lettuce and tomato" width="520" height="480">
+          <div class="sticker" aria-hidden="true">Since<br><b>2014</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Smash burgers</span><span>✦</span><span>Hand-cut fries</span><span>✦</span><span>Thick shakes</span><span>✦</span><span>Local beef</span><span>✦</span><span>Open late</span><span>✦</span>
+        <span>Smash burgers</span><span>✦</span><span>Hand-cut fries</span><span>✦</span><span>Thick shakes</span><span>✦</span><span>Local beef</span><span>✦</span><span>Open late</span><span>✦</span>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The menu</p>
+          <h2>Short list. Done right.</h2>
+          <p>Everything is made to order. Tap <b>Add</b> to build your pickup order.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Menu categories">
+          <button role="tab" aria-selected="true" data-filter="all">All</button>
+          <button role="tab" aria-selected="false" data-filter="burgers">Burgers</button>
+          <button role="tab" aria-selected="false" data-filter="sides">Sides</button>
+          <button role="tab" aria-selected="false" data-filter="shakes">Shakes &amp; Drinks</button>
+        </div>
+        <div class="menu-grid" id="menu-grid" aria-live="polite"></div>
+        <p class="note">🌱 = vegetarian &nbsp;·&nbsp; 🌶 = spicy &nbsp;·&nbsp; Gluten-free buns available on request (+$1.50).</p>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section story" id="story">
+      <div class="container story-inner">
+        <div class="story-card">
+          <p class="eyebrow">Our story</p>
+          <h2>A food truck, a flat-top and a stubborn idea.</h2>
+          <p>Ember &amp; Bun started in 2014 as a single truck parked outside a brewery. We had one griddle, one burger and one rule: smash it hard, season it right and serve it fast.</p>
+          <p>Ten years later we still grind our beef every morning from a family ranch two hours north, buns come warm from the bakery down the street, and the fries are cut by hand before we open the doors.</p>
+          <a href="#visit" class="btn btn-dark">Come say hi</a>
+        </div>
+        <ul class="pillars">
+          <li>
+            <h3>Ground daily</h3>
+            <p>Dry-aged chuck and brisket blend, never frozen, ground fresh each morning.</p>
+          </li>
+          <li>
+            <h3>Hard smash</h3>
+            <p>Pressed onto a 230°C griddle for a lacy, caramelised crust you can hear.</p>
+          </li>
+          <li>
+            <h3>Local partners</h3>
+            <p>Potato buns from Hearth Bakery, dairy from Greenfield Creamery.</p>
+          </li>
+          <li>
+            <h3>Low waste</h3>
+            <p>Compostable packaging and fryer oil recycled into biodiesel.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Word on the street</p>
+          <h2>People keep coming back.</h2>
+        </div>
+        <div class="reviews">
+          <figure class="review">
+            <blockquote>“The crust on these patties is unreal. Best burger I've had in this city, and I've tried them all.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> Maya R.</figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>“Came for the Ember Double, stayed for the burnt-honey shake. My weekly ritual now.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> Daniel K.</figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>“The mushroom melt is a vegetarian burger that doesn't feel like a compromise. Fries are perfect too.”</blockquote>
+            <figcaption><span class="stars" aria-label="5 out of 5 stars">★★★★★</span> Priya S.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="section visit" id="visit">
+      <div class="container visit-inner">
+        <div>
+          <p class="eyebrow">Visit us</p>
+          <h2>Pull up a stool.</h2>
+          <address>
+            <strong>Ember &amp; Bun</strong><br>
+            214 Foundry Street<br>
+            Riverside District<br>
+            <a href="tel:+15550142214">(555) 014-2214</a><br>
+            <a href="mailto:hello@emberandbun.example">hello@emberandbun.example</a>
+          </address>
+          <table class="hours" aria-label="Opening hours">
+            <tbody id="hours-body"></tbody>
+          </table>
+        </div>
+        <div class="map-card" aria-label="Stylised map of our location">
+          <svg viewBox="0 0 400 300" role="img" aria-labelledby="map-t">
+            <title id="map-t">Map: Ember and Bun is on Foundry Street, next to the river and Central Park</title>
+            <rect width="400" height="300" fill="var(--map-bg)"/>
+            <path d="M0 230 C80 200 140 260 220 230 S340 190 400 210 V300 H0z" fill="var(--map-water)"/>
+            <rect x="250" y="30" width="120" height="90" rx="10" fill="var(--map-park)"/>
+            <g stroke="var(--map-road)" stroke-width="14" fill="none" stroke-linecap="round">
+              <path d="M-10 150 H410"/><path d="M120 -10 V210"/><path d="M220 -10 V210"/><path d="M-10 60 H230"/>
+            </g>
+            <text x="300" y="80" text-anchor="middle" class="map-label">Central Park</text>
+            <text x="320" y="268" text-anchor="middle" class="map-label">River</text>
+            <text x="60" y="140" class="map-label">Foundry St</text>
+            <g transform="translate(170 150)">
+              <circle r="26" fill="var(--red)" opacity=".25"><animate attributeName="r" values="14;30;14" dur="2.4s" repeatCount="indefinite"/></circle>
+              <path d="M0 -38c-12 0-21 9-21 21 0 16 21 33 21 33s21-17 21-33c0-12-9-21-21-21z" fill="var(--red)"/>
+              <circle cy="-17" r="7" fill="#fff"/>
+            </g>
+          </svg>
+          <a class="btn btn-small" href="https://www.openstreetmap.org/search?query=214%20Foundry%20Street" target="_blank" rel="noopener">Open in maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section cta">
+      <div class="container cta-inner">
+        <div>
+          <h2>Get the secret menu.</h2>
+          <p>One email a month. Off-menu specials, birthday burger, zero spam.</p>
+        </div>
+        <form class="newsletter" id="newsletter" novalidate>
+          <label for="nl-email" class="sr-only">Email address</label>
+          <input id="nl-email" type="email" placeholder="you@example.com" required autocomplete="email">
+          <button class="btn btn-dark" type="submit">Sign me up</button>
+          <p class="form-msg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#top" class="brand"><img src="assets/favicon.svg" alt="" width="28" height="28"><span>Ember <em>&amp;</em> Bun</span></a>
+      <p>© <span id="year">2026</span> Ember &amp; Bun. Smashed with care.</p>
+      <nav aria-label="Footer">
+        <a href="#menu">Menu</a><a href="#story">Story</a><a href="#visit">Visit</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ORDER DRAWER -->
+  <div class="drawer-backdrop" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>Your order</h2>
+      <button class="icon-btn drawer-close" aria-label="Close order">✕</button>
+    </div>
+    <div class="drawer-body">
+      <ul class="cart-list" id="cart-list"></ul>
+      <p class="cart-empty" id="cart-empty">Your tray is empty. Add something tasty from the menu.</p>
+    </div>
+    <div class="drawer-foot">
+      <dl class="totals">
+        <div><dt>Subtotal</dt><dd id="subtotal">$0.00</dd></div>
+        <div><dt>Tax (8%)</dt><dd id="tax">$0.00</dd></div>
+        <div class="total"><dt>Total</dt><dd id="total">$0.00</dd></div>
+      </dl>
+      <form id="checkout" class="checkout" novalidate>
+        <label>Name for pickup <input name="name" required autocomplete="given-name"></label>
+        <label>Pickup time
+          <select name="time" id="pickup-time" required></select>
+        </label>
+        <button class="btn btn-block" type="submit">Place pickup order</button>
+        <p class="form-msg" role="status"></p>
+      </form>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

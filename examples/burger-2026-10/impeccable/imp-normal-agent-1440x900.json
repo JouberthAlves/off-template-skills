@@ -1,0 +1,191 @@
+[
+  {
+    "antipattern": "radial-spotlight-glow",
+    "name": "Decorative radial spotlight glow",
+    "description": "An accent-colored radial gradient fading to transparent, dropped behind a hero or section as a \"spotlight\" and bright enough against that surface to read as a cloud floating over the copy. It is a reflex AI decoration — the translucent cousin of the saturated radial halo. Let the surface stand on its own, or light the composition with a deliberate material accent rather than a floating colored haze.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "radial-gradient spotlight glow \"hero\" (#f2a93b a0.18 → transparent) on 1440x1060 surface",
+    "selector": "section.hero"
+  },
+  {
+    "antipattern": "hero-eyebrow-chip",
+    "name": "Hero eyebrow / pill chip",
+    "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "eyebrow chip (tracked-caps) \"Closed · opens tomorrow at 11am\" above h1 \"Smashed hot.Stacked high.\"",
+    "selector": "div.hero-copy > p.eyebrow"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "4.0:1 (need 4.5:1) — text #d63a22 on #15100d",
+    "selector": "#menu > div.container > div.section-head > p.eyebrow"
+  },
+  {
+    "antipattern": "kicker-above-heading",
+    "name": "Kicker / eyebrow label above heading",
+    "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "kicker \"The menu\" above h2 \"Short list. Done right.\"",
+    "selector": "#menu > div.container > div.section-head > p.eyebrow"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "3.7:1 (need 4.5:1) — text #d63a22 on #211915",
+    "selector": "article.card:nth-of-type(1) > div.card-body > div.card-title > span.price"
+  },
+  {
+    "antipattern": "straggler",
+    "name": "Straggler",
+    "description": "The last line of this paragraph holds one word, which leaves a hole under the block. Set text-wrap: pretty on body copy (Chrome, Safari) to pull a word down beside it. Where a browser ignores it, edit the last sentence or bind the last two words with a no-break space. Keep it if the break is intended.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "\"sauce.\" alone on the last of 3 lines (20% of the measure)",
+    "advisory": true,
+    "selector": "article.card:nth-of-type(1) > div.card-body > p"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "3.9:1 (need 4.5:1) — text #d63a22 on #fbe9c8",
+    "selector": "li:nth-of-type(1) > h3"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "3.9:1 (need 4.5:1) — text #d63a22 on #fbe9c8",
+    "selector": "li:nth-of-type(2) > h3"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "3.9:1 (need 4.5:1) — text #d63a22 on #fbe9c8",
+    "selector": "li:nth-of-type(3) > h3"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "3.9:1 (need 4.5:1) — text #d63a22 on #fbe9c8",
+    "selector": "li:nth-of-type(4) > h3"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "4.0:1 (need 4.5:1) — text #d63a22 on #15100d",
+    "selector": "#reviews > div.container > div.section-head > p.eyebrow"
+  },
+  {
+    "antipattern": "kicker-above-heading",
+    "name": "Kicker / eyebrow label above heading",
+    "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "kicker \"Word on the street\" above h2 \"People keep coming back.\"",
+    "selector": "#reviews > div.container > div.section-head > p.eyebrow"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "3.7:1 (need 4.5:1) — text #d63a22 on #211915",
+    "selector": "div.container.visit-inner > div:nth-of-type(1) > p.eyebrow"
+  },
+  {
+    "antipattern": "kicker-above-heading",
+    "name": "Kicker / eyebrow label above heading",
+    "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "kicker \"Visit us\" above h2 \"Pull up a stool.\"",
+    "selector": "div.container.visit-inner > div:nth-of-type(1) > p.eyebrow"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "warning",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "4.0:1 (need 4.5:1) — text #fbebe9 on #d63a22",
+    "selector": "div.container.cta-inner > div > p"
+  },
+  {
+    "antipattern": "low-contrast",
+    "name": "Low contrast text",
+    "description": "Text does not meet WCAG AA contrast requirements (4.5:1 for body, 3:1 for large text). Increase the contrast between text and background.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": "placeholder \"you@example.com\" 4.4:1 (need 4.5:1) — text #757575 on #fffaf0",
+    "advisory": true,
+    "selector": "#nl-email"
+  },
+  {
+    "antipattern": "marquee",
+    "name": "Auto-scrolling marquee",
+    "description": "Continuously auto-scrolling content demands attention it has not earned and hides half its content at any moment. Reserve motion for content that changes; let readers move at their own pace.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://localhost:4827/normal-agent/site/",
+    "line": 0,
+    "snippet": ".marquee-track — infinite horizontal loop animation \"marquee\"",
+    "selector": "body"
+  }
+]

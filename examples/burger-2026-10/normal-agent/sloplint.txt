@@ -1,0 +1,145 @@
+sloplint: examples/burger-2026-10/normal-agent/site/index.html, examples/burger-2026-10/normal-agent/site/css/styles.css
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:88
+  background: color-mix(in srgb, var(--dark) 92%, transparent)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:110
+  background: radial-gradient(circle at 80% 30%, rgba(242, 169, 59, .18), transparent 50%),
+    var(--dark)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:118
+  border: 1px solid #3a2d25
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:119
+  background: #888
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:120
+  background: #7cc04a
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:120
+  box-shadow: 0 0 0 4px rgba(124, 192, 74, .25)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:124
+  color: #e8d6bb
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:128
+  color: #bba795
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:135
+  color: #fff
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:137
+  border: 3px dashed rgba(255,255,255,.6)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:170
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,.18))
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:213
+  color: #fff
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:223
+  background: #fffaf0
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:223
+  color: #1c1512
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:226
+  box-shadow: 0 0 0 3px rgba(214, 58, 34, .25)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:230
+  color: #bba795
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:239
+  background: rgba(20, 12, 8, .55)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:246
+  box-shadow: -10px 0 40px rgba(0,0,0,.25)
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL token-color  examples/burger-2026-10/normal-agent/site/css/styles.css:295
+  border-bottom: 1px solid #3a2d25
+  -> Declare the colour once as a token in :root (--name) and use var(--name) here.
+
+FAIL transition-all  examples/burger-2026-10/normal-agent/site/css/styles.css:155
+  transition: all .15s
+  -> Name what moves: transition: transform .2s, opacity .2s. The motion stays, only the 'all' goes.
+
+WARN no-clip  css
+  html and body have no overflow-x: clip
+  -> Add html, body { overflow-x: clip; }.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:117
+  grid-template-columns: 1.05fr 1fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:183
+  grid-template-columns: 1.1fr 1fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:185
+  grid-template-columns: 1fr 1fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:191
+  grid-template-columns: repeat(3, 1fr)
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:199
+  grid-template-columns: 1fr 1.2fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:253
+  grid-template-columns: 1fr auto
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:281
+  grid-template-columns: 1fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:283
+  grid-template-columns: 1fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN grid-minmax  examples/burger-2026-10/normal-agent/site/css/styles.css:297
+  grid-template-columns: 1fr
+  -> Use minmax(0, 1fr) so an image or a long word cannot widen the column.
+
+WARN hard-shadows [tell: Hard shadows and boxes everywhere]  examples/burger-2026-10/normal-agent/site/css/styles.css:69
+  10 box-shadows with no blur
+  -> Depth from the reference's light, on the one element that must stand apart.
+
+WARN default-face [tell: Default type]  examples/burger-2026-10/normal-agent/site/css/styles.css:21
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif
+  -> A face with a reason from the reference, written in direction.md.
+
+WARN emoji [tell: Emoji in the copy]  examples/burger-2026-10/normal-agent/site/index.html
+  emoji in the copy: 🌱 🌶
+  -> Remove them; an icon from the page's own system if a marker is needed.
+
+WARN stamp  examples/burger-2026-10/normal-agent/site/css/styles.css:1
+  the CSS has no stamp on its first line
+  -> Line 1: /* super-webdesigner · direction <X> "<vibe>" · job · faces · palette · motion · waivers */ (lint.md).
+
+WARN words-page  render 1440px
+  561 visible words on the page
+  -> 450 at most; fullness comes from scale and pictures, not more words.
+
+20 FAIL · 15 WARN · tells the code shows: Hard shadows and boxes everywhere, Default type, Emoji in the copy
+Floor broken: fix every FAIL before the review goes on.
