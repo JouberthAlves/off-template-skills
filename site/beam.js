@@ -165,9 +165,7 @@
     ['u_res', 'u_scale', 'u_time', 'u_anchor', 'u_ang', 'u_half', 'u_top', 'u_low', 'u_core', 'u_int', 'u_pulse'].forEach(function (n) {
       loc[n] = gl.getUniformLocation(prog, n);
     });
-    cTop = parseColor('--red', cTop);
-    cLow = parseColor('--pillar-low', cLow);
-    cCore = parseColor('--head', cCore);
+    readHeroColors(true);
     gl.clearColor(0, 0, 0, 0);
     canvas.addEventListener('webglcontextlost', function (e) {
       e.preventDefault();
@@ -175,6 +173,23 @@
     });
     return true;
   }
+
+  /* The light's three tones come from the hero tokens for the chosen look. They glide to a new look in ~1 s. */
+  var tgtTop = null, tgtLow = null, tgtCore = null;
+  function readHeroColors(now) {
+    tgtTop = parseColor('--hero-top', cTop);
+    tgtLow = parseColor('--hero-low', cLow);
+    tgtCore = parseColor('--hero-core', cCore);
+    if (now) { cTop = tgtTop.slice(); cLow = tgtLow.slice(); cCore = tgtCore.slice(); }
+  }
+  function glideColors(dt) {
+    var k = 1 - Math.exp(-dt / 0.35);
+    [[cTop, tgtTop], [cLow, tgtLow], [cCore, tgtCore]].forEach(function (p) {
+      if (!p[1]) return;
+      for (var i = 0; i < 3; i++) p[0][i] += (p[1][i] - p[0][i]) * k;
+    });
+  }
+  window.addEventListener('look', function () { if (gl) readHeroColors(false); });
 
   function draw(t, intensity) {
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -241,6 +256,7 @@
     ang += (targetAng - ang) * ease;
     shift += (targetShift - shift) * ease;
 
+    glideColors(dt);
     var k = easeOut(clamp((now - tStart) / INTRO_MS, 0, 1));
     draw(t, geo.int * k);
     /* Style rebuilds already thrash layout. Skip the per-frame measurements until they finish. */

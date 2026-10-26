@@ -11,7 +11,13 @@
   --shadow: rgba(0, 0, 0, .6);
   --ink-line: rgba(20, 24, 24, .12);
   --mask-on: #000;
-  --lit-ink: color-mix(in srgb, var(--red) 28%, var(--head));
+  --lit-ink: color-mix(in srgb, var(--hero-top) 28%, var(--head));
+  /* the hero's light: top, low and core tones, swapped by the chosen look */
+  --hero-top: var(--red);
+  --hero-low: var(--pillar-low);
+  --hero-core: var(--head);
+  --pastel-green: #c4e6b0;
+  --pastel-pink: #f5bccb;
   --ink-soft: color-mix(in srgb, var(--ink) 65%, var(--print));
   /* brushed red metal for the flow numbers (look C) */
   --metal-sheen: rgba(255, 255, 255, .78);
@@ -351,7 +357,7 @@ h1 br.d { display: none; }
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(ellipse 60% 110% at calc(var(--lx) * 1%) 0%, var(--red), transparent 72%);
+  background: radial-gradient(ellipse 60% 110% at calc(var(--lx) * 1%) 0%, var(--hero-top), transparent 72%);
   mix-blend-mode: screen;
   opacity: calc(var(--lit) * .7);
 }
@@ -960,3 +966,17 @@ h1 br.d { display: none; }
 
 /* A picked option's focus ring sits inside its row, not on the window's edge. */
 .pick:focus-visible { outline-offset: -3px; }
+
+/* The hero follows the chosen look. A: teal, pastel green and pastel pink light on the night.
+   B: a cream hero, the light in coral and pastel pink, the ink tokens swapped for the page. */
+html[data-look="a"] { --hero-top: var(--teal); --hero-low: var(--pastel-green); --hero-core: var(--pastel-pink); }
+html[data-look="b"] {
+  --hero-top: var(--coral);
+  --hero-low: var(--pastel-pink);
+  --hero-core: var(--print);
+  --night: var(--print);
+  --head: var(--ink);
+  --text: var(--ink-soft);
+  --line: var(--ink-line);
+  --tray: color-mix(in srgb, var(--print) 92%, var(--ink));
+}
