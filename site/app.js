@@ -145,6 +145,18 @@
     });
   }
 
+  /* Faces of looks A and B: loaded on idle, and awaited (max 400 ms) before a rebuild starts. */
+  var FACES = ['800 1em "Mona Sans"', '400 1em "Mona Sans"', '800 1em "Bricolage Grotesque"', '400 1em "Instrument Sans"', '600 1em "Instrument Sans"'];
+  function loadFaces() {
+    if (!document.fonts || !document.fonts.load) return;
+    FACES.forEach(function (f) { document.fonts.load(f).catch(function () {}); });
+  }
+  function fontsReady() {
+    if (!document.fonts || !document.fonts.ready) return Promise.resolve();
+    loadFaces();
+    return Promise.race([document.fonts.ready, wait(400)]);
+  }
+
   function setPressed(key) {
     picks.forEach(function (b) {
       b.setAttribute('aria-pressed', b.getAttribute('data-dir') === key ? 'true' : 'false');
@@ -159,13 +171,19 @@
     var hadFocus = picks.indexOf(document.activeElement) > -1;
     picks.forEach(function (b) { b.disabled = true; });
 
-    Promise.all([
-      typeText(status, '> Building the sections below in ' + d.name + '…'),
-      develop(key, { ripple: true })
-    ]).then(function () {
+    setPressed(key);
+    // The sections start rebuilding as soon as the faces are in (at most 400 ms),
+    // while the print develops in the tray; the click never waits on the hero.
+    var rebuilt = fontsReady().then(function () {
       current = key;
       root.dataset.look = key;
       window.dispatchEvent(new CustomEvent('look', { detail: key }));
+    });
+    Promise.all([
+      typeText(status, '> Building the sections below in ' + d.name + '…'),
+      develop(key, { ripple: true }),
+      rebuilt
+    ]).then(function () {
       status.textContent = 'Done. The page below is now ' + d.name + '.';
       setStage('page');
       setPressed(key);
@@ -195,6 +213,7 @@
 
   /* ---------- Preload the other directions on idle ---------- */
   function preload() {
+    loadFaces();
     ['skel-a', 'dir-a', 'skel-b', 'dir-b'].forEach(function (n) {
       var im = new Image();
       im.src = 'img/' + n + '.webp';
@@ -228,8 +247,10 @@
     var end = parseInt(el.getAttribute('data-count'), 10);
     if (reduce.matches || !end) return;
     var t0 = null;
+    var run = (el._run = (el._run || 0) + 1);
     el.textContent = '0';
     function step(t) {
+      if (run !== el._run) return;
       if (t0 === null) t0 = t;
       var p = Math.min(1, (t - t0) / 900);
       el.textContent = String(Math.round(end * (1 - Math.pow(1 - p, 3))));
@@ -238,21 +259,66 @@
     requestAnimationFrame(step);
   }
 
+  /* Terminal in look A: the command types itself once, by revealing the letters already in the HTML. */
+  var termTyped = false;
+  function typeTerm(sec) {
+    if (termTyped || reduce.matches || sec.id !== 'install') return;
+    var code = sec.querySelector('.term-win .cmd-item:not([hidden]) code');
+    if (!code) return;
+    termTyped = true;
+    var html = code.innerHTML;
+    var chars = [];
+    (function wrap(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          n.nodeValue.split('').forEach(function (ch) {
+            var sp = document.createElement('span');
+            sp.className = 'ty';
+            sp.textContent = ch;
+            frag.appendChild(sp);
+            chars.push(sp);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1) {
+          wrap(n);
+        }
+      });
+    })(code);
+    var i = 0;
+    (function step() {
+      if (i < chars.length) {
+        chars[i].classList.add('ty-on');
+        i += 1;
+        setTimeout(step, 24);
+      } else {
+        code.innerHTML = html;
+      }
+    })();
+  }
+
+  /* What a section does each time its look is shown: count the numbers, type the terminal. */
+  function showLook(el) {
+    Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
+    if (el.getAttribute('data-look') === 'a') typeTerm(el);
+  }
+
   function enterSection(sec) {
     sec.classList.remove('pre');
     sec.classList.add('in');
-    Array.prototype.forEach.call(sec.querySelectorAll('[data-count]'), countUp);
+    showLook(sec);
   }
 
   /* Each section and the footer carry their own data-look so the rebuild can swap them one by one. */
   function setLook(el, key) { el.setAttribute('data-look', key); }
   rebuildList.forEach(function (el) { setLook(el, root.dataset.look || 'c'); });
 
+  /* The rebuild: a soft develop, top to bottom. The look flips at each section's start so the colours morph. */
   var rbTimers = [];
   function rebuild(key) {
     rbTimers.forEach(clearTimeout);
     rbTimers = [];
-    rebuildList.forEach(function (el) { el.classList.remove('rb-out', 'rb-up'); });
+    rebuildList.forEach(function (el) { el.classList.remove('rb'); });
     if (reduce.matches) {
       rebuildList.forEach(function (el) { setLook(el, key); });
       return;
@@ -260,14 +326,13 @@
     rebuildList.forEach(function (el, i) {
       if (el.classList.contains('pre')) { setLook(el, key); return; }
       rbTimers.push(setTimeout(function () {
-        el.classList.add('rb-out');
-        rbTimers.push(setTimeout(function () {
-          setLook(el, key);
-          el.classList.remove('rb-out');
-          el.classList.add('rb-up');
-          rbTimers.push(setTimeout(function () { el.classList.remove('rb-up'); }, 440));
-        }, 230));
-      }, i * 140));
+        setLook(el, key);
+        el.style.setProperty('--h', Math.max(0, el.offsetHeight - 2) + 'px');
+        void el.offsetWidth;
+        el.classList.add('rb');
+        showLook(el);
+        rbTimers.push(setTimeout(function () { el.classList.remove('rb'); }, 520));
+      }, i * 110));
     });
   }
   window.addEventListener('look', function (e) { rebuild(e.detail); });

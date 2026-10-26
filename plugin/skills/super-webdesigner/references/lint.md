@@ -25,7 +25,7 @@ taste.
 
 | Rule | What it means | Why |
 |---|---|---|
-| **Colour and font through tokens** | Every colour and every face is declared once in `:root` (`--bg`, `--ink`, `--accent`, `--font-display`) and used through `var()`. No hex, `rgb()` or family name past the token block, inline styles included | The palette changes in five lines, and no colour from the agent's memory slips in unseen |
+| **Colour and font through tokens** | Every colour and every face is declared once in `:root` (`--bg`, `--ink`, `--accent`, `--font-display`) and used through `var()`. No hex, `rgb()` or family name past the token block, inline styles included. An `@property` block's `initial-value` counts as a token block (it must be a literal) | The palette changes in five lines, and no colour from the agent's memory slips in unseen |
 | **No `transition: all`, no animated layout** | Say what moves: `transition: transform .2s, opacity .2s`. Never animate `width`, `height`, `top`, `left`, margins or padding | `all` animates things nobody meant to move and stutters. **Motion stays:** `transform`, `opacity` and `clip-path` carry it (`motion.md`) |
 | **`overflow-x: clip` on html and body** | Never `hidden` there, never `width: 100vw` | `hidden` breaks `position: sticky`; `100vw` counts the scrollbar and pushes the page sideways |
 | **No horizontal scroll** | At 375, 768, 1280, 1440 and 1920 px the page is never wider than the window. The lint names the element that spills | A sideways wobble on a phone is the first thing a visitor feels |

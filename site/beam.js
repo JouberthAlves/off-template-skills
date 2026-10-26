@@ -69,9 +69,9 @@
     '  float light=body*(0.2+0.22*sheen)+caustic*env*0.95+bloom*0.12;',
     // a pulse that runs down the pillar after a click
     '  float k=t-u_pulse;float wave=(k>0.0&&k<1.4)?exp(-pow(u-(-hh*0.6+k*hh*1.3),2.0)/(2.0*140.0*140.0))*(1.0-k/1.4):0.0;',
-    '  light*=1.0+wave*1.4;',
-    // fade at the top of the page and before the hero ends
-    '  light*=smoothstep(-hh*0.05,hh*0.12,p.y)*(1.0-smoothstep(hh*0.72,hh*0.98,p.y));',
+    '  light*=1.0+wave*0.55;',
+    // fade in at the top of the page; it runs down to the hero's bottom edge
+    '  light*=smoothstep(-hh*0.05,hh*0.12,p.y)*pow(1.0-smoothstep(hh*0.8,hh*0.995,p.y),1.6);',
     '  light=clamp(light,0.0,1.0);',
     // tone ramp: deep red at the edges, the logo red, a lighter red in the folds, near white on the peaks
     '  vec3 deep=u_top*0.38;',
@@ -309,8 +309,13 @@
 
     window.addEventListener('pointermove', function (e) { ptr = { x: e.clientX, y: e.clientY }; }, { passive: true });
     document.documentElement.addEventListener('pointerleave', function () { ptr = null; });
-    hero.addEventListener('pointerdown', function () {
-      if (running) pulseAt = (performance.now() - tStart) / 1000;
+    // A click on the hero's empty ground sends one soft pulse down the pillar;
+    // not on controls, and not again while the last one is still running.
+    hero.addEventListener('pointerdown', function (e) {
+      if (!running || e.target.closest('a, button, input, [role="tab"], .agent, .cmd-row')) return;
+      var now = (performance.now() - tStart) / 1000;
+      if (now - pulseAt < 1.6) return;
+      pulseAt = now;
     }, { passive: true });
     document.addEventListener('visibilitychange', sync);
 

@@ -23,7 +23,16 @@
   --font-b-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --ease: cubic-bezier(.2, .7, .2, 1);
+  --morph: --s-bg 700ms var(--ease), --s-surface 700ms var(--ease), --s-text 700ms var(--ease), --s-head 700ms var(--ease), --s-accent 700ms var(--ease), --s-accent-2 700ms var(--ease), --s-num 700ms var(--ease);
 }
+/* Registered so the look colours morph. Literals are the C values (the one allowed exception). */
+@property --s-bg { syntax: '<color>'; inherits: true; initial-value: #141818; }
+@property --s-surface { syntax: '<color>'; inherits: true; initial-value: #1c2120; }
+@property --s-text { syntax: '<color>'; inherits: true; initial-value: #acb0bc; }
+@property --s-head { syntax: '<color>'; inherits: true; initial-value: #f4f4f4; }
+@property --s-accent { syntax: '<color>'; inherits: true; initial-value: #E5231B; }
+@property --s-accent-2 { syntax: '<color>'; inherits: true; initial-value: #E5231B; }
+@property --s-num { syntax: '<color>'; inherits: true; initial-value: #E5231B; }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -486,7 +495,9 @@ h1 br.d { display: none; }
   background: var(--s-bg);
   color: var(--s-text);
   font-family: var(--s-font-body);
+  transition: var(--morph);
 }
+.foot { position: relative; }
 .sec { position: relative; padding-block: clamp(56px, 7vw, 104px); }
 .sec p { max-width: 62ch; }
 .sec h2 {
@@ -527,6 +538,7 @@ h1 br.d { display: none; }
   width: min(6rem, 40%);
   height: 3px;
   margin-top: 20px;
+  transform-origin: left center;
   background: linear-gradient(90deg, var(--s-accent) 50%, var(--s-accent-2) 50%);
 }
 
@@ -623,6 +635,7 @@ h1 br.d { display: none; }
   display: block;
   height: 3px;
   margin-top: 32px;
+  transform-origin: left center;
   background: linear-gradient(90deg, var(--s-accent) 50%, var(--s-accent-2) 50%);
 }
 .sec[data-look="b"] .diff-v + .pic { margin-top: 32px; }
@@ -631,6 +644,7 @@ h1 br.d { display: none; }
   .sec[data-look="b"] .diff-v {
     height: auto;
     margin-top: 0;
+    transform-origin: center top;
     background: linear-gradient(var(--s-accent) 50%, var(--s-accent-2) 50%);
   }
   .sec[data-look="b"] .diff-v + .pic { margin-top: 0; }
@@ -696,6 +710,7 @@ h1 br.d { display: none; }
   top: 0;
   bottom: 0;
   width: 3px;
+  transform-origin: center top;
   background: linear-gradient(var(--s-accent) 50%, var(--s-accent-2) 50%);
 }
 
@@ -772,24 +787,106 @@ h1 br.d { display: none; }
 .foot-in { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
 .foot .logo { color: var(--s-head); }
 .foot p { margin: 0; max-width: none; color: var(--s-text); }
-.foot-meta { display: flex; gap: 24px; }
+.foot-meta { display: flex; align-items: center; gap: 24px; }
+.foot-meta span { display: inline-flex; align-items: center; min-height: 44px; }
 .foot-meta a { color: var(--s-head); text-underline-offset: 4px; }
 .foot-line { flex: 1 0 100%; max-width: 62ch; }
 
 /* ---------- entrances and the rebuild (classes toggled by JS) ---------- */
 .sec.pre { opacity: 0; transform: translateY(16px); }
-.sec.in { transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
-.sec.rb-out, .foot.rb-out {
-  opacity: 0;
-  translate: 0 10px;
-  transition: opacity 220ms ease-out, translate 220ms ease-out;
+.sec.in { transition: opacity 600ms var(--ease), transform 600ms var(--ease), var(--morph); }
+
+/* B: soft blend from the dark hero into the first section (invisible in A and C) */
+#compare {
+  isolation: isolate;
+  padding-top: max(clamp(56px, 7vw, 104px), clamp(96px, 10vw, 160px));
 }
-.sec.rb-up, .foot.rb-up { transition: opacity 420ms var(--ease), translate 420ms var(--ease); }
+#compare::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(96px, 10vw, 160px);
+  background: linear-gradient(in oklab, var(--night) 0%, var(--night) 8%, var(--s-bg) 92%);
+  pointer-events: none;
+  z-index: 0;
+}
+#compare > .container { position: relative; z-index: 1; }
+
+/* the develop line that sweeps a section while it rebuilds */
+.sec::after, .foot::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--s-accent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.steps li:nth-child(2) { --k: 1; }
+.steps li:nth-child(3) { --k: 2; }
+.steps li:nth-child(4) { --k: 3; }
+
+@keyframes rb {
+  0% { filter: none; opacity: 1; }
+  38% { filter: blur(6px); opacity: .55; }
+  100% { filter: none; opacity: 1; }
+}
+@keyframes dev-line {
+  0% { transform: translateY(0); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateY(var(--h, 0px)); opacity: 0; }
+}
+@keyframes draw-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes draw-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes n-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes drop { from { opacity: 0; transform: translateY(-14px) rotate(-3deg); } }
+@keyframes win-open { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: scale(1); } }
+@keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0); } }
+@keyframes line-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* the terminal command types itself by revealing (JS wraps the letters, then restores the markup) */
+.ty { opacity: 0; }
+.ty.ty-on { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sec.rb, .foot.rb { animation: rb 520ms var(--ease); }
+  .sec.rb::after, .foot.rb::after { animation: dev-line 520ms var(--ease); }
+
+  /* lines draw themselves */
+  .sec.in[data-look="b"] h2::after { animation: draw-x 700ms var(--ease) 200ms backwards; }
+  .sec.in[data-look="b"] .diff-v { animation: draw-x 700ms var(--ease) 250ms backwards; }
+  @media (min-width: 760px) {
+    .sec.in[data-look="b"] .diff-v { animation-name: draw-y; }
+  }
+  .sec.in[data-look="b"] .steps li::before { animation: draw-y 700ms var(--ease) calc(var(--k, 0) * 90ms + 200ms) backwards; }
+
+  /* the flow numbers rise one after another */
+  .sec.in:not([data-look="a"]) .steps .n { animation: n-rise 500ms var(--ease) calc(var(--k, 0) * 90ms + 150ms) backwards; }
+
+  /* pictures arrive in the look's own way */
+  .sec.in[data-look="c"] .frame { animation: drop 600ms var(--ease) 200ms backwards; }
+  .sec.in[data-look="c"] .pic-2 .frame { animation-delay: 320ms; }
+  .sec.in[data-look="a"] .frame { animation: win-open 450ms var(--ease) 200ms backwards; }
+  .sec.in[data-look="a"] .pic-2 .frame { animation-delay: 320ms; }
+  .sec.in[data-look="b"] .frame { animation: wipe 700ms var(--ease) 200ms backwards; }
+  .sec.in[data-look="b"] .pic-2 .frame { animation-delay: 320ms; }
+
+  /* A: the four lines of flow.md appear one by one */
+  .sec.in[data-look="a"] .steps li { animation: line-in 400ms var(--ease) calc(var(--k, 0) * 120ms + 200ms) backwards; }
+
+  /* C: the install prompt blinks twice */
+  .sec.in[data-look="c"] .inst .cmd-row .prompt { animation: caret-once .6s linear 300ms 2; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .sec.pre { opacity: 1; transform: none; }
-  .sec.in, .sec.rb-out, .sec.rb-up, .foot.rb-out, .foot.rb-up { transition: none; }
-  .sec.rb-out, .foot.rb-out { opacity: 1; translate: none; }
+  .sec, .foot, .sec.in { transition: none; }
+  .sec::after, .foot::after { display: none; }
   .tells.arm li::after { transform: scaleX(1); }
   .tells.go li::after { transition: none; }
   .sec[data-look="a"].in h2::before { animation: none; }

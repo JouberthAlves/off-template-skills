@@ -560,3 +560,74 @@ the rebuild and the entrance logic.
 
 7. Floor as before; no hex/rgb outside `:root`; reduced motion and no-JS
    complete; no horizontal scroll at 375 to 1920.
+
+## Part 3: smooth look switch, the B blend, more motion (owner's feedback)
+
+Change only what is listed. Keep the hero, nav, `beam.js`, the look token
+values, the copy and the layout.
+
+1. **The switch must be smooth, not a jump.** Today the colours jump, the
+   faces of looks A and B start downloading on the first click (the page
+   stalls), and while a section fades the night body shows through.
+   - **Preload the faces** of A and B on idle after load:
+     `document.fonts.load('800 1em "Mona Sans"')`, `'400 1em "Mona Sans"'`,
+     `'800 1em "Bricolage Grotesque"'`, `'400 1em "Instrument Sans"'`,
+     `'600 1em "Instrument Sans"'`. The click waits for
+     `document.fonts.ready` (max 400 ms) before the rebuild starts.
+   - **Colours morph:** register every look token that is a colour with
+     `@property` (`syntax: '<color>'; inherits: true; initial-value` from
+     `:root` via the matching palette token is not possible in @property, so
+     use the C value literally inside the @property blocks; these blocks are
+     the only allowed literals outside `:root`, keep them right after
+     `:root`). Give `.sec` and `.foot` `transition` on those custom
+     properties: 700 ms, `var(--ease)`. Now changing `data-look` morphs
+     background, text and accents.
+   - **Replace the fade-out/fade-in** (`rb-out`/`rb-up`) with a soft
+     develop, top to bottom, 110 ms apart: each section gets `rb` for
+     520 ms: `filter: blur(6px)` and `opacity: .55` in the first 200 ms
+     (masks the face swap), then back to `none`/`1`. `data-look` changes at
+     the start, so the colours morph during it. Never `opacity: 0`, so the
+     night body never shows through.
+   - **A develop line:** while a section rebuilds, a 2px line in the NEW
+     look's `--s-accent` sweeps from its top to its bottom (one absolutely
+     placed `::after` per section, `transform: translateY()` from 0 to the
+     section height via `scaleY` on a full-height element or a translate
+     with `--h` set in JS; 520 ms, `var(--ease)`, opacity 0 at both ends).
+   - Reduced motion: no blur, no line, colours change at once.
+
+2. **Look B: no hard edge between the dark hero and the cream sections.**
+   A soft blend at the top of the first section (`#compare`): a
+   `::before`, absolute, top 0, full width (inside the section, not 100vw),
+   height `clamp(140px, 16vw, 240px)`, `background: linear-gradient(var(--night), var(--s-bg))`,
+   `pointer-events: none`, z-index under the content. Add the same height to
+   `#compare`'s padding-top so the heading sits below the blend. In A and C
+   `--s-bg` is night, so the blend is invisible; with the registered colours
+   it morphs on the switch.
+
+3. **More motion, on enter (once, `IntersectionObserver` as today, visible
+   by default, all off under reduced motion):**
+   - **Lines draw themselves:** every decorative line grows from 0:
+     B's h2 underline and diff lines (`scaleX`/`scaleY` from 0, origin left
+     or top, 700 ms, `var(--ease)`); C's strike on the tells as today; the
+     hero tab underline as today.
+   - **Numbers:** the 39 and the 12 count up from 0 (900 ms, ease-out) every
+     time the section enters the first time and again after each look
+     switch. The flow numbers 1 to 4 rise one after another (16px, 90 ms
+     apart, 500 ms).
+   - **Pictures arrive in the look's own way** when `#compare` enters and
+     after each switch: C, each print drops onto the tray (from
+     `translateY(-14px) rotate(-3deg)` and opacity 0 to its resting
+     rotation, 600 ms, 120 ms apart); A, each window opens (`scale(.97)` and
+     opacity 0 to 1, 450 ms); B, each page wipes in (`clip-path: inset(0 100% 0 0)`
+     to `inset(0)`, 700 ms, `var(--ease)`).
+   - **A, the editor types:** in `flow.md` the four lines appear one by
+     one (opacity 0 to 1 plus a 6px slide, 120 ms apart); in `terminal` the
+     command types itself once (24 ms per character) the first time it
+     enters, the full text in the HTML (type over it by revealing, never by
+     removing it).
+   - **C, the install row:** the `>` blinks twice when the section enters.
+
+4. Floor as before: tokens only (the @property blocks are the stated
+   exception), only `transform`, `opacity`, `filter`, `clip-path` and the
+   registered colours animate, no layout properties, complete with scripts
+   off, no horizontal scroll 375 to 1920.

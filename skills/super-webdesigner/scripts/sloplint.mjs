@@ -121,7 +121,7 @@ const at = (d) => `${rel(d.file)}:${d.line}`;
 
 // ---------- static checks ----------
 
-const tokenBlock = (chain) => chain.some((s) => /^(:root|\[data-theme|:root\[|html\[data-theme|@font-face)/i.test(s) || /prefers-color-scheme/i.test(s) && chain.some((x) => /:root/.test(x)));
+const tokenBlock = (chain) => chain.some((s) => /^(:root|\[data-theme|:root\[|html\[data-theme|@font-face|@property)/i.test(s) || /prefers-color-scheme/i.test(s) && chain.some((x) => /:root/.test(x)));
 const inKeyframes = (chain) => chain.some((s) => /^@(-webkit-)?keyframes/i.test(s));
 const stripVars = (v) => v.replace(/var\([^()]*(\([^()]*\))*[^()]*\)/g, "");
 const COLOR = /#[0-9a-f]{3,8}\b|\b(rgba?|hsla?|oklch|oklab|lab|lch|hwb|color-mix)\(|\b(white|black|red|blue|green|gr[ae]y|purple|orange|yellow|pink|navy|teal|violet|indigo)\b/i;
