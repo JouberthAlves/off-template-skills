@@ -32,20 +32,30 @@ an AI-made page, and that the look still fits the business.
 
 ## See the difference
 
-Same prompt in both: *Build a landing page for an AI meeting-notes app.*
+Same prompt in both: *Build a website for a burger restaurant.*
 
-<img src=".github/readme/compare-side-by-side.webp" alt="Left: a caricature of the usual AI page, purple gradient, serif title, emoji and three cards. Right: Steno, made through Super-Webdesigner's flow: a legal pad, a plain title and a notes card" width="100%">
+<img src=".github/readme/compare-burger.webp" alt="The burger comparison: on the left, Ember & Bun made by an agent alone, a full page with 20 floor failures; on the right, Halfway made with Super-Webdesigner, a first screen with 0 failures, a round photo of a cut burger on a dark brown ground" width="100%">
 
-<p align="center"><img src=".github/readme/compare-slider.webp" alt="The comparison slider sweeping from one side to the other" width="720"></p>
+The hero changes with the look you pick in the agent window. The three
+looks, from the same site:
 
-**[Drag the line yourself →](https://super-webdesigner.vercel.app)**
+<p align="center">
+  <img src=".github/readme/hero-darkroom.webp" alt="Hero in the Darkroom Develop look: a red safelight pillar over a dark page and the agent window" width="49%">
+  <img src=".github/readme/hero-editor-at-night.webp" alt="Hero in the Editor at Night look: teal, pastel green and pastel pink light over the dark page" width="49%">
+</p>
+<p align="center">
+  <img src=".github/readme/hero-output-leads.webp" alt="Hero in The Output Leads look: a cream page with coral and pastel pink light" width="49%">
+  <img src=".github/readme/flow.webp" alt="Four steps in red numerals, Darkroom look" width="49%">
+</p>
 
-The left side is a **caricature**, built on purpose to show the first ten
-tells at once. It is not an agent's real output. The Steno side is fictional
-and went through the flow end to end; its files are in
-[`examples/ai-notes/`](examples/ai-notes).
+Videos of the same site: [the switch to Output Leads](.github/readme/look-switch-to-output-leads.webm),
+[the switch to Editor at Night](.github/readme/look-switch-to-editor-at-night.webm),
+and [the pillar on its own](.github/readme/hero-pillar.webm). They are WebM
+files; GitHub shows them as downloads, and they play in Chrome and Firefox.
 
-**The real comparison** is [`examples/burger-2026-10/`](examples/burger-2026-10):
+**[See it live and drag the choices yourself →](https://super-webdesigner.vercel.app)**
+
+**The comparison** is [`examples/burger-2026-10/`](examples/burger-2026-10):
 the same prompt, *Build a website for a burger restaurant*, run on the same
 day on both sides with the current skill. The agent alone made "Ember & Bun";
 with the skill, the owner answered the brief and the flow made "Halfway".
