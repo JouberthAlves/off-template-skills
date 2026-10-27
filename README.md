@@ -2,7 +2,7 @@
 
 <br>
 
-<a href="https://off-template.vercel.app">
+<a href="https://off-template-skills.vercel.app">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/readme/logo-dark.png">
     <source media="(prefers-color-scheme: light)" srcset=".github/readme/logo-light.png">
@@ -15,9 +15,9 @@
 **Same prompt. Different designer.**<br>
 Skills that stop coding agents from shipping the same AI-looking page.
 
-<a href="https://off-template.vercel.app"><img src="https://img.shields.io/badge/site-off--template-e5231b?style=flat-square" alt="Website"></a> <img src="https://img.shields.io/badge/skills-2-111111?style=flat-square" alt="2 skills"> <img src="https://img.shields.io/badge/Claude_Code-ready-111111?style=flat-square" alt="Claude Code"> <img src="https://img.shields.io/badge/works_with-Codex_·_Cursor-111111?style=flat-square" alt="Works with Codex and Cursor"> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
+<a href="https://off-template-skills.vercel.app"><img src="https://img.shields.io/badge/site-off--template-e5231b?style=flat-square" alt="Website"></a> <img src="https://img.shields.io/badge/skills-2-111111?style=flat-square" alt="2 skills"> <img src="https://img.shields.io/badge/Claude_Code-ready-111111?style=flat-square" alt="Claude Code"> <img src="https://img.shields.io/badge/works_with-Codex_·_Cursor-111111?style=flat-square" alt="Works with Codex and Cursor"> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
 
-[Website](https://off-template.vercel.app) · [See the difference](#see-the-difference) · [The flow](#the-flow) · [Install](#install) · [The vault](#recommended-a-vault)
+[Website](https://off-template-skills.vercel.app) · [See the difference](#see-the-difference) · [The flow](#the-flow) · [Install](#install) · [The vault](#recommended-a-vault)
 
 </div>
 
@@ -62,7 +62,7 @@ Videos of the same site: [the switch to Output Leads](.github/readme/look-switch
 and [the pillar on its own](.github/readme/hero-pillar.webm). They are WebM
 files; GitHub shows them as downloads, and they play in Chrome and Firefox.
 
-**[See it live and drag the choices yourself →](https://off-template.vercel.app)**
+**[See it live and drag the choices yourself →](https://off-template-skills.vercel.app)**
 
 **The comparison** is [`examples/burger-2026-10/`](examples/burger-2026-10):
 the same prompt, *Build a website for a burger restaurant*, run on the same

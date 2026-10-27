@@ -109,8 +109,8 @@ Tabular numerals on numbers.
 - Title: `Off-Template: same prompt, different designer`
 - Description: `Skills that make your coding agent ask a brief, research the
   niche and show three directions before it writes a line of code.`
-- Canonical `https://off-template.vercel.app/`, og:title,
-  og:description, og:image `https://off-template.vercel.app/img/dir-c.webp`,
+- Canonical `https://off-template-skills.vercel.app/`, og:title,
+  og:description, og:image `https://off-template-skills.vercel.app/img/dir-c.webp`,
   `theme-color` `#141818` (meta tags may carry the hex: they are not CSS).
 - Favicon, exactly:
   `<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FFFFFF'/%3E%3Cpath d='M14 46 L32 16 L50 46' fill='none' stroke='%23E5231B' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">`
@@ -224,7 +224,7 @@ develop runs, the highlight moves skeleton -> mockup -> this page.
 
 - Title bar: 36px high, border-bottom 1px `--line`; three 10px circles in
   `--line` at the left (decoration of a terminal window, `aria-hidden`); in
-  the centre `claude: off-template.vercel.app` in `--font-mono` 13px
+  the centre `claude: off-template-skills.vercel.app` in `--font-mono` 13px
   `--text`.
 - Body, padding 16px, `--font-mono` 14px/1.55, `--text`:
   - Line 1: `> Build the rest of this page.` (`>` in `--red`, text `--head`).
