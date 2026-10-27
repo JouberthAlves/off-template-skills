@@ -48,6 +48,11 @@ looks, from the same site:
   <img src=".github/readme/flow.webp" alt="Four steps in red numerals, Darkroom look" width="49%">
 </p>
 
+Picking a look grows the new one over the whole page from the prompt you
+clicked, as a circle with a liquid rim:
+
+<img src=".github/readme/look-switch-liquid.webp" alt="Mid-switch from The Output Leads to Editor at Night: the dark teal look spreads from the picked prompt as a blob with a rippling edge over the cream page" width="100%">
+
 Videos of the same site: [the switch to Output Leads](.github/readme/look-switch-to-output-leads.webm),
 [the switch to Editor at Night](.github/readme/look-switch-to-editor-at-night.webm),
 and [the pillar on its own](.github/readme/hero-pillar.webm). They are WebM
@@ -74,11 +79,11 @@ Four stops wait for you. Everything between them the agent does on its own.
 | 1 | **Discover the tools.** Lists the skills, MCP servers and browser the agent has, and what's missing, with the install command. | |
 | 2 | **The brief.** Four questions, with options to click: a real object the palette comes from, one feeling, two influences to collide, what the page must never look like. The cost of any paid mockups comes in the same message. | **Stop: answer** |
 | 3 | **Research the niche.** Real sites, split into what visitors expect (kept) and what everyone repeats (avoided). | |
-| 4 | **Three directions.** Gray skeletons for phone and desktop, plus a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each has its logo, favicon, motion and visual language (edges, shadows, lines, texture, type), all taken from the business's real world. | |
+| 4 | **Three directions.** Gray skeletons for phone and desktop, plus a colored mockup each: the best of the niche, one that breaks it, one from outside it. Each has its logo, favicon, motion and visual language (edges, shadows, lines, texture, type), all taken from the business's real world, plus one signature effect and a composition from a reference of solved techniques (`techniques.md`). | |
 | 5 | **You choose.** One question: which of the three, or what to mix. | **Stop: choose** |
 | 6 | **Write it down.** The direction becomes a file: palette, fonts, the wildcard element, the motion. It is the contract for the build. Then one short block with every decision, your last cheap chance to redirect. | **Stop: ok** |
 | 7 | **Build.** The first screen alone first, checked by the lint and by a reviewer that never saw the conversation; then the rest, with the motion the direction asked for. | |
-| 8 | **Review.** The lint at five widths, full-page screenshots, the 13 tells, the fit to the business, a fresh-eyes review, a design critique, forms, contrast. | **Stop: judge** |
+| 8 | **Review.** The lint at five widths, full-page screenshots, the 13 tells, the fit to the business, a fresh-eyes review, a design critique, forms, contrast. Each check has one job, and they meet in one report. | **Stop: judge** |
 
 ### After the page exists
 
@@ -254,8 +259,10 @@ scripts/sync-plugin.sh      copies skills/ into plugin/ after you change them
 The site is static HTML, CSS and JavaScript, no libraries. The pillar of light
 in the hero is one WebGL shader (`site/beam.js`), inspired by React Bits'
 Light Pillar, with no code taken. The agent window in the hero rebuilds the
-sections below in any of the three directions the skill made for this page,
-and the hero follows the choice: teal, pastel green and pastel pink light on
+page in any of the three directions the skill made for it. The new look grows
+from the clicked prompt as a circle with a liquid rim (the View Transitions
+API, with `polygon()` keyframes built in `site/app.js`); browsers without it
+rebuild the sections one by one. The hero follows the choice: teal, pastel green and pastel pink light on
 the night for Editor at Night, a cream hero with coral and pastel pink light
 for The Output Leads, and the original safelight red for Darkroom Develop.
 The logo's red caret stays in every look. The developing proof sits behind
@@ -301,7 +308,10 @@ to `main`.
 The brief questions, the anti-convergence rules and the conversion equation
 are adapted from
 [2389-research/landing-page-design](https://github.com/2389-research/landing-page-design)
-(MIT). The showcase's pillar of light takes its look from
+(MIT). The techniques reference (signature effects, surfaces without images,
+compositions) comes from a study of the 48 themes of
+[Nutlope/hallmark](https://github.com/Nutlope/hallmark) (MIT): techniques
+only, no theme copied. The showcase's pillar of light takes its look from
 [React Bits](https://reactbits.dev)' Light Pillar (no code taken) and its fonts
 from Google Fonts (OFL). Steno, MeetMind, Order 27, Halfway and Ember & Bun are fictional; the photos in
 the examples were generated for this demo.
