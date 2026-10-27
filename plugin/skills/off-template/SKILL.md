@@ -84,12 +84,14 @@ the person; everything else you do on your own.
 
 ### 0. Look for a vault
 
-If the working folder (or a parent) has an `AGENTS.md` pointing to
-`INDEX Design.md`, or a `vault/` folder from this project, read its
-`90 System/Agent rules.md` and every note in `20 Projects/` before going on.
-Those hold the person's own rules and the styles already used. Follow them as
-rules for yourself, not as material. No vault: carry on, this skill works
-alone.
+If `design/setup.md` names a vault (`Vault: <path>`), or the working folder
+(or a parent) has an `AGENTS.md` pointing to `INDEX Design.md`, read its
+`90 System/Agent rules.md`, `10 Notes/Design rules.md`, the niche note in
+`10 Notes/` if there is one, and every note in `20 Projects/` before going
+on. Those hold the person's own rules and the styles already used. Follow them
+as rules for yourself, not as material, and say when one changes a decision
+(`references/vault.md`, "Show when it helped"). No vault: carry on, this
+skill works alone, and `references/vault.md` says when to offer one.
 
 ### 1. Discover your tools
 
@@ -136,7 +138,8 @@ One message, with everything the person needs to answer once:
    mockups of step 4.
 5. **Setup**, only if `design/setup.md` is missing: the questions in
    `references/setup.md` (stack, commit convention, language, deploy,
-   accessibility, vault). Skip this item when the file exists, and say what
+   accessibility). The vault is not asked here: it is offered later, when
+   something would be lost (`references/vault.md`). Skip this item when the file exists, and say what
    you read from it.
 
 Wait for the answers. If one is vague, offer options instead of asking again.
@@ -153,6 +156,10 @@ general anti-patterns for this project.
 Some sites won't open (blocked, certificate errors): say which and keep going.
 Fewer than 8 opened: say so, and ask the person for links at STOP 1 instead of
 padding the research with guesses.
+
+With a vault, save the research as the niche note now. Without one, this is
+the first moment to offer it (`references/vault.md`): one or two lines in the
+STOP 1 message, never a stop of its own.
 
 ### 4. Three directions
 
@@ -256,7 +263,9 @@ the list goes under "also found", not into the score.
 ### STOP 2: the person judges
 
 Show the screenshots and the review: what passed, what failed, what you
-could not test. The person decides if it's done. Nothing goes public (deploy,
+could not test. End with the vault line: what was saved to it this session,
+or, without one, what stays only in this project (`references/vault.md`).
+The person decides if it's done. Nothing goes public (deploy,
 README claims, scores) before this answer.
 
 If the person wants a short video of the page (the scroll, a title card),
@@ -268,6 +277,11 @@ to an MP4 and needs Node 22 or newer and FFmpeg. Only do it on a yes.
 Add an entry following `references/style-log.md`: to `20 Projects/` in the
 vault if there is one, otherwise to `design/style-log.md` in the project.
 Do it when the first version is approved, not at the end of the project.
+No vault and never offered: offer it here (`references/vault.md`).
+
+Whenever the person corrects you during the flow, the correction is a rule:
+with a vault, write it there right away (`Mistakes.md` plus one line in the
+rules); without one, it is a moment to offer it.
 
 ## Short commands, after the page exists
 

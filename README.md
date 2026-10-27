@@ -247,9 +247,18 @@ Obsidian is recommended, not required, for three reasons:
 - **The links show the history.** A mistake points to the rule it became, and the rule points to the project where it was learned.
 - **It is plain Markdown.** Any agent can read it, and it goes into git like any other folder.
 
-To use it: open `vault/` as a vault and run your agent inside it. An optional
-Claude Code hook re-injects the rules after the context is compacted. Setup
-details are in [`vault/README.md`](vault/README.md).
+It doesn't start empty: it ships with 8 real mistakes and 5 wins already
+turned into rules, one researched niche (burger food trucks) and two example
+projects.
+
+You don't have to set it up. The skill offers the vault once, at the moment
+something would be lost (right after it researched your niche, or when you
+correct it), and one yes creates it. From then on it says what it saved at
+each delivery, and when a note changed a decision ("From your vault: Halfway
+already used this palette"). [Install Obsidian](https://obsidian.md/download)
+to see and edit it. An optional Claude Code hook re-injects the rules after
+the context is compacted. Setup details are in
+[`vault/README.md`](vault/README.md).
 
 ## How it works
 

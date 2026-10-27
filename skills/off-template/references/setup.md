@@ -15,7 +15,7 @@ come the first time the skill is used in a project, not during
 ## The questions
 
 Offer options, as in the brief, so answering is a click. Keep the list short:
-five or six questions. Skip any the person already answered in the prompt.
+five questions. Skip any the person already answered in the prompt.
 
 1. **Stack.** Plain HTML, CSS and JS / React with Vite / Next.js / Astro / "you
    pick, and say why".
@@ -26,12 +26,9 @@ five or six questions. Skip any the person already answered in the prompt.
 5. **Accessibility floor.** WCAG AA is the default for every site (contrast,
    focus, reduced motion). Ask only if the person wants more or less: "AA
    (default) / AAA on the text / just reduced motion".
-6. **Vault.** Use an Obsidian vault as the agent's memory: yes, and where /
-   no / "not now".
-
-Question 6 is for the person's own memory of the rules. Explain it in one
-line when you ask: the vault keeps the rules and the styles used, so the next
-session doesn't repeat them.
+The vault is not one of these questions. It is offered later, at the moment
+something would be lost (`references/vault.md`), and its answer is saved in
+the same file.
 
 ## Saving the answers
 
@@ -44,7 +41,7 @@ Write `design/setup.md` in the project, one line per answer:
 - Language: <answer>
 - Deploy: <answer>
 - Accessibility: <answer>
-- Vault: <answer or path>
+- Vault: not asked yet
 - Set on: <date>
 ```
 

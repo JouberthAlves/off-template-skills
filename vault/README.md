@@ -40,6 +40,13 @@ point it to the project path, or add a line to the project's `CLAUDE.md` /
 | `90 System/Mistakes.md`, `Wins.md` | What went wrong and what got praised, each turned into a one-line rule |
 | `90 System/Capabilities.md`, `Tool usage.md` | How to discover tools, and the rules for each paid or media tool |
 
+## It doesn't start empty
+
+It comes with 8 real mistakes and 5 wins already turned into rules, one
+researched niche (burger food trucks) and two example projects. They show
+what the notes look like after a few projects; keep them or delete them once
+you have your own.
+
 ## How it grows
 
 You don't edit most of it by hand. When the agent makes a mistake you

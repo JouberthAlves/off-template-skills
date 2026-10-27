@@ -8,8 +8,8 @@ Every project gets an entry when its first version is ready, not at the end.
 - With a vault: one note per project in `20 Projects/<Project name>.md`
   (template in `20 Projects/_template.md`).
 - Without a vault: append to `design/style-log.md` in the project. If the
-  person keeps several projects, suggest a shared vault so the log lives in
-  one place.
+  vault was never offered, offer it now (`vault.md`): a log only this
+  project reads can't stop the next project from repeating the style.
 
 ## Entry
 

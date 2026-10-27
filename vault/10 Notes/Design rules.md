@@ -44,4 +44,8 @@ lives in [[Mistakes]] and [[Wins]].
 From what the person praised ([[Wins]]). New praise: entry in Wins and the
 pattern in one line here.
 
-- _(none yet)_
+- Let the visitor handle the product's number-one argument on the first screen, instead of only showing it (the view slider).
+- Take the identity from the business's physical objects and lock one base scene for every photo (home-style restaurant).
+- Show each direction as a gray skeleton plus one colored mockup before asking for the choice (barbershop).
+- A client with their own identity in posts: sample palette, letterforms and tone from them and bring the most recognizable element to the first screen (personal trainer).
+- An animated background from a reference: rebuild it in the brand colour and make it light the page's elements; lower intensity on phones (off-template site).

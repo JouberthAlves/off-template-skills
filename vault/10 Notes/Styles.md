@@ -17,7 +17,7 @@ copy.
 
 | Note | Based on |
 |---|---|
-| _(none yet)_ | |
+| [[Styles of burger food trucks]] | 12 sites (US, UK, AU, BR), 2026-10-26 |
 
 ## New niche
 

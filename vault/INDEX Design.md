@@ -50,4 +50,5 @@ new style can't repeat any of them.
 
 | Project | Niche |
 |---|---|
-| _(none yet)_ | |
+| [[Halfway]] (example) | Burger food truck |
+| [[Off-Template site]] (example) | Developer tool showcase |
