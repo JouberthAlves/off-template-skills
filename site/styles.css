@@ -832,7 +832,7 @@ h1 br.d { display: none; }
   margin: 0;
   overflow: hidden;
   font: 400 calc(100cqi / 64.8) / 1.11 var(--font-mono);
-  color: var(--red);
+  color: var(--s-accent);
 }
 .vault-art.live canvas { display: block; }
 .vault-art.live .vault-still { display: none; }

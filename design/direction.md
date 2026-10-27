@@ -84,7 +84,7 @@ caret, and the red caret favicon.
 **Sections (8):** hero (the darkroom, the agent window) · same prompt, two
 pages (the burger: the other agent against the flow) · the flow, four stops ·
 the lint (39 FAIL against 12) · the 13 tells · install, per agent · the vault
-(the Obsidian logo in red characters spelled with the starter vault's note names, after the
+(the Obsidian logo in characters in the look's accent, spelled with the starter vault's note names, after the
 hallmark Terminal theme's glyph image: resolves row by row once, lights under the pointer;
 install Obsidian, say yes when the skill offers it) · footer.
 Everything below the hero comes in the chosen look.
