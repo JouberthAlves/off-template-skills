@@ -559,7 +559,7 @@
   var data = null, nodes = [], edges = [], adj = [], buttons = [];
   var W = 0, H = 0, cw = 0, ch = 0, cols = 0, rows = 0, tall = false, palette = [];
   var tone, chars, owner, focusNode = -1, selected = -1, drag = null;
-  var raf = 0, revealAt = 0, settle = [], lastT = 0, quietFrom = 0;
+  var raf = 0, revealAt = 0, settle = [], lastT = 0, quietFrom = 0, litNow = -1, litAt = 0;
   openBtn.hidden = false;
 
   function rgb(s) { var m = s.match(/[\d.]+/g) || [0, 0, 0]; return [+m[0], +m[1], +m[2]]; }
@@ -575,7 +575,8 @@
   var ground = '', line = {};
 
   /* ---- layout: the saved positions are home; springs pull back to them ---- */
-  function radius(n) { return Math.max(14, Math.min(W, H) * (0.024 + 0.0095 * Math.sqrt(n.deg))); }
+  // n.g: 0..1, how much the note has grown under the pointer
+  function radius(n) { return Math.max(14, Math.min(W, H) * (0.024 + 0.0095 * Math.sqrt(n.deg))) * (1 + 0.32 * (n.g || 0)); }
   // glide: only move the homes, so the springs carry the notes there (used when the note panel opens or closes)
   function place(keepMoved, glide) {
     var pad = tall ? 24 : 70, padTop = tall ? 28 : 36, aw = W, ah = H;
@@ -659,19 +660,39 @@
   function draw(now) {
     raf = 0;
     var dt = lastT ? now - lastT : 16; lastT = now;
-    var moving = step(dt) > 0.04 || !!drag;
+    // the hover: the note grows, its glyphs shuffle for a moment, its links draw out to the
+    // neighbours at a steady speed, and each neighbour lights up when its line arrives
+    var lit = selected >= 0 ? selected : focusNode, still = reduce.matches, animating = false;
+    if (lit !== litNow) { litNow = lit; litAt = now; }
+    nodes.forEach(function (n, i) {
+      var to = i === lit ? 1 : 0;
+      n.g = still ? to : (n.g || 0) + (to - (n.g || 0)) * Math.min(1, dt / 70);
+      if (Math.abs(to - n.g) < 0.01) n.g = to; else animating = true;
+    });
+    var reach = {}, since = now - litAt, shuffle = !still && lit >= 0 && since < 260;
+    if (lit >= 0) edges.forEach(function (e) {
+      if (e.a !== lit && e.b !== lit) return;
+      var other = e.a === lit ? e.b : e.a, len = Math.hypot(nodes[other].px - nodes[lit].px, nodes[other].py - nodes[lit].py);
+      var p = still ? 1 : Math.min(1, since * 1.3 / Math.max(len, 1));
+      e.p = 1 - (1 - p) * (1 - p); if (p < 1) animating = true; else reach[other] = true;
+    });
+    if (shuffle) animating = true;
+    var moving = step(dt) > 0.04 || !!drag || animating;
     raster();
     ctx.clearRect(0, 0, W, H);
     var font = getComputedStyle(document.documentElement).getPropertyValue('--font-mono'), big = ch * 0.78, small = big * 0.72;
-    var lit = selected >= 0 ? selected : focusNode, revealing = false, shown = !revealAt || now - revealAt > 500;
+    var revealing = false, shown = !revealAt || now - revealAt > 500;
     // links are plain lines under the notes; they fade in once the reveal is half way
     if (shown) {
       ctx.lineCap = 'round';
       edges.forEach(function (e) {
-        var on = lit >= 0 && (e.a === lit || e.b === lit);
-        ctx.strokeStyle = on ? line.lit : lit >= 0 ? line.dim : line.rest;
-        ctx.lineWidth = on ? 1.6 : 1;
-        ctx.beginPath(); ctx.moveTo(nodes[e.a].px, nodes[e.a].py); ctx.lineTo(nodes[e.b].px, nodes[e.b].py); ctx.stroke();
+        var on = lit >= 0 && (e.a === lit || e.b === lit), a = nodes[e.a], b = nodes[e.b];
+        ctx.strokeStyle = lit >= 0 ? line.dim : line.rest; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(a.px, a.py); ctx.lineTo(b.px, b.py); ctx.stroke();
+        if (!on) return;
+        var from = e.a === lit ? a : b, to = e.a === lit ? b : a;
+        ctx.strokeStyle = line.lit; ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(from.px, from.py); ctx.lineTo(from.px + (to.px - from.px) * e.p, from.py + (to.py - from.py) * e.p); ctx.stroke();
       });
     }
     for (var r = 0; r < rows; r++) {
@@ -684,8 +705,9 @@
         if (!resolved) { if (Math.random() < 0.5) continue; chr = noise[(Math.random() * noise.length) | 0]; t = 2; label = false; }
         else if (label) t = 8;
         if (resolved && lit >= 0) {
-          var mine = o === lit || (o >= 0 && adj[lit].indexOf(o) >= 0);
+          var mine = o === lit || (o >= 0 && reach[o]);
           t = mine ? Math.min(8, t + 2) : (label ? 3 : 0);
+          if (shuffle && o === lit && !label) chr = '@%#*+:'[(Math.random() * 6) | 0];
         }
         if (label) { ctx.fillStyle = ground; ctx.fillRect(c * cw, r * ch + 1, cw, ch - 2); if (chr === ' ') continue; }
         ctx.font = (label || t >= 7 ? '500 ' : '400 ') + (t <= 2 && !label ? small : big) + 'px ' + font;
