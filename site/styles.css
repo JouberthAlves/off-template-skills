@@ -820,6 +820,23 @@ h1 br.d { display: none; }
 .install-after { margin: 32px 0 0; }
 
 /* ---------- 5. vault ---------- */
+.vault-head { min-width: 0; }
+@media (min-width: 960px) {
+  .split .vault-head { position: sticky; top: 96px; }
+  .split .vault-head h2 { position: static; }
+}
+.vault-art { container-type: inline-size; max-width: 520px; margin: 32px 0 0; }
+.vault-art canvas { display: none; width: 100%; }
+/* No JS: the same Obsidian logo as text, 108 columns wide. */
+.vault-still {
+  margin: 0;
+  overflow: hidden;
+  font: 400 calc(100cqi / 64.8) / 1.11 var(--font-mono);
+  color: var(--red);
+}
+.vault-art.live canvas { display: block; }
+.vault-art.live .vault-still { display: none; }
+.vault-art figcaption { margin-top: 12px; font-size: 14px; color: var(--s-text); }
 .vault > p:first-child { margin-top: 0; font-size: 19px; color: var(--s-head); }
 .vault-steps { display: grid; gap: 20px; margin: 32px 0 0; padding: 0; list-style: none; }
 .vault-steps li { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 0 12px; align-items: baseline; }
