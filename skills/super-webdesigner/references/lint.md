@@ -43,8 +43,9 @@ catches the overflow itself when it happens.
 Part of the 13 in `anti-patterns.md`, the ones a rule can see: a purple-blue
 gradient, a grid background, three or more hard shadows, glow on three or more
 elements, a default face, monospace on labels, buttons or nav, emoji in the
-copy, 01/02/03 labels, and **one italic word inside a roman heading** (part of
-the "default type" tell). The rest of the 13 need the screenshots.
+copy, 01/02/03 labels, **one italic word inside a roman heading** and
+**letter-spaced uppercase on three or more rules** (`tracked-caps`; both part
+of the "default type" tell). The rest of the 13 need the screenshots.
 
 Not checked, on purpose: a drawn browser window around a screenshot (fine
 when it is well made), arrows in links (they guide), a status dot (fine when it

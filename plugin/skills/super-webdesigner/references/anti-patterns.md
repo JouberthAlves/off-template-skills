@@ -24,6 +24,19 @@ Read before choosing a direction and again when reviewing the first version.
 | **Spec-sheet dressing** | Monospace in the nav, buttons and labels; lot numbers, temperatures, coordinates, barcodes, "status: live" bars, countdowns and percentages nobody asked for. It imitates craft without saying anything the visitor uses | Show only the data the visitor acts on (opening hours, price, the next batch, where to pick up), in the page's own text face. Mono only for real code or numbers that line up in a table. A status ("open now", "online") is fine when it reports a real state |
 | **A default AI look** | When the obvious look is forbidden, agents fall into a second set of defaults: warm cream with a terracotta accent (often with a serif), near-black with one acid-green or vermilion pop, the broadsheet newspaper (hairline rules, dense columns, a dateline), and paper ephemera (receipts, tickets, rubber stamps, thermal labels) | The look comes from the brief's own real-world object and feeling. Any of these only when question 1 of the brief named it, and never as the concept of more than one of the three directions |
 
+Three more that belong to these tells (score them under the tell named):
+
+- **Tracked uppercase labels and buttons** (letter-spaced small caps on every
+  kicker and button): part of **Default type**.
+- **A metadata line with middle dots and an arrow at the end** ("Design ·
+  Build · Launch →"): part of **Spec-sheet dressing**.
+- **A radial halo behind the headline on a dark page**: part of **Glow on
+  everything**.
+
+A tell kept on purpose is declared under Waivers in `design/direction.md`,
+with the reason from the brief: that's the difference between a choice and a
+habit.
+
 Plus the **niche list** from `research.md`: the look everyone in this niche
 already repeats.
 

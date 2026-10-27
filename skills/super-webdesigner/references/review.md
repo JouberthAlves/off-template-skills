@@ -4,6 +4,40 @@ Test the worst case, not the happy path. A field that works with "John" and
 breaks with 600 pasted characters was not tested. Run everything that applies,
 then report what passed, what failed and what you couldn't test.
 
+## Who checks what
+
+Each check has one job. None replaces another, and their findings meet in
+one report.
+
+| Check | Its job | Blocks delivery |
+|---|---|---|
+| **sloplint** (`lint.md`) | The code floor and the tells a rule can see in the source, plus overflow, widths and the word budget on the render | Every FAIL |
+| **Impeccable's detector** (1e) | What only the served page shows: contrast, undersized text, a lone word on a paragraph's last line | Contrast and size findings |
+| **Screenshots + fresh eyes** (0, 1, 1b) | Whether it looks like the business and follows the direction | `rebuild` or a failed 3-second or fit test |
+| **design-critique** (2) | Taste: hierarchy, spacing rhythm, consistency | Nothing on its own; fix or say why not |
+
+**One report**, in this order, at STOP 2:
+
+```markdown
+**Review**
+- Lint: <n> FAIL · <n> WARN (<ids>) · waived: <ids, one reason each>
+- Detector: <findings fixed> · left: <rule name, why>
+- Fresh eyes: <ship/fix/rebuild> · <the three changes>
+- Tells: <n>/13 present (<names>) · also found: <...>
+- Critique: fixed <...> · not fixed <..., why>
+- Not tested: <...>
+```
+
+A finding is either fixed or waived. A waiver, from the lint or the detector,
+goes under Waivers in `design/direction.md` with the rule's own name and the
+reason about this page; a finding with neither is still open.
+
+**When the skill or the lint changes**, run the lint (and the detector, if
+the person said yes to it) on the pages already built (`site/` and
+`examples/*/`) before and after the change, and compare. A new FAIL or WARN on
+a page that was clean is a false positive to fix in the rule, or a real
+problem to report: never silently ship either.
+
 ## 0. The lint, then the fresh eyes
 
 **The lint first.** `node <skill-dir>/scripts/sloplint.mjs <page> --render

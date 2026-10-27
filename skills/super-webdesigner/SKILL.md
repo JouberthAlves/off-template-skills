@@ -158,7 +158,8 @@ padding the research with guesses.
 
 Read `references/skeletons.md`, `references/visual-language.md`,
 `references/mockups.md` and `references/anti-patterns.md` before drawing
-anything.
+anything, and `references/techniques.md` for each direction's signature
+effect and composition (a technique serves the direction; it never picks it).
 
 - **A:** at the level of the best sites in the niche. A customer of the niche
   recognizes it in 3 seconds; it's the safe, excellent option.
@@ -232,7 +233,8 @@ language exactly as the direction wrote it: a shadow, border or radius that
 isn't in `design/direction.md` doesn't go in. Build the motion from the
 direction with `references/motion.md`, not as a last coat of paint: a live
 element in the hero, entrances on scroll, hover and press feedback,
-confirmations, all respecting `prefers-reduced-motion`. Before reaching for a
+confirmations, all respecting `prefers-reduced-motion`. The signature effect
+comes solved from `references/techniques.md` when one fits. Before reaching for a
 component or an effect, check the component and animation slots in
 `references/tool-slots.md`: a ready piece from a library beats a hand-made
 one. Keep to the budget in `references/lint.md`: about 80 words on the first

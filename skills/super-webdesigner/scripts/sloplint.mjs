@@ -250,6 +250,12 @@ if (faceDecl) add("WARN", "default-face", at(faceDecl), `${faceDecl.prop}: ${fac
 const monoLabels = allDecls.filter((d) => /^(font-family|font)$/.test(d.prop) && /mono/i.test(resolveVars(d.value) + d.value) && /\b(nav|button|btn|label|tag|chip|badge|kicker|eyebrow|cta|menu|caption)\b/i.test(d.chain.at(-1) || ""));
 if (monoLabels.length) add("WARN", "mono-labels", at(monoLabels[0]), `${monoLabels.length} label/button/nav rules in monospace`, "The page's text face for labels; mono only for real code or tables.", "Spec-sheet dressing");
 
+// Tracked caps: uppercase plus letter-spacing of .06em or more in the same rule, on three or more rules.
+const ruleKey = (d) => d.file + "|" + d.chain.join(" > ");
+const upperRules = new Set(allDecls.filter((d) => d.prop === "text-transform" && /uppercase/i.test(d.value)).map(ruleKey));
+const trackedCaps = allDecls.filter((d) => d.prop === "letter-spacing" && upperRules.has(ruleKey(d)) && ((/([\d.]+)em/.exec(d.value)?.[1] ?? 0) >= 0.06 || (/([\d.]+)px/.exec(d.value)?.[1] ?? 0) >= 1));
+if (trackedCaps.length >= 3) add("WARN", "tracked-caps", at(trackedCaps[0]), `${trackedCaps.length} rules in letter-spaced uppercase`, "Labels and buttons in the page's text face, sentence case; caps only where the direction chose them.", "Default type");
+
 for (const m of markupSources) {
   const text = m.src.replace(/<(script|style|svg)[\s\S]*?<\/\1>/gi, " ").replace(/<[^>]+>/g, " ");
   const emoji = text.match(/\p{Extended_Pictographic}/gu)?.filter((e) => !/[©®™]/.test(e));

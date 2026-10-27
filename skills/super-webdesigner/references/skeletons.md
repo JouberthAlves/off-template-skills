@@ -29,6 +29,12 @@ Not just color. Change where the photo sits, the size of the title, the rhythm
 of the sections. If you can swap the palettes between two directions and they
 become the same, they're one direction.
 
+Compositions to vary them (`techniques.md`, "Compositions"): the real
+product on the right; a hero that opens with the proof and puts the title
+below; a solid block over a bleeding photo; one giant number as a whole
+section; a table as the centrepiece instead of cards. At least two of the
+three directions use a different first-screen composition.
+
 They must also differ in **visual language**. Three directions that are all
 "printed paper" (a receipt, a stamp, a newspaper) or all "technical" are one
 direction in three colors. And at least one (A) is the option a customer of

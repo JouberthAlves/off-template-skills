@@ -31,7 +31,16 @@ The answer goes into every direction's motion line.
   fade), lists entering in a cascade, a button that shrinks a little on press.
 
 The motion feel matches the direction's visual language (`visual-language.md`):
-slow and soft for a warm place, quick and crisp for a technical one.
+slow and soft for a warm place, quick and crisp for a technical one. A state
+that changes in one frame (`steps(1)`, `transition: none`, a row lighting like
+a menu cursor) is a valid feel for technical pages and signage.
+
+## One signature effect
+
+Each page has **one** signature effect, taken from `techniques.md` when one
+fits the material: it plays once, or answers the visitor, and then rests.
+Everything else stays quiet. Declare it in the direction in one to three
+lines: what moves, how long, the curve, and the still state it ends in.
 
 ## Rules
 
@@ -45,6 +54,11 @@ slow and soft for a warm place, quick and crisp for a technical one.
 - Decorative motion that loops forever (floating, slow drifts): only after
   checking GPU acceleration; without it the browser steps 1 px at a time and
   it looks broken. Test with Chrome's `--disable-gpu`.
+- Every canvas, WebGL or JS loop **pauses off-screen** (`IntersectionObserver`)
+  and when the tab is hidden (`visibilitychange`), and shows a still frame
+  with reduced motion.
+- Entrances that involve type start after `document.fonts.ready`, with a
+  timeout so a slow font never holds the page back.
 - No fake data animating (a countdown, a temperature, a status bar) just to
   have something moving. See "Spec-sheet dressing" in `anti-patterns.md`.
 

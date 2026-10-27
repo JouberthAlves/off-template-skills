@@ -26,6 +26,22 @@ element as a separate object. Give them to the one element that has to stand
 apart (the main button, the price, the product photo), not to every block. The
 same radius and shadow on everything flattens the page.
 
+## Colour, photos and surface
+
+- **Each colour has one job** (the action, a state, the person against the
+  machine) and keeps it on every section. **Two colour bands per page at
+  most**, and the accent under 5 % of the screen: rare is what makes it read.
+- **One treatment for every photo**, written in the direction: black and
+  white, duotone, tinted with the palette, or natural. Mixed treatments make
+  the page look assembled from stock.
+- **Surface without images:** grain, paper fibre, halftone, torn or
+  perforated edges are CSS and SVG filters (`techniques.md`, "Surfaces
+  without images"). Use them only when the surface is in the brief's real
+  object.
+- **One section only this material could make** (a tide table, a type
+  specimen, a generated map): it's what keeps a page from reading as a
+  template.
+
 ## Starting points by feeling
 
 Not rules: the reference wins. Use them to catch a choice that fights the
