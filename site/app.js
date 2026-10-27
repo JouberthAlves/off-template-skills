@@ -173,10 +173,37 @@
     var y = r ? r.top + r.height / 2 : innerHeight / 2;
     root.style.setProperty('--vt-x', x + 'px');
     root.style.setProperty('--vt-y', y + 'px');
-    root.style.setProperty('--vt-r', Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))) + 'px');
-    root.classList.add('vt');
+    var R = Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)));
+    root.style.setProperty('--vt-r', R + 'px');
+    root.classList.add('vt', 'vt-shape');
     var t = document.startViewTransition(apply);
-    return t.finished.catch(function () {}).then(function () { root.classList.remove('vt'); });
+    t.ready.then(function () {
+      root.animate({ clipPath: liquid(x, y, R) }, {
+        duration: 1100, easing: 'linear', fill: 'both', pseudoElement: '::view-transition-new(root)'
+      });
+    }).catch(function () { root.classList.remove('vt-shape'); });
+    return t.finished.catch(function () {}).then(function () { root.classList.remove('vt', 'vt-shape'); });
+  }
+
+  /* The edge of the new look is a liquid rim: polygon() keyframes with the same point count, so the
+     browser can blend them. If the browser can't animate the pseudo-element, the CSS circle runs. */
+  function ease(p) { return p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
+  function liquid(cx, cy, R) {
+    var out = [], N = 96, F = 44;
+    for (var f = 0; f <= F; f++) {
+      var p = f / F, e = ease(p), t = p * 6;
+      // Ripples on the rim, strongest mid-way, gone by the end so the edge settles off-screen.
+      var amp = Math.sin(Math.PI * p) * .14 + .02;
+      var r = e * R * 1.25, pts = [];
+      for (var i = 0; i < N; i++) {
+        var th = i / N * Math.PI * 2;
+        var w = Math.sin(3 * th + t * 2.1) * .5 + Math.sin(5 * th - t * 3.3) * .3 + Math.sin(8 * th + t * 4.7) * .2;
+        var rr = Math.max(0, r * (1 + amp * w));
+        pts.push((cx + Math.cos(th) * rr).toFixed(1) + 'px ' + (cy + Math.sin(th) * rr).toFixed(1) + 'px');
+      }
+      out.push('polygon(' + pts.join(',') + ')');
+    }
+    return out;
   }
 
   function pick(key, from) {

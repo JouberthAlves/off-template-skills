@@ -993,3 +993,5 @@ html.vt .sec, html.vt .foot { transition: none; }
   from { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 50%)); }
   to { clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 50%) var(--vt-y, 50%)); }
 }
+/* app.js draws a liquid rim on the new look; the CSS circle stays as the fallback. */
+html.vt-shape::view-transition-new(root) { animation: none; }

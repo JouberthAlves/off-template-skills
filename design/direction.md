@@ -74,7 +74,7 @@ caret, and the red caret favicon.
   added over the elements with a blend, never gradient text).
 - Picking a prompt: the agent types it, the print in the tray develops into
   that direction's mockup with a ripple, and the new look grows over the
-  whole page as a circle from the picked prompt (View Transitions, ~0.85 s).
+  whole page from the picked prompt as a circle with a liquid rim (View Transitions, ~1.1 s).
   Without View Transitions the sections rebuild one after another, top to
   bottom.
 - Below: the lint numbers count up; sections enter once.
