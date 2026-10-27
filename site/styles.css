@@ -1138,3 +1138,38 @@ html.vt .sec, html.vt .foot { transition: none; }
 }
 /* app.js draws a liquid rim on the new look; the CSS circle stays as the fallback. */
 html.vt-shape::view-transition-new(root) { animation: none; }
+
+/* ---------- the notice: what this visitor sees differently, at the bottom, never over the page ---------- */
+.notice {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--tray);
+  color: var(--text);
+}
+.notice[hidden] { display: none; }
+.notice-text { max-width: 68ch; margin: 0; font-size: 14px; line-height: 1.45; }
+.notice-close {
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--head);
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.notice-close:hover { color: var(--red); }
+@media (prefers-reduced-motion: no-preference) {
+  .notice.in { animation: notice-in 300ms var(--ease) both; }
+}
+@keyframes notice-in { from { opacity: 0; transform: translateY(100%); } }
+body:has(.notice:not([hidden])) { padding-bottom: 64px; }

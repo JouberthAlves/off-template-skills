@@ -498,10 +498,10 @@
   function render() { readPalette(); size(); kick(); }
 
   function start() {
-    if (reduce.matches) { render(); return; }
+    waiting = false; // release the draw first: reduced motion may have been switched on while it waited
+    if (reduce.matches) { started = 0; render(); return; }
     for (var r = 0; r < rows; r++) settle[r] = (r / rows) * 1100 + Math.random() * 300;
     started = performance.now();
-    waiting = false;
     render();
   }
   // Heat the cells around one point of the pointer's path.
@@ -537,6 +537,8 @@
   // The look switch changes the section's colours over 700 ms: follow them.
   new MutationObserver(function () { render(); setTimeout(render, 760); }).observe(sec, { attributes: true, attributeFilter: ['data-look'] });
   if ('ResizeObserver' in window) new ResizeObserver(function () { size(); kick(); }).observe(fig);
+  // Reduced motion switched on or off while the page is open: draw the still logo now.
+  if (reduce.addEventListener) reduce.addEventListener('change', function () { if (reduce.matches) { heat.fill(0); start(); } });
   // Closing the vault graph brings the logo back the way it first came in.
   fig.addEventListener('replay', function () { heat.fill(0); prev = null; start(); });
 })();
@@ -834,4 +836,34 @@
   });
   new MutationObserver(function () { if (!stage.hidden) { readPalette(); kick(); setTimeout(function () { readPalette(); kick(); }, 760); } }).observe(sec, { attributes: true, attributeFilter: ['data-look'] });
   if ('ResizeObserver' in window) new ResizeObserver(function () { if (stage.hidden || !data) return; size(); place(true); kick(); }).observe(graphBox);
+})();
+
+/* The notice at the bottom: says what this visitor sees differently (reduced motion keeps the light,
+   the logo and the graph still; no GPU keeps the light still), never blames the device, and stays
+   closed for the session once dismissed. Without JS nothing moves and nothing needs explaining. */
+(function () {
+  'use strict';
+  var box = document.querySelector('.notice');
+  if (!box) return;
+  var KEY = 'offtemplate-notice-seen';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var text = {
+    motion: 'Reduced motion is on, so the light, the Obsidian logo and the vault graph stay still. Everything else works the same.',
+    gpu: 'This device draws without graphics acceleration, so the light at the top stays still to keep the page smooth.'
+  };
+  function seen() { try { return !!sessionStorage.getItem(KEY); } catch (e) { return false; } }
+  function show(kind) {
+    if (seen() || (!box.hidden && kind === 'gpu')) return;
+    box.querySelector('.notice-text').textContent = text[kind];
+    box.hidden = false;
+    box.classList.add('in');
+  }
+  box.querySelector('.notice-close').addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* no storage: it only closes on this page */ }
+    box.hidden = true;
+  });
+  if (reduce.matches) show('motion');
+  if (reduce.addEventListener) reduce.addEventListener('change', function () { if (reduce.matches) show('motion'); });
+  if (document.documentElement.getAttribute('data-beam') === 'still') show('gpu');
+  window.addEventListener('beam-still', function () { if (!reduce.matches) show('gpu'); });
 })();

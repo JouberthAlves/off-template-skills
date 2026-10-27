@@ -30,6 +30,12 @@
   // slow: the browser only has a software renderer, or the first frames ran under 40 fps.
   // The pillar then stays as one still frame, the same as with reduced motion.
   var slow = false, samples = [];
+  // tells the page (the notice at the bottom) that the pillar stays still for lack of a GPU
+  function markSlow() {
+    slow = true;
+    document.documentElement.setAttribute('data-beam', 'still');
+    window.dispatchEvent(new CustomEvent('beam-still'));
+  }
 
   var VERT = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
   var FRAG = [
@@ -149,9 +155,9 @@
     // a throwaway context that the browser refuses when WebGL would run on the CPU
     try {
       var probe = document.createElement('canvas').getContext('webgl', { failIfMajorPerformanceCaveat: true });
-      if (!probe) slow = true;
+      if (!probe) markSlow();
       else if (probe.getExtension('WEBGL_lose_context')) probe.getExtension('WEBGL_lose_context').loseContext();
-    } catch (e) { slow = true; }
+    } catch (e) { markSlow(); }
     try {
       gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
     } catch (e) { gl = null; }
@@ -258,7 +264,7 @@
     // watch the first 40 frames; if the median is under 40 fps, stop here and keep a still frame
     if (samples.length < 40) {
       samples.push(dt);
-      if (samples.length === 40 && samples.slice().sort(function (a, b) { return a - b; })[20] > 1 / 40) { slow = true; sync(); return; }
+      if (samples.length === 40 && samples.slice().sort(function (a, b) { return a - b; })[20] > 1 / 40) { markSlow(); sync(); return; }
     }
 
     // a slow sway, and a lean toward the pointer
