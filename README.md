@@ -2,11 +2,11 @@
 
 <br>
 
-<a href="https://super-webdesigner.vercel.app">
+<a href="https://off-template.vercel.app">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/readme/logo-dark.png">
     <source media="(prefers-color-scheme: light)" srcset=".github/readme/logo-light.png">
-    <img src=".github/readme/logo-light.png" alt="Super-Webdesigner" width="420">
+    <img src=".github/readme/logo-light.png" alt="Off-Template" width="420">
   </picture>
 </a>
 
@@ -15,26 +15,30 @@
 **Same prompt. Different designer.**<br>
 Skills that stop coding agents from shipping the same AI-looking page.
 
-<a href="https://super-webdesigner.vercel.app"><img src="https://img.shields.io/badge/site-super--webdesigner-e5231b?style=flat-square" alt="Website"></a> <img src="https://img.shields.io/badge/skills-2-111111?style=flat-square" alt="2 skills"> <img src="https://img.shields.io/badge/Claude_Code-ready-111111?style=flat-square" alt="Claude Code"> <img src="https://img.shields.io/badge/works_with-Codex_·_Cursor-111111?style=flat-square" alt="Works with Codex and Cursor"> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
+<a href="https://off-template.vercel.app"><img src="https://img.shields.io/badge/site-off--template-e5231b?style=flat-square" alt="Website"></a> <img src="https://img.shields.io/badge/skills-2-111111?style=flat-square" alt="2 skills"> <img src="https://img.shields.io/badge/Claude_Code-ready-111111?style=flat-square" alt="Claude Code"> <img src="https://img.shields.io/badge/works_with-Codex_·_Cursor-111111?style=flat-square" alt="Works with Codex and Cursor"> <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-111111?style=flat-square" alt="MIT license"></a>
 
-[Website](https://super-webdesigner.vercel.app) · [See the difference](#see-the-difference) · [The flow](#the-flow) · [Install](#install) · [The vault](#recommended-a-vault)
+[Website](https://off-template.vercel.app) · [See the difference](#see-the-difference) · [The flow](#the-flow) · [Install](#install) · [The vault](#recommended-a-vault)
 
 </div>
 
 ---
 
 Your coding agent designs the same page for everyone: a centered hero, three
-cards, a purple gradient, emoji in the copy. Super-Webdesigner is two skills
+cards, a purple gradient, emoji in the copy. Off-Template is two skills
 that change how it works. Before any code, the agent asks you a brief,
 researches real sites in the niche, and shows you three directions. It waits
 for your pick. Then it builds, and checks the result against the 13 tells of
 an AI-made page, and that the look still fits the business.
 
+The name says the job: the page comes out off the template every agent
+reaches for. It used to be called Super-Webdesigner; the old GitHub links
+redirect here.
+
 ## See the difference
 
 Same prompt in both: *Build a website for a burger restaurant.*
 
-<img src=".github/readme/compare-burger.webp" alt="The burger comparison: on the left, Ember & Bun made by an agent alone, a full page with 20 floor failures; on the right, Halfway made with Super-Webdesigner, a first screen with 0 failures, a round photo of a cut burger on a dark brown ground" width="100%">
+<img src=".github/readme/compare-burger.webp" alt="The burger comparison: on the left, Ember & Bun made by an agent alone, a full page with 20 floor failures; on the right, Halfway made with Off-Template, a first screen with 0 failures, a round photo of a cut burger on a dark brown ground" width="100%">
 
 The hero changes with the look you pick in the agent window. The three
 looks, from the same site:
@@ -58,7 +62,7 @@ Videos of the same site: [the switch to Output Leads](.github/readme/look-switch
 and [the pillar on its own](.github/readme/hero-pillar.webm). They are WebM
 files; GitHub shows them as downloads, and they play in Chrome and Firefox.
 
-**[See it live and drag the choices yourself →](https://super-webdesigner.vercel.app)**
+**[See it live and drag the choices yourself →](https://off-template.vercel.app)**
 
 **The comparison** is [`examples/burger-2026-10/`](examples/burger-2026-10):
 the same prompt, *Build a website for a burger restaurant*, run on the same
@@ -89,19 +93,19 @@ Four stops wait for you. Everything between them the agent does on its own.
 
 Short commands for one job each, without the whole flow: `polish`, `bolder`,
 `quieter`, `distill`, `harden`, `clarify`, `adapt` and `lint`, as
-`/super-webdesigner polish`. They keep the direction and show before and
+`/off-template polish`. They keep the direction and show before and
 after.
 
 ### The lint
 
-`skills/super-webdesigner/scripts/sloplint.mjs` checks the code floor (colours
+`skills/off-template/scripts/sloplint.mjs` checks the code floor (colours
 and fonts only through tokens, no `transition: all`, no sideways scroll at
 375 to 1920 px, a capped container, no card in a card, focus, reduced motion),
 the tells a rule can see, and the word budget. It uses the Chrome already on
 the machine, no install:
 
 ```
-node skills/super-webdesigner/scripts/sloplint.mjs ./index.html --render
+node skills/off-template/scripts/sloplint.mjs ./index.html --render
 ```
 
 It sits next to Impeccable's detector and the screenshots, not in their place.
@@ -142,20 +146,20 @@ should give?
 
 ## Install
 
-Two skills: `super-webdesigner` (the flow) and `ai-slop-check` (the audit on
+Two skills: `off-template` (the flow) and `ai-slop-check` (the audit on
 its own, for any URL or screenshot). Each agent has its own command:
 
-- **Claude Code:** `npx skills add JouberthAlves/super-webdesigner -g -a claude-code`
-- **Codex:** `npx skills add JouberthAlves/super-webdesigner -a codex`
-- **Cursor:** `npx skills add JouberthAlves/super-webdesigner -a cursor`
-- **Windsurf:** `npx skills add JouberthAlves/super-webdesigner -a windsurf`
-- **Kiro:** `npx skills add JouberthAlves/super-webdesigner -a kiro-cli`
-- **Qoder:** `npx skills add JouberthAlves/super-webdesigner -a qoder`
-- **Antigravity:** `npx skills add JouberthAlves/super-webdesigner -a antigravity`
-- **GitHub Copilot:** `npx skills add JouberthAlves/super-webdesigner -a github-copilot`
+- **Claude Code:** `npx skills add JouberthAlves/off-template -g -a claude-code`
+- **Codex:** `npx skills add JouberthAlves/off-template -a codex`
+- **Cursor:** `npx skills add JouberthAlves/off-template -a cursor`
+- **Windsurf:** `npx skills add JouberthAlves/off-template -a windsurf`
+- **Kiro:** `npx skills add JouberthAlves/off-template -a kiro-cli`
+- **Qoder:** `npx skills add JouberthAlves/off-template -a qoder`
+- **Antigravity:** `npx skills add JouberthAlves/off-template -a antigravity`
+- **GitHub Copilot:** `npx skills add JouberthAlves/off-template -a github-copilot`
 - **Any other agent:** add one rule (for example `.cursor/rules/` or
   `AGENTS.md`) that says *"for any site or UI request, read
-  `skills/super-webdesigner/SKILL.md` and follow it, reading the files in
+  `skills/off-template/SKILL.md` and follow it, reading the files in
   `references/` when a step says so."*
 
 The Claude Code command installs for every project (`-g`). The others install
@@ -171,7 +175,7 @@ mockups come as prompts you paste into the tool yourself.
 later), inside Claude Code:
 
 ```
-/plugin install super-webdesigner --marketplace JouberthAlves/super-webdesigner
+/plugin install off-template --marketplace JouberthAlves/off-template
 ```
 
 Then ask for a site the way you always do: *"build a website for a bakery"*.
@@ -182,7 +186,7 @@ The skill takes it from there.
 The skill asks for a **job**, never a specific tool. Here is what each job
 uses in Claude Code, and the equivalent elsewhere. The full table, with the
 manual fallback for each, is in
-[`tool-slots.md`](skills/super-webdesigner/references/tool-slots.md).
+[`tool-slots.md`](skills/off-template/references/tool-slots.md).
 
 | Job | Claude Code | Other agents |
 |---|---|---|
@@ -241,7 +245,7 @@ details are in [`vault/README.md`](vault/README.md).
 ## How it works
 
 ```text
-skills/super-webdesigner/   the flow: SKILL.md and references/ (brief, research, skeletons, review…)
+skills/off-template/   the flow: SKILL.md and references/ (brief, research, skeletons, review…)
 skills/ai-slop-check/       the audit on its own
 vault/                      the starter Obsidian vault
 examples/burger-2026-10/    the current comparison: agent alone against the skill, same prompt, same day
@@ -251,7 +255,7 @@ design/                     the showcase page's own run of the flow: brief, rese
 site/                       this page: the safelight pillar, the agent window and the three looks
 .claude-plugin/             the Claude Code marketplace that lists the plugin
 plugin/                     the Claude Code plugin: both skills (copied by scripts/sync-plugin.sh)
-skills/super-webdesigner/scripts/  sloplint.mjs (the lint) and lint-hook.mjs (the edit-time check)
+skills/off-template/scripts/  sloplint.mjs (the lint) and lint-hook.mjs (the edit-time check)
 plugin/hooks/hooks.json     runs the lint hook after every page edit in Claude Code
 scripts/sync-plugin.sh      copies skills/ into plugin/ after you change them
 ```

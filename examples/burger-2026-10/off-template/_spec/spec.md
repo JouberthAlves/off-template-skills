@@ -13,7 +13,7 @@ Already there (do not change): `site/img/burger-fisheye-1400.webp` and `site/img
 ## Hard rules (the page fails review if any is broken)
 
 1. **Line 1 of `styles.css`**, exactly:
-   `/* super-webdesigner · direction C "fisheye session" · job: order for pickup / find the truck · faces: Bowlby One / Karla · palette: char, edge char, cheese, bun crumb · motion: calm, the round photo rolls in once · waivers: none */`
+   `/* off-template · direction C "fisheye session" · job: order for pickup / find the truck · faces: Bowlby One / Karla · palette: char, edge char, cheese, bun crumb · motion: calm, the round photo rolls in once · waivers: none */`
 2. **Every colour and every font family lives in `:root` as a token** and is used only through `var()`. No hex, `rgb()`, `hsl()` or family name anywhere else: not in rules, not in inline `style=""`, not inside SVG data URIs, not in the favicon's `<link>`. Transparent variants are tokens too, made in `:root` with `color-mix(in srgb, var(--x) N%, transparent)`. (The favicon SVG file may use literal hexes from the palette; it's a separate file.)
 3. No `transition: all`. Animate only `transform`, `opacity` and `clip-path`. Never animate width, height, top, left, margin or padding.
 4. `html, body { overflow-x: clip; }`, never `hidden`. Never `width: 100vw`.

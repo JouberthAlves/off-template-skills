@@ -18,7 +18,7 @@ flow.
   types it, and every section below the hero builds itself in that direction:
   palette, faces, surfaces and motion change; the content stays the same. The
   hero stays the darkroom. Default, and with scripts off: Darkroom Develop.
-- **The current logo stays:** "Super‸Webdesigner", white wordmark with the
+- **The current logo stays:** "Off‸Template", white wordmark with the
   red proofreader's caret (`#E5231B`). Its red becomes the safelight's red.
 
 **First screen:** logo top left, nav and "GitHub" top right. Left: the
@@ -103,7 +103,7 @@ Fonts OFL.
 - Brushed red metal on the four flow numbers in look C (background-clip: text with a fine brushed texture), asked for by the owner as the pillar's light on the numbers.
 - `mono-labels`: the A, B and C options live inside the agent's terminal window, where mono is the material, not a costume.
 
-**Stamp:** `/* super-webdesigner · direction C "darkroom develop" + safelight beam + agent window that picks the look below · job: copy the install command · faces: Familjen Grotesk / Commit Mono · palette: night, tray, logo red, print white · motion: lively, the beam lights the hero, prints develop · waivers: mono-labels */`
+**Stamp:** `/* off-template · direction C "darkroom develop" + safelight beam + agent window that picks the look below · job: copy the install command · faces: Familjen Grotesk / Commit Mono · palette: night, tray, logo red, print white · motion: lively, the beam lights the hero, prints develop · waivers: mono-labels */`
 
 Reference mockups: `design/mockup-c-darkroom-develop.webp` (layout and
 light), `design/mockup-a-editor-at-night.webp` (the agent window).

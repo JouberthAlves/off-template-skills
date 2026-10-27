@@ -70,7 +70,7 @@ look came from. The lint warns when a project with `design/direction.md` has
 no stamp.
 
 ```css
-/* super-webdesigner · direction B "butcher paper" · job: order on WhatsApp · faces: Bricolage Grotesque / Literata · palette: kraft, ketchup red, ink · motion: lively, the order ticket prints in the hero · waivers: none */
+/* off-template · direction B "butcher paper" · job: order on WhatsApp · faces: Bricolage Grotesque / Literata · palette: kraft, ketchup red, ink · motion: lively, the order ticket prints in the hero · waivers: none */
 ```
 
 Waivers in the stamp repeat the ones in `design/direction.md`, one word each

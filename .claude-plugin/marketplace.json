@@ -1,5 +1,5 @@
 {
-  "name": "super-webdesigner",
+  "name": "off-template",
   "owner": {
     "name": "JouberthAlves"
   },
@@ -8,9 +8,9 @@
   },
   "plugins": [
     {
-      "name": "super-webdesigner",
+      "name": "off-template",
       "source": "./plugin",
-      "description": "The design flow (super-webdesigner) and the AI-tells audit (ai-slop-check)."
+      "description": "The design flow (off-template) and the AI-tells audit (ai-slop-check)."
     }
   ]
 }

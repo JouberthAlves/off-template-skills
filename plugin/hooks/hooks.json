@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/skills/super-webdesigner/scripts/lint-hook.mjs\"",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/skills/off-template/scripts/lint-hook.mjs\"",
             "timeout": 10,
             "statusMessage": "Checking the code floor"
           }

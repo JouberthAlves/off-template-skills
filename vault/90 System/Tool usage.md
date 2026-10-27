@@ -19,8 +19,8 @@ Fill in with your own choices. Starting point:
 | Video made from HTML (page scrolling, title card) | HyperFrames |
 | Animation on the site | GSAP (skills by GreenSock) |
 
-The full list of jobs and alternatives is in `skills/super-webdesigner/references/tool-slots.md`
-in the super-webdesigner repo.
+The full list of jobs and alternatives is in `skills/off-template/references/tool-slots.md`
+in the off-template repo.
 
 ## Any credit-based tool
 

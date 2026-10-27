@@ -135,7 +135,7 @@ WARN emoji [tell: Emoji in the copy]  examples/burger-2026-10/normal-agent/site/
 
 WARN stamp  examples/burger-2026-10/normal-agent/site/css/styles.css:1
   the CSS has no stamp on its first line
-  -> Line 1: /* super-webdesigner · direction <X> "<vibe>" · job · faces · palette · motion · waivers */ (lint.md).
+  -> Line 1: /* off-template · direction <X> "<vibe>" · job · faces · palette · motion · waivers */ (lint.md).
 
 WARN words-page  render 1440px
   561 visible words on the page

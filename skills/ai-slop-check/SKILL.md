@@ -15,7 +15,7 @@ they have, or ask the person for screenshots.
 Motion (tell 9) doesn't show in a screenshot. Read the source for GSAP,
 transitions and keyframes, and say what moves. If the person wants to see it,
 offer a short video of the page: HyperFrames renders it from the HTML (see
-`super-webdesigner/references/tool-slots.md`), and only on a yes.
+`off-template/references/tool-slots.md`), and only on a yes.
 
 ## Steps
 
@@ -44,14 +44,14 @@ offer a short video of the page: HyperFrames renders it from the HTML (see
    "also found", not into the score. 0-1: fine. 2: watch it. **3 or more:
    it reads as AI-made.** If some items were not visible, report "N present
    out of M visible" and say the verdict is partial. Changing colors won't fix it; the direction needs
-   rethinking (the `super-webdesigner` skill does that).
+   rethinking (the `off-template` skill does that).
 4. **Fit checks** (reported apart from the score):
    - **3 seconds:** from the first screen alone, would a customer of this
      niche know what the business is, and want it?
    - **Fit:** do the page's materials (edges, shadows, lines, texture, type,
      motion) match the feeling the business should give? A warm, hand-made
      business inside a cold, technical frame fails, even with a low score.
-     The full method is `super-webdesigner/references/visual-language.md`.
+     The full method is `off-template/references/visual-language.md`.
 5. **Report** in this shape, short:
 
 ```

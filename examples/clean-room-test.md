@@ -1,6 +1,6 @@
 # Clean-room test of `super-designer`
 
-> Historical record. The skill was renamed `super-webdesigner` afterwards,
+> Historical record. The skill was renamed `off-template` afterwards,
 > and the fixes suggested below were applied on 2026-10-20 (brief questions
 > always asked, cost approved with the brief, "not visible" in
 > ai-slop-check, the burger score corrected to 2/10). The ground rule given

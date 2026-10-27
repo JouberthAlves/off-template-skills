@@ -36,6 +36,6 @@
 
 **Waivers:** `sections`: the page is a hero only, by the owner's scope ("it will only be a hero, as an example").
 
-**Stamp:** `/* super-webdesigner · direction C "fisheye session" · job: order for pickup / find the truck · faces: Bowlby One / Karla · palette: char, edge char, cheese, bun crumb · motion: calm, the round photo rolls in once · waivers: sections */`
+**Stamp:** `/* off-template · direction C "fisheye session" · job: order for pickup / find the truck · faces: Bowlby One / Karla · palette: char, edge char, cheese, bun crumb · motion: calm, the round photo rolls in once · waivers: sections */`
 
 Reference mockup: `mockup-c-fisheye-session.webp` (layout). The stand-ins: name HALFWAY, "Pier 4 lot, 11:30–3", $10. The whole business is fictional, like the other side's.

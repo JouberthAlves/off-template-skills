@@ -19,7 +19,7 @@ function main() {
   if (typeof file !== "string" || !/\.(html?|css|jsx|tsx|vue|svelte|astro)$/i.test(file) || !existsSync(file)) return done();
 
   const src = readFileSync(file, "utf8");
-  const stamped = /^\s*\/\*\s*super-webdesigner/i.test(src);
+  const stamped = /^\s*\/\*\s*(off-template|super-webdesigner)/i.test(src);
   const inProject = () => { let d = dirname(file); for (let i = 0; i < 8; i++) { if (existsSync(join(d, "design", "direction.md"))) return true; const up = dirname(d); if (up === d) break; d = up; } return false; };
   if (!stamped && !inProject()) return done();
 
@@ -38,7 +38,7 @@ function main() {
   done({
     hookSpecificOutput: {
       hookEventName: "PostToolUse",
-      additionalContext: `super-webdesigner code floor on ${basename(file)}: ${fails.length} FAIL.\n${lines.join("\n")}${more}\nFix these now; the render checks and the tells run in the review.`,
+      additionalContext: `off-template code floor on ${basename(file)}: ${fails.length} FAIL.\n${lines.join("\n")}${more}\nFix these now; the render checks and the tells run in the review.`,
     },
   });
 }

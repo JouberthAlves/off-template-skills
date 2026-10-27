@@ -40,7 +40,7 @@ originality goes on top of it.
   and want it, from the first screen alone?
 - **Fit test:** do the edges, shadows, lines, texture, type and motion match
   the feeling from the brief? (`references/visual-language.md` in the
-  super-webdesigner skill.)
+  off-template skill.)
 
 ## How to check
 

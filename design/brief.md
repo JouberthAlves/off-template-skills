@@ -1,4 +1,4 @@
-# Brief: the Super-Webdesigner site, second version
+# Brief: the Off-Template site, second version
 
 The page that sells the project, redone through the flow as the skill's own
 test: the lint runs on the old page and on the new one. The old version
@@ -44,5 +44,5 @@ polished), lively intensity. The beams' colours still come from question 1
 - **Absent:** user counts, testimonials, company logos, star counts. None of
   them goes on the page.
 
-**Name, logo and favicon:** Super-Webdesigner; logo and favicon required in
+**Name, logo and favicon:** Off-Template; logo and favicon required in
 every direction.

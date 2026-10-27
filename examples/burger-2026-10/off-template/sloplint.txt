@@ -1,4 +1,4 @@
-sloplint: examples/burger-2026-10/super-webdesigner/site/index.html, examples/burger-2026-10/super-webdesigner/site/styles.css
+sloplint: examples/burger-2026-10/off-template/site/index.html, examples/burger-2026-10/off-template/site/styles.css
 
 WARN sections  render 1440px
   2 sections, hero and footer included

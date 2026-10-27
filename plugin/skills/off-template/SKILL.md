@@ -1,10 +1,10 @@
 ---
-name: super-webdesigner
+name: off-template
 description: Design direction for any website, landing page, app screen or visual piece, so the result does not look AI-generated. Runs a fixed flow before any code is written - discover the tools this agent has, ask the person a 4-question brief, research real sites in the niche, show 3 different directions (gray skeletons plus one colored mockup each) and wait for the person to choose. Then builds with purposeful motion and reviews the result against a list of AI design tells (purple-blue gradients, emoji in copy, default fonts, 3 generic benefit cards, static pages, hard neo-brutalist shadows, mono spec-sheet dressing) and checks that the look still fits the business. Use whenever someone asks to build, redesign or style a site, page, landing page, homepage or UI, even with a one-line prompt like "build a website for a burger restaurant" or "a landing page for a small bakery", and when they ask why their pages look generic. Also runs short commands on a page that already exists (polish, bolder, quieter, distill, harden, clarify, adapt, lint).
 argument-hint: "[polish | bolder | quieter | distill | harden | clarify | adapt | lint] [target]"
 ---
 
-# super-webdesigner
+# off-template
 
 Left alone, an agent makes the same page for everyone: centered hero, three
 cards, purple gradient, serif italic title, emoji in the copy, nothing moving.
@@ -120,7 +120,7 @@ One message, with everything the person needs to answer once:
    (`references/tool-slots.md`, section "Plugins for the most design"):
 
    > Deseja instalar os seguintes plugins: <lista>.
-   > Instale para obter o maior proveito do super-webdesigner.
+   > Instale para obter o maior proveito do off-template.
 
    Ask yes or no for the list as a whole, then install only what the person
    approved. Nothing gets installed without that yes.
@@ -271,7 +271,7 @@ Do it when the first version is approved, not at the end of the project.
 Small jobs on a page that already exists, without the brief, the research or
 the three directions. Each one reads `design/direction.md` when there is one
 (the look it must keep), changes only its own part, runs the lint, and shows
-before and after. Called as `/super-webdesigner <command> [target]`, or when
+before and after. Called as `/off-template <command> [target]`, or when
 the request clearly names one ("just fix the texts", "make it calmer"). The
 full method of each is in `references/commands.md`.
 

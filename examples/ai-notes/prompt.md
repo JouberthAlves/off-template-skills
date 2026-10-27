@@ -11,9 +11,9 @@ glow on everything, the usual layout, thin generic icons, no motion, fake
 The page itself says so in a banner. For a real, untouched agent output, see
 `examples/burger/normal-agent/`.
 
-## Super-Webdesigner
+## Off-Template
 
 The same first line, through the skill's flow: brief, research, 3
-directions, a person's choice, build, review. Files in `super-webdesigner/`.
+directions, a person's choice, build, review. Files in `off-template/`.
 
 The product and every name in both pages are fictional.

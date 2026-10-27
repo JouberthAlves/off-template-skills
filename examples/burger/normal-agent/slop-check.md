@@ -27,7 +27,7 @@ dressing, a default AI look) are absent.)
   visit. Fix: break the order; on a pickup counter, the menu with prices *is*
   the hero.
 
-## Niche clichés (from `../super-webdesigner/research.md`)
+## Niche clichés (from `../off-template/research.md`)
 
 - Red and mustard yellow, with a black band of yellow uppercase words.
 - A "since 2014" badge.

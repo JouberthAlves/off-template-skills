@@ -4,5 +4,5 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 rm -rf plugin/skills
 mkdir -p plugin/skills
-cp -r skills/super-webdesigner skills/ai-slop-check plugin/skills/
+cp -r skills/off-template skills/ai-slop-check plugin/skills/
 echo "plugin/skills synced from skills/"

@@ -1,4 +1,4 @@
-# Spec: Super-Webdesigner site, second version
+# Spec: Off-Template site, second version
 
 You write the code. Everything you need is in this file and in the files it
 names. Do not run a server, open a browser or take screenshots. You may run
@@ -62,7 +62,7 @@ the hero's.
 Stamp (line 1 of `styles.css`, exactly):
 
 ```css
-/* super-webdesigner · direction C "darkroom develop" + safelight beam + agent window that picks the look below · job: copy the install command · faces: Familjen Grotesk / JetBrains Mono · palette: night, tray, logo red, print white · motion: lively, the beam lights the hero, prints develop · waivers: none */
+/* off-template · direction C "darkroom develop" + safelight beam + agent window that picks the look below · job: copy the install command · faces: Familjen Grotesk / JetBrains Mono · palette: night, tray, logo red, print white · motion: lively, the beam lights the hero, prints develop · waivers: none */
 ```
 
 ## Tokens (`:root`)
@@ -106,11 +106,11 @@ Tabular numerals on numbers.
 
 - `<html lang="en" class="no-js">`; first script line in `<head>` swaps
   `no-js` for `js`.
-- Title: `Super-Webdesigner: same prompt, different designer`
+- Title: `Off-Template: same prompt, different designer`
 - Description: `Skills that make your coding agent ask a brief, research the
   niche and show three directions before it writes a line of code.`
-- Canonical `https://super-webdesigner.vercel.app/`, og:title,
-  og:description, og:image `https://super-webdesigner.vercel.app/img/dir-c.webp`,
+- Canonical `https://off-template.vercel.app/`, og:title,
+  og:description, og:image `https://off-template.vercel.app/img/dir-c.webp`,
   `theme-color` `#141818` (meta tags may carry the hex: they are not CSS).
 - Favicon, exactly:
   `<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23FFFFFF'/%3E%3Cpath d='M14 46 L32 16 L50 46' fill='none' stroke='%23E5231B' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">`
@@ -122,7 +122,7 @@ Inside the container, 24px from the top, logo left, links right, on night.
 Logo (keep this exact markup; it is the brand):
 
 ```html
-<a class="logo" href="#" aria-label="Super-Webdesigner, home">
+<a class="logo" href="#" aria-label="Off-Template, home">
   <span>Super</span><svg class="caret" viewBox="0 0 40 30" aria-hidden="true"><path d="M5 26 L20 6 L35 26"/></svg><span>Webdesigner</span>
 </a>
 ```
@@ -133,7 +133,7 @@ Logo style: `--font-c` 700, 22px, `--head`, letter-spacing -0.02em,
 fill, stroke `--red`, stroke-width 4.5, round caps and joins.
 
 Links: "How it works" (`#flow`), "The tells" (`#tells`), and "GitHub" as a
-button-shaped link to `https://github.com/JouberthAlves/super-webdesigner`
+button-shaped link to `https://github.com/JouberthAlves/off-template`
 (1px border `--line`, radius 6px, padding 8px 14px). 15px, `--text`, hover
 `--head`. Under 600px: only the logo and the GitHub link (the two anchors
 hide).
@@ -177,9 +177,9 @@ A tablist of three tabs, then the command row.
   `--font-mono` 15px, `--head`; a `>` prompt sign in `--red` before the
   command. The command text wraps on narrow screens (`overflow-wrap:
   anywhere`), never scrolls the page. Commands:
-  - Claude Code: `npx skills add JouberthAlves/super-webdesigner -g -a claude-code`
-  - Codex: `npx skills add JouberthAlves/super-webdesigner -a codex`
-  - Cursor: `npx skills add JouberthAlves/super-webdesigner -a cursor`
+  - Claude Code: `npx skills add JouberthAlves/off-template -g -a claude-code`
+  - Codex: `npx skills add JouberthAlves/off-template -a codex`
+  - Cursor: `npx skills add JouberthAlves/off-template -a cursor`
 - Copy button at the right of the row (`aria-label="Copy the command"`),
   text `Copy`, becomes `Copied` for 1.6s. `navigator.clipboard.writeText` in
   the click handler; on rejection, select the command text. Hidden with
@@ -224,7 +224,7 @@ develop runs, the highlight moves skeleton -> mockup -> this page.
 
 - Title bar: 36px high, border-bottom 1px `--line`; three 10px circles in
   `--line` at the left (decoration of a terminal window, `aria-hidden`); in
-  the centre `claude: super-webdesigner.vercel.app` in `--font-mono` 13px
+  the centre `claude: off-template.vercel.app` in `--font-mono` 13px
   `--text`.
 - Body, padding 16px, `--font-mono` 14px/1.55, `--text`:
   - Line 1: `> Build the rest of this page.` (`>` in `--red`, text `--head`).
@@ -435,11 +435,11 @@ and `rootMargin: "0px 0px -12% 0px"`.
 
 **1. `#compare`: One prompt. Two pages.**
 - h2: `One prompt. Two pages.`
-- p: `Build a website for a burger restaurant. Left, an agent on its own. Right, the same agent with Super-Webdesigner.`
+- p: `Build a website for a burger restaurant. Left, an agent on its own. Right, the same agent with Off-Template.`
 - Two figures side by side >= 760px (`minmax(0, 1fr) minmax(0, 1fr)`, gap
   24px), stacked below. Each image 1440x900, in the look's frame.
   - `img/normal-desktop.webp`, alt `Ember & Bun, made by an agent alone: cream page, a drawn burger, a red-orange headline, invented ratings and a scrolling banner`. Caption: `Agent alone: Ember & Bun`. A-look file name: `ember-and-bun.html`.
-  - `img/super-desktop.webp`, alt `Order 27, made with Super-Webdesigner: butcher-paper page, a photo of a wrapped burger, the order number as the brand`. Caption: `With the skill: Order 27`. A-look file name: `order-27.html`.
+  - `img/super-desktop.webp`, alt `Order 27, made with Off-Template: butcher-paper page, a photo of a wrapped burger, the order number as the brand`. Caption: `With the skill: Order 27`. A-look file name: `order-27.html`.
 - Captions 14px `--s-text`.
 
 **2. `#flow`: Four stops.**
@@ -479,12 +479,12 @@ and `rootMargin: "0px 0px -12% 0px"`.
   the command in `--font-mono` 14px on `--s-surface` (radius 6px in A and C,
   0 in B), with a Copy button as in the hero (same behaviour). Grid
   `minmax(0, 160px) minmax(0, 1fr)`, one column under 600px.
-  - `Claude Code`: `npx skills add JouberthAlves/super-webdesigner -g -a claude-code`
-  - `Codex`: `npx skills add JouberthAlves/super-webdesigner -a codex`
-  - `Cursor`: `npx skills add JouberthAlves/super-webdesigner -a cursor`
-  - `Windsurf`: `npx skills add JouberthAlves/super-webdesigner -a windsurf`
-  - `GitHub Copilot`: `npx skills add JouberthAlves/super-webdesigner -a github-copilot`
-  - `Claude Code plugin`: `/plugin install super-webdesigner --marketplace JouberthAlves/super-webdesigner`
+  - `Claude Code`: `npx skills add JouberthAlves/off-template -g -a claude-code`
+  - `Codex`: `npx skills add JouberthAlves/off-template -a codex`
+  - `Cursor`: `npx skills add JouberthAlves/off-template -a cursor`
+  - `Windsurf`: `npx skills add JouberthAlves/off-template -a windsurf`
+  - `GitHub Copilot`: `npx skills add JouberthAlves/off-template -a github-copilot`
+  - `Claude Code plugin`: `/plugin install off-template --marketplace JouberthAlves/off-template`
 - p under it: `Then ask for a site the way you always do. The skill stops at the brief and waits for you.`
 
 **Footer** (`--s-bg`, 1px top border `--line` in A and C, `--ink-line` in B): the logo (same markup, `--s-head` text, red caret always),

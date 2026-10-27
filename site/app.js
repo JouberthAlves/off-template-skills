@@ -1,4 +1,4 @@
-/* Super-Webdesigner, Part 1: install block and the agent window. */
+/* Off-Template, Part 1: install block and the agent window. */
 (function () {
   'use strict';
 

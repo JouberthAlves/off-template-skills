@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// sloplint: the mechanical half of the super-webdesigner review.
+// sloplint: the mechanical half of the off-template review.
 // Static checks read the HTML, CSS and components; --render opens the page in
 // the Chrome already on the machine (no npm install) and measures it at five
 // widths. It never replaces Impeccable's detector or the screenshots: it only
@@ -275,7 +275,7 @@ const projectRoot = (() => { let d = isUrl ? process.cwd() : resolve(target); if
 if (projectRoot && cssSources.length) {
   const main = cssSources.find((s) => s.offset === 0) || cssSources[0];
   const first = main.src.split("\n").find((l) => l.trim());
-  if (!/^\/\*\s*super-webdesigner/i.test(first || "")) add("WARN", "stamp", rel(main.file) + ":1", "the CSS has no stamp on its first line", "Line 1: /* super-webdesigner · direction <X> \"<vibe>\" · job · faces · palette · motion · waivers */ (lint.md).");
+  if (!/^\/\*\s*(off-template|super-webdesigner)/i.test(first || "")) add("WARN", "stamp", rel(main.file) + ":1", "the CSS has no stamp on its first line", "Line 1: /* off-template · direction <X> \"<vibe>\" · job · faces · palette · motion · waivers */ (lint.md).");
 }
 
 // ---------- render tier ----------

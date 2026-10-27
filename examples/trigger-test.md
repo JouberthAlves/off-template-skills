@@ -12,9 +12,9 @@ Date: 2026-10-20. Claude Code 2.1.304 in a cloud sandbox, headless
 
 - Empty folder outside the repo, nothing else in it (no vault, no
   `package.json`).
-- `npx skills add JouberthAlves/super-webdesigner -a claude-code`, run in that
+- `npx skills add JouberthAlves/off-template -a claude-code`, run in that
   folder. The skills come from the GitHub `main` branch. It installed
-  `super-webdesigner` and `ai-slop-check` into `.claude/skills/` (project
+  `off-template` and `ai-slop-check` into `.claude/skills/` (project
   scope; the `-g` flag was not used, so nothing went to `~/.claude`).
 - A new session, prompt exactly: `build a website for a small bakery`
   (`claude -p`, `--output-format stream-json`, so every tool call is logged).
@@ -23,7 +23,7 @@ Date: 2026-10-20. Claude Code 2.1.304 in a cloud sandbox, headless
 
 | # | Check | Result |
 |---|---|---|
-| 1 | The skill is triggered on its own | **Passed.** First tool call: `Skill` with `{"skill": "super-webdesigner"}`. Nothing in the prompt names it. |
+| 1 | The skill is triggered on its own | **Passed.** First tool call: `Skill` with `{"skill": "off-template"}`. Nothing in the prompt names it. |
 | 2 | The tools table is shown | **Passed.** A table of jobs (research, skeletons, colored mockups, components, animation, screenshots, critique) with a status each, drawn from what the session has. It marked colored mockups and GSAP as `missing`, and asked before installing GSAP. |
 | 3 | It stops at the 4 brief questions, no code | **Passed.** It asked the 4 brief questions (place or object, feeling, two influences, what it must never look like) and then waited. No file was written: the only tool calls after the skill were two `ls`/`cat` reads inside the skill folder. |
 
