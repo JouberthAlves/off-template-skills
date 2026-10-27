@@ -768,36 +768,37 @@ h1 br.d { display: none; }
 .tells li {
   position: relative;
   justify-self: start;
+  margin-left: -2px; /* the spans' left padding, so the text keeps its edge */
   font-size: 22px;
   line-height: 1.3;
   color: var(--s-head);
 }
-.tells li::after {
-  content: "";
+/* The strike rides on an invisible copy of the text laid over it: it follows each line box, so a tell that
+   wraps on a phone is struck on every line, and it stays on top of the letters. Both copies get the same
+   padding on every line, so they wrap at the same words. */
+.tells li span {
+  padding: 0 6px 0 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.tells li i {
   position: absolute;
-  left: -2px;
-  right: -6px;
-  top: 0.52em;
-  height: 8px;
+  inset: 0;
+  color: transparent;
+  font-style: normal;
   pointer-events: none;
-  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 2.8Q200 6.2 400 3.2' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>") center / 100% 100% no-repeat;
-  transform: scaleX(1);
-  transform-origin: left center;
+  user-select: none;
 }
-.tells li:nth-child(4n+2)::after {
-  top: 0.5em;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 5Q200 1.8 400 4.6' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>");
+.tells li i span {
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 2.8Q200 6.2 400 3.2' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>") left 0 top 0.5em / 100% 8px no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
-.tells li:nth-child(4n+3)::after {
-  top: 0.48em;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 3C180 3.4 300 4.4 400 5' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>");
-}
-.tells li:nth-child(4n)::after {
-  top: 0.54em;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 4.8C180 4.4 300 3.4 400 2.8' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>");
-}
-.tells.arm li::after { transform: scaleX(0); }
-.tells.go li::after { transition: transform 500ms var(--ease) calc(var(--i, 0) * 60ms); }
+.tells li:nth-child(4n+2) i span { background-position-y: 0.48em; background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 5Q200 1.8 400 4.6' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>"); }
+.tells li:nth-child(4n+3) i span { background-position-y: 0.46em; background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 3C180 3.4 300 4.4 400 5' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>"); }
+.tells li:nth-child(4n) i span { background-position-y: 0.52em; background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 8' preserveAspectRatio='none'><path d='M0 4.8C180 4.4 300 3.4 400 2.8' fill='none' stroke='%23E5231B' stroke-width='2.2' stroke-linecap='round' vector-effect='non-scaling-stroke'/></svg>"); }
+.tells.arm li i span { background-size: 0% 8px; }
+.tells.go li i span { transition: background-size 500ms var(--ease) calc(var(--i, 0) * 60ms); }
 
 /* ---------- 4. install (the hero's tabs + command row, six tabs) ---------- */
 .inst .tabs { flex-wrap: wrap; gap: 4px 22px; margin-bottom: 12px; }
@@ -964,8 +965,8 @@ h1 br.d { display: none; }
   .sec.pre > * { opacity: 1; transform: none; }
   .sec, .foot, .sec.in > * { transition: none; }
   .sec::after, .foot::after { display: none; }
-  .tells.arm li::after { transform: scaleX(1); }
-  .tells.go li::after { transition: none; }
+  .tells.arm li i span { background-size: 100% 8px; }
+  .tells.go li i span { transition: none; }
   .sec[data-look="a"].in h2::before { animation: none; }
 }
 #built p, #built li, .foot p { text-wrap: pretty; }
