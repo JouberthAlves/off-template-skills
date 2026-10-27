@@ -537,6 +537,8 @@
   // The look switch changes the section's colours over 700 ms: follow them.
   new MutationObserver(function () { render(); setTimeout(render, 760); }).observe(sec, { attributes: true, attributeFilter: ['data-look'] });
   if ('ResizeObserver' in window) new ResizeObserver(function () { size(); kick(); }).observe(fig);
+  // Closing the vault graph brings the logo back the way it first came in.
+  fig.addEventListener('replay', function () { heat.fill(0); prev = null; start(); });
 })();
 
 /* "Explore the starter vault": the section turns into the vault's graph, drawn in
@@ -813,6 +815,8 @@
     cancelAnimationFrame(raf); raf = 0;
     sec.scrollIntoView({ block: 'start', behavior: 'auto' });
     openBtn.focus({ preventScroll: true });
+    var art = sec.querySelector('.vault-art');
+    if (art) art.dispatchEvent(new CustomEvent('replay'));
   }
   openBtn.addEventListener('click', function () {
     if (data) { open(); return; }
