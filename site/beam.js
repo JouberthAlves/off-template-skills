@@ -27,6 +27,9 @@
   var tStart = 0, tLast = 0, ang = TILT, shift = 0, ptr = null, pulseAt = -10;
   var lastLit = [];
   var started = false;
+  // slow: the browser only has a software renderer, or the first frames ran under 40 fps.
+  // The pillar then stays as one still frame, the same as with reduced motion.
+  var slow = false, samples = [];
 
   var VERT = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}';
   var FRAG = [
@@ -143,6 +146,12 @@
   }
 
   function initGL() {
+    // a throwaway context that the browser refuses when WebGL would run on the CPU
+    try {
+      var probe = document.createElement('canvas').getContext('webgl', { failIfMajorPerformanceCaveat: true });
+      if (!probe) slow = true;
+      else if (probe.getExtension('WEBGL_lose_context')) probe.getExtension('WEBGL_lose_context').loseContext();
+    } catch (e) { slow = true; }
     try {
       gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false });
     } catch (e) { gl = null; }
@@ -189,7 +198,11 @@
       for (var i = 0; i < 3; i++) p[0][i] += (p[1][i] - p[0][i]) * k;
     });
   }
-  window.addEventListener('look', function () { if (gl) readHeroColors(false); });
+  window.addEventListener('look', function () {
+    if (!gl) return;
+    if (running) { readHeroColors(false); return; }
+    readHeroColors(true); drawStill(); // still pillar: repaint it in the new look's colours
+  });
 
   function draw(t, intensity) {
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -242,6 +255,11 @@
     var dt = Math.min(0.1, (now - tLast) / 1000);
     tLast = now;
     var t = (now - tStart) / 1000;
+    // watch the first 40 frames; if the median is under 40 fps, stop here and keep a still frame
+    if (samples.length < 40) {
+      samples.push(dt);
+      if (samples.length === 40 && samples.slice().sort(function (a, b) { return a - b; })[20] > 1 / 40) { slow = true; sync(); return; }
+    }
 
     // a slow sway, and a lean toward the pointer
     var targetAng = TILT + 4 * DEG * Math.sin(Math.PI * 2 * t / 9);
@@ -264,7 +282,7 @@
     raf = requestAnimationFrame(frame);
   }
 
-  /* One still frame: reduced motion, and after a resize while stopped. */
+  /* One still frame: reduced motion, a slow renderer, and after a resize while stopped. */
   function drawStill() {
     ang = TILT;
     shift = 0;
@@ -273,7 +291,7 @@
   }
 
   function sync() {
-    var want = visible && !document.hidden && !mqReduce.matches && !!gl;
+    var want = visible && !document.hidden && !mqReduce.matches && !slow && !!gl;
     if (want && !running) {
       running = true;
       tLast = performance.now();
@@ -284,7 +302,7 @@
       if (raf) cancelAnimationFrame(raf);
       raf = 0;
     }
-    if (!want && mqReduce.matches) drawStill();
+    if (!want && (mqReduce.matches || slow)) drawStill();
   }
 
   function goStatic() {
