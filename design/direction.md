@@ -73,8 +73,10 @@ caret, and the red caret favicon.
   pulses on click, and lights the letters and the tray as it passes (light
   added over the elements with a blend, never gradient text).
 - Picking a prompt: the agent types it, the print in the tray develops into
-  that direction's mockup with a ripple, and the sections below rebuild in
-  that look one after another, top to bottom.
+  that direction's mockup with a ripple, and the new look grows over the
+  whole page as a circle from the picked prompt (View Transitions, ~0.85 s).
+  Without View Transitions the sections rebuild one after another, top to
+  bottom.
 - Below: the lint numbers count up; sections enter once.
 - Reduced motion: the beam stands still, the print shows the page, no ripple,
   the swap is instant, every text visible.

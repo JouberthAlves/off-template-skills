@@ -980,3 +980,16 @@ html[data-look="b"] {
   --line: var(--ink-line);
   --tray: color-mix(in srgb, var(--print) 92%, var(--ink));
 }
+
+/* Look switch: the new look grows as a circle from the picked prompt (View Transitions API).
+   The sections skip their colour morph while it runs; the circle is the transition. */
+html.vt .sec, html.vt .foot { transition: none; }
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+  ::view-transition-old(root) { z-index: 1; }
+  ::view-transition-new(root) { z-index: 2; animation: look-circle 850ms cubic-bezier(.65, 0, .35, 1) both; }
+}
+@keyframes look-circle {
+  from { clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 50%)); }
+  to { clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 50%) var(--vt-y, 50%)); }
+}

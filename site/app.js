@@ -156,7 +156,30 @@
     });
   }
 
-  function pick(key) {
+  /* The new look grows as a circle from the picked prompt, over the whole page at once.
+     Without View Transitions (or with reduced motion) the sections rebuild one by one instead. */
+  function swapLook(key, from) {
+    function apply() {
+      current = key;
+      root.dataset.look = key;
+      window.dispatchEvent(new CustomEvent('look', { detail: key }));
+    }
+    if (reduce.matches || typeof document.startViewTransition !== 'function') {
+      apply();
+      return Promise.resolve();
+    }
+    var r = from ? from.getBoundingClientRect() : null;
+    var x = r ? r.left + r.width / 2 : innerWidth / 2;
+    var y = r ? r.top + r.height / 2 : innerHeight / 2;
+    root.style.setProperty('--vt-x', x + 'px');
+    root.style.setProperty('--vt-y', y + 'px');
+    root.style.setProperty('--vt-r', Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))) + 'px');
+    root.classList.add('vt');
+    var t = document.startViewTransition(apply);
+    return t.finished.catch(function () {}).then(function () { root.classList.remove('vt'); });
+  }
+
+  function pick(key, from) {
     if (busy || key === current || !DIRS[key]) return;
     busy = true;
     root.classList.add('ready');
@@ -171,9 +194,7 @@
     setPressed(key);
     status.textContent = '> Building the sections below in ' + d.name + '…';
     var rebuilt = facesReady().then(function () {
-      current = key;
-      root.dataset.look = key;
-      window.dispatchEvent(new CustomEvent('look', { detail: key }));
+      return swapLook(key, from);
     });
     Promise.all([
       develop(key, { ripple: true }),
@@ -189,7 +210,7 @@
   }
 
   picks.forEach(function (b) {
-    b.addEventListener('click', function () { pick(b.getAttribute('data-dir')); });
+    b.addEventListener('click', function () { pick(b.getAttribute('data-dir'), b); });
   });
 
   /* ---------- Load: the print develops once ---------- */
@@ -322,6 +343,14 @@
     root.classList.remove('switching');
     if (reduce.matches) {
       rebuildList.forEach(function (el) { setLook(el, key); });
+      return;
+    }
+    /* Inside the circle: every section flips at once, and the ones already seen count again. */
+    if (root.classList.contains('vt')) {
+      rebuildList.forEach(function (el) {
+        setLook(el, key);
+        if (!el.classList.contains('pre')) showLook(el);
+      });
       return;
     }
     /* Read every height before any write, so the switch is one layout, not one per section. */
