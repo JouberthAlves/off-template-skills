@@ -18,7 +18,14 @@ where it was seen, for reference only: write your own code.
    visitor) and rests. The rest of the motion is quiet (`motion.md`).
 3. Check the cost column against the page: a WebGL hero needs a real GPU and a
    mobile Lighthouse run; a CSS one doesn't.
-4. Write the choice in the direction's motion line and in the stamp.
+4. **See it run before you build it.** A row that names a hallmark theme has a
+   live example at `https://www.usehallmark.com/themes/<slug>/` (the theme's
+   name in lower case). Open that one page in a browser and watch the effect:
+   its timing, its curve, where it starts and how it rests. Text can't carry
+   that. Take the feel, never the code. One or two pages per project, only
+   for the techniques the directions use. No browser: say so and build from
+   the row.
+5. Write the choice in the direction's motion line and in the stamp.
 
 ## Signature effects
 

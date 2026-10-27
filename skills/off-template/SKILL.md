@@ -160,6 +160,9 @@ Read `references/skeletons.md`, `references/visual-language.md`,
 `references/mockups.md` and `references/anti-patterns.md` before drawing
 anything, and `references/techniques.md` for each direction's signature
 effect and composition (a technique serves the direction; it never picks it).
+When a chosen technique names a hallmark theme, open that theme's live page
+and watch the effect run before writing its motion line (`techniques.md`,
+"How to pick").
 
 - **A:** at the level of the best sites in the niche. A customer of the niche
   recognizes it in 3 seconds; it's the safe, excellent option.
