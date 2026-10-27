@@ -133,7 +133,7 @@ Logo style: `--font-c` 700, 22px, `--head`, letter-spacing -0.02em,
 fill, stroke `--red`, stroke-width 4.5, round caps and joins.
 
 Links: "How it works" (`#flow`), "The tells" (`#tells`), and "GitHub" as a
-button-shaped link to `https://github.com/JouberthAlves/off-template`
+button-shaped link to `https://github.com/JouberthAlves/off-template-skills`
 (1px border `--line`, radius 6px, padding 8px 14px). 15px, `--text`, hover
 `--head`. Under 600px: only the logo and the GitHub link (the two anchors
 hide).
@@ -177,9 +177,9 @@ A tablist of three tabs, then the command row.
   `--font-mono` 15px, `--head`; a `>` prompt sign in `--red` before the
   command. The command text wraps on narrow screens (`overflow-wrap:
   anywhere`), never scrolls the page. Commands:
-  - Claude Code: `npx skills add JouberthAlves/off-template -g -a claude-code`
-  - Codex: `npx skills add JouberthAlves/off-template -a codex`
-  - Cursor: `npx skills add JouberthAlves/off-template -a cursor`
+  - Claude Code: `npx skills add JouberthAlves/off-template-skills -g -a claude-code`
+  - Codex: `npx skills add JouberthAlves/off-template-skills -a codex`
+  - Cursor: `npx skills add JouberthAlves/off-template-skills -a cursor`
 - Copy button at the right of the row (`aria-label="Copy the command"`),
   text `Copy`, becomes `Copied` for 1.6s. `navigator.clipboard.writeText` in
   the click handler; on rejection, select the command text. Hidden with
@@ -479,12 +479,12 @@ and `rootMargin: "0px 0px -12% 0px"`.
   the command in `--font-mono` 14px on `--s-surface` (radius 6px in A and C,
   0 in B), with a Copy button as in the hero (same behaviour). Grid
   `minmax(0, 160px) minmax(0, 1fr)`, one column under 600px.
-  - `Claude Code`: `npx skills add JouberthAlves/off-template -g -a claude-code`
-  - `Codex`: `npx skills add JouberthAlves/off-template -a codex`
-  - `Cursor`: `npx skills add JouberthAlves/off-template -a cursor`
-  - `Windsurf`: `npx skills add JouberthAlves/off-template -a windsurf`
-  - `GitHub Copilot`: `npx skills add JouberthAlves/off-template -a github-copilot`
-  - `Claude Code plugin`: `/plugin install off-template --marketplace JouberthAlves/off-template`
+  - `Claude Code`: `npx skills add JouberthAlves/off-template-skills -g -a claude-code`
+  - `Codex`: `npx skills add JouberthAlves/off-template-skills -a codex`
+  - `Cursor`: `npx skills add JouberthAlves/off-template-skills -a cursor`
+  - `Windsurf`: `npx skills add JouberthAlves/off-template-skills -a windsurf`
+  - `GitHub Copilot`: `npx skills add JouberthAlves/off-template-skills -a github-copilot`
+  - `Claude Code plugin`: `/plugin install off-template --marketplace JouberthAlves/off-template-skills`
 - p under it: `Then ask for a site the way you always do. The skill stops at the brief and waits for you.`
 
 **Footer** (`--s-bg`, 1px top border `--line` in A and C, `--ink-line` in B): the logo (same markup, `--s-head` text, red caret always),

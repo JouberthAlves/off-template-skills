@@ -30,7 +30,7 @@ Agent alone: <b>20 floor failures</b>. With Off-Template: <b>0</b>.<br>
 <img src=".github/readme/compare-burger.webp" alt="The burger comparison: on the left, Ember & Bun made by an agent alone, a full page with 20 floor failures; on the right, Halfway made with Off-Template, a first screen with 0 failures, a round photo of a cut burger on a dark brown ground" width="100%">
 
 ```bash
-npx skills add JouberthAlves/off-template -g -a claude-code
+npx skills add JouberthAlves/off-template-skills -g -a claude-code
 ```
 
 Codex, Cursor and the Claude Code plugin are in [Install](#install).
@@ -158,14 +158,14 @@ should give?
 Two skills: `off-template` (the flow) and `ai-slop-check` (the audit on
 its own, for any URL or screenshot). Each agent has its own command:
 
-- **Claude Code:** `npx skills add JouberthAlves/off-template -g -a claude-code`
-- **Codex:** `npx skills add JouberthAlves/off-template -a codex`
-- **Cursor:** `npx skills add JouberthAlves/off-template -a cursor`
-- **Windsurf:** `npx skills add JouberthAlves/off-template -a windsurf`
-- **Kiro:** `npx skills add JouberthAlves/off-template -a kiro-cli`
-- **Qoder:** `npx skills add JouberthAlves/off-template -a qoder`
-- **Antigravity:** `npx skills add JouberthAlves/off-template -a antigravity`
-- **GitHub Copilot:** `npx skills add JouberthAlves/off-template -a github-copilot`
+- **Claude Code:** `npx skills add JouberthAlves/off-template-skills -g -a claude-code`
+- **Codex:** `npx skills add JouberthAlves/off-template-skills -a codex`
+- **Cursor:** `npx skills add JouberthAlves/off-template-skills -a cursor`
+- **Windsurf:** `npx skills add JouberthAlves/off-template-skills -a windsurf`
+- **Kiro:** `npx skills add JouberthAlves/off-template-skills -a kiro-cli`
+- **Qoder:** `npx skills add JouberthAlves/off-template-skills -a qoder`
+- **Antigravity:** `npx skills add JouberthAlves/off-template-skills -a antigravity`
+- **GitHub Copilot:** `npx skills add JouberthAlves/off-template-skills -a github-copilot`
 - **Any other agent:** add one rule (for example `.cursor/rules/` or
   `AGENTS.md`) that says *"for any site or UI request, read
   `skills/off-template/SKILL.md` and follow it, reading the files in
@@ -184,7 +184,7 @@ mockups come as prompts you paste into the tool yourself.
 later), inside Claude Code:
 
 ```
-/plugin install off-template --marketplace JouberthAlves/off-template
+/plugin install off-template --marketplace JouberthAlves/off-template-skills
 ```
 
 Then ask for a site the way you always do: *"build a website for a bakery"*.

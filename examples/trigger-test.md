@@ -12,7 +12,7 @@ Date: 2026-10-20. Claude Code 2.1.304 in a cloud sandbox, headless
 
 - Empty folder outside the repo, nothing else in it (no vault, no
   `package.json`).
-- `npx skills add JouberthAlves/off-template -a claude-code`, run in that
+- `npx skills add JouberthAlves/off-template-skills -a claude-code`, run in that
   folder. The skills come from the GitHub `main` branch. It installed
   `off-template` and `ai-slop-check` into `.claude/skills/` (project
   scope; the `-g` flag was not used, so nothing went to `~/.claude`).
