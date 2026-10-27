@@ -23,6 +23,18 @@ Skills that stop coding agents from shipping the same AI-looking page.
 
 ---
 
+<p align="center"><b>Same prompt:</b> <i>Build a website for a burger restaurant.</i><br>
+Agent alone: <b>20 floor failures</b>. With Off-Template: <b>0</b>.<br>
+<sub>A full page against a first screen, so not the same size; the caveats are in <a href="examples/burger-2026-10">the comparison</a>.</sub></p>
+
+<img src=".github/readme/compare-burger.webp" alt="The burger comparison: on the left, Ember & Bun made by an agent alone, a full page with 20 floor failures; on the right, Halfway made with Off-Template, a first screen with 0 failures, a round photo of a cut burger on a dark brown ground" width="100%">
+
+```bash
+npx skills add JouberthAlves/off-template -g -a claude-code
+```
+
+Codex, Cursor and the Claude Code plugin are in [Install](#install).
+
 Your coding agent designs the same page for everyone: a centered hero, three
 cards, a purple gradient, emoji in the copy. Off-Template is two skills
 that change how it works. Before any code, the agent asks you a brief,
@@ -36,9 +48,11 @@ redirect here.
 
 ## See the difference
 
-Same prompt in both: *Build a website for a burger restaurant.*
+The showcase was built with the skill itself. Its agent window offers the
+three directions the flow made for it; pick one and the whole page rebuilds
+in that look, growing from the prompt you clicked:
 
-<img src=".github/readme/compare-burger.webp" alt="The burger comparison: on the left, Ember & Bun made by an agent alone, a full page with 20 floor failures; on the right, Halfway made with Off-Template, a first screen with 0 failures, a round photo of a cut burger on a dark brown ground" width="100%">
+<img src=".github/readme/look-switch.gif" alt="The showcase switching looks: from the red Darkroom to the cream Output Leads, then the teal Editor at Night and back, each new look spreading from the picked prompt as a blob with a rippling edge" width="100%">
 
 The hero changes with the look you pick in the agent window. The three
 looks, from the same site:
@@ -52,12 +66,7 @@ looks, from the same site:
   <img src=".github/readme/flow.webp" alt="Four steps in red numerals, Darkroom look" width="49%">
 </p>
 
-Picking a look grows the new one over the whole page from the prompt you
-clicked, as a circle with a liquid rim:
-
-<img src=".github/readme/look-switch-liquid.webp" alt="Mid-switch from The Output Leads to Editor at Night: the dark teal look spreads from the picked prompt as a blob with a rippling edge over the cream page" width="100%">
-
-Videos of the same site: [the switch to Output Leads](.github/readme/look-switch-to-output-leads.webm),
+Longer videos of the same site: [the switch to Output Leads](.github/readme/look-switch-to-output-leads.webm),
 [the switch to Editor at Night](.github/readme/look-switch-to-editor-at-night.webm),
 and [the pillar on its own](.github/readme/hero-pillar.webm). They are WebM
 files; GitHub shows them as downloads, and they play in Chrome and Firefox.
