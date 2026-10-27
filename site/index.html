@@ -280,8 +280,27 @@
           <li><span class="vn" aria-hidden="true">2</span><p><strong>Say yes when the skill offers the vault.</strong> It offers once, when something would be lost, and creates the folder for you.</p></li>
           <li><span class="vn" aria-hidden="true">3</span><p><strong>Open that folder as a vault.</strong> It already has real mistakes, wins and a researched niche in it.</p></li>
         </ol>
-        <p class="vault-links"><a href="https://obsidian.md/download">Get Obsidian</a><a href="https://github.com/JouberthAlves/off-template-skills/tree/main/vault">See the starter vault</a></p>
+        <p class="vault-links"><a href="https://obsidian.md/download">Get Obsidian</a><button type="button" class="vault-explore" aria-controls="vault-stage" aria-expanded="false" hidden>Explore the starter vault</button><a href="https://github.com/JouberthAlves/off-template-skills/tree/main/vault">See it on GitHub</a></p>
         <p class="vault-note">Plain Markdown: the skill works without Obsidian, and without a vault.</p>
+      </div>
+    </div>
+    <div class="container vault-stage" id="vault-stage" hidden>
+      <div class="vstage-bar">
+        <h3 id="vstage-h" tabindex="-1">The starter vault</h3>
+        <p class="vstage-hint"></p>
+        <button type="button" class="vstage-close">Close</button>
+      </div>
+      <div class="vstage-graph">
+        <canvas aria-hidden="true"></canvas>
+        <ul class="vstage-nodes" aria-label="Notes in the starter vault"></ul>
+        <aside class="vnote" aria-labelledby="vnote-h" hidden>
+          <div class="vnote-head">
+            <p class="vnote-path"></p>
+            <h4 id="vnote-h" tabindex="-1"></h4>
+            <button type="button" class="vnote-close">Close note</button>
+          </div>
+          <div class="vnote-body"></div>
+        </aside>
       </div>
     </div>
   </section>

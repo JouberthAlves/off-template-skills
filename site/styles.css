@@ -845,18 +845,122 @@ h1 br.d { display: none; }
 .vault-steps p { margin: 0; color: var(--s-text); }
 .vault-steps strong { color: var(--s-head); }
 .vault-links { display: flex; flex-wrap: wrap; gap: 0 28px; margin: 20px 0 0; }
-.vault-links a {
-  padding-block: 12px;
+.vault-links a, .vault-links button {
+  padding: 12px 0;
+  border: 0;
+  background: none;
   color: var(--s-head);
+  font: inherit;
   font-weight: 700;
   text-decoration: underline;
   text-decoration-color: var(--s-accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 5px;
+  cursor: pointer;
   transition: text-underline-offset .2s var(--ease);
 }
-.vault-links a:hover { text-underline-offset: 8px; }
+.vault-links a:hover, .vault-links button:hover { text-underline-offset: 8px; }
+.vault-links .vault-explore[hidden] { display: none; }
 .vault-note { margin: 16px 0 0; font-size: 14px; color: var(--s-text); }
+
+/* ---------- 5b. the starter vault, explored: its graph in characters over the whole section ---------- */
+.sec.exploring .split { display: none; }
+.vault-stage[hidden] { display: none; }
+.vstage-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px; }
+.vstage-bar h3 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.1; color: var(--s-head); }
+.vstage-bar h3:focus { outline: none; }
+.vstage-hint { flex: 1 1 260px; margin: 0; font-size: 15px; color: var(--s-text); }
+.vstage-close, .vnote-close {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--s-head);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--s-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  cursor: pointer;
+}
+.vstage-graph {
+  position: relative;
+  height: clamp(520px, 74vh, 780px);
+  margin-top: 16px;
+  overflow: hidden;
+}
+.vstage-graph canvas { display: block; width: 100%; height: 100%; }
+.vstage-nodes { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; pointer-events: none; }
+.vstage-nodes button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+}
+.vstage-nodes button.dragging { cursor: grabbing; }
+.vstage-nodes button:focus-visible { outline: 2px solid var(--s-head); outline-offset: 2px; }
+
+.vnote {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 44%);
+  background: var(--s-surface);
+  color: var(--s-text);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.vnote { border-left: 1px solid var(--line); }
+.sec[data-look="b"] .vnote { border-left-color: var(--ink-line); }
+.vnote[hidden] { display: none; }
+.vnote-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; padding: 16px 20px 8px; }
+.vnote-path { grid-column: 1 / -1; margin: 0; font: 400 13px/1.4 var(--font-mono); color: var(--s-text); }
+.vnote-head h4 { margin: 0; align-self: center; font-size: 22px; line-height: 1.2; color: var(--s-head); }
+.vnote-head h4:focus { outline: none; }
+.vnote-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 20px 24px; }
+.vnote-body p, .vnote-body ul, .vnote-body ol, .vnote-body table, .vnote-body pre { max-width: none; margin: 0 0 12px; }
+.vnote-body ul, .vnote-body ol { padding-left: 20px; }
+.vnote-body li { margin-bottom: 4px; }
+.vnote-body h2, .vnote-body h3, .vnote-body h4 { margin: 20px 0 8px; font-size: 16px; line-height: 1.3; color: var(--s-head); }
+.vnote-body strong { color: var(--s-head); }
+.vnote-body code, .vnote-body pre { font: 400 13px/1.5 var(--font-mono); }
+.vnote-body pre { overflow-x: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.vnote-body table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.vnote-body th, .vnote-body td { padding: 6px 8px 6px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.sec[data-look="b"] .vnote-body th, .sec[data-look="b"] .vnote-body td { border-bottom-color: var(--ink-line); }
+.vnote-body a, .vnote-body .vlink {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--s-head);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--s-accent);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .vnote.opening { animation: vnote-in 260ms var(--ease) both; }
+}
+@keyframes vnote-in { from { opacity: 0; transform: translateX(16px); } }
+@media (max-width: 719px) {
+  .vstage-graph { height: 78vh; min-height: 480px; }
+  .vnote { top: auto; left: 0; width: auto; max-height: 62%; }
+  @keyframes vnote-in { from { opacity: 0; transform: translateY(16px); } }
+}
 
 /* ---------- footer ---------- */
 .foot {

@@ -538,3 +538,274 @@
   new MutationObserver(function () { render(); setTimeout(render, 760); }).observe(sec, { attributes: true, attributeFilter: ['data-look'] });
   if ('ResizeObserver' in window) new ResizeObserver(function () { size(); kick(); }).observe(fig);
 })();
+
+/* "Explore the starter vault": the section turns into the vault's graph, drawn in
+   characters like the logo (data from scripts/vault-graph.mjs, loaded on open).
+   Notes are discs spelled with their names, links are lines spelled with the note
+   they leave from, and every note has a label. Hover or focus lights a note and
+   its links; a click opens the note beside the graph; a drag moves it and its
+   neighbours follow on springs, then everything rests. Each note is a real
+   button, so Tab, Enter and Esc work without the pointer. */
+(function () {
+  'use strict';
+  var sec = document.getElementById('vault');
+  var openBtn = sec && sec.querySelector('.vault-explore');
+  var stage = document.getElementById('vault-stage');
+  if (!openBtn || !stage || !window.fetch) return;
+  var graphBox = stage.querySelector('.vstage-graph'), canvas = graphBox.querySelector('canvas'), ctx = canvas.getContext('2d');
+  var list = stage.querySelector('.vstage-nodes'), panel = stage.querySelector('.vnote');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var noise = '·:;[]#=+-_/|{}<>~^%&$@abcdefghijklmnopqrstuvwxyz';
+  var data = null, nodes = [], edges = [], adj = [], buttons = [];
+  var W = 0, H = 0, cw = 0, ch = 0, cols = 0, rows = 0, tall = false, palette = [];
+  var tone, chars, owner, focusNode = -1, selected = -1, drag = null;
+  var raf = 0, revealAt = 0, settle = [], lastT = 0, quietFrom = 0;
+  openBtn.hidden = false;
+
+  function rgb(s) { var m = s.match(/[\d.]+/g) || [0, 0, 0]; return [+m[0], +m[1], +m[2]]; }
+  function mix(a, b, t) { return 'rgb(' + [0, 1, 2].map(function (i) { return Math.round(a[i] + (b[i] - a[i]) * t); }).join(',') + ')'; }
+  function readPalette() {
+    var cs = getComputedStyle(sec);
+    var bg = rgb(cs.getPropertyValue('--s-bg')), head = rgb(cs.getPropertyValue('--s-head')), accent = rgb(cs.getPropertyValue('--s-accent'));
+    // 0 = dimmed (another note is lit), 1..8 as on the logo
+    palette = [mix(bg, accent, 0.28)].concat([0.5, 0.6, 0.7, 0.8, 0.9, 1].map(function (k) { return mix(bg, accent, k); }), [mix(accent, head, 0.3), mix(accent, head, 0.65)]);
+    ground = 'rgb(' + bg.join(',') + ')';
+    line = { rest: mix(bg, accent, 0.42), dim: mix(bg, accent, 0.18), lit: mix(accent, head, 0.2) };
+  }
+  var ground = '', line = {};
+
+  /* ---- layout: the saved positions are home; springs pull back to them ---- */
+  function radius(n) { return Math.max(14, Math.min(W, H) * (0.024 + 0.0095 * Math.sqrt(n.deg))); }
+  // glide: only move the homes, so the springs carry the notes there (used when the note panel opens or closes)
+  function place(keepMoved, glide) {
+    var pad = tall ? 24 : 70, padTop = tall ? 28 : 36, aw = W, ah = H;
+    if (!panel.hidden) { if (W < 720) ah = H - panel.offsetHeight; else aw = W - panel.offsetWidth - 16; } // the free part beside the note
+    nodes.forEach(function (n) {
+      var u = tall ? n.tx : n.x, v = tall ? n.ty : n.y; // tall screens get their own layout
+      var hx = pad + u * (aw - pad * 2), hy = padTop + v * (ah - padTop - pad);
+      if (n.moved) { n.hx = Math.min(n.hx, aw - 24); n.hy = Math.min(n.hy, ah - 24); if (!glide && !keepMoved) { n.px = n.hx; n.py = n.hy; } return; }
+      n.hx = hx; n.hy = hy;
+      if (!glide) { n.px = hx; n.py = hy; n.vx = n.vy = 0; }
+    });
+    edges.forEach(function (e) { e.rest = Math.hypot(nodes[e.a].hx - nodes[e.b].hx, nodes[e.a].hy - nodes[e.b].hy); });
+  }
+  function size() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = graphBox.clientWidth; H = graphBox.clientHeight;
+    tall = H > W * 1.1;
+    cw = W < 720 ? 8 : 7.4; cols = Math.floor(W / cw); cw = W / cols; ch = cw * 1.85; rows = Math.floor(H / ch);
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
+    tone = new Int8Array(rows * cols); chars = new Array(rows * cols); owner = new Int16Array(rows * cols);
+  }
+
+  /* ---- physics: home springs, link springs at their home length, a push when notes crowd ---- */
+  function step(dt) {
+    var k = Math.min(dt, 32) / 16, max = 0;
+    nodes.forEach(function (n) { n.fx = (n.hx - n.px) * 0.02; n.fy = (n.hy - n.py) * 0.02; });
+    edges.forEach(function (e) {
+      var a = nodes[e.a], b = nodes[e.b], dx = b.px - a.px, dy = b.py - a.py, d = Math.hypot(dx, dy) || 1, f = (d - e.rest) * 0.012;
+      a.fx += dx / d * f; a.fy += dy / d * f; b.fx -= dx / d * f; b.fy -= dy / d * f;
+    });
+    for (var i = 0; i < nodes.length; i++) for (var j = i + 1; j < nodes.length; j++) {
+      var a = nodes[i], b = nodes[j], dx = b.px - a.px, dy = b.py - a.py, d = Math.hypot(dx, dy) || 1, min = radius(a) + radius(b) + (tall ? 20 : 56);
+      if (d < min) { var f = (min - d) * 0.05; a.fx -= dx / d * f; a.fy -= dy / d * f; b.fx += dx / d * f; b.fy += dy / d * f; }
+    }
+    nodes.forEach(function (n, i) {
+      if (drag && drag.i === i) { n.vx = n.vy = 0; return; }
+      n.vx = (n.vx + n.fx * k) * 0.84; n.vy = (n.vy + n.fy * k) * 0.84;
+      n.px = Math.max(20, Math.min(W - 20, n.px + n.vx * k)); n.py = Math.max(20, Math.min(H - 20, n.py + n.vy * k));
+      max = Math.max(max, Math.abs(n.vx) + Math.abs(n.vy));
+    });
+    return max;
+  }
+
+  /* ---- raster: what each cell shows, and which note it belongs to ---- */
+  function put(r, c, t, chr, who) {
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return;
+    var i = r * cols + c;
+    if (t < tone[i]) return;
+    tone[i] = t; chars[i] = chr; owner[i] = who;
+  }
+  function raster() {
+    tone.fill(0); owner.fill(-1);
+    nodes.forEach(function (n, i) {
+      // a classic ASCII sphere, lit from the top left: dense glyphs where the light hits, sparse at the rim
+      var R = radius(n), r0 = Math.floor((n.py - R) / ch), r1 = Math.ceil((n.py + R) / ch);
+      for (var r = r0; r <= r1; r++) for (var c = Math.floor((n.px - R) / cw); c <= Math.ceil((n.px + R) / cw); c++) {
+        var x = (c + 0.5) * cw - n.px, y = (r + 0.5) * ch - n.py, d = Math.hypot(x, y) / R;
+        if (d >= 1) continue;
+        var l = Math.hypot(x + R * 0.35, y + R * 0.35) / (R * 1.35); // distance from the highlight
+        put(r, c, l < 0.3 ? 7 : l < 0.6 ? 6 : 5, l < 0.22 ? '@' : l < 0.4 ? '%' : l < 0.58 ? '#' : l < 0.74 ? '*' : l < 0.88 ? '+' : ':', i);
+      }
+    });
+    // labels last, the most linked notes first: under the note, else above it, else to its right or left
+    nodes.map(function (n, i) { return i; }).sort(function (a, b) { return nodes[b].deg - nodes[a].deg; }).forEach(function (i) {
+      var n = nodes[i], L = n.name.length, R = radius(n);
+      var below = Math.round((n.py + R) / ch + 0.6), above = Math.floor((n.py - R) / ch) - 1, mid = Math.round(n.py / ch - 0.5);
+      var centre = Math.round(n.px / cw - L / 2);
+      var spots = [[below, centre], [above, centre], [mid, Math.ceil((n.px + R) / cw) + 1], [mid, Math.floor((n.px - R) / cw) - L - 1]];
+      for (var s = 0; s < spots.length; s++) {
+        var r = spots[s][0], c0 = Math.max(1, Math.min(cols - L - 1, spots[s][1])), ok = r >= 0 && r < rows, k;
+        for (k = -1; ok && k <= L; k++) { var j = r * cols + c0 + k; if (tone[j] === 9 || (owner[j] >= 0 && owner[j] !== i)) ok = false; }
+        if (!ok) continue;
+        for (k = -1; k <= L; k++) { var j2 = r * cols + c0 + k; if (c0 + k < 0 || c0 + k >= cols) continue; tone[j2] = 9; chars[j2] = k < 0 || k === L ? ' ' : n.name[k]; owner[j2] = i; }
+        return;
+      }
+    });
+  }
+
+  function draw(now) {
+    raf = 0;
+    var dt = lastT ? now - lastT : 16; lastT = now;
+    var moving = step(dt) > 0.04 || !!drag;
+    raster();
+    ctx.clearRect(0, 0, W, H);
+    var font = getComputedStyle(document.documentElement).getPropertyValue('--font-mono'), big = ch * 0.78, small = big * 0.72;
+    var lit = selected >= 0 ? selected : focusNode, revealing = false, shown = !revealAt || now - revealAt > 500;
+    // links are plain lines under the notes; they fade in once the reveal is half way
+    if (shown) {
+      ctx.lineCap = 'round';
+      edges.forEach(function (e) {
+        var on = lit >= 0 && (e.a === lit || e.b === lit);
+        ctx.strokeStyle = on ? line.lit : lit >= 0 ? line.dim : line.rest;
+        ctx.lineWidth = on ? 1.6 : 1;
+        ctx.beginPath(); ctx.moveTo(nodes[e.a].px, nodes[e.a].py); ctx.lineTo(nodes[e.b].px, nodes[e.b].py); ctx.stroke();
+      });
+    }
+    for (var r = 0; r < rows; r++) {
+      var resolved = !revealAt || now - revealAt >= settle[r];
+      if (!resolved) revealing = true;
+      for (var c = 0; c < cols; c++) {
+        var i = r * cols + c, t = tone[i];
+        if (!t) continue;
+        var chr = chars[i], label = t === 9, o = owner[i];
+        if (!resolved) { if (Math.random() < 0.5) continue; chr = noise[(Math.random() * noise.length) | 0]; t = 2; label = false; }
+        else if (label) t = 8;
+        if (resolved && lit >= 0) {
+          var mine = o === lit || (o >= 0 && adj[lit].indexOf(o) >= 0);
+          t = mine ? Math.min(8, t + 2) : (label ? 3 : 0);
+        }
+        if (label) { ctx.fillStyle = ground; ctx.fillRect(c * cw, r * ch + 1, cw, ch - 2); if (chr === ' ') continue; }
+        ctx.font = (label || t >= 7 ? '500 ' : '400 ') + (t <= 2 && !label ? small : big) + 'px ' + font;
+        ctx.fillStyle = palette[t];
+        ctx.fillText(chr, (c + 0.5) * cw, (r + 0.5) * ch);
+      }
+    }
+    buttons.forEach(function (b, i) { b.style.transform = 'translate(' + nodes[i].px + 'px,' + nodes[i].py + 'px)'; });
+    // rest after 4 s without a drag, even if two notes still nudge each other
+    if (drag || !quietFrom) quietFrom = now;
+    if ((moving && now - quietFrom < 4000) || revealing) raf = requestAnimationFrame(draw); else lastT = 0;
+  }
+  function kick() { quietFrom = 0; if (!raf && !stage.hidden) raf = requestAnimationFrame(draw); }
+
+  /* ---- the note beside the graph ---- */
+  function openNote(i, fromKeyboard) {
+    var n = nodes[i];
+    selected = i;
+    panel.querySelector('.vnote-path').textContent = 'vault/' + n.path;
+    panel.querySelector('#vnote-h').textContent = n.name;
+    panel.querySelector('.vnote-body').innerHTML = n.html; // built from our own vault/ by scripts/vault-graph.mjs, escaped there
+    panel.querySelector('.vnote-body').scrollTop = 0;
+    panel.hidden = false;
+    panel.classList.remove('opening'); void panel.offsetWidth; panel.classList.add('opening');
+    if (fromKeyboard) panel.querySelector('#vnote-h').focus();
+    place(true, !reduce.matches); kick();
+  }
+  function closeNote() {
+    if (panel.hidden) return;
+    var back = selected, inside = panel.contains(document.activeElement);
+    panel.hidden = true; selected = -1; place(true, !reduce.matches); kick();
+    if (back >= 0 && inside) buttons[back].focus();
+  }
+  panel.addEventListener('click', function (e) {
+    var l = e.target.closest('.vlink');
+    if (!l) return;
+    var j = nodes.findIndex(function (n) { return n.name === l.getAttribute('data-note'); });
+    if (j >= 0) openNote(j, true);
+  });
+  panel.querySelector('.vnote-close').addEventListener('click', closeNote);
+
+  /* ---- the note buttons: hover, focus, click, drag ---- */
+  function buildButtons() {
+    list.textContent = '';
+    buttons = nodes.map(function (n, i) {
+      var li = document.createElement('li'), b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', n.name + ', ' + n.deg + ' links. Open the note');
+      b.addEventListener('pointerenter', function () { focusNode = i; kick(); });
+      b.addEventListener('pointerleave', function () { if (focusNode === i) focusNode = -1; kick(); });
+      b.addEventListener('focus', function () { focusNode = i; kick(); });
+      b.addEventListener('blur', function () { if (focusNode === i) focusNode = -1; kick(); });
+      b.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0) return;
+        var box = graphBox.getBoundingClientRect();
+        drag = { i: i, id: e.pointerId, x0: e.clientX, y0: e.clientY, dx: n.px - (e.clientX - box.left), dy: n.py - (e.clientY - box.top), moved: false };
+        b.setPointerCapture(e.pointerId);
+      });
+      b.addEventListener('pointermove', function (e) {
+        if (!drag || drag.i !== i || drag.id !== e.pointerId) return;
+        if (!drag.moved && Math.hypot(e.clientX - drag.x0, e.clientY - drag.y0) < 5) return;
+        drag.moved = true; b.classList.add('dragging');
+        var box = graphBox.getBoundingClientRect();
+        n.px = Math.max(20, Math.min(W - 20, e.clientX - box.left + drag.dx)); n.py = Math.max(20, Math.min(H - 20, e.clientY - box.top + drag.dy));
+        kick();
+      });
+      function end() {
+        if (!drag || drag.i !== i) return;
+        if (drag.moved) { n.hx = n.px; n.hy = n.py; n.moved = true; b.dataset.dragged = '1'; } // it stays where it was dropped
+        b.classList.remove('dragging'); drag = null; kick();
+      }
+      b.addEventListener('pointerup', end);
+      b.addEventListener('pointercancel', end);
+      b.addEventListener('click', function (e) {
+        if (b.dataset.dragged) { delete b.dataset.dragged; return; }
+        if (selected === i && !panel.hidden) closeNote(); else openNote(i, e.detail === 0);
+      });
+      li.appendChild(b); list.appendChild(li);
+      return b;
+    });
+  }
+
+  /* ---- open and close the explorer ---- */
+  function start() {
+    nodes = data.nodes.map(function (n) { return Object.assign({}, n); });
+    edges = data.edges.map(function (e) { return { a: e[0], b: e[1] }; });
+    adj = nodes.map(function (_, i) { return edges.filter(function (e) { return e.a === i || e.b === i; }).map(function (e) { return e.a === i ? e.b : e.a; }); });
+    stage.querySelector('.vstage-hint').textContent = nodes.length + ' notes, ' + edges.length + ' links: the folder the skill copies for you. Click a note to read it, drag it to move it.';
+    buildButtons();
+  }
+  function open() {
+    sec.classList.add('exploring'); stage.hidden = false; openBtn.setAttribute('aria-expanded', 'true');
+    size(); readPalette(); place(false);
+    revealAt = reduce.matches ? 0 : performance.now();
+    for (var r = 0; r < rows; r++) settle[r] = (r / rows) * 900 + Math.random() * 250;
+    stage.scrollIntoView({ block: 'start', behavior: reduce.matches ? 'auto' : 'smooth' });
+    stage.querySelector('#vstage-h').focus({ preventScroll: true });
+    lastT = 0; kick();
+  }
+  function close() {
+    closeNote();
+    sec.classList.remove('exploring'); stage.hidden = true; openBtn.setAttribute('aria-expanded', 'false');
+    cancelAnimationFrame(raf); raf = 0;
+    sec.scrollIntoView({ block: 'start', behavior: 'auto' });
+    openBtn.focus({ preventScroll: true });
+  }
+  openBtn.addEventListener('click', function () {
+    if (data) { open(); return; }
+    openBtn.setAttribute('aria-busy', 'true');
+    fetch('vault-graph.json').then(function (r) { return r.json(); }).then(function (d) {
+      data = d; start(); open();
+    }).catch(function () {
+      location.href = 'https://github.com/JouberthAlves/off-template-skills/tree/main/vault';
+    }).then(function () { openBtn.removeAttribute('aria-busy'); });
+  });
+  stage.querySelector('.vstage-close').addEventListener('click', close);
+  stage.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (!panel.hidden) closeNote(); else close();
+  });
+  new MutationObserver(function () { if (!stage.hidden) { readPalette(); kick(); setTimeout(function () { readPalette(); kick(); }, 760); } }).observe(sec, { attributes: true, attributeFilter: ['data-look'] });
+  if ('ResizeObserver' in window) new ResizeObserver(function () { if (stage.hidden || !data) return; size(); place(true); kick(); }).observe(graphBox);
+})();

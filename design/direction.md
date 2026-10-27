@@ -86,7 +86,10 @@ pages (the burger: the other agent against the flow) · the flow, four stops ·
 the lint (39 FAIL against 12) · the 13 tells · install, per agent · the vault
 (the Obsidian logo in characters in the look's accent, spelled with the starter vault's note names, after the
 hallmark Terminal theme's glyph image: resolves row by row once, lights under the pointer;
-install Obsidian, say yes when the skill offers it) · footer.
+install Obsidian, say yes when the skill offers it; "Explore the starter vault"
+turns the section into the vault's graph: notes as ASCII spheres with their names,
+links as thin lines, hover lights a note and its links, click opens the note beside the
+graph, drag moves it on springs) · footer.
 Everything below the hero comes in the chosen look.
 
 **Keep list from the research:** the install command copyable on the first
